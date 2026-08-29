@@ -20,7 +20,7 @@
 - Public language: English.
 - Primary contact: `https://wa.me/639380101849`; fallback: `mailto:hanginkitecenter@gmail.com`.
 - Do not invent prices, opening hours, availability, instructor names, room details, course durations, awards, ratings, or guarantees.
-- Follow the anti-AI voice rules in the spec. In particular, ban `vibrant`, `seamless`, `showcase`, `enhance`, `pivotal`, `testament`, `delve`, the phrase `not just`, and repeated em dashes from public copy.
+- Follow the durable anti-slop copy and UI rules in `AGENTS.md`. Before writing or reviewing public copy, read and apply the installed `no-ai-slop` skill at `/Users/saltychris/.agents/skills/no-ai-slop/SKILL.md` and its `eval.md`. Ban the listed vocabulary, the phrase `not just`, em dashes, fake urgency, and named structural patterns from public copy.
 - Use authentic, reuse-cleared web images for Boracay proof. Use generated images only as clearly illustrative supporting art.
 - Before implementation code, invoke `superpowers:test-driven-development`. Before Task 4, read and apply the installed `frontend-design` skill at `/Users/saltychris/.agents/skills/frontend-design/SKILL.md`.
 - Preserve all unrelated user changes. Each task commits only its own files.
@@ -36,7 +36,7 @@
 - `tests/site-contract.test.mjs`: canonical business identity and contact links.
 - `tests/routes-and-seo.test.mjs`: route, metadata, heading, JSON-LD, sitemap, and link contract.
 - `tests/media.test.mjs`: local media and attribution contract.
-- `tests/content-style.test.mjs`: banned-phrase and public-copy checks.
+- `tests/content-style.test.mjs`: banned-phrase checks across visible copy, metadata, alt text, and structured data.
 
 ### Content and helpers
 
@@ -171,7 +171,7 @@ test("build emits a static homepage, 404, and metadata files", async () => {
 
 test("the exported 404 is useful and not indexable", async () => {
   const html = await readFile(path.join(outDir, "404.html"), "utf8");
-  assert.match(html, /That page blew downwind/i);
+  assert.match(html, /We couldn't find that page/i);
   assert.match(html, /name="robots" content="noindex"/i);
 });
 
@@ -231,8 +231,8 @@ export default function NotFound() {
   return (
     <main id="main-content" className="not-found">
       <p className="eyebrow">404 · Boracay</p>
-      <h1>That page blew downwind.</h1>
-      <p>The kite center is still here. Head back to the beach.</p>
+      <h1>We couldn't find that page.</h1>
+      <p>Hangin is still on Bulabog Beach.</p>
       <Link className="button button--dark" href="/">
         Back to Hangin
       </Link>
@@ -352,7 +352,7 @@ export type ContactContext =
   | "shop";
 
 const contactMessages: Record<ContactContext, string> = {
-  general: "Hi Hangin, I'm planning a trip to Boracay and would like some details.",
+  general: "Hi Hangin, I'm planning a Boracay trip. My dates are [dates], my riding level is [level], and I need help with [service].",
   lessons: "Hi Hangin, I'd like to arrange kitesurfing lessons in Boracay.",
   rental: "Hi Hangin, I'd like to check kite rental availability for my Boracay trip.",
   storage: "Hi Hangin, I'd like to ask about kite storage on Bulabog Beach.",
@@ -874,7 +874,7 @@ test("homepage follows the approved calm funnel", async () => {
     assert.match(html, new RegExp(`id=["']${id}["']`));
   }
   assert.match(text, /Kitesurfing here since 2002\./);
-  assert.match(text, /First time on a kite\?/);
+  assert.match(text, /Your first kite lesson/);
   assert.match(text, /Leave the board bag at home\./);
   assert.match(text, /Tell us when you're coming\./);
   assert.doesNotMatch(text, /book now|limited|don't miss|once-in-a-lifetime/i);
@@ -893,14 +893,14 @@ Build `app/page.tsx` as a Server Component whose outer element is `<main id="mai
 
 1. `#start`: eyebrow `Bulabog Beach, Boracay`; H1 `Kitesurfing here since 2002.`; lead `Learn with IKO and VDWS instructors, rent a full setup, store your own gear, or stay close to the kite beach. If the wind is up, we're out there.`; links `See the lessons` and `Message us on WhatsApp`; authentic school image.
 2. `ProofStrip`: `On the beach since 2002`, `IKO & VDWS instruction`, `Lessons · rental · storage`, `Stay close to the spot`.
-3. `#lessons`: heading `Start where you are.`; four `ServicePath` links with headings `First time on a kite?`, `Ready for the board?`, `Already riding?`, and `Need a full setup?`; each description is one or two factual sentences.
+3. `#lessons`: heading `Lessons and rental.`; four `ServicePath` links with headings `Your first kite lesson`, `Board starts and first rides`, `Progression sessions`, and `Full equipment rental`; each description is one or two factual sentences.
 4. `#boracay`: heading `The windward side of Boracay.`; copy explaining Bulabog's warm shallow lagoon and Amihan season without promising daily wind; authentic aerial image; link `Read the Boracay spot guide`.
 5. `#services`: heading `Leave the board bag at home.`; large alternating rows for rental and storage, accommodation, shop, and safaris; use gear, stay, and safari generated art only as illustration.
-6. `#story`: heading `A kite center before Boracay had a kite scene.`; copy `Hangin opened in 2002. The school grew around lessons, gear, rooms and the people who kept coming back for another windy season.`; authentic riding image; link `About Hangin`.
+6. `#story`: heading `On Bulabog Beach since 2002.`; copy `Hangin has taught on Bulabog Beach since 2002. Today the center covers lessons, rental, storage, stays, the shop and kite trips.`; authentic riding image; link `About Hangin`.
 7. `#questions`: heading `Before you hit the water.`; six visible `<details>` questions: `Do I need experience?`, `When is the kite season?`, `What should I bring?`, `Can I rent equipment?`, `Can I store my own gear?`, and `How do I arrange a session?`. Answers stay within confirmed facts and point uncertain details to WhatsApp.
 8. `#contact`: heading `Tell us when you're coming.`; copy `Send your dates, riding level and what you need. We'll tell you what works with the current conditions.`; full `ContactCta` and email.
 
-Use `<Image>` with the exact local `siteImages` records and `sizes` values that match the rendered layout. Mark the hero image `priority`; do not mark below-fold images as priority.
+Use `<Image>` with the exact local `siteImages` records and `sizes` values that match the rendered layout. Use `preload={true}` only for the single above-fold hero image on each route; do not preload below-fold images. Next.js 16 deprecates the older `priority` prop.
 
 - [ ] **Step 4: Implement the homepage composition**
 
@@ -955,9 +955,9 @@ Add:
 
 ```js
 const waterRoutes = [
-  ["/kitesurfing-lessons/", /Learn to kitesurf in Boracay/, /First time\? Good\./],
+  ["/kitesurfing-lessons/", /Learn to kitesurf in Boracay/, /Your first lesson starts on the beach/],
   ["/rentals-storage/", /Rent kite gear on Bulabog Beach/, /Store your gear by the spot/],
-  ["/kite-safaris/", /Kite trips beyond the usual session/, /Routes follow the wind/],
+  ["/kite-safaris/", /Kite safaris from Boracay/, /Routes follow the wind/],
 ];
 
 for (const [route, heading, proof] of waterRoutes) {
@@ -1006,9 +1006,9 @@ Populate `waterPages` with these fixed content anchors:
 
 | Page | H1 | Lead | Required sections |
 | --- | --- | --- | --- |
-| Lessons | `Learn to kitesurf in Boracay` | `Start on the beach, then move into Bulabog's warm shallow lagoon. We teach the part you need next and keep the session matched to the conditions.` | `First time? Good.` explains wind, safety systems and kite control; `Get onto the board` covers body dragging, board starts and controlled riding; `Already riding` covers upwind riding, transitions and jumps without promising results; `Wind decides the day` explains that session timing follows safe conditions. |
-| Rentals & storage | `Rent kite gear on Bulabog Beach` | `Travelling without a board bag? Tell us your level, dates and usual sizes. We'll check what fits the forecast and what is available.` | `A setup for the session`; `Store your gear by the spot`; `Tell us how you ride`; `Current stock, current wind`. |
-| Safaris | `Kite trips beyond the usual session` | `When the conditions line up, a kite safari takes the day beyond the regular beach session. Routes follow the wind, rider level and local conditions.` | `Routes follow the wind`; `Who the trip suits`; `What to bring`; `Ask before you plan around it`. |
+| Lessons | `Learn to kitesurf in Boracay` | `Start on the beach, then move into Bulabog's warm shallow lagoon. We teach the part you need next and keep the session matched to the conditions.` | `Your first lesson starts on the beach` explains wind, safety systems and kite control; `Get onto the board` covers body dragging, board starts and controlled riding; `Already riding` covers upwind riding, transitions and jumps without promising results; `Sessions follow the conditions` explains that timing follows safe wind and water conditions. |
+| Rentals & storage | `Rent kite gear on Bulabog Beach` | `Tell us your level, dates and usual sizes. We'll check what fits the forecast and what is available, so you can leave the board bag at home.` | `Rent a setup for your session`; `Store your gear by the spot`; `Tell us how you ride`; `Check current gear and conditions`. |
+| Safaris | `Kite safaris from Boracay` | `When the conditions line up, routes follow the wind, rider level and local water conditions. Ask us what is possible during your stay.` | `Routes follow the wind`; `Who the trip suits`; `What to bring`; `Ask before you plan around it`. |
 
 Use these metadata descriptions:
 
@@ -1096,7 +1096,7 @@ const islandRoutes = [
   ["/accommodation/", /Stay close to Boracay's kite beach/, /Wake up, check the water/],
   ["/shop/", /Kite gear and beach essentials in Boracay/, /Ask what is on the rack today/],
   ["/kitesurfing-boracay/", /Kitesurfing on Boracay/, /The kite side of the island/],
-  ["/about/", /On the beach since 2002/, /A school first/],
+  ["/about/", /On the beach since 2002/, /Hangin began as a kite school/],
   ["/contact/", /Tell us when you're coming/, /Your dates and riding level/],
 ];
 
@@ -1124,10 +1124,10 @@ Populate `content/island-pages.ts`:
 
 | Page | H1 | Lead | Required sections |
 | --- | --- | --- | --- |
-| Accommodation | `Stay close to Boracay's kite beach` | `Wake up, check the water and carry less. Ask us what is available for your dates near Bulabog Beach.` | `Close to the session`; `For riders and non-riders`; `Ask about the room, not a room type`; `Plan the stay around your trip`. |
-| Shop | `Kite gear and beach essentials in Boracay` | `Need a spare part, replacement piece or something you left at home? Ask what is on the rack today.` | `Gear for the current season`; `The bits that save a session`; `Stock changes`; `Message before crossing the island`. |
-| Boracay | `Kitesurfing on Boracay` | `Bulabog Beach is the wind-facing side of the island. Warm water, a shallow lagoon and the Amihan season make it the place Boracay riders come to kite.` | `The kite side of the island`; `When to come` states roughly November to April and no wind guarantee; `Learning in the lagoon`; `The rest of Boracay is close`. |
-| About | `On the beach since 2002` | `Hangin started as a kite school and grew around the people who came to learn, ride, stay and return.` | `A school first`; `How we teach`; `More than lessons` lists confirmed services; `Come by when you reach Bulabog`. |
+| Accommodation | `Stay close to Boracay's kite beach` | `Wake up, check the water and carry less. Ask us what is available for your dates near Bulabog Beach.` | `Stay near Bulabog Beach`; `A base for the whole trip`; `Room details for your dates`; `Plan the stay around your trip`. |
+| Shop | `Kite gear and beach essentials in Boracay` | `For a spare part, replacement piece or something you left at home, ask what is on the rack today.` | `Gear for the current season`; `The bits that save a session`; `Stock changes`; `Message before crossing the island`. |
+| Boracay | `Kitesurfing on Boracay` | `Bulabog Beach is the wind-facing side of the island. Warm water, a shallow lagoon and the Amihan season make it the place Boracay riders come to kite.` | `The kite side of Boracay`; `When to come` states roughly November to April and no wind guarantee; `Learning in the lagoon`; `White Beach and the rest of the island`. |
+| About | `On the beach since 2002` | `Hangin started as a kite school and grew around the people who came to learn, ride, stay and return.` | `Hangin began as a kite school`; `How we teach`; `Lessons, gear, storage, stays and trips` lists confirmed services; `Come by when you reach Bulabog`. |
 | Contact | `Tell us when you're coming` | `Send your dates, riding level and what you need. We'll reply with what makes sense for the current conditions.` | `Your dates and riding level`; `Find us on Bulabog Beach`; `WhatsApp`; `Email`. No form. |
 
 Metadata descriptions:
@@ -1313,6 +1313,8 @@ git commit -m "feat: complete static SEO surface"
 
 - [ ] **Step 1: Add the failing-or-passing copy and link quality tests**
 
+Before changing public copy, read `/Users/saltychris/.agents/skills/no-ai-slop/SKILL.md` and `/Users/saltychris/.agents/skills/no-ai-slop/eval.md` completely. Audit the rendered text by named pattern, preserve strong Hangin-specific lines, and make only the edits that solve a real problem. The automated list below catches repeat offenders; it does not replace the human read.
+
 Create `tests/content-style.test.mjs`:
 
 ```js
@@ -1320,7 +1322,7 @@ import assert from "node:assert/strict";
 import { access } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { attribute, outDir, publicRoutes, readRoute, tags, visibleText } from "./export-helpers.mjs";
+import { attribute, jsonLdBlocks, outDir, publicRoutes, readRoute, tags, visibleText } from "./export-helpers.mjs";
 
 const banned = [
   /\bvibrant\b/i,
@@ -1330,7 +1332,32 @@ const banned = [
   /\bpivotal\b/i,
   /\btestament\b/i,
   /\bdelve\b/i,
+  /\bfoster\b/i,
+  /\bleverage\b/i,
+  /\butilize\b/i,
+  /\bfacilitate\b/i,
+  /\bempower\b/i,
+  /\bstreamline\b/i,
+  /\brobust\b/i,
+  /\bcutting[- ]edge\b/i,
+  /\bgame[- ]changer\b/i,
+  /\btapestry\b/i,
+  /\brealm\b/i,
+  /\bbeacon\b/i,
+  /\bmultifaceted\b/i,
+  /\bmeticulous\b/i,
+  /\bintricate\b/i,
+  /\bparamount\b/i,
+  /\btransformative\b/i,
+  /\belevate\b/i,
+  /\bembark\b/i,
+  /\bsupercharge\b/i,
+  /\bever[- ]evolving\b/i,
+  /\bharness (?:the (?:power|potential)|your potential)\b/i,
   /\bnot just\b/i,
+  /\bit(?:'|’)s (?:worth|important) to note\b/i,
+  /\b(?:let(?:'|’)s dive in|at the end of the day)\b/i,
+  /\b(?:stands as a testament|marks a pivotal moment|plays a vital role)\b/i,
   /—/,
   /\bbook now\b/i,
   /\blimited spots?\b/i,
@@ -1338,8 +1365,11 @@ const banned = [
 
 test("public copy follows the Hangin voice", async () => {
   for (const route of publicRoutes) {
-    const text = visibleText(await readRoute(route));
-    for (const pattern of banned) assert.doesNotMatch(text, pattern, `${route}: ${pattern}`);
+    const html = await readRoute(route);
+    const metadata = tags(html, "meta").map((tag) => attribute(tag, "content")).filter(Boolean);
+    const altText = tags(html, "img").map((tag) => attribute(tag, "alt")).filter(Boolean);
+    const copy = [visibleText(html), ...metadata, ...altText, JSON.stringify(jsonLdBlocks(html))].join(" ");
+    for (const pattern of banned) assert.doesNotMatch(copy, pattern, `${route}: ${pattern}`);
   }
 });
 
@@ -1375,7 +1405,11 @@ Run: `npm run verify`
 
 Expected: lint PASS, typecheck PASS, static build PASS, all Node tests PASS. If a failure appears, change the smallest responsible file and rerun the failing command before rerunning `npm run verify`.
 
-- [ ] **Step 3: Serve the actual export and inspect responsive layouts**
+- [ ] **Step 3: Run the full-page anti-slop review**
+
+Read each exported page as one complete draft, including its title, description, alt text, labels, and JSON-LD. Apply `/Users/saltychris/.agents/skills/no-ai-slop/eval.md` directly. Name each failing pattern and make the minimum effective edit. In particular, reject copy that could move unchanged to another kite school, repeated question-answer hooks, stacked fragments, robotic section symmetry, fake importance, vague attribution, and recap endings. Preserve specific Hangin lines and real kitesurfing terms such as `harness`.
+
+- [ ] **Step 4: Serve the actual export and inspect responsive layouts**
 
 Run `npm run preview` in a unified terminal session and keep its session ID for the browser checks.
 
@@ -1386,9 +1420,9 @@ Before browser QA, read `/Users/saltychris/.codex/plugins/cache/openai-bundled/b
 - 1366×768: laptop hero visibility and headline line length.
 - 1536×960: wide-screen content width and negative space.
 
-At every width, verify no horizontal scrolling, no text-image collision, readable navigation, visible focus states, and no more than three headline lines in the hero. Use screenshots for side-by-side review.
+At every width, verify no horizontal scrolling, no text-image collision, readable navigation, visible focus states, and no more than three headline lines in the hero. Reject generic card walls, pill-shaped content UI, repeated section templates, centered paragraph walls, decorative motion, or pressure-based calls to action. Use screenshots for side-by-side review.
 
-- [ ] **Step 4: Run keyboard and reduced-motion checks**
+- [ ] **Step 5: Run keyboard and reduced-motion checks**
 
 With the browser:
 
@@ -1398,7 +1432,7 @@ With the browser:
 4. Traverse every header, service, FAQ, WhatsApp, email, and footer control in a logical order.
 5. Emulate `prefers-reduced-motion: reduce` and confirm all content remains available without transition dependence.
 
-- [ ] **Step 5: Inspect exported SEO and static behavior manually**
+- [ ] **Step 6: Inspect exported SEO and static behavior manually**
 
 Run:
 
@@ -1414,7 +1448,7 @@ Expected:
 - No request-time API or Client Component appears.
 - The export includes exactly the nine public pages plus technical assets and 404.
 
-- [ ] **Step 6: Document final operation and image replacement**
+- [ ] **Step 7: Document final operation and image replacement**
 
 Update `README.md` with:
 
@@ -1428,13 +1462,13 @@ Update `README.md` with:
 - Future booking switch point: `ContactCta` plus `getWhatsAppUrl`
 - DNS pre-launch check for `www.hanginkitecenter.com`
 
-- [ ] **Step 7: Run final verification from a clean build**
+- [ ] **Step 8: Run final verification from a clean build**
 
 Run: `npm run verify && git diff --check && git status --short`
 
 Expected: all checks PASS; `git diff --check` prints nothing; status contains only the intentional Task 9 files.
 
-- [ ] **Step 8: Commit the verified site**
+- [ ] **Step 9: Commit the verified site**
 
 ```bash
 git add tests/content-style.test.mjs README.md

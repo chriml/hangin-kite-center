@@ -1,7 +1,7 @@
 # Hangin Kite Center SSG Redesign
 
 Date: 2026-08-29  
-Status: Approved in conversation, pending written-spec review
+Status: Approved in conversation
 
 ## Purpose
 
@@ -47,9 +47,12 @@ The primary conversion is a WhatsApp conversation. Email is the fallback. A late
 
 Write like an experienced member of the beach team answering a guest. The tone is easygoing, useful, and professional.
 
+The project-level rules in `AGENTS.md` are the durable copy standard. Public copy must be edited and reviewed with the installed `no-ai-slop` skill. The review names observable patterns and fixes them; it does not rely on detector scores or guess who wrote the text.
+
 Rules:
 
 - Put facts before adjectives.
+- Apply the portability test: if a line could describe any kite school or tropical island, cut it or replace it with a Hangin, Bulabog, service, or conditions detail.
 - Keep one clear point per sentence.
 - Use rider language only where it is natural and useful.
 - Prefer concrete local details about the spot, conditions, gear, teaching, and island.
@@ -57,7 +60,8 @@ Rules:
 - Front-load the words people scan for.
 - Do not keyword-stuff.
 - Do not use empty superlatives, fake urgency, or travel-brochure language.
-- Avoid common AI markers such as `vibrant`, `seamless`, `showcase`, `enhance`, `pivotal`, `testament`, `delve`, and repeated em dashes.
+- Avoid the banned words and patterns in `AGENTS.md`, including `vibrant`, `seamless`, `showcase`, `enhance`, `pivotal`, `testament`, `delve`, empty importance claims, fake insight, dramatic fragments, and recap endings.
+- Use no em dashes in short website copy.
 - Avoid the construction `not just X, but Y`.
 - Do not claim awards, rankings, ratings, guaranteed progress, or exclusivity without evidence.
 
@@ -165,9 +169,9 @@ State the location, history, and core offer immediately. Use one authentic Borac
 
 Show factual trust points: established in 2002, IKO and VDWS instruction, Bulabog Beach, and services on site. Do not add star ratings or review counts in this version.
 
-### 4. Choose your way onto the water
+### 4. Lessons and equipment rental
 
-Offer clear paths for first lessons, progression, advanced coaching, and rental. Each path links to the relevant static page or section.
+Offer clear paths for first lessons, board starts, progression sessions, and full equipment rental. Each path links to the relevant static page or section.
 
 ### 5. Kitesurfing in Boracay
 
@@ -310,7 +314,7 @@ Implementation is complete only when all of the following pass:
 6. Keyboard-navigation and reduced-motion checks
 7. Broken-link and missing-asset checks
 8. Structured-data validation for syntax and content parity
-9. Review of every page against the anti-AI voice rules
+9. Full-page review of visible copy, metadata, alt text, labels, and structured data against `no-ai-slop/eval.md`, including the portability check and a manual scan for repeated section rhythms
 10. Review of every proof image's reuse terms and attribution record
 
 ## Out of scope
