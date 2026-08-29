@@ -1,46 +1,66 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { JsonLd } from "@/components/json-ld";
+import { siteConfig } from "@/content/site";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import "./globals.css";
 
+const homepageDescription =
+  "Kitesurfing lessons, equipment rental, storage, accommodation, shop and kite safaris with Hangin Kite Center on Bulabog Beach, Boracay.";
+
+const homepageMetadata = buildMetadata({
+  title: "Kitesurfing in Boracay",
+  description: homepageDescription,
+  path: "/",
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.hanginkitecenter.com"),
+  ...homepageMetadata,
+  metadataBase: new URL(siteConfig.origin),
   title: {
-    default: "Hangin Kite Center | Kite School",
+    default: "Kitesurfing in Boracay | Hangin Kite Center",
     template: "%s | Hangin Kite Center",
   },
-  description:
-    "Hangin Kite Center is a kite school offering beginner-friendly and advanced kitesurf coaching, safety-first lessons, and guided sessions.",
-  keywords: [
-    "kite school",
-    "kitesurf lessons",
-    "kiteboarding",
-    "kite center",
-    "Hangin Kite Center",
+};
+
+const sitewideJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+    },
+    {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+      email: siteConfig.email,
+    },
+    {
+      "@type": "SportsActivityLocation",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+      email: siteConfig.email,
+      sport: "Kitesurfing",
+      foundingDate: String(siteConfig.established),
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Boracay",
+        addressRegion: "Aklan",
+        addressCountry: "PH",
+      },
+    },
   ],
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: "/",
-    title: "Hangin Kite Center | Kite School",
-    description:
-      "Learn to kite with certified instructors, structured lesson levels, and safe progression at Hangin Kite Center.",
-    siteName: "Hangin Kite Center",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Hangin Kite Center | Kite School",
-    description:
-      "Kitesurf lessons for all levels with safety-first training and professional coaching.",
-  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <JsonLd data={sitewideJsonLd} />
+        {children}
+      </body>
     </html>
   );
 }

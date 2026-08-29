@@ -1,0 +1,48 @@
+export const siteConfig = {
+  name: "Hangin Kite Center",
+  shortName: "Hangin",
+  origin: "https://www.hanginkitecenter.com",
+  email: "hanginkitecenter@gmail.com",
+  whatsappDisplay: "+63 938 010 1849",
+  whatsappNumber: "639380101849",
+  location: "Bulabog Beach, Boracay, Philippines",
+  established: 2002,
+} as const;
+
+export const publicRoutes = [
+  "/",
+  "/kitesurfing-lessons/",
+  "/rentals-storage/",
+  "/kite-safaris/",
+  "/accommodation/",
+  "/shop/",
+  "/kitesurfing-boracay/",
+  "/about/",
+  "/contact/",
+] as const;
+
+export type PublicRoute = (typeof publicRoutes)[number];
+export type ContactContext =
+  | "general"
+  | "lessons"
+  | "rental"
+  | "storage"
+  | "safari"
+  | "stay"
+  | "shop";
+
+const contactMessages: Record<ContactContext, string> = {
+  general:
+    "Hi Hangin, I'm planning a Boracay trip. My dates are [dates], my riding level is [level], and I need help with [service].",
+  lessons: "Hi Hangin, I'd like to arrange kitesurfing lessons in Boracay.",
+  rental:
+    "Hi Hangin, I'd like to check kite rental availability for my Boracay trip.",
+  storage: "Hi Hangin, I'd like to ask about kite storage on Bulabog Beach.",
+  safari: "Hi Hangin, I'd like to know about kite safari options during my trip.",
+  stay: "Hi Hangin, I'd like to check accommodation availability near the kite beach.",
+  shop: "Hi Hangin, I'd like to check what kite gear is currently in the shop.",
+};
+
+export function getWhatsAppUrl(context: ContactContext = "general") {
+  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(contactMessages[context])}`;
+}
