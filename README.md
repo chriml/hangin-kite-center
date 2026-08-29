@@ -12,6 +12,10 @@ Initial SEO-focused website setup for Hangin Kite Center using a no-brainer stac
 ```bash
 npm run dev
 npm run lint
+npm run typecheck
 npm run build
-npm run start
+npm test
+npm run verify
 ```
+
+`npm run build` writes the deployable static site to `out/`. Run `npm run preview` to serve that directory on port `4173`.
