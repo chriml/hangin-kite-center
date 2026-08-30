@@ -186,6 +186,7 @@
 
 .servicePathHeading {
   max-width: 10ch;
+  margin: 0;
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;

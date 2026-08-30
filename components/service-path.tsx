@@ -12,7 +12,7 @@ export function ServicePath({
 }) {
   return (
     <Link className={styles.servicePath} href={href}>
-      <span className={styles.servicePathHeading}>{heading}</span>
+      <h3 className={styles.servicePathHeading}>{heading}</h3>
       <span className={styles.servicePathDescription}>{description}</span>
       <span className={styles.servicePathArrow} aria-hidden="true">
         ↗

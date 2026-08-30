@@ -63,8 +63,9 @@ svg {
 }
 
 *:focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 4px;
+  outline: 3px solid var(--sun);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 8px var(--ocean);
 }
 
 .shell {
@@ -100,7 +101,7 @@ svg {
 .button--coral {
   border-color: var(--coral);
   background: var(--coral);
-  color: var(--ocean);
+  color: var(--ink);
 }
 
 .button--dark {

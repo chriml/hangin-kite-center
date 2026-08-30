@@ -30,7 +30,7 @@ const lessonPaths = [
     href: "/rentals-storage/",
     heading: "Full equipment rental",
     description:
-      "Tell us your level, dates and usual sizes. We'll check the setup and current availability with you.",
+      "Full equipment rental is available. Ask what setup fits your level and the current conditions.",
   },
 ] as const;
 
@@ -38,7 +38,7 @@ const services = [
   {
     eyebrow: "Rental & storage",
     heading: "Ride without flying your gear.",
-    copy: "Rent a setup for your session or keep your own equipment by the spot. Send your dates, level and usual sizes so we can check what is available.",
+    copy: "Rent a setup for your session or keep your own equipment by the spot. Ask what is available during your stay.",
     href: "/rentals-storage/",
     link: "View rental and storage",
     image: siteImages.gearArt,
@@ -78,7 +78,7 @@ const questions = [
   {
     question: "When is the kite season?",
     answer:
-      "Boracay's Amihan season generally runs from roughly November to April. Wind changes, so check the current conditions with us before arranging time on the water.",
+      "Boracay's Amihan season generally runs from roughly November to April. Wind changes, so ask on WhatsApp about current conditions before arranging time on the water.",
   },
   {
     question: "What should I bring?",
@@ -88,7 +88,7 @@ const questions = [
   {
     question: "Can I rent equipment?",
     answer:
-      "Yes. Full equipment rental is available. Send your dates, riding level and usual sizes so we can check current availability.",
+      "Yes. Full equipment rental is available. On WhatsApp, include your usual sizes so we can check current availability.",
   },
   {
     question: "Can I store my own gear?",
@@ -98,7 +98,7 @@ const questions = [
   {
     question: "How do I arrange a session?",
     answer:
-      "Message Hangin on WhatsApp with your dates, riding level and what you need. We'll reply with what works with the current conditions.",
+      "Start on WhatsApp. We'll ask for the trip and riding details needed to work with the current conditions.",
   },
 ] as const;
 
