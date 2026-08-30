@@ -1,13 +1,24 @@
-export type SiteImage = {
+type SiteImageBase = {
   src: string;
   width: number;
   height: number;
   alt: string;
-  kind: "proof" | "generated";
-  credit?: string;
-  sourceUrl?: string;
-  license?: string;
 };
+
+export type SiteImage = SiteImageBase & (
+  | {
+      kind: "proof";
+      credit: string;
+      sourceUrl: string;
+      license: string;
+    }
+  | {
+      kind: "generated";
+      credit?: never;
+      sourceUrl?: never;
+      license?: never;
+    }
+);
 
 export const siteImages = {
   school: {

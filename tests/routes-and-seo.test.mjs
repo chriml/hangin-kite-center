@@ -30,6 +30,66 @@ for (const [route, heading, proof] of waterRoutes) {
   });
 }
 
+test("rental FAQ confirms the service without claiming current availability", async () => {
+  const html = await readRoute("/rentals-storage/");
+  const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";
+  const rentalFaq = (main.match(/<details\b[^>]*>[\s\S]*?<\/details>/gi) ?? [])
+    .find((block) => visibleText(block).includes("Can I rent a complete kite setup?"));
+
+  assert.ok(rentalFaq, "missing complete kite setup FAQ");
+  const answer = visibleText(rentalFaq);
+  assert.doesNotMatch(answer, /\b(?:available|availability)\b/i);
+  assert.match(answer, /WhatsApp/i);
+  assert.match(answer, /dates/i);
+  assert.match(answer, /level/i);
+  assert.match(answer, /sizes/i);
+});
+
+function declaredJsonLdIds(value) {
+  if (Array.isArray(value)) return value.flatMap(declaredJsonLdIds);
+  if (!value || typeof value !== "object") return [];
+
+  const ownId = typeof value["@id"] === "string" && Object.keys(value).length > 1
+    ? [value["@id"]]
+    : [];
+  return [
+    ...ownId,
+    ...Object.values(value).flatMap(declaredJsonLdIds),
+  ];
+}
+
+test("every Service provider resolves to a declared JSON-LD entity", async () => {
+  for (const [route] of waterRoutes) {
+    const blocks = jsonLdBlocks(await readRoute(route));
+    const declaredIds = new Set(declaredJsonLdIds(blocks));
+    const services = blocks.filter((block) => block["@type"] === "Service");
+
+    assert.equal(services.length, 1, `${route} Service count`);
+    assert.ok(
+      declaredIds.has(services[0].provider?.["@id"]),
+      `${route} unresolved provider ${services[0].provider?.["@id"]}`,
+    );
+  }
+});
+
+test("rental and storage CTAs carry both service intents", async () => {
+  const html = await readRoute("/rentals-storage/");
+  const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";
+  const messages = tags(main, "a")
+    .map((tag) => attribute(tag, "href"))
+    .filter((href) => href?.startsWith("https://wa.me/"))
+    .map((href) => decodeURIComponent(href.split("?text=")[1] ?? ""));
+
+  assert.ok(messages.length >= 2, "missing rental/storage page CTAs");
+  for (const message of messages) {
+    assert.match(message, /rental/i);
+    assert.match(message, /storage/i);
+  }
+  const text = visibleText(main);
+  assert.match(text, /Ask about rental, storage or both\./);
+  assert.match(text, /rent a setup, store your own gear or arrange both/i);
+});
+
 function rgb(hex) {
   const value = hex.slice(1);
   const full = value.length === 3 ? [...value].map((item) => item + item).join("") : value;

@@ -26,6 +26,7 @@ export type ContactContext =
   | "general"
   | "lessons"
   | "rental"
+  | "rental-storage"
   | "storage"
   | "safari"
   | "stay"
@@ -37,6 +38,8 @@ const contactMessages: Record<ContactContext, string> = {
   lessons: "Hi Hangin, I'd like to arrange kitesurfing lessons in Boracay.",
   rental:
     "Hi Hangin, I'd like to check kite rental availability for my Boracay trip.",
+  "rental-storage":
+    "Hi Hangin, I'd like to ask about kite rental or gear storage for my Boracay trip. My dates are [dates], my riding level is [level], and my usual sizes are [sizes].",
   storage: "Hi Hangin, I'd like to ask about kite storage on Bulabog Beach.",
   safari: "Hi Hangin, I'd like to know about kite safari options during my trip.",
   stay: "Hi Hangin, I'd like to check accommodation availability near the kite beach.",

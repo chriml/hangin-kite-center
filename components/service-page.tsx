@@ -8,6 +8,10 @@ import { absoluteUrl } from "@/lib/seo";
 import styles from "./service-page.module.css";
 
 export function ServicePage({ content }: { content: ServicePageContent }) {
+  const contact = content.contact ?? {
+    heading: "Tell us your dates and riding level.",
+    body: "Send the dates you will be in Boracay, your level and what you need. We'll reply with what can work in the current conditions.",
+  };
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -105,13 +109,10 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         <div className={`shell ${styles.contactGrid}`}>
           <div>
             <p className="eyebrow">Check the details</p>
-            <h2>Tell us your dates and riding level.</h2>
+            <h2>{contact.heading}</h2>
           </div>
           <div className={styles.contactCopy}>
-            <p>
-              Send the dates you will be in Boracay, your level and what you need.
-              We&apos;ll reply with what can work in the current conditions.
-            </p>
+            <p>{contact.body}</p>
             <ContactCta context={content.context} />
           </div>
         </div>

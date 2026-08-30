@@ -55,6 +55,7 @@ const sitewideJsonLd = {
     },
     {
       "@type": "SportsActivityLocation",
+      "@id": `${siteConfig.origin}/#kite-center`,
       name: siteConfig.name,
       url: absoluteUrl("/"),
       email: siteConfig.email,

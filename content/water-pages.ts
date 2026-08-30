@@ -10,6 +10,7 @@ export type ServicePageContent = {
   lead: string;
   image: SiteImage;
   context: ContactContext;
+  contact?: { heading: string; body: string };
   schema: "service" | "guide" | "about";
   sections: readonly { heading: string; body: readonly string[] }[];
   faq: readonly { question: string; answer: string }[];
@@ -80,7 +81,11 @@ export const waterPages = {
     eyebrow: "Rental and storage",
     lead: "Tell us your level, dates and usual sizes. We'll check what fits the forecast and what is available, so you can leave the board bag at home.",
     image: siteImages.gearArt,
-    context: "rental",
+    context: "rental-storage",
+    contact: {
+      heading: "Ask about rental, storage or both.",
+      body: "Send your dates, riding level and usual sizes. Tell us whether you want to rent a setup, store your own gear or arrange both.",
+    },
     schema: "service",
     sections: [
       {
@@ -112,7 +117,7 @@ export const waterPages = {
       {
         question: "Can I rent a complete kite setup?",
         answer:
-          "Yes. Full equipment rental is available. Send your riding level, dates and usual sizes so we can check what is available.",
+          "Yes. Hangin rents complete kite setups. Message us on WhatsApp with your dates, riding level and usual sizes so we can check the current gear.",
       },
       {
         question: "Can I store my own kite gear?",
