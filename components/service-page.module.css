@@ -1,0 +1,330 @@
+.page {
+  overflow: clip;
+}
+
+.breadcrumbs {
+  padding-block: 0.75rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: color-mix(in srgb, var(--ocean) 75%, transparent);
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.45rem;
+}
+
+.breadcrumbs a {
+  text-underline-offset: 0.18em;
+}
+
+.hero {
+  position: relative;
+  border-block: 1px solid var(--ocean);
+  background: var(--sand);
+}
+
+.rentals .hero {
+  background: color-mix(in srgb, var(--lagoon) 17%, var(--sun));
+}
+
+.safaris .hero {
+  background: var(--ocean);
+  color: var(--sun);
+}
+
+.heroGrid {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding-block: 2.5rem 1.25rem;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.heroCopy h1 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--ocean);
+  font-size: clamp(3.35rem, 12vw, 5.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.safaris .heroCopy h1 {
+  color: var(--sand);
+}
+
+.heroLead {
+  max-width: 39rem;
+  margin: 1.4rem 0 1.7rem;
+  font-size: clamp(1rem, 2.8vw, 1.16rem);
+  line-height: 1.65;
+}
+
+.heroFigure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  min-height: 15rem;
+  display: block;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+}
+
+.rentals .heroImage,
+.safaris .heroImage {
+  object-fit: contain;
+}
+
+.photoCredit {
+  padding-top: 0.5rem;
+  color: color-mix(in srgb, var(--ocean) 74%, transparent);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.photoCredit a {
+  text-underline-offset: 0.15em;
+}
+
+.kiteLines {
+  position: absolute;
+  z-index: 0;
+  right: -12vw;
+  bottom: -1px;
+  width: min(56vw, 44rem);
+  height: 5rem;
+  fill: none;
+  stroke: var(--lagoon);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.sections {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  background: var(--sun);
+}
+
+.sectionGrid {
+  display: grid;
+  border-top: 1px solid var(--ocean);
+}
+
+.serviceSection {
+  display: grid;
+  gap: 1.4rem;
+  padding-block: clamp(2rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--ocean);
+}
+
+.serviceSection h2 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--ocean);
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.serviceSection p {
+  max-width: 39rem;
+  margin: 0;
+  line-height: 1.75;
+}
+
+.serviceSection p + p {
+  margin-top: 1rem;
+}
+
+.rentals .serviceSection:nth-child(2) {
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+  background: var(--sand);
+}
+
+.safaris .serviceSection:first-child h2,
+.safaris .serviceSection:last-child h2 {
+  color: var(--palm);
+}
+
+.faqSection {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  background: var(--sand);
+}
+
+.rentals .faqSection {
+  background: var(--palm);
+  color: var(--sun);
+}
+
+.faqGrid {
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.faqGrid h2,
+.contactGrid h2 {
+  max-width: 10ch;
+  margin: 0;
+  color: var(--ocean);
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+}
+
+.rentals .faqGrid h2 {
+  color: var(--sand);
+}
+
+.faqList {
+  border-top: 1px solid currentColor;
+}
+
+.faqList details {
+  border-bottom: 1px solid currentColor;
+}
+
+.faqList summary {
+  min-height: 4.5rem;
+  padding: 1.25rem 2.25rem 1.25rem 0;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.faqList p {
+  max-width: 42rem;
+  margin: 0;
+  padding: 0 2rem 1.5rem 0;
+  line-height: 1.7;
+}
+
+.contactSection {
+  padding-block: clamp(4.5rem, 10vw, 9rem);
+  background: var(--ocean);
+  color: var(--sand);
+}
+
+.safaris .contactSection {
+  background: var(--palm);
+}
+
+.contactGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.contactGrid h2 {
+  color: var(--sun);
+}
+
+.contactCopy > p {
+  max-width: 36rem;
+  margin: 0 0 2rem;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.contactCopy a:not([class*="button"]) {
+  color: var(--sand);
+}
+
+@media (min-width: 860px) {
+  .heroGrid {
+    min-height: 34rem;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    padding-block: 2.25rem 1.5rem;
+  }
+
+  .safaris .heroGrid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .safaris .heroCopy {
+    order: 2;
+  }
+
+  .safaris .heroFigure {
+    order: 1;
+  }
+
+  .heroCopy h1 {
+    max-width: 10ch;
+    font-size: clamp(4.5rem, 6.3vw, 5.6rem);
+  }
+
+  .heroImage {
+    min-height: 27rem;
+    aspect-ratio: auto;
+  }
+
+  .serviceSection {
+    min-height: 20rem;
+    grid-template-columns: minmax(17rem, 0.88fr) minmax(0, 1.12fr);
+    align-items: center;
+    gap: clamp(3rem, 8vw, 9rem);
+  }
+
+  .serviceSection:nth-child(even) {
+    grid-template-columns: minmax(0, 1.12fr) minmax(17rem, 0.88fr);
+  }
+
+  .serviceSection:nth-child(even) h2 {
+    order: 2;
+  }
+
+  .rentals .serviceSection:nth-child(2) {
+    margin-inline: calc((100vw - var(--content)) / -2);
+    padding-inline: max(1rem, calc((100vw - 1180px) / 2));
+  }
+
+  .safaris .serviceSection:nth-child(3) {
+    grid-template-columns: minmax(17rem, 0.64fr) minmax(0, 1.36fr);
+    padding-left: clamp(2rem, 8vw, 8rem);
+  }
+
+  .faqGrid,
+  .contactGrid {
+    grid-template-columns: minmax(17rem, 0.75fr) minmax(0, 1.25fr);
+  }
+}
+
+@media (max-width: 439px) {
+  .heroCopy :global(.contact-actions),
+  .heroCopy :global(.contact-actions a) {
+    width: 100%;
+  }
+
+  .kiteLines {
+    right: -24vw;
+    width: 85vw;
+  }
+}

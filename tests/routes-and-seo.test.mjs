@@ -4,11 +4,31 @@ import path from "node:path";
 import test from "node:test";
 import {
   attribute,
+  jsonLdBlocks,
   outDir,
   readRoute,
   tags,
   visibleText,
 } from "./export-helpers.mjs";
+
+const waterRoutes = [
+  ["/kitesurfing-lessons/", /Learn to kitesurf in Boracay/, /Your first lesson starts on the beach/],
+  ["/rentals-storage/", /Rent kite gear on Bulabog Beach/, /Store your gear by the spot/],
+  ["/kite-safaris/", /Kite safaris from Boracay/, /Routes follow the wind/],
+];
+
+for (const [route, heading, proof] of waterRoutes) {
+  test(`${route} exports useful service content`, async () => {
+    const html = await readRoute(route);
+    const text = visibleText(html);
+    assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
+    assert.match(text, heading);
+    assert.match(text, proof);
+    assert.match(html, /aria-label="Breadcrumb"/i);
+    assert.match(JSON.stringify(jsonLdBlocks(html)), /Service/);
+    assert.match(JSON.stringify(jsonLdBlocks(html)), /BreadcrumbList/);
+  });
+}
 
 function rgb(hex) {
   const value = hex.slice(1);
