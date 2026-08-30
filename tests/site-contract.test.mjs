@@ -1,10 +1,15 @@
 import assert from "node:assert/strict";
+import { access } from "node:fs/promises";
+import path from "node:path";
 import test from "node:test";
 import {
+  attribute,
   jsonLdBlocks,
   linkHref,
   metaContent,
+  outDir,
   readRoute,
+  tags,
   title,
 } from "./export-helpers.mjs";
 
@@ -30,4 +35,26 @@ test("homepage JSON-LD contains only confirmed business types", async () => {
   assert.match(serialized, /Organization/);
   assert.match(serialized, /WebSite/);
   assert.doesNotMatch(serialized, /AggregateRating|Review|price|openingHours/);
+});
+
+test("declared local social images resolve in the static export", async () => {
+  const html = await readRoute("/");
+  const origin = "https://www.hanginkitecenter.com";
+  const localImagePaths = tags(html, "meta")
+    .filter((tag) => {
+      const property = attribute(tag, "property");
+      const name = attribute(tag, "name");
+      return property === "og:image" || name === "twitter:image";
+    })
+    .map((tag) => attribute(tag, "content"))
+    .filter((content) => content !== undefined)
+    .map((content) => new URL(content, origin))
+    .filter((url) => url.origin === origin)
+    .map((url) => url.pathname);
+
+  await Promise.all(
+    localImagePaths.map((imagePath) =>
+      access(path.join(outDir, imagePath.replace(/^\//, ""))),
+    ),
+  );
 });
