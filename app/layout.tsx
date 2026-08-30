@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
+import { Barlow_Condensed, Manrope } from "next/font/google";
 import type { ReactNode } from "react";
 import { JsonLd } from "@/components/json-ld";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/content/site";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import "./globals.css";
+
+const display = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const body = Manrope({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 const homepageDescription =
   "Kitesurfing lessons, equipment rental, storage, accommodation, shop and kite safaris with Hangin Kite Center on Bulabog Beach, Boracay.";
@@ -56,10 +72,12 @@ const sitewideJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body>
         <JsonLd data={sitewideJsonLd} />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

@@ -27,6 +27,17 @@ test("homepage exposes WhatsApp and email without a form", async () => {
   assert.doesNotMatch(html, /<form\b/i);
 });
 
+test("homepage shell is semantic and usable without client JavaScript", async () => {
+  const html = await readRoute("/");
+  assert.match(html, /href="#main-content"[^>]*>Skip to content/i);
+  assert.match(html, /<main[^>]+id="main-content"/i);
+  assert.match(html, /<header\b/i);
+  assert.match(html, /<nav[^>]+aria-label="Primary"/i);
+  assert.match(html, /<footer\b/i);
+  assert.match(html, /<details\b/i);
+  assert.doesNotMatch(html, /data-next-hide-fouc|aria-label="Open menu"/i);
+});
+
 test("homepage JSON-LD contains only confirmed business types", async () => {
   const html = await readRoute("/");
   const blocks = jsonLdBlocks(html);
