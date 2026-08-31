@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { outDir, readRoute } from "./export-helpers.mjs";
+import { outDir, readRoute, title } from "./export-helpers.mjs";
 
 test("build emits a static homepage, 404, and metadata files", async () => {
   await Promise.all([
@@ -17,6 +17,7 @@ test("build emits a static homepage, 404, and metadata files", async () => {
 test("the exported 404 is useful and not indexable", async () => {
   const html = await readFile(path.join(outDir, "404.html"), "utf8");
   assert.match(html, /We couldn't find that page/i);
+  assert.equal(title(html), "Page not found | Hangin Kite Center");
   assert.equal(
     (html.match(/name="robots" content="noindex"/gi) ?? []).length,
     1,

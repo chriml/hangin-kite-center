@@ -62,7 +62,7 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className={styles.headerContact}>
-            <ContactCta compact label="WhatsApp us" />
+            <ContactCta compact label="direct" />
           </div>
           <details className={styles.mobileMenu}>
             <summary>Menu</summary>

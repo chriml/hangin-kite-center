@@ -32,6 +32,28 @@ export type ContactContext =
   | "stay"
   | "shop";
 
+export type PrimaryContactLabel = "message" | "ask" | "direct";
+
+type PrimaryContactConfig = Readonly<{
+  provider: "whatsapp" | "booking";
+  channelLabel: string;
+  destination: string;
+  displayDestination: string;
+  labels: Readonly<Record<PrimaryContactLabel, string>>;
+  external: boolean;
+  buildHref: (destination: string, message: string) => string;
+}>;
+
+export type PrimaryContactAction = Readonly<{
+  provider: PrimaryContactConfig["provider"];
+  channelLabel: string;
+  displayDestination: string;
+  label: string;
+  href: string;
+  target: "_blank" | undefined;
+  rel: "noopener noreferrer" | undefined;
+}>;
+
 const contactMessages: Record<ContactContext, string> = {
   general:
     "Hi Hangin, I'm planning a Boracay trip. My dates are [dates], my riding level is [level], and I need help with [service].",
@@ -46,6 +68,35 @@ const contactMessages: Record<ContactContext, string> = {
   shop: "Hi Hangin, I'd like to check what kite gear is currently in the shop.",
 };
 
-export function getWhatsAppUrl(context: ContactContext = "general") {
-  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(contactMessages[context])}`;
+export const primaryContactConfig = {
+  provider: "whatsapp",
+  channelLabel: "WhatsApp",
+  destination: siteConfig.whatsappNumber,
+  displayDestination: siteConfig.whatsappDisplay,
+  labels: {
+    message: "Message us on WhatsApp",
+    ask: "Ask Hangin on WhatsApp",
+    direct: "WhatsApp us",
+  },
+  external: true,
+  buildHref: (destination, message) =>
+    `https://wa.me/${destination}?text=${encodeURIComponent(message)}`,
+} as const satisfies PrimaryContactConfig;
+
+export function getPrimaryContactAction(
+  context: ContactContext = "general",
+  label: PrimaryContactLabel = "message",
+): PrimaryContactAction {
+  return {
+    provider: primaryContactConfig.provider,
+    channelLabel: primaryContactConfig.channelLabel,
+    displayDestination: primaryContactConfig.displayDestination,
+    label: primaryContactConfig.labels[label],
+    href: primaryContactConfig.buildHref(
+      primaryContactConfig.destination,
+      contactMessages[context],
+    ),
+    target: primaryContactConfig.external ? "_blank" : undefined,
+    rel: primaryContactConfig.external ? "noopener noreferrer" : undefined,
+  };
 }

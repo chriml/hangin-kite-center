@@ -122,7 +122,7 @@ function PhotoCredit({
   return (
     <figcaption className={styles.photoCredit}>
       {context}{" "}Photo by <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-      <a href={image.sourceUrl}>{image.license}</a>.
+      <a href={image.licenseUrl}>{image.license}</a>.
     </figcaption>
   );
 }
@@ -147,7 +147,7 @@ export default function Home() {
               <Link className="button button--dark" href="#lessons">
                 See the lessons
               </Link>
-              <ContactCta compact label="Message us on WhatsApp" />
+              <ContactCta compact />
             </div>
           </div>
           <figure className={`${styles.proofFigure} ${styles.heroFigure}`}>

@@ -136,6 +136,44 @@ test("social and icon assets are exported", async () => {
   ]);
 });
 
+test("proof-image license labels link to the matching license deeds", async () => {
+  const expectedLicenses = new Map([
+    ["CC0 1.0", "https://creativecommons.org/publicdomain/zero/1.0/"],
+    ["CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/"],
+    ["CC BY-SA 3.0", "https://creativecommons.org/licenses/by-sa/3.0/"],
+  ]);
+  const seen = new Set();
+
+  for (const route of publicRoutes) {
+    const html = await readRoute(route);
+    const anchors = html.match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) ?? [];
+    for (const anchor of anchors) {
+      const label = visibleText(anchor);
+      if (!expectedLicenses.has(label)) continue;
+      seen.add(label);
+      assert.equal(attribute(anchor, "href"), expectedLicenses.get(label), `${route} ${label}`);
+    }
+  }
+
+  assert.deepEqual(seen, new Set(expectedLicenses.keys()));
+});
+
+test("the Boracay riders proof photo has an honest pixel-level alt description", async () => {
+  const expectedAlt = "Riders kitesurfing together over turquoise Boracay water";
+  let count = 0;
+
+  for (const route of publicRoutes) {
+    for (const image of tags(await readRoute(route), "img")) {
+      const source = attribute(image, "src") ?? "";
+      if (!source.includes("boracay-kitesurf-school")) continue;
+      count += 1;
+      assert.equal(attribute(image, "alt"), expectedAlt, route);
+    }
+  }
+
+  assert.ok(count >= 2, "expected the riders proof photo on the homepage and lessons page");
+});
+
 const waterRoutes = [
   ["/kitesurfing-lessons/", /Learn to kitesurf in Boracay/, /Your first lesson starts on the beach/],
   ["/rentals-storage/", /Rent kite gear on Bulabog Beach/, /Store your gear by the spot/],

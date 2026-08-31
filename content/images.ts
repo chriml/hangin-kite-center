@@ -14,12 +14,14 @@ export type SiteImage = SiteImageBase & (
       credit: string;
       sourceUrl: string;
       license: string;
+      licenseUrl: string;
     }
   | {
       kind: "generated";
       credit?: never;
       sourceUrl?: never;
       license?: never;
+      licenseUrl?: never;
     }
 );
 
@@ -31,11 +33,12 @@ export const siteImages = {
     mobileSrc: "/images/proof/boracay-kitesurf-school-900.webp",
     mobileWidth: 900,
     mobileHeight: 720,
-    alt: "Kites and riders gathered at a kitesurfing school in Boracay",
+    alt: "Riders kitesurfing together over turquoise Boracay water",
     kind: "proof",
     credit: "Kstranger",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Kitesurfers_boracay.jpg",
     license: "CC0 1.0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
   },
   bulabog: {
     src: "/images/proof/bulabog-beach-aerial.webp",
@@ -50,6 +53,7 @@ export const siteImages = {
     sourceUrl:
       "https://commons.wikimedia.org/wiki/File:Boracay_Bulabog_Beach_top_view_(Malay,_Aklan;_04-06-2024).jpg",
     license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
   },
   riding: {
     src: "/images/proof/boracay-kitesurfing.webp",
@@ -63,6 +67,7 @@ export const siteImages = {
     credit: "Anastasia Zhebyuk",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Boracay_kitesurfing.jpg",
     license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
   },
   gearArt: {
     src: "/images/generated/kite-gear-sunprint.webp",

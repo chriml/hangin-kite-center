@@ -34,7 +34,7 @@ export function PageHero({
           <p className="eyebrow">{eyebrow}</p>
           <h1>{title}</h1>
           <p className={styles.heroLead}>{lead}</p>
-          <ContactCta context={context} compact label="Ask Hangin on WhatsApp" />
+          <ContactCta context={context} compact label="ask" />
         </div>
         {image.kind === "proof" ? (
           <figure className={styles.heroFigure}>
@@ -42,7 +42,7 @@ export function PageHero({
             <figcaption className={styles.photoCredit}>
               Boracay kitesurfing context. Photo by{" "}
               <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-              <a href={image.sourceUrl}>{image.license}</a>.
+              <a href={image.licenseUrl}>{image.license}</a>.
             </figcaption>
           </figure>
         ) : (

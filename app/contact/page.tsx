@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
-import { getWhatsAppUrl, siteConfig } from "@/content/site";
+import { getPrimaryContactAction, siteConfig } from "@/content/site";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import styles from "./contact.module.css";
 
@@ -34,6 +34,8 @@ const breadcrumbJsonLd = {
 };
 
 export default function ContactPage() {
+  const primaryContact = getPrimaryContactAction("general");
+
   return (
     <main id="main-content" tabIndex={-1} className={styles.page}>
       <JsonLd data={breadcrumbJsonLd} />
@@ -82,14 +84,14 @@ export default function ContactPage() {
           </article>
           <article className={styles.channel}>
             <p className="eyebrow">Primary contact</p>
-            <h2>WhatsApp</h2>
+            <h2>{primaryContact.channelLabel}</h2>
             <a
               className="button button--coral"
-              href={getWhatsAppUrl("general")}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={primaryContact.href}
+              target={primaryContact.target}
+              rel={primaryContact.rel}
             >
-              WhatsApp {siteConfig.whatsappDisplay}
+              {primaryContact.channelLabel} {primaryContact.displayDestination}
             </a>
           </article>
           <article className={styles.channel}>

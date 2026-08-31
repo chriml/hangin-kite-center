@@ -34,3 +34,19 @@ test("every image has a provenance entry", async () => {
   assert.match(attribution, /CC BY-SA 3\.0/);
   assert.match(attribution, /OpenAI ImageGen/);
 });
+
+test("the Open Graph crop records its proof-photo provenance", async () => {
+  const attribution = await readFile("public/images/ATTRIBUTION.md", "utf8");
+  const row = attribution
+    .split("\n")
+    .find((line) => line.includes("`app/opengraph-image.jpg`"));
+
+  assert.ok(row, "missing app/opengraph-image.jpg attribution row");
+  assert.match(row, /Kitesurfers_boracay\.jpg/);
+  assert.match(row, /Kstranger/);
+  assert.match(row, /CC0 1\.0/);
+  assert.match(row, /creativecommons\.org\/publicdomain\/zero\/1\.0\//);
+  assert.match(row, /2026-08-29/);
+  assert.match(row, /1200(?:×|x)630/i);
+  assert.match(row, /crop/i);
+});

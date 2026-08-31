@@ -8,10 +8,57 @@ import {
   linkHref,
   metaContent,
   outDir,
+  publicRoutes,
   readRoute,
   tags,
   title,
 } from "./export-helpers.mjs";
+
+const contactMessages = {
+  general:
+    "Hi Hangin, I'm planning a Boracay trip. My dates are [dates], my riding level is [level], and I need help with [service].",
+  lessons: "Hi Hangin, I'd like to arrange kitesurfing lessons in Boracay.",
+  rental:
+    "Hi Hangin, I'd like to check kite rental availability for my Boracay trip.",
+  "rental-storage":
+    "Hi Hangin, I'd like to ask about kite rental or gear storage for my Boracay trip. My dates are [dates], my riding level is [level], and my usual sizes are [sizes].",
+  storage: "Hi Hangin, I'd like to ask about kite storage on Bulabog Beach.",
+  safari: "Hi Hangin, I'd like to know about kite safari options during my trip.",
+  stay: "Hi Hangin, I'd like to check accommodation availability near the kite beach.",
+  shop: "Hi Hangin, I'd like to check what kite gear is currently in the shop.",
+};
+
+test("every primary contact action keeps the current destination and page context", async () => {
+  const expectedMessages = new Set([
+    contactMessages.general,
+    contactMessages.lessons,
+    contactMessages["rental-storage"],
+    contactMessages.safari,
+    contactMessages.stay,
+    contactMessages.shop,
+  ]);
+  const seenMessages = new Set();
+
+  for (const route of publicRoutes) {
+    const html = await readRoute(route);
+    const hrefs = tags(html, "a")
+      .map((tag) => attribute(tag, "href"))
+      .filter((href) => href?.startsWith("https://wa.me/"));
+    assert.ok(hrefs.length >= 1, `${route} primary contact action`);
+
+    for (const href of hrefs) {
+      const decodedHref = href.replace(/&#x27;|&#39;/g, "'").replace(/&amp;/g, "&");
+      const url = new URL(decodedHref);
+      const message = url.searchParams.get("text");
+      assert.equal(url.origin, "https://wa.me");
+      assert.equal(url.pathname, "/639380101849");
+      assert.ok(expectedMessages.has(message), `${route} unexpected contact context`);
+      seenMessages.add(message);
+    }
+  }
+
+  assert.deepEqual(seenMessages, expectedMessages);
+});
 
 test("homepage exports the canonical business identity", async () => {
   const html = await readRoute("/");
