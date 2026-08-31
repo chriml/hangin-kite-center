@@ -15,9 +15,9 @@ npm run build
 
 ## Site records
 
-- Edit the WhatsApp number, email address, public origin and route list in `content/site.ts`.
+- Edit the business phone, email address, public origin and route list in `content/site.ts`.
 - Keep image dimensions, alt text and source details in `content/images.ts`.
 - Record proof-photo attribution and generated-image provenance in `public/images/ATTRIBUTION.md`.
-- If online booking replaces WhatsApp, switch the links in `ContactCta` and the message URLs produced by `getWhatsAppUrl`.
+- `primaryContactConfig` and `getPrimaryContactAction` in `content/site.ts` form the contact and future booking boundary. Change the provider, destination, labels and link behavior there; `ContactCta` and the contact page consume the updated action without page-level changes.
 
 Before launch, confirm the `www.hanginkitecenter.com` DNS records point to the production static host and that HTTPS resolves on the `www` hostname.
