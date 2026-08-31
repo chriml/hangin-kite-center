@@ -381,18 +381,17 @@
     font-size: clamp(4.5rem, 6.3vw, 5.6rem);
   }
 
-  .accommodation .heroCopy h1,
-  .shop .heroCopy h1 {
+  .accommodation .heroCopy h1 {
     max-width: 12ch;
     font-size: clamp(4.2rem, 5.7vw, 5.25rem);
   }
 
-  .rentals .heroCopy h1,
-  .shop .heroCopy h1 {
+  .rentals .heroCopy h1 {
     max-width: 100%;
   }
 
   .shop .heroCopy h1 {
+    max-width: 100%;
     font-size: clamp(4rem, 5vw, 4.75rem);
   }
 

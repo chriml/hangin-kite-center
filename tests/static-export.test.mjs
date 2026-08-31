@@ -17,7 +17,17 @@ test("build emits a static homepage, 404, and metadata files", async () => {
 test("the exported 404 is useful and not indexable", async () => {
   const html = await readFile(path.join(outDir, "404.html"), "utf8");
   assert.match(html, /We couldn't find that page/i);
-  assert.match(html, /name="robots" content="noindex"/i);
+  assert.equal(
+    (html.match(/name="robots" content="noindex"/gi) ?? []).length,
+    1,
+    "404 should emit one unambiguous noindex directive",
+  );
+  assert.doesNotMatch(html, /name="robots" content="index, follow"/i);
+  assert.doesNotMatch(
+    html,
+    /<link rel="canonical" href="https:\/\/www\.hanginkitecenter\.com\/"/i,
+  );
+  assert.doesNotMatch(html, /Kitesurfing in Boracay \| Hangin Kite Center/i);
 });
 
 test("homepage content is present in exported HTML", async () => {

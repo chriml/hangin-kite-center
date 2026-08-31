@@ -11,7 +11,7 @@ export type ServicePageContent = {
   image: SiteImage;
   context: ContactContext;
   contact?: { heading: string; body: string };
-  schema: "service" | "guide" | "about";
+  schema: "service" | "guide" | "about" | "page";
   sections: readonly { heading: string; body: readonly string[] }[];
   faq: readonly { question: string; answer: string }[];
 };

@@ -35,6 +35,10 @@ test("every public route has unique complete metadata and shared social images",
 
     assert.ok(pageTitle && pageTitle.length >= 25 && pageTitle.length <= 65, `${route} title`);
     assert.ok(
+      (pageTitle.match(/Hangin Kite Center/g) ?? []).length <= 1,
+      `${route} repeats the brand in its title`,
+    );
+    assert.ok(
       description && description.length >= 100 && description.length <= 165,
       `${route} description`,
     );
@@ -210,6 +214,14 @@ test("every Service provider resolves to a declared JSON-LD entity", async () =>
       `${route} unresolved provider ${services[0].provider?.["@id"]}`,
     );
   }
+});
+
+test("the shop does not describe retail stock as a Service", async () => {
+  const blocks = jsonLdBlocks(await readRoute("/shop/"));
+  assert.equal(
+    blocks.filter((block) => block["@type"] === "Service").length,
+    0,
+  );
 });
 
 test("rental and storage CTAs carry both service intents", async () => {

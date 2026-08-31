@@ -2,6 +2,9 @@ type SiteImageBase = {
   src: string;
   width: number;
   height: number;
+  mobileSrc: string;
+  mobileWidth: number;
+  mobileHeight: number;
   alt: string;
 };
 
@@ -25,6 +28,9 @@ export const siteImages = {
     src: "/images/proof/boracay-kitesurf-school.webp",
     width: 1600,
     height: 1280,
+    mobileSrc: "/images/proof/boracay-kitesurf-school-900.webp",
+    mobileWidth: 900,
+    mobileHeight: 720,
     alt: "Kites and riders gathered at a kitesurfing school in Boracay",
     kind: "proof",
     credit: "Kstranger",
@@ -35,6 +41,9 @@ export const siteImages = {
     src: "/images/proof/bulabog-beach-aerial.webp",
     width: 1920,
     height: 1440,
+    mobileSrc: "/images/proof/bulabog-beach-aerial-900.webp",
+    mobileWidth: 900,
+    mobileHeight: 675,
     alt: "Bulabog Beach and the east side of Boracay seen from above",
     kind: "proof",
     credit: "Patrickroque01",
@@ -46,6 +55,9 @@ export const siteImages = {
     src: "/images/proof/boracay-kitesurfing.webp",
     width: 1800,
     height: 1200,
+    mobileSrc: "/images/proof/boracay-kitesurfing-900.webp",
+    mobileWidth: 900,
+    mobileHeight: 600,
     alt: "Kitesurfers riding off Boracay",
     kind: "proof",
     credit: "Anastasia Zhebyuk",
@@ -56,6 +68,9 @@ export const siteImages = {
     src: "/images/generated/kite-gear-sunprint.webp",
     width: 1600,
     height: 1067,
+    mobileSrc: "/images/generated/kite-gear-sunprint-900.webp",
+    mobileWidth: 900,
+    mobileHeight: 601,
     alt: "",
     kind: "generated",
   },
@@ -63,6 +78,9 @@ export const siteImages = {
     src: "/images/generated/kite-safari-sunprint.webp",
     width: 1600,
     height: 1067,
+    mobileSrc: "/images/generated/kite-safari-sunprint-900.webp",
+    mobileWidth: 900,
+    mobileHeight: 601,
     alt: "",
     kind: "generated",
   },
@@ -70,6 +88,9 @@ export const siteImages = {
     src: "/images/generated/island-stay-sunprint.webp",
     width: 1600,
     height: 1067,
+    mobileSrc: "/images/generated/island-stay-sunprint-900.webp",
+    mobileWidth: 900,
+    mobileHeight: 601,
     alt: "",
     kind: "generated",
   },

@@ -5,11 +5,17 @@ import test from "node:test";
 
 const files = [
   "proof/boracay-kitesurf-school.webp",
+  "proof/boracay-kitesurf-school-900.webp",
   "proof/bulabog-beach-aerial.webp",
+  "proof/bulabog-beach-aerial-900.webp",
   "proof/boracay-kitesurfing.webp",
+  "proof/boracay-kitesurfing-900.webp",
   "generated/kite-gear-sunprint.webp",
+  "generated/kite-gear-sunprint-900.webp",
   "generated/kite-safari-sunprint.webp",
+  "generated/kite-safari-sunprint-900.webp",
   "generated/island-stay-sunprint.webp",
+  "generated/island-stay-sunprint-900.webp",
 ];
 
 test("all planned local media exists and is non-empty", async () => {

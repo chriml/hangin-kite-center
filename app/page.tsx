@@ -1,11 +1,21 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ContactCta } from "@/components/contact-cta";
 import { ProofStrip } from "@/components/proof-strip";
+import { ResponsiveImage } from "@/components/responsive-image";
 import { ServicePath } from "@/components/service-path";
 import { SpotGuide } from "@/components/spot-guide";
 import { siteImages } from "@/content/images";
+import { buildMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
+
+const homepageDescription =
+  "Kitesurfing lessons, equipment rental, storage, accommodation, shop and kite safaris with Hangin Kite Center on Bulabog Beach, Boracay.";
+
+export const metadata = buildMetadata({
+  title: "Kitesurfing in Boracay | Hangin Kite Center",
+  description: homepageDescription,
+  path: "/",
+});
 
 const lessonPaths = [
   {
@@ -141,14 +151,11 @@ export default function Home() {
             </div>
           </div>
           <figure className={`${styles.proofFigure} ${styles.heroFigure}`}>
-            <Image
+            <ResponsiveImage
+              image={heroImage}
               className={styles.coverImage}
-              src={heroImage.src}
-              width={heroImage.width}
-              height={heroImage.height}
-              alt={heroImage.alt}
               sizes="(min-width: 1180px) 570px, (min-width: 860px) 48vw, calc(100vw - 2rem)"
-              preload={true}
+              priority
             />
             <PhotoCredit image={heroImage} context="Boracay kitesurfing context." />
           </figure>
@@ -189,11 +196,9 @@ export default function Home() {
           {services.map((service) => (
             <article className={styles.serviceBand} key={service.eyebrow}>
               <div className={styles.serviceImage}>
-                <Image
+                <ResponsiveImage
+                  image={service.image}
                   className={styles.coverImage}
-                  src={service.image.src}
-                  width={service.image.width}
-                  height={service.image.height}
                   alt=""
                   sizes="(min-width: 1180px) 590px, (min-width: 760px) 50vw, 100vw"
                 />
@@ -225,12 +230,9 @@ export default function Home() {
             </Link>
           </div>
           <figure className={`${styles.proofFigure} ${styles.storyFigure}`}>
-            <Image
+            <ResponsiveImage
+              image={storyImage}
               className={styles.coverImage}
-              src={storyImage.src}
-              width={storyImage.width}
-              height={storyImage.height}
-              alt={storyImage.alt}
               sizes="(min-width: 1180px) 650px, (min-width: 860px) 55vw, calc(100vw - 2rem)"
             />
             <PhotoCredit image={storyImage} context="Boracay riding context." />

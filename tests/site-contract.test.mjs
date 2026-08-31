@@ -46,6 +46,16 @@ test("homepage JSON-LD contains only confirmed business types", async () => {
   assert.match(serialized, /Organization/);
   assert.match(serialized, /WebSite/);
   assert.doesNotMatch(serialized, /AggregateRating|Review|price|openingHours/);
+  assert.doesNotMatch(serialized, /"sport":/);
+
+  const graph = blocks.flatMap((block) => block["@graph"] ?? [block]);
+  const website = graph.find((item) => item["@type"] === "WebSite");
+  const organization = graph.find((item) => item["@type"] === "Organization");
+  const location = graph.find((item) => item["@type"] === "SportsActivityLocation");
+  assert.ok(website && organization && location);
+  assert.equal(location.telephone, "+639380101849");
+  assert.equal(organization["@id"], location["@id"]);
+  assert.deepEqual(website.publisher, { "@id": location["@id"] });
 });
 
 test("declared local social images resolve in the static export", async () => {

@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/content/site";
-import { absoluteUrl, buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const display = Barlow_Condensed({
@@ -21,45 +21,40 @@ const body = Manrope({
   display: "swap",
 });
 
-const homepageDescription =
-  "Kitesurfing lessons, equipment rental, storage, accommodation, shop and kite safaris with Hangin Kite Center on Bulabog Beach, Boracay.";
-
-const homepageMetadata = buildMetadata({
-  title: "Kitesurfing in Boracay",
-  description: homepageDescription,
-  path: "/",
-});
-
 export const metadata: Metadata = {
-  ...homepageMetadata,
   metadataBase: new URL(siteConfig.origin),
   title: {
-    default: "Kitesurfing in Boracay | Hangin Kite Center",
+    default: siteConfig.name,
     template: "%s | Hangin Kite Center",
   },
 };
+
+const businessId = `${siteConfig.origin}/#kite-center`;
 
 const sitewideJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": `${siteConfig.origin}/#website`,
       name: siteConfig.name,
       url: absoluteUrl("/"),
+      publisher: { "@id": businessId },
     },
     {
       "@type": "Organization",
+      "@id": businessId,
       name: siteConfig.name,
       url: absoluteUrl("/"),
       email: siteConfig.email,
     },
     {
       "@type": "SportsActivityLocation",
-      "@id": `${siteConfig.origin}/#kite-center`,
+      "@id": businessId,
       name: siteConfig.name,
       url: absoluteUrl("/"),
       email: siteConfig.email,
-      sport: "Kitesurfing",
+      telephone: `+${siteConfig.whatsappNumber}`,
       foundingDate: String(siteConfig.established),
       address: {
         "@type": "PostalAddress",

@@ -9,7 +9,7 @@ const description =
   "Contact Hangin Kite Center on WhatsApp or email about lessons, rental, storage, accommodation, the shop or kite safaris in Boracay.";
 
 export const metadata = buildMetadata({
-  title: "Contact Hangin Kite Center",
+  title: "Contact Hangin in Boracay",
   description,
   path: "/contact/",
 });

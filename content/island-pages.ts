@@ -59,7 +59,7 @@ export const islandPages = {
       heading: "Ask what is on the rack today.",
       body: "Send the product name, size and model when you can. A photo also helps us check the shop before you cross the island.",
     },
-    schema: "service",
+    schema: "page",
     sections: [
       {
         heading: "Gear for the current season",
@@ -150,15 +150,15 @@ export const islandPages = {
   about: {
     path: "/about/",
     title: "On the beach since 2002",
-    metaTitle: "About Hangin Kite Center",
+    metaTitle: "About Hangin on Bulabog Beach",
     description:
       "Hangin Kite Center has taught kitesurfing on Bulabog Beach, Boracay, since 2002 and offers lessons, gear, storage, stays and safaris.",
     eyebrow: "Hangin Kite Center",
-    lead: "Hangin started as a kite school on Bulabog Beach in 2002 and grew around the people who came to learn, ride, stay and return.",
+    lead: "Lessons follow the rider's level and the conditions on Bulabog that day. Gear, storage, accommodation and kite trips are arranged through Hangin.",
     image: siteImages.riding,
     context: "general",
     contact: {
-      heading: "Come by when you reach Bulabog.",
+      heading: "Tell us what you need before you arrive.",
       body: "Find Hangin on Bulabog Beach, Boracay. Send your dates and riding level first if you want to arrange lessons, gear, storage, a stay or a kite safari.",
     },
     schema: "about",
@@ -179,12 +179,6 @@ export const islandPages = {
         heading: "Lessons, gear, storage, stays and trips",
         body: [
           "Hangin offers kitesurfing lessons from beginner through advanced, equipment rental, equipment storage, accommodation, a kite shop and kite safaris.",
-        ],
-      },
-      {
-        heading: "Come by when you reach Bulabog",
-        body: [
-          "Find Hangin on Bulabog Beach, Boracay. For lessons, gear, storage, a stay or a kite safari, send your dates and riding level so we can answer for the current conditions.",
         ],
       },
     ],

@@ -78,6 +78,19 @@ test("images have explicit dimensions and alt attributes", async () => {
   }
 });
 
+test("content images expose responsive source candidates", async () => {
+  for (const route of publicRoutes) {
+    const html = await readRoute(route);
+    const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";
+    for (const image of tags(main, "img")) {
+      const srcset = attribute(image, "srcset");
+      assert.ok(srcset, `${route} content image srcset`);
+      assert.ok(attribute(image, "sizes"), `${route} content image sizes`);
+      assert.ok(srcset.split(",").length >= 2, `${route} content image candidates`);
+    }
+  }
+});
+
 test("skip-link activation can move keyboard focus to main content on every exported page", async () => {
   const pages = [
     ...await Promise.all(publicRoutes.map(async (route) => [route, await readRoute(route)])),
@@ -93,5 +106,15 @@ test("skip-link activation can move keyboard focus to main content on every expo
     const target = tags(html, "main").find((tag) => `#${attribute(tag, "id")}` === href);
     assert.ok(target, `${route}: skip link target`);
     assert.equal(attribute(target, "tabindex"), "-1", `${route}: skip link target accepts focus`);
+  }
+});
+
+test("public pages do not repeat normalized section headings", async () => {
+  for (const route of publicRoutes) {
+    const html = await readRoute(route);
+    const headings = [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)]
+      .map((match) => visibleText(match[1]))
+      .map((heading) => heading.toLocaleLowerCase("en").replace(/[^a-z0-9]+/g, " ").trim());
+    assert.equal(new Set(headings).size, headings.length, `${route}: repeated h2`);
   }
 });

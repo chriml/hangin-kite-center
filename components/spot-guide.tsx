@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ResponsiveImage } from "@/components/responsive-image";
 import { siteImages } from "@/content/images";
 import styles from "@/app/page.module.css";
 
@@ -10,12 +10,9 @@ export function SpotGuide() {
     <section id="boracay" className={styles.spotSection}>
       <div className={`shell ${styles.spotGrid}`}>
         <figure className={`${styles.proofFigure} ${styles.spotFigure}`}>
-          <Image
+          <ResponsiveImage
+            image={image}
             className={styles.coverImage}
-            src={image.src}
-            width={image.width}
-            height={image.height}
-            alt={image.alt}
             sizes="(min-width: 1180px) 680px, (min-width: 860px) 58vw, calc(100vw - 2rem)"
           />
           <figcaption className={styles.photoCredit}>

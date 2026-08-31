@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ContactCta } from "@/components/contact-cta";
+import { ResponsiveImage } from "@/components/responsive-image";
 import type { SiteImage } from "@/content/images";
 import type { ContactContext } from "@/content/site";
 import styles from "./service-page.module.css";
@@ -18,14 +18,12 @@ export function PageHero({
   context: ContactContext;
 }) {
   const media = (
-    <Image
+    <ResponsiveImage
+      image={image}
       className={styles.heroImage}
-      src={image.src}
-      width={image.width}
-      height={image.height}
       alt={image.kind === "generated" ? "" : image.alt}
       sizes="(min-width: 1180px) 590px, (min-width: 860px) 50vw, calc(100vw - 2rem)"
-      preload={true}
+      priority
     />
   );
 
