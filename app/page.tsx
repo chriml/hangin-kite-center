@@ -122,7 +122,7 @@ export default function Home() {
   const storyImage = siteImages.riding;
 
   return (
-    <main id="main-content" className={styles.home}>
+    <main id="main-content" tabIndex={-1} className={styles.home}>
       <section id="start" className={styles.hero}>
         <div className={`shell ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>

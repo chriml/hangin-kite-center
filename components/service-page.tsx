@@ -63,7 +63,7 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
               : styles.about;
 
   return (
-    <main id="main-content" className={`${styles.page} ${pageKind}`}>
+    <main id="main-content" tabIndex={-1} className={`${styles.page} ${pageKind}`}>
       {content.schema === "service" && <JsonLd data={serviceJsonLd} />}
       <JsonLd data={breadcrumbJsonLd} />
       {content.faq.length > 0 && <JsonLd data={faqJsonLd} />}

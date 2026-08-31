@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { attribute, jsonLdBlocks, outDir, publicRoutes, readRoute, tags, visibleText } from "./export-helpers.mjs";
@@ -75,5 +75,23 @@ test("images have explicit dimensions and alt attributes", async () => {
       assert.ok(attribute(image, "height"), `${route} image height`);
       assert.notEqual(attribute(image, "alt"), undefined, `${route} image alt`);
     }
+  }
+});
+
+test("skip-link activation can move keyboard focus to main content on every exported page", async () => {
+  const pages = [
+    ...await Promise.all(publicRoutes.map(async (route) => [route, await readRoute(route)])),
+    ["/404.html", await readFile(path.join(outDir, "404.html"), "utf8")],
+  ];
+
+  for (const [route, html] of pages) {
+    const skipLink = tags(html, "a").find((tag) =>
+      (attribute(tag, "class") ?? "").split(/\s+/).includes("skip-link"));
+    assert.ok(skipLink, `${route}: skip link`);
+
+    const href = attribute(skipLink, "href");
+    const target = tags(html, "main").find((tag) => `#${attribute(tag, "id")}` === href);
+    assert.ok(target, `${route}: skip link target`);
+    assert.equal(attribute(target, "tabindex"), "-1", `${route}: skip link target accepts focus`);
   }
 });

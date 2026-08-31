@@ -35,7 +35,7 @@ const breadcrumbJsonLd = {
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <JsonLd data={breadcrumbJsonLd} />
 
       <div className={`shell ${styles.breadcrumbs}`}>
