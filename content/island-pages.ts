@@ -25,7 +25,7 @@ export const islandPages = {
         ],
       },
       {
-        heading: "A base for the whole trip",
+        heading: "Add lessons or gear to your stay",
         body: [
           "If lessons, rental, storage or the shop are part of the trip, include them when you ask about a stay. Tell us what else you have planned on Boracay too.",
         ],
@@ -37,7 +37,7 @@ export const islandPages = {
         ],
       },
       {
-        heading: "Plan the stay around your trip",
+        heading: "Send dates, guest count and kite plans",
         body: [
           "Send your arrival and departure dates, the number of guests and whether you are booking lessons or bringing gear. We'll tell you what accommodation details are current for the trip.",
         ],
@@ -154,7 +154,7 @@ export const islandPages = {
     description:
       "Hangin Kite Center has taught kitesurfing on Bulabog Beach, Boracay, since 2002 and offers lessons, gear, storage, stays and safaris.",
     eyebrow: "Hangin Kite Center",
-    lead: "Hangin started as a kite school and grew around the people who came to learn, ride, stay and return.",
+    lead: "Hangin started as a kite school on Bulabog Beach in 2002 and grew around the people who came to learn, ride, stay and return.",
     image: siteImages.riding,
     context: "general",
     contact: {
