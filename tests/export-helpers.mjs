@@ -3,6 +3,18 @@ import path from "node:path";
 
 export const outDir = path.resolve("out");
 
+export const publicRoutes = [
+  "/",
+  "/kitesurfing-lessons/",
+  "/rentals-storage/",
+  "/kite-safaris/",
+  "/accommodation/",
+  "/shop/",
+  "/kitesurfing-boracay/",
+  "/about/",
+  "/contact/",
+];
+
 export function routeFile(route) {
   if (route === "/") return path.join(outDir, "index.html");
   return path.join(outDir, route.replace(/^\//, ""), "index.html");

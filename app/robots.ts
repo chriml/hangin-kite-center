@@ -9,5 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: "https://www.hanginkitecenter.com/sitemap.xml",
+    host: "https://www.hanginkitecenter.com",
   };
 }

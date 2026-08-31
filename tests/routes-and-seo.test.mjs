@@ -1,15 +1,136 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import {
   attribute,
   jsonLdBlocks,
+  linkHref,
+  metaContent,
   outDir,
+  publicRoutes,
   readRoute,
   tags,
+  title,
   visibleText,
 } from "./export-helpers.mjs";
+
+const origin = "https://www.hanginkitecenter.com";
+
+function assertSharedSocialImage(content, message) {
+  assert.ok(content, `${message} missing`);
+  const imageUrl = new URL(content);
+  assert.equal(imageUrl.origin, origin, `${message} origin`);
+  assert.equal(imageUrl.pathname, "/opengraph-image.jpg", `${message} path`);
+}
+
+test("every public route has unique complete metadata and shared social images", async () => {
+  const seenTitles = new Set();
+  const seenDescriptions = new Set();
+
+  for (const route of publicRoutes) {
+    const html = await readRoute(route);
+    const pageTitle = title(html);
+    const description = metaContent(html, "name", "description");
+
+    assert.ok(pageTitle && pageTitle.length >= 25 && pageTitle.length <= 65, `${route} title`);
+    assert.ok(
+      description && description.length >= 100 && description.length <= 165,
+      `${route} description`,
+    );
+    assert.ok(!seenTitles.has(pageTitle), `${route} duplicate title`);
+    assert.ok(!seenDescriptions.has(description), `${route} duplicate description`);
+    seenTitles.add(pageTitle);
+    seenDescriptions.add(description);
+
+    assert.equal(linkHref(html, "canonical"), new URL(route, origin).toString());
+    assert.equal(metaContent(html, "name", "robots"), "index, follow");
+    assertSharedSocialImage(
+      metaContent(html, "property", "og:image"),
+      `${route} Open Graph image`,
+    );
+    assert.match(
+      metaContent(html, "property", "og:image:alt") ?? "",
+      /Boracay/i,
+      `${route} Open Graph image alt`,
+    );
+    assertSharedSocialImage(
+      metaContent(html, "name", "twitter:image"),
+      `${route} Twitter image`,
+    );
+    assert.match(
+      metaContent(html, "name", "twitter:image:alt") ?? "",
+      /Boracay/i,
+      `${route} Twitter image alt`,
+    );
+  }
+});
+
+function sitemapEntries(xml) {
+  return [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => {
+    const value = match[1];
+    const element = (name) => value.match(new RegExp(`<${name}>(.*?)<\\/${name}>`))?.[1];
+    return {
+      url: element("loc"),
+      lastModified: element("lastmod"),
+      changeFrequency: element("changefreq"),
+      priority: Number(element("priority")),
+    };
+  });
+}
+
+test("sitemap and robots cover the exact public surface", async () => {
+  const sitemap = await readFile(path.join(outDir, "sitemap.xml"), "utf8");
+  const robots = await readFile(path.join(outDir, "robots.txt"), "utf8");
+  const entries = sitemapEntries(sitemap);
+
+  assert.deepEqual(
+    entries.map((entry) => entry.url),
+    publicRoutes.map((route) => new URL(route, origin).toString()),
+  );
+  for (const [index, entry] of entries.entries()) {
+    const route = publicRoutes[index];
+    assert.equal(entry.lastModified, "2026-08-29T00:00:00.000Z", `${route} lastModified`);
+    assert.equal(entry.changeFrequency, route === "/" ? "weekly" : "monthly", `${route} frequency`);
+    assert.equal(
+      entry.priority,
+      route === "/" ? 1 : ["/kitesurfing-lessons/", "/kitesurfing-boracay/"].includes(route) ? 0.9 : 0.7,
+      `${route} priority`,
+    );
+  }
+
+  assert.match(robots, /User-Agent: \*\s+Allow: \//i);
+  assert.match(robots, /Sitemap: https:\/\/www\.hanginkitecenter\.com\/sitemap\.xml/i);
+  assert.match(robots, /Host: https:\/\/www\.hanginkitecenter\.com/i);
+});
+
+test("manifest metadata uses the approved identity, colors, and icons", async () => {
+  const manifest = JSON.parse(
+    await readFile(path.join(outDir, "manifest.webmanifest"), "utf8"),
+  );
+
+  assert.deepEqual(manifest, {
+    name: "Hangin Kite Center",
+    short_name: "Hangin",
+    description: "Kitesurfing lessons, rental, storage, accommodation, shop and kite safaris on Boracay.",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#fffdf6",
+    theme_color: "#073642",
+    icons: [
+      { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
+      { src: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  });
+});
+
+test("social and icon assets are exported", async () => {
+  await Promise.all([
+    access(path.join(outDir, "opengraph-image.jpg")),
+    access(path.join(outDir, "icon.svg")),
+    access(path.join(outDir, "apple-icon.png")),
+  ]);
+});
 
 const waterRoutes = [
   ["/kitesurfing-lessons/", /Learn to kitesurf in Boracay/, /Your first lesson starts on the beach/],

@@ -91,7 +91,7 @@ export const islandPages = {
   boracay: {
     path: "/kitesurfing-boracay/",
     title: "Kitesurfing on Boracay",
-    metaTitle: "Kitesurfing in Boracay",
+    metaTitle: "Boracay Kitesurfing Spot Guide",
     description:
       "Plan a Boracay kitesurfing trip with practical information about Bulabog Beach, Amihan season, the lagoon and lessons.",
     eyebrow: "Bulabog Beach guide",

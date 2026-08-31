@@ -5,18 +5,23 @@ export const dynamic = "force-static";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Hangin Kite Center",
-    short_name: "Hangin Kite",
+    short_name: "Hangin",
     description:
-      "Kite school with beginner and advanced kitesurf lessons, safety-first coaching, and guided progression.",
+      "Kitesurfing lessons, rental, storage, accommodation, shop and kite safaris on Boracay.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#0ea5e9",
+    background_color: "#fffdf6",
+    theme_color: "#073642",
     icons: [
       {
-        src: "/favicon.ico",
-        sizes: "48x48",
-        type: "image/x-icon",
+        src: "/icon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+      },
+      {
+        src: "/apple-icon.png",
+        sizes: "180x180",
+        type: "image/png",
       },
     ],
   };

@@ -15,6 +15,8 @@ export function buildMetadata({
   path: PublicRoute;
 }): Metadata {
   const url = absoluteUrl(path);
+  const socialImageUrl = absoluteUrl("/opengraph-image.jpg");
+  const socialImageAlt = "Kitesurfers riding over turquoise water in Boracay.";
 
   return {
     title,
@@ -28,11 +30,20 @@ export function buildMetadata({
       title,
       description,
       url,
+      images: [
+        {
+          url: socialImageUrl,
+          width: 1200,
+          height: 630,
+          alt: socialImageAlt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [{ url: socialImageUrl, alt: socialImageAlt }],
     },
   };
 }
