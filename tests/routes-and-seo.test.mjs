@@ -30,6 +30,25 @@ for (const [route, heading, proof] of waterRoutes) {
   });
 }
 
+const islandRoutes = [
+  ["/accommodation/", /Stay close to Boracay's kite beach/, /Wake up, check the water/],
+  ["/shop/", /Kite gear and beach essentials in Boracay/, /Ask what is on the rack today/],
+  ["/kitesurfing-boracay/", /Kitesurfing on Boracay/, /The kite side of the island/],
+  ["/about/", /On the beach since 2002/, /Hangin began as a kite school/],
+  ["/contact/", /Tell us when you're coming/, /Your dates and riding level/],
+];
+
+for (const [route, heading, proof] of islandRoutes) {
+  test(`${route} exports specific local content`, async () => {
+    const html = await readRoute(route);
+    const text = visibleText(html);
+    assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
+    assert.match(text, heading);
+    assert.match(text, proof);
+    assert.match(html, /aria-label="Breadcrumb"/i);
+  });
+}
+
 test("rental FAQ confirms the service without claiming current availability", async () => {
   const html = await readRoute("/rentals-storage/");
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";

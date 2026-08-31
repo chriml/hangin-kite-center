@@ -42,6 +42,23 @@
   color: var(--sun);
 }
 
+.accommodation .hero {
+  background: color-mix(in srgb, var(--sand) 80%, var(--sun));
+}
+
+.shop .hero {
+  background: color-mix(in srgb, var(--lagoon) 24%, var(--sun));
+}
+
+.boracay .hero {
+  background: var(--lagoon);
+}
+
+.about .hero {
+  background: var(--palm);
+  color: var(--sun);
+}
+
 .heroGrid {
   position: relative;
   display: grid;
@@ -68,7 +85,8 @@
   line-height: 0.9;
 }
 
-.safaris .heroCopy h1 {
+.safaris .heroCopy h1,
+.about .heroCopy h1 {
   color: var(--sand);
 }
 
@@ -96,7 +114,9 @@
 }
 
 .rentals .heroImage,
-.safaris .heroImage {
+.safaris .heroImage,
+.accommodation .heroImage,
+.shop .heroImage {
   object-fit: contain;
 }
 
@@ -109,6 +129,10 @@
 
 .photoCredit a {
   text-underline-offset: 0.15em;
+}
+
+.about .photoCredit {
+  color: var(--sand);
 }
 
 .kiteLines {
@@ -173,6 +197,35 @@
   color: var(--palm);
 }
 
+.accommodation .serviceSection:nth-child(3) {
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+  background: var(--sand);
+}
+
+.shop .serviceSection:nth-child(2),
+.shop .serviceSection:nth-child(4) {
+  border-color: var(--sun);
+  background: var(--ocean);
+  color: var(--sun);
+}
+
+.shop .serviceSection:nth-child(2) h2,
+.shop .serviceSection:nth-child(4) h2 {
+  color: var(--sand);
+}
+
+.boracay .serviceSection:first-child h2,
+.boracay .serviceSection:last-child h2,
+.about .serviceSection:nth-child(2) h2 {
+  color: var(--palm);
+}
+
+.about .serviceSection:first-child {
+  border-top: 0;
+  background: color-mix(in srgb, var(--lagoon) 14%, var(--sun));
+}
+
 .faqSection {
   padding-block: clamp(4.5rem, 9vw, 8rem);
   background: var(--sand);
@@ -235,6 +288,26 @@
   background: var(--palm);
 }
 
+.accommodation .contactSection {
+  background: var(--palm);
+}
+
+.shop .contactSection {
+  background: var(--ocean);
+}
+
+.boracay .faqSection {
+  background: color-mix(in srgb, var(--lagoon) 19%, var(--sun));
+}
+
+.boracay .contactSection {
+  background: var(--palm);
+}
+
+.about .contactSection {
+  background: var(--ocean);
+}
+
 .contactGrid {
   display: grid;
   gap: 2.5rem;
@@ -268,6 +341,19 @@
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
   }
 
+  .accommodation .heroGrid,
+  .shop .heroGrid {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  }
+
+  .boracay .heroGrid {
+    grid-template-columns: minmax(20rem, 0.76fr) minmax(0, 1.24fr);
+  }
+
+  .about .heroGrid {
+    grid-template-columns: minmax(0, 1.12fr) minmax(20rem, 0.88fr);
+  }
+
   .safaris .heroCopy {
     order: 2;
   }
@@ -276,9 +362,25 @@
     order: 1;
   }
 
+  .shop .heroCopy,
+  .about .heroCopy {
+    order: 2;
+  }
+
+  .shop .heroFigure,
+  .about .heroFigure {
+    order: 1;
+  }
+
   .heroCopy h1 {
     max-width: 10ch;
     font-size: clamp(4.5rem, 6.3vw, 5.6rem);
+  }
+
+  .accommodation .heroCopy h1,
+  .shop .heroCopy h1 {
+    max-width: 12ch;
+    font-size: clamp(4.2rem, 5.7vw, 5.25rem);
   }
 
   .heroImage {
@@ -306,9 +408,23 @@
     padding-inline: max(1rem, calc((100vw - 1180px) / 2));
   }
 
+  .accommodation .serviceSection:nth-child(3) {
+    margin-inline: calc((100vw - var(--content)) / -2);
+    padding-inline: max(1rem, calc((100vw - 1180px) / 2));
+  }
+
   .safaris .serviceSection:nth-child(3) {
     grid-template-columns: minmax(17rem, 0.64fr) minmax(0, 1.36fr);
     padding-left: clamp(2rem, 8vw, 8rem);
+  }
+
+  .boracay .serviceSection:nth-child(2) {
+    grid-template-columns: minmax(0, 0.86fr) minmax(17rem, 1.14fr);
+  }
+
+  .about .serviceSection:first-child {
+    margin-inline: calc((100vw - var(--content)) / -2);
+    padding-inline: max(1rem, calc((100vw - 1180px) / 2));
   }
 
   .faqGrid,

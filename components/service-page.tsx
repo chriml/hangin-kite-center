@@ -52,7 +52,15 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
     ? styles.lessons
     : content.path === "/rentals-storage/"
       ? styles.rentals
-      : styles.safaris;
+      : content.path === "/kite-safaris/"
+        ? styles.safaris
+        : content.path === "/accommodation/"
+          ? styles.accommodation
+          : content.path === "/shop/"
+            ? styles.shop
+            : content.path === "/kitesurfing-boracay/"
+              ? styles.boracay
+              : styles.about;
 
   return (
     <main id="main-content" className={`${styles.page} ${pageKind}`}>
