@@ -13,6 +13,7 @@ export type ServicePageContent = {
   contact?: { heading: string; body: string };
   schema: "service" | "guide" | "about" | "page";
   sections: readonly { heading: string; body: readonly string[] }[];
+  safety?: { heading: string; body: readonly string[] };
   faq: readonly { question: string; answer: string }[];
 };
 
@@ -54,6 +55,13 @@ export const waterPages = {
         ],
       },
     ],
+    safety: {
+      "heading": "Before your lesson",
+      "body": [
+            "Kitesurfing involves powered equipment, changing wind and water, falls and collisions. These can cause serious injury. Ask about the conditions, session plan and safety briefing before going on the water.",
+            "For a rider under 18, a parent or legal guardian should contact Hangin before arrangements are made. Ask for the participation and intake instructions before sharing health information. Keep health details out of the first WhatsApp message."
+      ]
+},
     faq: [
       {
         question: "Do I need kitesurfing experience?",
@@ -113,6 +121,13 @@ export const waterPages = {
         ],
       },
     ],
+    safety: {
+      "heading": "Before renting gear",
+      "body": [
+            "Ask Hangin about rider requirements, the equipment, its condition and where it can be used before renting. Stop using damaged equipment and contact Hangin.",
+            "For a rider under 18, a parent or legal guardian should contact Hangin before arrangements are made. Ask for the participation and intake instructions before sharing health information. Keep health details out of the first WhatsApp message."
+      ]
+},
     faq: [
       {
         question: "Can I rent a complete kite setup?",
@@ -168,6 +183,13 @@ export const waterPages = {
         ],
       },
     ],
+    safety: {
+      "heading": "Before a kite safari",
+      "body": [
+            "A kite trip can take you into unfamiliar conditions and farther from the launch. Ask about the route, rider level, communication and return plan before agreeing to join.",
+            "For a rider under 18, a parent or legal guardian should contact Hangin before arrangements are made. Ask for the participation and intake instructions before sharing health information. Keep health details out of the first WhatsApp message."
+      ]
+},
     faq: [
       {
         question: "Is a kite safari confirmed before my trip?",

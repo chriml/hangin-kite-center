@@ -94,6 +94,25 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         </div>
       </section>
 
+      {content.safety && (
+        <section
+          className={styles.safetySection}
+          aria-labelledby="water-safety-title"
+        >
+          <div className={`shell ${styles.safetyGrid}`}>
+            <div>
+              <p className="eyebrow">Before you get on the water</p>
+              <h2 id="water-safety-title">{content.safety.heading}</h2>
+            </div>
+            <div className={styles.safetyCopy}>
+              {content.safety.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {content.faq.length > 0 && (
         <section className={styles.faqSection}>
           <div className={`shell ${styles.faqGrid}`}>

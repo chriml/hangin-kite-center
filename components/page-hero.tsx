@@ -42,13 +42,14 @@ export function PageHero({
             <figcaption className={styles.photoCredit}>
               Boracay kitesurfing context. Photo by{" "}
               <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-              <a href={image.licenseUrl}>{image.license}</a>.
+              <a href={image.licenseUrl}>{image.license}</a>. Resized and converted to WebP.
             </figcaption>
           </figure>
         ) : (
-          <div className={styles.heroFigure} aria-hidden="true">
+          <figure className={styles.heroFigure}>
             {media}
-          </div>
+            <figcaption className={styles.photoCredit}>Supporting illustration.</figcaption>
+          </figure>
         )}
         <svg
           className={styles.kiteLines}

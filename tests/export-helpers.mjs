@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { parseFragment } from "parse5";
 
 export const outDir = path.resolve("out");
 
@@ -13,6 +14,8 @@ export const publicRoutes = [
   "/kitesurfing-boracay/",
   "/about/",
   "/contact/",
+  "/terms/",
+  "/accessibility/",
 ];
 
 export function routeFile(route) {
@@ -25,7 +28,8 @@ export function readRoute(route) {
 }
 
 export function attribute(tag, name) {
-  return tag.match(new RegExp(`${name}=["']([^"']*)["']`, "i"))?.[1];
+  const node = parseFragment(tag).childNodes.find(node => node.tagName);
+  return node?.attrs.find(attr => attr.name === name.toLowerCase())?.value;
 }
 
 export function tags(html, name) {

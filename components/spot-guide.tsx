@@ -18,7 +18,7 @@ export function SpotGuide() {
           <figcaption className={styles.photoCredit}>
             Bulabog Beach context. Photo by{" "}
             <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-            <a href={image.licenseUrl}>{image.license}</a>.
+            <a href={image.licenseUrl}>{image.license}</a>. Resized and converted to WebP.
           </figcaption>
         </figure>
         <div className={styles.spotCopy}>

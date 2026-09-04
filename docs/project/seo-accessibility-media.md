@@ -23,7 +23,7 @@ Known future review items:
 - `app/sitemap.ts` uses one historical `lastModified` date for all routes. Future content records should own substantive modification dates.
 - Sitemap `priority` and `changeFrequency` do not drive Google crawling and can be removed when the sitemap is revised, according to [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) (accessed 2026-09-04).
 - `app/robots.ts` emits a `Host` line that is not defined by the [Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309) (accessed 2026-09-04). The future SEO brief recommends removing it with its brittle assertion.
-- Google's [FAQ structured-data guidance](https://developers.google.com/search/docs/appearance/structured-data/faqpage) limits FAQ rich results to well-known authoritative government and health sites (accessed 2026-09-04). Keep useful visible questions, but re-evaluate the value of `FAQPage` markup before expanding it.
+- Google retired FAQ rich results in May 2026 and removed the feature documentation in June ([official changelog](https://developers.google.com/search/updates#removing-faq-rich-result), accessed 2026-09-04). Keep useful visible questions. Existing truthful `FAQPage` markup is not a promise of a Google search feature; do not expand it for that purpose.
 - Several supporting pages are short and have few contextual links in their main content. Verified first-party details and useful cross-links are higher priority than new page count.
 - Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places ownership are not recorded in the repository.
 
@@ -48,3 +48,7 @@ The future target is WCAG 2.2 AA for every complete public page and revealed int
 The Node test suite verifies routes, exported artifacts, metadata, JSON-LD, links, contact destinations, headings, image records, provenance, selected contrast pairs, and public-copy rules. Tests read `out/`, so a standalone `npm test` can pass stale files. Release evidence must build the export first.
 
 Future browser and performance requirements are specified in [`../future/quality-performance-accessibility.md`](../future/quality-performance-accessibility.md).
+
+## Review remediation, 2026-09-04
+
+The export now includes inquiry/complaint and accessibility information pages. Every WhatsApp action announces its new tab and references shared message guidance. Licensed photo captions state WebP resizing/conversion; generated service art is visibly labelled as illustration. The internal media-rights and accessibility audits in `docs/legal/` distinguish repository evidence from owner evidence still needed. Browser and automated evidence is recorded in the review-remediation report.

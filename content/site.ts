@@ -19,10 +19,13 @@ export const publicRoutes = [
   "/kitesurfing-boracay/",
   "/about/",
   "/contact/",
+  "/terms/",
+  "/accessibility/",
 ] as const;
 
 export type PublicRoute = (typeof publicRoutes)[number];
 export type ContactContext =
+  | "complaint"
   | "general"
   | "lessons"
   | "rental"
@@ -49,12 +52,14 @@ export type PrimaryContactAction = Readonly<{
   channelLabel: string;
   displayDestination: string;
   label: string;
+  accessibleLabel: string;
   href: string;
   target: "_blank" | undefined;
   rel: "noopener noreferrer" | undefined;
 }>;
 
 const contactMessages: Record<ContactContext, string> = {
+  complaint: "Hi Hangin, I'd like to raise a complaint about a service or item.",
   general:
     "Hi Hangin, I'm planning a Boracay trip. My dates are [dates], my riding level is [level], and I need help with [service].",
   lessons: "Hi Hangin, I'd like to arrange kitesurfing lessons in Boracay.",
@@ -92,6 +97,7 @@ export function getPrimaryContactAction(
     channelLabel: primaryContactConfig.channelLabel,
     displayDestination: primaryContactConfig.displayDestination,
     label: primaryContactConfig.labels[label],
+    accessibleLabel: `${primaryContactConfig.labels[label]} (opens in a new tab)`,
     href: primaryContactConfig.buildHref(
       primaryContactConfig.destination,
       contactMessages[context],

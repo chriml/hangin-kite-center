@@ -50,8 +50,12 @@ Image paths and dimensions live in `content/images.ts`; legal and provenance det
 
 ## Implemented versus proposed design
 
-The implemented site has the approved palette, fonts, responsive imagery, semantic shell, calm homepage sequence, native disclosure controls, visible focus, and reduced-motion handling.
+The implemented site has the approved palette, fonts, responsive imagery, semantic shell, native disclosure controls, visible focus, and reduced-motion handling. The homepage uses a calm landing-page sequence: a direct welcome and single WhatsApp action, four equal guest paths for lessons, gear, accommodation and safaris, Bulabog context, supporting services, center history, practical questions, and a final contact prompt.
 
-The dated [`../superpowers/specs/2026-08-31-hangin-duotone-visual-refresh-design.md`](../superpowers/specs/2026-08-31-hangin-duotone-visual-refresh-design.md) is marked as awaiting review and is not fully implemented. Current code still has the earlier desktop navigation, boxed lesson paths, four alternating service bands, two hero kite lines, no service indices or rider-state labels, no separate shop utility row, and no compact spot-fact band. Treat these as proposed changes, not defects, until that specification is accepted or superseded.
+The dated [`../superpowers/specs/2026-08-31-hangin-duotone-visual-refresh-design.md`](../superpowers/specs/2026-08-31-hangin-duotone-visual-refresh-design.md) is marked as awaiting review and is not fully implemented. Current code still has the earlier desktop navigation, boxed guest paths, four alternating service bands, two hero kite lines, no service indices or rider-state labels, no separate shop utility row, and no compact spot-fact band. Treat these as proposed changes, not defects, until that specification is accepted or superseded.
 
 Any future UI work must preserve the Hangin identity and use Duotone only as a structural reference. It must not copy branding, typefaces, product language, proprietary assets, or imply an affiliation.
+
+## Review-remediation additions, 2026-09-04
+
+Shared contact actions announce their new tab and refer to brief message guidance. The contact page asks visitors to obtain intake instructions before sharing health, identity or payment information. Water-service pages explain material activity risks without inventing rider eligibility rules. Inquiry/complaint and accessibility pages use the existing typography, palette and native links. Generated artwork has a visible illustration label and licensed photo captions disclose resizing/conversion. Confirmed instruction credentials and establishment facts remain intact.

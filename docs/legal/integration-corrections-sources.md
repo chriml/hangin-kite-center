@@ -1,0 +1,29 @@
+# Legal integration correction source register
+
+Status: Current
+Scope: Current internal research
+Access date: 2026-09-04
+Scope: targeted corrections to the existing task reports, not a complete legal re-audit or legal opinion.
+
+The earlier reports retain their original source lists and dated findings as historical research. Their publication dates are source metadata, not proof of fresh retrieval. This register identifies what this correction pass actually retrieved. Business-specific applicability, later amendments, owner policy adoption, operational practice and production behavior remain subject to the named owner and Philippine-lawyer review.
+
+| Source | Source date / pinpoint | Retrieval and correction supported |
+| --- | --- | --- |
+| [RA 11967 text](https://lawphil.net/statutes/repacts/ra2023/ra_11967_2023.html) | 5 December 2023; sections 23(f)(1), 23(h), 23(i), 24 | Text retrieved from Lawphil on 4 September 2026. Homepage identity/address plus mobile or landline number **and** valid email; invoices or receipts for all sales; redress citations. The Supreme Court official copy and Senate page could not be fetched in this pass, so this is transparent fallback text verification rather than a claimed fresh government-host retrieval. |
+| [BIR RR 26-2025 digest](https://bir-cdn.bir.gov.ph/BIR/pdf/RR%20No.%2026-2025%20Digest.pdf) | Issued 16 October 2025; pages 1–2 | Official PDF retrieved. Covered electronic-invoice categories have until 31 December 2026; small, medium and large e-commerce taxpayers are included, micro taxpayers excluded from that category. Other independent categories may apply. Electronic sales reporting has a separate system-readiness and later-regulation trigger. No taxpayer classification for Hangin is established here. |
+| [2021 NPC Rules of Procedure, as amended](https://privacy.gov.ph/wp-content/uploads/2024/03/2021-Rules-of-Procedure-of-the-NPC-As-Amended.pdf) | Official compiled PDF dated 4 March 2024; Rule II section 2, pages 4–5 | Official PDF retrieved. Ordinary formal complaint prerequisites include written respondent notice and absence of appropriate action or response within 15 calendar days; NPC waiver grounds remain. These prerequisites differ from simply contacting the regulator. |
+| [NPC Advisory 2024-03](https://privacy.gov.ph/wp-content/uploads/2024/12/Advisory-2024.12.17-Guidelines-on-Child-Oriented-Transparency-w-SGD.pdf) | 17 December 2024; section 4, page 5 | Official PDF retrieved. A mandatory-notification breach affecting children requires notices to both the children and their parents or guardians, in language the children understand. The rule is conditional on the notification threshold, and permits voluntary notification outside it. |
+| [Data Privacy Act](https://privacy.gov.ph/data-privacy-act/) | 15 August 2012; sections 3, 13, 16 | Official NPC text retrieved. Health data requires the applicable sensitive-data basis and transparency; changing a medical question to yes/no does not remove the health-information issue. The proposal asks visitors to obtain intake instructions first. |
+| [NPC Advisory 2026-02](https://privacy.gov.ph/wp-content/uploads/2026/05/Advisory-Clarification-on-the-Submission-of-Personal-Data-Breach-Notification-through-DBNMS_11-May-2026.pdf) | 11 May 2026; section 2(C)–(D), PDF page 2 | Official PDF retrieved. While a covered request is unacted upon, full report within five days from discovery to `admindbnms@privacy.gov.ph`, subject `FBR_NameofPIC_NameofDPO`; silence is not approval. This is separate from the initial-notification duty. The advisory says five days, not five business days. |
+| [BIR RR 5-2017, NCDA copy](https://ncda.gov.ph/disability-laws/implementing-rules-and-regulations-irr/revenue-regulations-no-5-2017-rules-and-regulations-implementing-republic-act-no-10754/) | 11 April 2017 | Official NCDA page retrieved; corrects the old 19 January date. This check does not classify Hangin's services for discounts. |
+| [Confirmed product record](../project/product.md) and [image attribution ledger](../../public/images/ATTRIBUTION.md) | Repository records read 4 September 2026 | Established 2002, IKO/VDWS instruction and service categories are already confirmed. Individual credentials, live stock, prices and supplier roles remain unknown. Asset inventory corrected to actual repository paths. |
+
+## Retrieval limitations
+
+The [Supreme Court RA 11967 page](https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/96902) timed out or returned an internal retrieval error on two attempts. The [Senate page](https://issuances-library.senate.gov.ph/legislative-issuance/republic-act-no-11967) returned 403, and the [DTI ITA page](https://ecommerce.dti.gov.ph/ra11967/) timed out. The earlier independent review recorded verification of the Supreme Court copy; this pass used the accessible Lawphil full statute and does not relabel those failures as successful retrievals.
+
+The EU/UK assessment, vendor documents, permit questions, Trustmark contradiction and wider tax/consumer/privacy source sets are retained from the original research. They were not exhaustively revalidated here. There was no inspection of owner evidence, signed contracts, private systems, production DNS or Cloudflare settings in this correction pass.
+
+## Engineering evidence boundary
+
+The integrated checks are `scripts/privacy-audit.mjs` and `scripts/audit-deployed-privacy.mjs`. Confirm command wiring, inputs and implemented fixtures in the current operations record. Static checks detect known patterns and can miss computed or obfuscated behavior. HTTP checks do not execute browser scripts or establish every regional/challenge/account configuration. Passing results cannot certify absence of tracking or legal compliance. Browser network/storage inspection, vendor settings, actual inquiry handling and fresh integrated build evidence remain separate requirements.

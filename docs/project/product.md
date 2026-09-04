@@ -61,6 +61,8 @@ The current site should let a visitor answer:
 | `/kitesurfing-boracay/` | Spot, season, conditions, and island guidance |
 | `/about/` | History, certification, and teaching approach |
 | `/contact/` | WhatsApp, email, location, and contact preparation |
+| `/terms/` | Website inquiries, service preparation and complaint contacts |
+| `/accessibility/` | Website use, access problem reporting and visit preparation |
 
 The exact route list is typed in `content/site.ts` and independently asserted in `tests/export-helpers.mjs`.
 

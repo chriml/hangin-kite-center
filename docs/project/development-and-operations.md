@@ -15,9 +15,9 @@ npm run preview
 
 Focused checks are `npm run lint`, `npm run typecheck`, and `npm test`. The preview command serves `out/` on port 4173.
 
-`npm run verify` executes lint, type checking, a production build, and the Node test suite. Tests inspect the static export and therefore must follow a successful fresh build.
+`npm run verify` executes lint, type checking, a production build, the Node test suite, and the static privacy/resource audit. Tests inspect the static export and therefore must follow a successful fresh build.
 
-## Verified baseline
+## Historical baseline (before review remediation)
 
 On 2026-09-04:
 
@@ -32,7 +32,7 @@ The default Turbopack build failed in the restricted Codex sandbox because an in
 
 ## Deployment state
 
-The deployable artifact is `out/`. The repository currently contains no CI workflow and no checked-in configuration for a hosting provider, CDN, DNS, redirects, security headers, cache policy, previews, artifact provenance, monitoring, or rollback.
+The deployable artifact is `out/`. The repository contains a Cloudflare-compatible `public/_headers` policy and an internal Cloudflare privacy/security runbook. It contains no CI workflow or applied host, CDN, DNS, redirects, cache, preview, provenance, monitoring or rollback configuration. Checked-in headers are not evidence that a production host applies them.
 
 Before launch, the host must independently verify:
 
@@ -49,3 +49,7 @@ The future provider-neutral delivery contract is in [`../future/deployment-opera
 ## Operational ownership not yet recorded
 
 The repository does not identify the production host, registrar, DNS owner, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
+
+## Review-remediation verification
+
+Use `npm run verify` for fresh local evidence. The deployed check is `npm run audit:privacy:deployed -- https://host`; it is read-only and requires a matching local export. It checks the response chain and route coverage, not real-browser execution or legal compliance. See [`../../scripts/README.md`](../../scripts/README.md) and [`../operations/review-remediation-2026-09-04.md`](../operations/review-remediation-2026-09-04.md). Local HTTP fixture tests bind loopback ports and need a runner that allows this.

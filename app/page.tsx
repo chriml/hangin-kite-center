@@ -17,30 +17,30 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-const lessonPaths = [
+const guestPaths = [
   {
     href: "/kitesurfing-lessons/",
-    heading: "Your first kite lesson",
+    heading: "Learn to kitesurf",
     description:
-      "Complete beginners start with the kite, its safety systems and control before moving into the lagoon.",
-  },
-  {
-    href: "/kitesurfing-lessons/",
-    heading: "Board starts and first rides",
-    description:
-      "Work on body dragging, board starts and controlled first rides in a session matched to the conditions.",
-  },
-  {
-    href: "/kitesurfing-lessons/",
-    heading: "Progression sessions",
-    description:
-      "For riders already on the board, sessions can cover upwind riding, transitions or jumps, depending on level and conditions.",
+      "Start from zero, work on your first rides, or sharpen a skill with a session matched to your level and the conditions.",
   },
   {
     href: "/rentals-storage/",
-    heading: "Full equipment rental",
+    heading: "Sort out your gear",
     description:
-      "Full equipment rental is available. Ask what setup fits your level and the current conditions.",
+      "Rent a full setup for your session or store your own equipment by the spot. Ask what is available for your dates.",
+  },
+  {
+    href: "/accommodation/",
+    heading: "Stay by the spot",
+    description:
+      "Ask about accommodation near Bulabog Beach and the kite spot. We will check what is available for your dates.",
+  },
+  {
+    href: "/kite-safaris/",
+    heading: "Ask about a kite safari",
+    description:
+      "Kite trips depend on the wind, rider level and local water conditions. Ask what may work during your stay.",
   },
 ] as const;
 
@@ -98,7 +98,7 @@ const questions = [
   {
     question: "Can I rent equipment?",
     answer:
-      "Yes. Full equipment rental is available. On WhatsApp, include your usual sizes so we can check current availability.",
+      "Hangin offers equipment rental. Send your dates, riding level and usual sizes on WhatsApp so we can check a setup for your trip.",
   },
   {
     question: "Can I store my own gear?",
@@ -108,7 +108,7 @@ const questions = [
   {
     question: "How do I arrange a session?",
     answer:
-      "Start on WhatsApp. We'll ask for the trip and riding details needed to work with the current conditions.",
+      "Send your dates and riding level on WhatsApp. Check the session, total cost and cancellation terms with Hangin before agreeing to a booking.",
   },
 ] as const;
 
@@ -122,7 +122,7 @@ function PhotoCredit({
   return (
     <figcaption className={styles.photoCredit}>
       {context}{" "}Photo by <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-      <a href={image.licenseUrl}>{image.license}</a>.
+      <a href={image.licenseUrl}>{image.license}</a>. Resized and converted to WebP.
     </figcaption>
   );
 }
@@ -137,18 +137,20 @@ export default function Home() {
         <div className={`shell ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
             <p className="eyebrow">Bulabog Beach, Boracay</p>
-            <h1>Kitesurfing here since 2002.</h1>
+            <h1>Welcome to Hangin Kite Center.</h1>
             <p className={styles.heroLead}>
-              Learn with IKO and VDWS instructors, rent a full setup, store your
-              own gear, or stay close to the kite beach. If the wind is up,
-              we&apos;re out there.
+              Complete beginners and experienced riders are welcome. Come find
+              us on Bulabog Beach for lessons, rental, storage, accommodation,
+              the kite shop and kite safaris. If the wind is up, we&apos;re out
+              there.
             </p>
             <div className={styles.heroActions}>
-              <Link className="button button--dark" href="#lessons">
-                See the lessons
-              </Link>
               <ContactCta compact />
             </div>
+            <p className={styles.heroNote}>
+              Send your dates, riding level and what you need. We&apos;ll help you
+              work out the next step around current conditions.
+            </p>
           </div>
           <figure className={`${styles.proofFigure} ${styles.heroFigure}`}>
             <ResponsiveImage
@@ -173,13 +175,13 @@ export default function Home() {
 
       <ProofStrip />
 
-      <section id="lessons" className={styles.lessonsSection}>
+      <section id="choose" className={styles.chooseSection}>
         <div className={`shell ${styles.sectionHeading}`}>
-          <p className="eyebrow">Choose where to start</p>
-          <h2>Lessons and rental.</h2>
+          <p className="eyebrow">Choose your way in</p>
+          <h2>What brings you to Bulabog?</h2>
         </div>
         <div className={`shell ${styles.pathGrid}`}>
-          {lessonPaths.map((path) => (
+          {guestPaths.map((path) => (
             <ServicePath key={path.heading} {...path} />
           ))}
         </div>
@@ -196,6 +198,7 @@ export default function Home() {
           {services.map((service) => (
             <article className={styles.serviceBand} key={service.eyebrow}>
               <div className={styles.serviceImage}>
+                <span className={styles.illustrationLabel}>Illustration</span>
                 <ResponsiveImage
                   image={service.image}
                   className={styles.coverImage}
@@ -220,7 +223,7 @@ export default function Home() {
         <div className={`shell ${styles.storyGrid}`}>
           <div className={styles.storyCopy}>
             <p className="eyebrow">The center</p>
-            <h2>On Bulabog Beach since 2002.</h2>
+            <h2>Kitesurfing here since 2002.</h2>
             <p>
               Hangin has taught on Bulabog Beach since 2002. Today the center
               covers lessons, rental, storage, stays, the shop and kite trips.

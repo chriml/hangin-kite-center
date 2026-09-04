@@ -60,7 +60,8 @@ test("every local link resolves in the static export", async () => {
     for (const href of hrefs) {
       if (!href.startsWith("/") || href.startsWith("//") || href.startsWith("/#")) continue;
       const clean = href.split("#")[0].split("?")[0];
-      const target = clean === "/" ? path.join(outDir, "index.html") : path.join(outDir, clean.replace(/^\//, ""), "index.html");
+      const relative = clean.replace(/^\//, "");
+      const target = clean === "/" ? path.join(outDir, "index.html") : path.extname(relative) ? path.join(outDir, relative) : path.join(outDir, relative, "index.html");
       await access(target);
     }
   }

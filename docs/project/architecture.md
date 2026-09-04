@@ -28,7 +28,7 @@ visitor follows WhatsApp, email, telephone, or internal links
 - Pages and shared components are Server Components. The repository contains no `"use client"` boundary.
 - Native HTML handles the mobile menu and FAQ disclosure behavior.
 - Local responsive images and framework-emitted fonts are served from the static artifact.
-- The production artifact contains nine public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
+- The production artifact contains eleven public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
 
 Static export does not provide request-time cookies, headers, redirects, rewrites, middleware, Server Actions, ISR, authenticated preview, secret-bearing APIs, or webhooks. Host-level redirects and headers are separate deployment responsibilities. Dynamic services must live behind a hosted provider or a separately operated server boundary.
 
@@ -51,7 +51,7 @@ Static export does not provide request-time cookies, headers, redirects, rewrite
 
 ## Contact data flow
 
-Pages provide a typed `ContactContext`. `getPrimaryContactAction` resolves that context to a label, prefilled message, destination, and safe external-link attributes. `ContactCta` renders the result. The provider is currently WhatsApp, and email remains visible in the larger contact treatment.
+Pages provide a typed `ContactContext`. `getPrimaryContactAction` resolves that context to a label, new-tab accessible name, prefilled message, destination, and safe external-link attributes. `ContactCta` renders the result. The provider is currently WhatsApp, and email remains visible in the larger contact treatment.
 
 This boundary can later resolve different hosted booking destinations by service. It must not create a checkout session, publish availability, or carry secrets in the static application.
 
@@ -70,3 +70,9 @@ The current model has useful types but is not yet a single validated registry. R
 - Commerce: a separate offer, inventory, order, and payment boundary; the contact adapter stays an enquiry boundary.
 
 Each extension requires an accepted topic specification and, when it changes the static-host model, an ADR.
+
+## Review and host support
+
+`/terms/` provides website inquiry and complaint guidance; `/accessibility/` provides practical website and reporting guidance. Neither publishes unconfirmed business policy or a conformance claim. `public/_headers` supplies a Cloudflare-compatible static header policy; other hosts must configure equivalent responses. This is a host artifact, not a Next runtime header API.
+
+`npm run audit:privacy` parses the fresh static export and compares framework assets with the matching build. The deployed audit compares an explicit origin against the local expected route set and checks response/redirect evidence. Parser dependencies are development-only. See [`../../scripts/README.md`](../../scripts/README.md) for scope and limits.

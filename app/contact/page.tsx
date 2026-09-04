@@ -75,6 +75,20 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <section className={styles.details} aria-labelledby="message-details-heading">
+        <div className={`shell ${styles.detailsGrid}`}>
+          <div>
+            <p className="eyebrow">Before you message</p>
+            <h2 id="message-details-heading">Keep the first message to trip details</h2>
+          </div>
+          <div>
+            <p>Ask how to share health information, identity documents or payment details before sending them. For a rider under 18, a parent or legal guardian should contact Hangin first.</p>
+            <p>WhatsApp and your email provider have their own privacy practices. Opening WhatsApp loads a draft; you choose whether to send the chat message to Hangin.</p>
+            <p>Check the service, dates, total cost and cancellation terms directly with Hangin before agreeing to a booking.</p>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.channels} aria-label="Contact options">
         <div className={`shell ${styles.channelGrid}`}>
           <article className={styles.location}>
@@ -88,6 +102,8 @@ export default function ContactPage() {
             <a
               className="button button--coral"
               href={primaryContact.href}
+              aria-label={`${primaryContact.channelLabel} ${primaryContact.displayDestination} (opens in a new tab)`}
+              aria-describedby="message-guidance"
               target={primaryContact.target}
               rel={primaryContact.rel}
             >

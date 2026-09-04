@@ -37,8 +37,8 @@
 }
 
 .heroCopy h1 {
-  max-width: 9ch;
-  font-size: clamp(3.5rem, 13vw, 5.5rem);
+  max-width: 10ch;
+  font-size: clamp(3.5rem, 12vw, 5.75rem);
 }
 
 .heroLead {
@@ -53,6 +53,16 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.5rem;
+}
+
+.heroNote {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--coral);
+  color: color-mix(in srgb, var(--ocean) 80%, transparent);
+  font-size: 0.86rem;
+  line-height: 1.55;
 }
 
 .heroFigure,
@@ -78,7 +88,7 @@
 
 .photoCredit {
   padding-top: 0.45rem;
-  color: color-mix(in srgb, var(--ocean) 74%, transparent);
+  color: var(--ocean);
   font-size: 0.68rem;
   line-height: 1.45;
 }
@@ -129,7 +139,7 @@
   border-bottom: 0;
 }
 
-.lessonsSection,
+.chooseSection,
 .servicesSection,
 .questionsSection {
   padding-block: clamp(4.5rem, 9vw, 8rem);
@@ -163,7 +173,7 @@
   border-bottom: 1px solid var(--ocean);
   background: var(--sand);
   text-decoration: none;
-  transition: background-color 160ms ease, color 160ms ease;
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
 }
 
 .servicePath:nth-child(2) {
@@ -182,6 +192,10 @@
 .servicePath:hover {
   background: var(--ocean);
   color: var(--sun);
+}
+
+.servicePath:active {
+  transform: translateY(1px);
 }
 
 .servicePathHeading {
@@ -224,6 +238,7 @@
 .spotFigure .photoCredit {
   min-height: 2.5rem;
   padding: 0.5rem 1rem 0.75rem;
+  background: var(--ocean);
   color: var(--sand);
 }
 
@@ -440,8 +455,8 @@
 
   .heroCopy h1 {
     width: 100%;
-    max-width: none;
-    font-size: clamp(4.75rem, 6.4vw, 5.5rem);
+    max-width: 10ch;
+    font-size: clamp(4.5rem, 6.25vw, 5.75rem);
   }
 
   .heroFigure img {
@@ -532,4 +547,16 @@
   .servicePath {
     transition: none;
   }
+}
+
+.serviceImage { position: relative; }
+.illustrationLabel {
+  position: absolute;
+  z-index: 1;
+  left: 1rem;
+  bottom: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--sun);
+  color: var(--ink);
+  font-size: 0.75rem;
 }

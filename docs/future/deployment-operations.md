@@ -54,7 +54,7 @@ Provider selection requires an ADR. GitHub Pages, Cloudflare Pages, Netlify, Ver
 
 ### Pull-request preview
 
-Built from the reviewed revision, labelled with commit and expiry, noindexed through response headers and metadata, and access-controlled if content is sensitive. Preview never receives production secrets or can mutate production data.
+Built from the reviewed revision, labelled with commit and expiry, noindexed through preview-host response headers (`X-Robots-Tag: noindex`), and access-controlled if content is sensitive. The HTML stays identical to the production candidate: do not embed preview-only noindex metadata in an artifact that will be promoted unchanged. Verify that the production host omits preview-only indexing headers. Preview never receives production secrets or can mutate production data.
 
 ### Staging
 

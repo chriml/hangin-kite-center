@@ -94,7 +94,7 @@ test("sitemap and robots cover the exact public surface", async () => {
   );
   for (const [index, entry] of entries.entries()) {
     const route = publicRoutes[index];
-    assert.equal(entry.lastModified, "2026-08-29T00:00:00.000Z", `${route} lastModified`);
+    assert.equal(entry.lastModified, "2026-09-04T00:00:00.000Z", `${route} lastModified`);
     assert.equal(entry.changeFrequency, route === "/" ? "weekly" : "monthly", `${route} frequency`);
     assert.equal(
       entry.priority,
@@ -318,36 +318,62 @@ function colorVariable(css, name) {
   return value;
 }
 
-test("homepage follows the approved calm funnel", async () => {
+test("homepage welcomes every guest and follows the approved calm funnel", async () => {
   const html = await readRoute("/");
   const text = visibleText(html);
   assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
-  for (const id of ["start", "lessons", "boracay", "services", "story", "questions", "contact"]) {
+  for (const id of ["start", "choose", "boracay", "services", "story", "questions", "contact"]) {
     assert.match(html, new RegExp(`id=["']${id}["']`));
   }
+  assert.match(text, /Welcome to Hangin Kite Center\./);
   assert.match(text, /Kitesurfing here since 2002\./);
-  assert.match(text, /Your first kite lesson/);
+  assert.match(text, /What brings you to Bulabog\?/);
   assert.match(text, /Leave the board bag at home\./);
   assert.match(text, /Tell us when you're coming\./);
   assert.doesNotMatch(text, /book now|limited|don't miss|once-in-a-lifetime/i);
 });
 
-test("homepage service paths expose real headings", async () => {
+test("homepage gives beginners and experienced riders equal first choices", async () => {
   const html = await readRoute("/");
-  const lessons = html.match(
-    /<section\b[^>]*id=["']lessons["'][^>]*>[\s\S]*?<\/section>/i,
+  const choices = html.match(
+    /<section\b[^>]*id=["']choose["'][^>]*>[\s\S]*?<\/section>/i,
   )?.[0];
-  assert.ok(lessons, "missing lessons section");
+  assert.ok(choices, "missing guest choice section");
 
-  const headings = [...lessons.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)].map(
+  const headings = [...choices.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)].map(
     (match) => visibleText(match[1]),
   );
   assert.deepEqual(headings, [
-    "Your first kite lesson",
-    "Board starts and first rides",
-    "Progression sessions",
-    "Full equipment rental",
+    "Learn to kitesurf",
+    "Sort out your gear",
+    "Stay by the spot",
+    "Ask about a kite safari",
   ]);
+
+  const paths = [...choices.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)]
+    .filter((match) => /<h3\b/i.test(match[2]))
+    .map((match) => [visibleText(match[2].match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/i)[1]), attribute(`<a ${match[1]}>`, "href")]);
+  assert.deepEqual(paths, [
+    ["Learn to kitesurf", "/kitesurfing-lessons/"],
+    ["Sort out your gear", "/rentals-storage/"],
+    ["Stay by the spot", "/accommodation/"],
+    ["Ask about a kite safari", "/kite-safaris/"],
+  ]);
+});
+
+test("homepage hero keeps WhatsApp as its single action", async () => {
+  const html = await readRoute("/");
+  const hero = html.match(
+    /<section\b[^>]*id=["']start["'][^>]*>[\s\S]*?<\/section>/i,
+  )?.[0];
+  assert.ok(hero, "missing homepage hero");
+
+  const hrefs = tags(hero, "a")
+    .filter((tag) => /class=["'][^"']*button\b/i.test(tag))
+    .map((tag) => attribute(tag, "href"))
+    .filter((href) => href !== undefined);
+  assert.equal(hrefs.length, 1);
+  assert.match(hrefs[0], /^https:\/\/wa\.me\/639380101849\?text=/);
 });
 
 test("uncertain FAQ details point visitors to WhatsApp", async () => {

@@ -18,6 +18,8 @@ export const routeLabels: Record<PublicRoute, string> = {
   "/kitesurfing-boracay/": "Boracay",
   "/about/": "About",
   "/contact/": "Contact",
+  "/terms/": "Website inquiries",
+  "/accessibility/": "Accessibility",
 };
 
 const desktopRoutes: PublicRoute[] = [

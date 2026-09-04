@@ -25,6 +25,18 @@ export function SiteFooter() {
           <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
         </address>
       </div>
+      <div className={`shell ${styles.footerNotes}`}>
+        <p id="message-guidance">
+          WhatsApp opens in a new tab with a draft message. You choose whether to
+          send the chat message to Hangin. Keep your first message brief.
+          Ask how to share health or identity information before
+          sending it.
+        </p>
+        <p>
+          Images are owned by or licensed for use by Hangin Kite Center.
+          Photographs show Boracay; artwork is illustration. <a href="/images/ATTRIBUTION.md">Image credits</a>.
+        </p>
+      </div>
       <div className={`shell ${styles.footerBase}`}>
         <span>{siteConfig.name}</span>
         <span>Est. {siteConfig.established}</span>

@@ -110,7 +110,7 @@
 
 .heroImage {
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 15rem;
   display: block;
   aspect-ratio: 5 / 3;
@@ -126,7 +126,7 @@
 
 .photoCredit {
   padding-top: 0.5rem;
-  color: color-mix(in srgb, var(--ocean) 74%, transparent);
+  color: var(--ocean);
   font-size: 0.68rem;
   line-height: 1.45;
 }
@@ -135,7 +135,8 @@
   text-underline-offset: 0.15em;
 }
 
-.about .photoCredit {
+.about .photoCredit,
+.safaris .photoCredit {
   color: var(--sand);
 }
 
@@ -228,6 +229,39 @@
 .about .serviceSection:first-child {
   border-top: 0;
   background: color-mix(in srgb, var(--lagoon) 14%, var(--sun));
+}
+
+.safetySection {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  border-block: 1px solid var(--ocean);
+  background: var(--lagoon);
+  color: var(--ocean);
+}
+
+.safetyGrid {
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.safetyGrid h2 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+}
+
+.safetyCopy {
+  border-top: 1px solid currentColor;
+}
+
+.safetyCopy p {
+  max-width: 42rem;
+  margin: 0;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid currentColor;
+  line-height: 1.7;
 }
 
 .faqSection {
@@ -358,24 +392,6 @@
     grid-template-columns: minmax(0, 1.12fr) minmax(20rem, 0.88fr);
   }
 
-  .safaris .heroCopy {
-    order: 2;
-  }
-
-  .safaris .heroFigure {
-    order: 1;
-  }
-
-  .shop .heroCopy,
-  .about .heroCopy {
-    order: 2;
-  }
-
-  .shop .heroFigure,
-  .about .heroFigure {
-    order: 1;
-  }
-
   .heroCopy h1 {
     max-width: 10ch;
     font-size: clamp(4.5rem, 6.3vw, 5.6rem);
@@ -440,6 +456,7 @@
   }
 
   .faqGrid,
+  .safetyGrid,
   .contactGrid {
     grid-template-columns: minmax(17rem, 0.75fr) minmax(0, 1.25fr);
   }

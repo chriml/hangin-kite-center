@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return {
       url: absoluteUrl(route),
-      lastModified: new Date("2026-08-29"),
+      lastModified: new Date("2026-09-04"),
       changeFrequency: isHomepage ? "weekly" : "monthly",
       priority: isHomepage ? 1 : isPrimaryGuide ? 0.9 : 0.7,
     };
