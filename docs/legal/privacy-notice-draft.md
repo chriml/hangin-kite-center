@@ -74,3 +74,7 @@ The WhatsApp and email links work only when you choose them. They open WhatsApp 
 - If UK GDPR applies, use the corresponding UK requirements and current ICO guidance.
 
 See `eu-uk-privacy-assessment.md` for the territorial analysis and official sources.
+
+## Internal completion instruction: DPO contact
+
+For the verified Philippine DPO or individual controller acting as de facto DPO, supply the title/designation, postal address, dedicated telephone number and dedicated email address before publication. Confirm confidential access and actual responsibility. This is an internal field request, not a public appointment or invented address. The separate EU/UK DPO assessment does not replace the Philippine designation. Source: [NPC Advisory 2017-01, pp. 4–5 and 8–9](https://privacy.gov.ph/wp-content/uploads/2022/01/NPC-Advisory-2017-01-sgd.pdf), rechecked 2026-09-05.

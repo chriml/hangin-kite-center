@@ -1,6 +1,6 @@
 # Image attribution
 
-The proof photographs below document Boracay and Bulabog Beach. They do not depict Hangin staff, facilities, or equipment. The generated files are decorative illustrations, not documentary photographs.
+These photographs provide context for Boracay and Bulabog Beach. They are not presented as photographs of Hangin staff, facilities, or equipment. The generated files are decorative illustrations, not documentary photographs.
 
 Responsive 900px derivatives inherit the source and license of their full-size files: `proof/boracay-kitesurf-school-900.webp`, `proof/bulabog-beach-aerial-900.webp`, `proof/boracay-kitesurfing-900.webp`, `generated/kite-gear-sunprint-900.webp`, `generated/kite-safari-sunprint-900.webp`, and `generated/island-stay-sunprint-900.webp`.
 

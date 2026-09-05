@@ -9,7 +9,7 @@ Build, verify, release, observe, and roll back one immutable static artifact thr
 
 ## Current boundary
 
-The deployable output is `out/`. The repository contains no checked-in CI workflow, hosting configuration, redirect/header policy, preview setup, environment definition, synthetic monitoring, release record, or incident runbook. The README lists generic build/preview commands, but production host, DNS, TLS, and rollback behavior are not recorded.
+The deployable output is `out/`. The repository includes a Cloudflare-compatible `public/_headers` policy, a consolidated deployment privacy audit, an internal Cloudflare privacy/security runbook and a local review-remediation record. Applied production configuration, CI, redirects, preview setup, environment definitions, monitoring and an actual production release/rollback record remain unverified or absent. The README lists generic build/preview commands, but production host, DNS, TLS, and rollback behavior are not recorded.
 
 The application is a static export. Redirects, response headers, authentication for previews, logs, atomic publishing, and rollback are host responsibilities.
 

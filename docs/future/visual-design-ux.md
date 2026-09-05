@@ -97,7 +97,7 @@ Visual snapshots should cover every public route at mobile and desktop. Keep bas
 ## Acceptance criteria
 
 - The active visual specification has an explicit status, owner, and relationship to older designs and tests.
-- All nine routes share an intentional shell and token system while preserving page-specific hierarchy.
+- All published routes from `publicRoutes` share an intentional shell and token system while preserving page-specific hierarchy.
 - There is no horizontal overflow at required viewports; content remains usable at text resize and zoom.
 - Navigation, disclosures, contact actions, current state, and focus are keyboard and screen-reader understandable.
 - Actual palette/state combinations meet the accepted WCAG 2.2 AA target, with no conformance claim based only on automation.

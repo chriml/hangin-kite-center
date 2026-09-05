@@ -423,14 +423,6 @@
     gap: clamp(3rem, 8vw, 9rem);
   }
 
-  .serviceSection:nth-child(even) {
-    grid-template-columns: minmax(0, 1.12fr) minmax(17rem, 0.88fr);
-  }
-
-  .serviceSection:nth-child(even) h2 {
-    order: 2;
-  }
-
   .rentals .serviceSection:nth-child(2) {
     margin-inline: calc((100vw - var(--content)) / -2);
     padding-inline: max(1rem, calc((100vw - 1180px) / 2));

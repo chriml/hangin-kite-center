@@ -9,11 +9,11 @@ Make each release reproducible and provide evidence that all public routes work 
 
 ## Current boundary
 
-The repository has linting, TypeScript checks, a static production export, and 40 Node tests covering route/artifact contracts, metadata, JSON-LD, links, contact destinations, headings, image records/provenance, selected contrast pairs, and public-writing rules.
+The repository has linting, TypeScript checks, a static production export, and a current Node test suite covering route/artifact contracts, metadata, JSON-LD, links, contact destinations, headings, image records/provenance, selected contrast pairs, and public-writing rules.
 
 Those tests read `out/`. Running `npm test` without a fresh build can pass stale HTML. They parse static artifacts and cannot establish computed layout, browser errors, accessible names, focus visibility, keyboard order, zoom/reflow, target size, screen-reader behavior, animation, or field performance.
 
-There is no CI workflow, Playwright, axe, Lighthouse, visual regression, or deployed smoke suite. On 2026-09-04 lint and typecheck passed, a webpack export succeeded, and 40 tests passed. The default Turbopack build failed only in the restricted agent sandbox because internal worker process/port creation was denied; normal CI must test the default build.
+There is no persistent browser/axe/Lighthouse or visual-regression CI pipeline. The consolidated export and deployed privacy audits are checked in. The [review-remediation report](../operations/review-remediation-2026-09-04.md) records one-time browser/axe checks, a successful default Turbopack build and 105 tests, with exact limits. It supersedes the pre-integration nine-route/40-test webpack baseline; normal CI should still test the project default.
 
 ## Quality model
 
@@ -46,7 +46,7 @@ Adopt Playwright against a production-like static server serving the exact expor
 
 Required checks:
 
-- Every one of the nine routes and the custom 404 loads without page or console errors.
+- Every route declared in `publicRoutes` and the custom 404 loads without page or console errors.
 - Internal links, header/footer navigation, current state, breadcrumbs, skip link, mobile menu, FAQ disclosures, WhatsApp, email, and telephone work.
 - Core content and contact paths work with JavaScript disabled.
 - Accessible names, roles, expanded/current states, landmarks, headings, and focus order are coherent.

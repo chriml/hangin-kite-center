@@ -1,7 +1,7 @@
 # Hangin project documentation
 
 Status: Current documentation index
-Last verified: 2026-09-04
+Last verified: 2026-09-05
 
 This directory separates what the site does now from what it may do later. That distinction is required for both people and coding agents: a proposed feature must never be treated as an implemented fact.
 
@@ -72,3 +72,6 @@ These are internal research, readiness and owner-intake records, not published t
 - [Privacy and tracking assessment](privacy-tracking-compliance.md)
 - [Integrated remediation and verification](operations/review-remediation-2026-09-04.md)
 - [Audit implementation and limits](../scripts/README.md)
+
+- [Offene Fragen und Klärungen](operations/offene-fragen-und-klaerungen.md)
+- [Thread follow-up and execution, 2026-09-05](operations/thread-followup-2026-09-05.md)

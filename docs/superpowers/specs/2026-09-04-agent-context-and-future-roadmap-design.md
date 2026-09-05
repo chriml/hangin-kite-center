@@ -90,7 +90,7 @@ Each brief uses the same structure: intended outcome, current boundary, recommen
 
 ### Preserve the static core
 
-The current App Router build exports nine public routes to `out/`, contains no `"use client"` components, and has no runtime third-party integration. Content, navigation, metadata, proof media, and direct contact should continue to work as static HTML. Runtime secrets, webhooks, live availability, customer data, and order state belong in a hosted provider or isolated service.
+The App Router build exports all public routes declared in `content/site.ts` to `out/` (eleven after the review remediation), contains no `"use client"` components, and has no runtime third-party integration. Content, navigation, metadata, proof media, and direct contact should continue to work as static HTML. Runtime secrets, webhooks, live availability, customer data, and order state belong in a hosted provider or isolated service.
 
 Changing the whole site to a server runtime requires a separate ADR and evidence that a smaller boundary cannot meet the need.
 

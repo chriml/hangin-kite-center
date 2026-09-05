@@ -18,8 +18,8 @@ The established year 2002, IKO and VDWS instruction and service categories remai
 ## Blockers for a complete public notice
 
 - [ ] Confirm the registered owner or legal entity operating Hangin Kite Center. Record the exact legal name, any registered trade name, business type and service address.
-- [ ] Name the Philippine personal information controller and the person or role handling privacy requests. Confirm whether a DPO is appointed or legally required; do not invent the title.
-- [ ] Provide a monitored privacy email address and postal contact. Decide whether the current Gmail address is suitable for rights requests.
+- [ ] Name the Philippine personal information controller and the person or role handling privacy requests. Record the actual Philippine DPO designation, or the individual controller acting as de facto DPO. This Philippine designation is separate from the EU/UK DPO applicability assessment below; do not invent a person or title.
+- [ ] Provide the DPO title/designation, postal address, dedicated telephone number and dedicated monitored email address. Confirm confidential access and the actual role; do not substitute an ordinary sales inbox without review. See [NPC Advisory 2017-01, pp. 4–5 and 8–9](https://privacy.gov.ph/wp-content/uploads/2022/01/NPC-Advisory-2017-01-sgd.pdf), rechecked 2026-09-05.
 - [ ] Inventory every place visitor or customer data is held: Cloudflare, email, WhatsApp, phones, laptops, shared drives, calendars, paper notes, accounting, booking, payment and accommodation systems.
 - [ ] Set a defensible retention rule for each data type. Include inquiries that do not book, customer and booking records, payment records, waivers, incident records, marketing consent and suppression lists.
 - [ ] Confirm the lawful purpose and Philippine legal basis for each use. If EU or UK scope is triggered, document an Article 6 or UK GDPR lawful basis separately.

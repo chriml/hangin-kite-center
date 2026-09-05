@@ -33,7 +33,7 @@ The current static HTML includes English language metadata, a skip link, semanti
 
 Automated artifact tests cannot verify computed layout, accessible names in a browser, focus visibility, keyboard order, zoom, screen readers, forced colors, real target sizes, or runtime errors. No Playwright, axe, Lighthouse, or visual-regression suite exists yet.
 
-The future target is WCAG 2.2 AA for every complete public page and revealed interactive state. Automated scans are regression tools only. A conformance claim requires manual keyboard, zoom, reading-order, contrast, content, and assistive-technology review.
+The current engineering target is WCAG 2.2 AA for every complete public page and revealed interactive state. Automated scans are regression tools only. A conformance claim requires manual keyboard, zoom, reading-order, contrast, content, and assistive-technology review.
 
 ## Media baseline
 

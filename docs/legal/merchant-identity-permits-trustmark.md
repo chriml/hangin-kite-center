@@ -56,3 +56,7 @@ The maintainer prepares the replacement/removal on an isolated branch, builds fr
 ## Verification and open gates
 
 Completed: current facts read, source evidence table, BIR page inspection, Trustmark contradiction record, exact intake and static lifecycle design. No owner documents, authority accounts, permit databases or deployed badges were inspected. No tax or permit application was filed. Business coverage and public credential values remain blocked on the named evidence. Future UI implementation needs fresh export tests, readable badge/QR review, accessible link text, absence of full registration documents in `out/`, and authorized deployment verification.
+
+## Related evidence
+
+See the [written-resolution record for the Trustmark conflict](compliance-matrix.md#trustmark-conflict-requiring-written-resolution), the DOT/LGU entries in the [master compliance matrix](compliance-matrix.md), and the [source corrections and retrieval limits](integration-corrections-sources.md). These supplement this intake without adopting a business-specific registration conclusion.
