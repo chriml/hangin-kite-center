@@ -32,7 +32,23 @@ The default Turbopack build failed in the restricted Codex sandbox because an in
 
 ## Deployment state
 
-The deployable artifact is `out/`. The repository currently contains no CI workflow and no checked-in configuration for a hosting provider, CDN, DNS, redirects, security headers, cache policy, previews, artifact provenance, monitoring, or rollback.
+The deployable artifact is `out/`. The owner connected Cloudflare Pages to GitHub and requested a checked-in Wrangler configuration on 2026-09-13. [`../../wrangler.toml`](../../wrangler.toml) declares the Pages output directory and compatibility date. Its project name defaults to the repository name, `hangin-kite-center`; confirm that this matches the connected Pages project before deployment.
+
+For the Git integration, keep the build command set to `npm run build` and the root directory at the repository root in the Cloudflare dashboard. Wrangler's `pages_build_output_dir = "./out"` selects the artifact to upload; it does not run the build. The deployed revision must also contain `output: "export"` in `next.config.ts`, which makes Next.js create that directory. Files under `public/`, including optimized images, are included in the export. The original `images/` archive is outside the public export.
+
+The configuration is for static Pages hosting with no Functions, Worker entry point, runtime bindings, or Node.js compatibility flag. No Wrangler dependency or deployment script is required for the connected Git build. Local Wrangler state is ignored through `.gitignore`.
+
+Cloudflare's [Pages Wrangler configuration reference](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) and [static Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) were consulted on 2026-09-13. For an existing Pages project with runtime bindings or other dashboard configuration, compare or download that configuration before adopting this file. No Cloudflare dashboard settings or production deployment were changed as part of this repository setup.
+
+The repository still contains no CI workflow or checked-in configuration for DNS, redirects, security headers, cache policy, artifact provenance, monitoring, or rollback.
+
+### Wrangler setup verification, 2026-09-13
+
+- Base and HEAD: `c49ba0c95b1a1f36a538f07915b00fc541ea6845`, branch `codex/cloudflare-pages-config`; configuration changes remain uncommitted for owner review. Scope: `wrangler.toml`, `.gitignore`, and this document. Concurrent kite-size-guide edits are outside this setup.
+- `npm run verify` exited 0: lint, typecheck, fresh Turbopack static export, and all 59 tests passed before the concurrent guide edits. The export contained 236 files; the largest was 1,271,210 bytes.
+- Wrangler 4.131.1, run through temporary `npm exec` without changing dependencies, accepted the configuration. Port 4175 was occupied; the local preview started successfully on 49199. It was stopped after verification.
+- Local HTTP checks exited 0: `/`, `/about/`, robots, and sitemap returned 200; `/about` redirected to `/about/` and `/index.html` to `/` with 308; a missing route returned 404. HTML headers used revalidation, the 404 used `no-store`, and the homepage retained its production canonical. The initial check script needed an explicit 308 expectation because Python's client did not follow that status automatically.
+- Independent review found no actionable issues. `git diff --check` exited 0. Live HTTPS, domain redirects, production headers, dashboard settings, and the connected project name were not verified because no production deployment was requested. No push or deployment was performed.
 
 Before launch, the host must independently verify:
 
@@ -48,4 +64,4 @@ The future provider-neutral delivery contract is in [`../future/deployment-opera
 
 ## Operational ownership not yet recorded
 
-The repository does not identify the production host, registrar, DNS owner, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
+Cloudflare Pages is the selected hosting provider. The exact connected project name and live deployment remain unverified. The repository does not identify the registrar, DNS owner, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.

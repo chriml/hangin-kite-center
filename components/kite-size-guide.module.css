@@ -16,7 +16,7 @@
 .field label { font-weight: 800; font-size: .85rem; }
 .field input, .field select { width: 100%; min-width: 0; max-width: 100%; min-height: 3rem; border: 1px solid var(--ocean); border-radius: .2rem; padding: .75rem; background: var(--sun); color: var(--ink); font: inherit; font-size: 1rem; }
 .weightFields { display: grid; grid-template-columns: minmax(0, 1fr) 5rem; gap: .75rem; }
-.travelPeriod { display: grid; grid-template-columns: minmax(0, 1fr) 7.25rem; gap: .75rem; }
+.travelPeriod { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
 .help { margin: 0; font-size: .8rem; line-height: 1.75; }
 .weightFields + .help { margin-top: -1rem; }
 .fields button { gap: 1rem; cursor: pointer; }

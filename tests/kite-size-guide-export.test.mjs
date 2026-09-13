@@ -9,10 +9,11 @@ test("kite guide exports useful content, labelled inputs and a no-JavaScript fal
   assert.match(text, /60 to 120 kg/);
   assert.match(text, /Airush kite size chart/);
   assert.match(html, /<noscript>/);
-  for (const id of ["rider-weight", "weight-unit", "arrival-month", "arrival-year", "departure-month", "departure-year", "rider-level"]) {
+  for (const id of ["rider-weight", "weight-unit", "arrival-month", "departure-month", "rider-level"]) {
     assert.match(html, new RegExp(`for="${id}"`));
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  assert.doesNotMatch(html, /id="(?:arrival|departure)-year"/);
   for (const input of [...tags(html,"input"),...tags(html,"select")]) {
     assert.equal(attribute(input,"name"), undefined, "rider data is never submitted as URL fields");
   }

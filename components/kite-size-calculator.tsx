@@ -14,9 +14,7 @@ export function KiteSizeCalculator() {
   const [weight, setWeight] = useState("");
   const [unit, setUnit] = useState<WeightUnit>("kg");
   const [arrivalMonth, setArrivalMonth] = useState("");
-  const [arrivalYear, setArrivalYear] = useState("");
   const [departureMonth, setDepartureMonth] = useState("");
-  const [departureYear, setDepartureYear] = useState("");
   const [level, setLevel] = useState<RiderLevel | "">("");
   const [result, setResult] = useState<KiteGuideResult | null>(null);
   const resultHeading = useRef<HTMLHeadingElement>(null);
@@ -36,13 +34,7 @@ export function KiteSizeCalculator() {
   function calculate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!level) return;
-    const arrival = `${arrivalYear}-${arrivalMonth}-01`;
-    const departure = `${departureYear}-${departureMonth}-01`;
-    if (departure < arrival) {
-      setResult({ status: "invalid", message: "Choose a departure month on or after your arrival month. Check the years if your trip crosses New Year." });
-      return;
-    }
-    setResult(getKiteGuide({ weight: Number(weight), unit, arrival, departure, level }));
+    setResult(getKiteGuide({ weight: Number(weight), unit, arrivalMonth: Number(arrivalMonth), departureMonth: Number(departureMonth), level }));
   }
 
   return (
@@ -66,7 +58,7 @@ export function KiteSizeCalculator() {
             </div>
           </div>
           <p id="weight-help" className={styles.help}>For adults from 60 to 120 kg (about 132 to 265 lb).</p>
-          <p id="travel-help" className={styles.help}>Choose the month and year for each end of your trip.</p>
+          <p id="travel-help" className={styles.help}>Choose the first and last month of your trip. December to January works too.</p>
           <div className={styles.travelPeriod}>
             <div className={styles.field}>
               <label htmlFor="arrival-month">Arrival month</label>
@@ -76,21 +68,11 @@ export function KiteSizeCalculator() {
               </select>
             </div>
             <div className={styles.field}>
-              <label htmlFor="arrival-year">Arrival year</label>
-              <input id="arrival-year" type="text" inputMode="numeric" pattern="[0-9]{4}" maxLength={4} placeholder="YYYY" title="Enter a four-digit year, such as 2027" required value={arrivalYear} onChange={event => setArrivalYear(event.target.value)} />
-            </div>
-          </div>
-          <div className={styles.travelPeriod}>
-            <div className={styles.field}>
               <label htmlFor="departure-month">Departure month</label>
               <select id="departure-month" required value={departureMonth} onChange={event => setDepartureMonth(event.target.value)} aria-describedby="travel-help">
                 <option value="" disabled>Choose month</option>
                 {months.map((month, index) => <option key={month} value={String(index + 1).padStart(2, "0")}>{month}</option>)}
               </select>
-            </div>
-            <div className={styles.field}>
-              <label htmlFor="departure-year">Departure year</label>
-              <input id="departure-year" type="text" inputMode="numeric" pattern="[0-9]{4}" maxLength={4} placeholder="YYYY" title="Enter a four-digit year, such as 2027" required value={departureYear} onChange={event => setDepartureYear(event.target.value)} />
             </div>
           </div>
           <div className={styles.field}>

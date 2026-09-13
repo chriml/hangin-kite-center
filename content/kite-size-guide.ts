@@ -15,8 +15,8 @@ export type WeightUnit = "kg" | "lb";
 export type KiteGuideInput = {
   weight: number;
   unit: WeightUnit;
-  arrival: string;
-  departure: string;
+  arrivalMonth: number;
+  departureMonth: number;
   level: RiderLevel;
 };
 
@@ -60,35 +60,30 @@ const levelNotes: Record<RiderLevel, string> = {
   advanced: "These are general freeride ranges on a twin-tip. Foiling, unhooked freestyle and big-air setups need a separate discussion. Experience alone is no reason to take a larger kite.",
 };
 
-function parseDate(value: string): Date | null {
-  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
-  const date = new Date(`${value}T00:00:00Z`);
-  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value ? date : null;
+function isMonth(value: number): boolean {
+  return Number.isInteger(value) && value >= 1 && value <= 12;
 }
 
-function tripSeason(arrival: Date, departure: Date): Season {
-  const firstMonth = arrival.getUTCFullYear() * 12 + arrival.getUTCMonth();
-  const lastMonth = departure.getUTCFullYear() * 12 + departure.getUTCMonth();
+function tripSeason(arrivalMonth: number, departureMonth: number): Season {
+  const monthCount = (departureMonth - arrivalMonth + 12) % 12;
   const seasons = new Set<"amihan" | "habagat" | "transition">();
-  // Twelve consecutive months cover all seasons, even on multi-year trips.
-  for (let offset = 0; offset <= Math.min(lastMonth - firstMonth, 11); offset++) {
-    const month = (firstMonth + offset) % 12;
+  // An earlier departure month rolls into the next year; equal months mean one month.
+  for (let offset = 0; offset <= monthCount; offset++) {
+    const month = (arrivalMonth - 1 + offset) % 12;
     seasons.add(month === 4 ? "transition" : month >= 5 && month <= 9 ? "habagat" : "amihan");
   }
   return seasons.size === 1 ? seasonNotes[[...seasons][0]] : seasonNotes.mixed;
 }
 
 export function getKiteGuide(input: KiteGuideInput): KiteGuideResult {
-  const arrival = parseDate(input.arrival);
-  const departure = parseDate(input.departure);
   if (!Number.isFinite(input.weight) || input.weight <= 0 || !["kg", "lb"].includes(input.unit)
     || !riderLevels.some(level => level.value === input.level)
-    || !arrival || !departure || departure < arrival) {
-    return { status: "invalid", message: "Enter your weight, riding level and valid travel dates. Departure must be on or after arrival." };
+    || !isMonth(input.arrivalMonth) || !isMonth(input.departureMonth)) {
+    return { status: "invalid", message: "Enter your weight and riding level, then choose your arrival and departure months." };
   }
 
   const weightKg = Math.round((input.unit === "lb" ? input.weight * 0.45359237 : input.weight) * 100) / 100;
-  const season = tripSeason(arrival, departure);
+  const season = tripSeason(input.arrivalMonth, input.departureMonth);
   const levelNote = levelNotes[input.level];
   if (weightKg < 60 || weightKg > 120) {
     return { status: "team-check", season, levelNote,
