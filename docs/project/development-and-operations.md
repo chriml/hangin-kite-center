@@ -76,3 +76,8 @@ The [September 4 remediation report](../operations/review-remediation-2026-09-04
 ## GEO implementation, 2026-09-13
 
 The [GEO release runbook](../operations/2026-09-13-geo-discovery.md) records the isolated implementation, crawler and map changes, current platform controls, directory correction draft and pending external actions. The [manual query baseline](../operations/geo-query-baseline.json) contains neutral prompts with no fabricated results. The permanent domain was confirmed by the owner, but DNS resolution and live hosting remain unverified for release. No analytics, account changes, external messages or deployment were added.
+
+
+## Browser-reporting audit coverage, 2026-09-13
+
+The local and deployed privacy audits now reject unreviewed browser reporting and attribution declarations. They inspect Reporting-Endpoints, Report-To, NEL, Attribution Reporting registration headers, and CSP reporting directives, including comma-combined policies. Local coverage includes the exported Cloudflare `_headers` file; deployed coverage includes redirects and final responses. Reports omit header values and retain sanitized locations. The checked-in header policy itself is unchanged. See [audit tooling](../../scripts/README.md) and the [combined investigation](../operations/2026-09-13-multi-investigator-review.md) for tests and deployment limits.

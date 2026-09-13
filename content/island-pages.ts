@@ -208,7 +208,7 @@ export const islandPages = {
     contact: {
       eyebrow: "Contact",
       heading: "Tell us about your stay.",
-      body: "Let's make it unforgettable. Contact us with any needs, ideas or requests for your time on Boracay, whether you're coming to learn, ride or spend time by the beach. We'll do our best to accommodate you and help you work out the details.",
+      body: "Send your Boracay dates, riding level and what you need, such as lessons, rental, storage, accommodation, shop gear or a kite safari. We'll reply within one day with the current details.",
     },
     schema: "about",
     sections: [

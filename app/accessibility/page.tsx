@@ -1,6 +1,7 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { JsonLd } from "@/components/json-ld";
 import { siteConfig } from "@/content/site";
-import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import styles from "../terms/terms.module.css";
 
 const title = "Using this website";
@@ -13,6 +14,14 @@ export const metadata = buildMetadata({
 export default function AccessibilityPage() {
   return (
     <main id="main-content" tabIndex={-1} className={styles.page}>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: title, item: absoluteUrl("/accessibility/") },
+        ],
+      }} />
       <div className={`shell ${styles.breadcrumbs}`}><Breadcrumbs current={title} /></div>
       <header className={styles.hero}>
         <div className={`shell ${styles.heroGrid}`}>

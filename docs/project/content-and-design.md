@@ -477,3 +477,8 @@ Rental safety CTA, 2026-09-13: the owner requested a contact button in “Before
 The owner shortened the homepage H1 to “If the wind is up, we’re out.” and removed the shared footer’s WhatsApp draft-message guidance paragraph. Its wrapper, unused styles and all `aria-describedby="message-guidance"` references are removed. WhatsApp links retain their explicit new-tab accessible labels, normal destinations and safe external-link attributes. Contact and safety guidance on the dedicated pages is unchanged. Earlier records quoting the longer headline or global footer guidance describe previous versions.
 
 Verification: `npm run verify` exited 0 with lint, typecheck, a fresh production export, all 138 tests passing and no static privacy-audit findings (log `/tmp/hangin-copy-removal-verify.log`). Desktop and 390-pixel mobile screenshots confirmed both removals; the mobile page had no horizontal overflow and no remaining reference to the removed paragraph. Independent scoped review and `git diff --check` passed. Base and HEAD are `62169100da94eaeb42c0975842fa3b7db0ca6799`; these edits remain uncommitted, with unrelated calculator work preserved. No deployment or full accessibility audit was performed.
+
+
+## GEO content review, 2026-09-13
+
+The About contact section now asks for Boracay dates, riding level and the service needed, followed by the existing owner-confirmed one-day reply commitment. It replaces a generic invitation without changing the section design or contact destination. The practical Boracay Q&A includes its existing official tourism sources using the same Further reading treatment as the other guide topics. The [combined investigation](../operations/2026-09-13-multi-investigator-review.md) records scope and verification.

@@ -107,3 +107,8 @@ The owner's latest clarification replaces the combined island guide and fragment
 `/terms/` provides website inquiry and complaint guidance; `/accessibility/` provides practical website and reporting guidance. `/legal/` remains the central asset-credit page. These routes do not establish unconfirmed booking policy, a complete privacy notice or an accessibility conformance claim. `public/_headers` supplies a Cloudflare-compatible static header policy alongside the existing `wrangler.toml`; other hosts must configure equivalent responses. This is a host artifact, not a Next runtime header API.
 
 `npm run audit:privacy` parses the fresh static export and compares framework assets with the matching build. The deployed audit compares an explicit origin against the local expected routes and indexable sitemap set, and checks response/redirect evidence. Parser dependencies are development-only. See [the audit documentation](../../scripts/README.md) for scope and limits.
+
+
+### Responsive image candidates, 2026-09-13
+
+`ResponsiveImage` supports an optional intermediate local image alongside the existing mobile and full-size candidates. Five large hero images now include a 1200-pixel WebP for high-density phones, preserving eager/high-priority hero loading and native lazy loading elsewhere. The files are build-time derivatives, not a runtime optimizer. `content/images.ts`, the attribution ledger and owner-media records retain dimensions and provenance. The [multi-investigator review](../operations/2026-09-13-multi-investigator-review.md) records measurement and verification.

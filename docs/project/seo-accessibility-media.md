@@ -97,3 +97,12 @@ Boracay topic pages, 2026-09-13: Places to be, Things to do, Planning your days 
 Inquiry/complaint and accessibility guidance are restored from the review branch as `/terms/` and `/accessibility/`, with their own metadata and sitemap entries. The twenty-one public routes include four existing noindex holding pages; the indexable sitemap therefore contains seventeen routes. Current owner photographs, centralized asset credits, pending-page indexing and Boracay subpages are preserved.
 
 The September 4 media/accessibility audits describe their source revision. Their old stock-photo inventory and on-page caption assumptions are superseded by the current owner-media ledger and `/legal/` credits. Older test counts and browser results remain dated evidence; see the [branch integration report](../operations/2026-09-13-branch-integration.md) for checks of the merged site. No production HTTP behavior or legal conclusions were revalidated merely by merging these records.
+
+
+## Focused investigation, 2026-09-13
+
+Terms and Accessibility now emit the same Home/current-page `BreadcrumbList` pattern as their visible breadcrumbs. All twenty supporting routes are covered by a visible/structured breadcrumb regression check. The seventeen indexable URLs and four noindex holding pages are unchanged.
+
+The practical Boracay questions now expose the existing official tourism sources through the shared Further reading treatment. The About contact paragraph asks for trip dates, riding level and service needs and repeats the owner-confirmed one-day reply commitment. No new business fact, crawler file or schema type was introduced by the GEO content pass.
+
+Five large hero images now have 1200-pixel WebP candidates between their existing mobile and full-size files. Existing originals, desktop files, display crops and alt text are preserved. This addresses measured excess image selection on high-density phones. Performance figures remain local lab evidence, not field Core Web Vitals. See the [combined investigation](../operations/2026-09-13-multi-investigator-review.md) and linked domain reports.

@@ -34,6 +34,30 @@ export function addFinding(report, code, detail, location = {}) {
 const add = addFinding;
 export const digest = text => createHash('sha256').update(text).digest('hex');
 
+const browserReportingHeaders = [
+  'reporting-endpoints',
+  'report-to',
+  'nel',
+  'attribution-reporting-register-source',
+  'attribution-reporting-register-trigger',
+];
+
+export function auditHeaders({headers, url}) {
+  const report = result();
+  for (const name of browserReportingHeaders) {
+    if (headers.has(name)) add(report, 'unreviewed-browser-reporting', `${name} can enable browser reporting or attribution and requires owner review`, {url});
+  }
+  for (const name of ['content-security-policy', 'content-security-policy-report-only']) {
+    const policy = headers.get(name);
+    // CSP permits comma-delimited policy lists; directives within each policy are
+    // semicolon-delimited. Headers.get() may combine repeated fields with commas.
+    if (policy && /(?:^|[;,])\s*report-(?:to|uri)\b/i.test(policy)) {
+      add(report, 'unreviewed-browser-reporting', `${name} configures browser violation reporting and requires owner review`, {url});
+    }
+  }
+  return report;
+}
+
 function resource(report, value, url, kind, onResource) {
   try {
     const target = new URL(value, url);
@@ -235,6 +259,17 @@ export async function auditExport({root = process.cwd(), origin, expectedRoutes,
   let exported;
   try { exported = await files(out); } catch { add(report, 'missing-export', 'Export is missing or unreadable'); return report; }
   const allFiles = [...exported, ...await files(path.join(root, 'public'), true)];
+  const headerFile = path.join(out, '_headers');
+  try {
+    const headers = new Headers();
+    for (const line of (await readFile(headerFile, 'utf8')).split(/\r?\n/)) {
+      const declaration = line.match(/^\s+([^:]+):\s*(.*)$/);
+      if (declaration && !declaration[1].trimStart().startsWith('!')) headers.append(declaration[1].trim(), declaration[2]);
+    }
+    const inspected = auditHeaders({headers, url: origin});
+    for (const finding of inspected.findings) finding.file = headerFile;
+    merge(report, inspected);
+  } catch (error) { if (error.code !== 'ENOENT') throw error; }
   for (const file of allFiles) if (/\.(?:m?js|cjs)$/i.test(file)) {
     const relative = path.relative(out, file).split(path.sep).join('/');
     if (relative.startsWith('_next/static/') && !path.relative(out, file).startsWith('..')) {

@@ -16,6 +16,7 @@ This directory separates what the site does now from what it may do later. That 
 | Boracay spot guide | [`project/boracay-spot-guide-sources.md`](project/boracay-spot-guide-sources.md), then product and content documents above |
 | Boracay places and activities | [`project/boracay-island-guide-sources.md`](project/boracay-island-guide-sources.md), then product and content documents above |
 | Components, routes, content records, or Next.js | [`project/architecture.md`](project/architecture.md) |
+| Performance, SEO, GEO, or privacy investigation | [`operations/2026-09-13-multi-investigator-review.md`](operations/2026-09-13-multi-investigator-review.md), then the linked domain report |
 | GEO and AI-search discovery | [`operations/2026-09-13-geo-discovery.md`](operations/2026-09-13-geo-discovery.md), then current SEO contracts |
 | SEO, accessibility, or images | [`project/seo-accessibility-media.md`](project/seo-accessibility-media.md) |
 | Tests, builds, deployment, or incidents | [`project/development-and-operations.md`](project/development-and-operations.md) |

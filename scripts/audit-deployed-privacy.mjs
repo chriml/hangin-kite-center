@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { auditHtml, auditCss, auditExport, addFinding, reportUrl, digest, limitations, readSiteContract, sitemapRoutes } from './privacy-audit.mjs';
+import { auditHtml, auditCss, auditExport, auditHeaders, addFinding, reportUrl, digest, limitations, readSiteContract, sitemapRoutes } from './privacy-audit.mjs';
 
 // Only normalized media-type categories enter reports, never arbitrary header text.
 function responseType(response) {
@@ -32,6 +32,7 @@ export async function auditDeployment({origin, expectedRoutes, expectedIndexable
       if (response.headers.has('set-cookie')) add('set-cookie', 'Response sets a cookie; owner classification is required', url);
       if (response.headers.has('link')) add('unreviewed-link-header', 'HTTP Link resources require manual review', url);
       if (response.headers.has('refresh')) add('unreviewed-refresh-header', 'HTTP Refresh requires manual review', url);
+      report.findings.push(...auditHeaders({headers: response.headers, url}).findings);
       if ([301,302,303,307,308].includes(response.status)) {
         await response.body?.cancel();
         const location = response.headers.get('location');

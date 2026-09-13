@@ -90,6 +90,13 @@ test('scans standalone exported HTML and CSS', async t => {
   assert.ok(result.findings.some(f => f.code === 'authored-script'));
   assert.ok(result.findings.some(f => ['external-resource', 'unparsed-css'].includes(f.code)));
 });
+test('rejects browser reporting configured in the exported Cloudflare headers file without exposing values', async t => {
+  const root = await fixture(t, {...baseline, 'out/_headers': `/*\n  Reporting-Endpoints: default="https://collector.example/report?token=private-token"\n  Content-Security-Policy: default-src 'self'\n  Content-Security-Policy: report-uri https://collector.example/csp?token=private-token\n`});
+  const result = await auditExport({root, origin, expectedRoutes: ['/']});
+  assert.equal(result.findings.filter(f => f.code === 'unreviewed-browser-reporting').length, 2);
+  assert.ok(result.findings.every(f => f.file.endsWith('out/_headers')));
+  assert.ok(!JSON.stringify(result).includes('private-token'));
+});
 test('requires framework bundle bytes to match the local build and records their limitation', async t => {
   const root = await fixture(t, {...baseline, 'out/_next/static/chunks/a.js': 'framework()', '.next/static/chunks/a.js': 'different()'});
   const result = await auditExport({root, origin, expectedRoutes: ['/']});

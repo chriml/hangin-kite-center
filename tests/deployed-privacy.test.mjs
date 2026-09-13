@@ -37,6 +37,32 @@ test('checks Set-Cookie on every redirect response', async t => {
   assert.ok(result.findings.some(f => f.code === 'set-cookie' && f.url.endsWith('/contact/')));
   assert.ok(result.responses.some(r => r.url.endsWith('/contact-final/') && r.status === 200));
 });
+test('rejects browser reporting and attribution headers without exposing their values', async t => {
+  const privateValue = 'https://collector.example/report?token=private-token';
+  const headers = {
+    'Reporting-Endpoints': `default="${privateValue}"`,
+    'Report-To': JSON.stringify({group:'default', endpoints:[{url:privateValue}]}),
+    'NEL': JSON.stringify({report_to:'default', max_age:3600}),
+    'Attribution-Reporting-Register-Source': 'event-id=private-token',
+    'Attribution-Reporting-Register-Trigger': 'trigger-data=private-token',
+    'Content-Security-Policy-Report-Only': `default-src 'self'; report-uri ${privateValue}`,
+  };
+  const origin = await serve(t, {...clean, '/contact/':{status:302, headers:{Location:'/contact-final/', ...headers}}, '/contact-final/':{body:'<h1>Contact</h1>'}});
+  const result = await auditDeployment({origin, expectedRoutes:['/', '/contact/']});
+  assert.equal(result.findings.filter(f => f.code === 'unreviewed-browser-reporting').length, 6);
+  assert.ok(result.findings.every(f => f.url === origin + '/contact/'));
+  assert.ok(!JSON.stringify(result).includes('private-token'));
+});
+test('rejects reporting directives in an enforced content security policy', async t => {
+  const origin = await serve(t, {...clean, '/contact/':{body:'<h1>Contact</h1>', headers:{'Content-Security-Policy':"default-src 'self'; report-to csp"}}});
+  const result = await auditDeployment({origin, expectedRoutes:['/', '/contact/']});
+  assert.ok(result.findings.some(f => f.code === 'unreviewed-browser-reporting' && f.url === origin + '/contact/'));
+});
+test('rejects a reporting directive at a combined CSP policy boundary', async t => {
+  const origin = await serve(t, {...clean, '/contact/':{body:'<h1>Contact</h1>', headers:{'Content-Security-Policy':["default-src 'self'", 'report-uri https://collector.example/csp']}}});
+  const result = await auditDeployment({origin, expectedRoutes:['/', '/contact/']});
+  assert.ok(result.findings.some(f => f.code === 'unreviewed-browser-reporting' && f.url === origin + '/contact/'));
+});
 test('rejects incomplete routes hidden by redirects to the homepage', async t => {
   const origin = await serve(t, {...clean, '/contact/':{status:302, headers:{Location:'/'}}});
   const result = await auditDeployment({origin, expectedRoutes:['/', '/contact/']});

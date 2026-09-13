@@ -34,10 +34,14 @@
       "mobileSrc": "/images/owner/two-smiling-people-with-kite-control-bar-in-shallows-900.webp",
       "mobileWidth": 900,
       "mobileHeight": 600,
+      "mediumSrc": "/images/owner/two-smiling-people-with-kite-control-bar-in-shallows-1200.webp",
+      "mediumWidth": 1200,
+      "mediumHeight": 800,
       "alt": "Two smiling people holding a kite control bar in the shallows",
       "caption": "A moment in the shallows with the kite control bar.",
       "bytes": 107988,
       "mobileBytes": 37644,
+      "mediumBytes": 56310,
       "transformation": "Auto-oriented, resized without crop, converted to WebP; source metadata removed."
     },
     {
@@ -51,10 +55,14 @@
       "mobileSrc": "/images/owner/group-portrait-outside-hangin-kite-center-900.webp",
       "mobileWidth": 900,
       "mobileHeight": 437,
+      "mediumSrc": "/images/owner/group-portrait-outside-hangin-kite-center-1200.webp",
+      "mediumWidth": 1200,
+      "mediumHeight": 582,
       "alt": "Seven people outside Hangin Kite Center beneath the shop sign",
       "caption": "Outside Hangin Kite Center.",
       "bytes": 360340,
       "mobileBytes": 103888,
+      "mediumBytes": 174984,
       "transformation": "Auto-oriented, resized without crop, converted to WebP; source metadata removed."
     },
     {
@@ -187,10 +195,14 @@
       "mobileSrc": "/images/owner/colorful-kites-above-bay-and-green-hillside-900.webp",
       "mobileWidth": 900,
       "mobileHeight": 600,
+      "mediumSrc": "/images/owner/colorful-kites-above-bay-and-green-hillside-1200.webp",
+      "mediumWidth": 1200,
+      "mediumHeight": 800,
       "alt": "Colorful kites and riders across the bay beside a green hillside in Boracay",
       "caption": "Kites and riders across the Boracay lagoon.",
       "bytes": 200802,
       "mobileBytes": 54766,
+      "mediumBytes": 93700,
       "transformation": "Auto-oriented, resized without crop, converted to WebP; source metadata removed."
     },
     {

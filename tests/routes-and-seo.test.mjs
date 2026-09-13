@@ -72,6 +72,37 @@ test("every public route has unique complete metadata and shared social images",
   }
 });
 
+test("every supporting route mirrors its visible breadcrumb in structured data", async () => {
+  for (const route of publicRoutes.filter((candidate) => candidate !== "/")) {
+    const html = await readRoute(route);
+    const visibleBreadcrumb = html.match(
+      /<nav\b[^>]*aria-label=["']Breadcrumb["'][^>]*>[\s\S]*?<\/nav>/i,
+    )?.[0];
+    const breadcrumb = jsonLdBlocks(html).find(
+      (block) => block["@type"] === "BreadcrumbList",
+    );
+
+    assert.ok(visibleBreadcrumb, `${route} visible breadcrumb`);
+    assert.ok(breadcrumb, `${route} BreadcrumbList structured data`);
+    assert.deepEqual(
+      breadcrumb.itemListElement.map((item) => item.position),
+      breadcrumb.itemListElement.map((_, index) => index + 1),
+      `${route} breadcrumb positions`,
+    );
+    for (const item of breadcrumb.itemListElement) {
+      assert.ok(
+        visibleText(visibleBreadcrumb).includes(item.name),
+        `${route} structured breadcrumb item ${item.name} is not visible`,
+      );
+    }
+    assert.equal(
+      breadcrumb.itemListElement.at(-1)?.item,
+      new URL(route, origin).toString(),
+      `${route} final breadcrumb URL`,
+    );
+  }
+});
+
 function sitemapEntries(xml) {
   return [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => {
     const value = match[1];
