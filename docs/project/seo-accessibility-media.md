@@ -1,7 +1,7 @@
 # Current SEO, accessibility, and media contracts
 
 Status: Current
-Last verified: 2026-09-04
+Last reconciled: 2026-09-13; integration verification is recorded in the [branch integration report](../operations/2026-09-13-branch-integration.md).
 
 ## Search baseline
 
@@ -23,7 +23,7 @@ Known future review items:
 - `app/sitemap.ts` uses 2026-09-13 for the Boracay spot page and its four child pages after the owner-requested page split. The kite-size guide retains 2026-09-08; other dates follow their existing page-specific rules. Future content records should own substantive modification dates.
 - Sitemap `priority` and `changeFrequency` do not drive Google crawling and can be removed when the sitemap is revised, according to [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) (accessed 2026-09-04).
 - `app/robots.ts` emits a `Host` line that is not defined by the [Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309) (accessed 2026-09-04). The future SEO brief recommends removing it with its brittle assertion.
-- Google's [FAQ structured-data guidance](https://developers.google.com/search/docs/appearance/structured-data/faqpage) limits FAQ rich results to well-known authoritative government and health sites (accessed 2026-09-04). Keep useful visible questions, but re-evaluate the value of `FAQPage` markup before expanding it.
+- Google retired FAQ rich results in May 2026 and removed the feature documentation in June ([official changelog](https://developers.google.com/search/updates#removing-faq-rich-result), accessed 2026-09-04). Keep useful visible questions. Existing truthful `FAQPage` markup is not a promise of a Google search feature; do not expand it for that purpose.
 - Several supporting pages are short and have few contextual links in their main content. Verified first-party details and useful cross-links are higher priority than new page count.
 - Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places ownership are not recorded in the repository.
 
@@ -33,7 +33,7 @@ The current static HTML includes English language metadata, a skip link, semanti
 
 Automated artifact tests cannot verify computed layout, accessible names in a browser, focus visibility, keyboard order, zoom, screen readers, forced colors, real target sizes, or runtime errors. No Playwright, axe, Lighthouse, or visual-regression suite exists yet.
 
-The future target is WCAG 2.2 AA for every complete public page and revealed interactive state. Automated scans are regression tools only. A conformance claim requires manual keyboard, zoom, reading-order, contrast, content, and assistive-technology review.
+The current engineering target is WCAG 2.2 AA for every complete public page and revealed interactive state. Automated scans are regression tools only. A conformance claim requires manual keyboard, zoom, reading-order, contrast, content, and assistive-technology review.
 
 ## Media baseline
 
@@ -51,9 +51,9 @@ The Node test suite verifies routes, exported artifacts, metadata, JSON-LD, link
 
 Future browser and performance requirements are specified in [`../future/quality-performance-accessibility.md`](../future/quality-performance-accessibility.md).
 
-## Owner media integration, 2026-09-12
+## Historical owner media integration, 2026-09-12
 
-Eleven owner-supplied photographs now appear on the homepage, lessons, rentals, shop and about pages. Their responsive WebP pairs total 2,900,172 bytes. The group portrait is displayed without clipping people. Six different course images show equipment, setup and riding. Existing room/safari illustrations and the licensed geographic aerial remain in use; these new files do not establish room details, safari routes or inventory.
+Eleven owner-supplied photographs now appear on the homepage, lessons, rentals, shop and about pages. Their responsive WebP pairs total 2,900,172 bytes. The group portrait is displayed without clipping people. Six different course images show equipment, setup and riding. Room/safari illustrations remained in use at that point; the geographic aerial was subsequently replaced as recorded below. These new files do not establish room details, safari routes or inventory.
 
 The owner requested removal of the beach-practice video section on 2026-09-12. No video players now render on the Lessons page. The reusable component, two silent MP4 derivatives (1,779,754 bytes total), posters and provenance remain in the repository. Original audio remains only in the source archive.
 
@@ -87,3 +87,9 @@ The owner requested three “Coming soon…” pages under `/kite-safaris/` for 
 
 
 Boracay topic pages, 2026-09-13: Places to be, Things to do, Planning your days and Practical questions each have a distinct static URL, self-canonical, title and description, with their matching visible breadcrumb above the shared hero and BreadcrumbList JSON-LD in the page body. Each page contains only its own existing topic content. All are indexable and included in the sitemap. The submenu and spot-guide teaser use page URLs without fragments. The original Things to do URL remains available with activity content. No redirects, FAQ schema or new public business claims were added. Local development and static-preview HTTP checks returned 200 for all four routes and 404 for an unknown Boracay child. Production hosting behavior was not checked because no deployment was requested.
+
+## Branch integration, 2026-09-13
+
+Inquiry/complaint and accessibility guidance are restored from the review branch as `/terms/` and `/accessibility/`, with their own metadata and sitemap entries. The twenty-one public routes include four existing noindex holding pages; the indexable sitemap therefore contains seventeen routes. Current owner photographs, centralized asset credits, pending-page indexing and Boracay subpages are preserved.
+
+The September 4 media/accessibility audits describe their source revision. Their old stock-photo inventory and on-page caption assumptions are superseded by the current owner-media ledger and `/legal/` credits. Older test counts and browser results remain dated evidence; see the [branch integration report](../operations/2026-09-13-branch-integration.md) for checks of the merged site. No production HTTP behavior or legal conclusions were revalidated merely by merging these records.

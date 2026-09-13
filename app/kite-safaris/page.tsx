@@ -32,7 +32,7 @@ export default function KiteSafarisPage() {
                       <p>Details coming soon.</p>
                     </div>
                     <div className={styles.tripActions}>
-                      <a className="button button--coral button--whatsapp" href={request.href} target={request.target} rel={request.rel} aria-label={`Request ${trip.name} safari information via WhatsApp`}>
+                      <a className="button button--coral button--whatsapp" href={request.href} target={request.target} rel={request.rel} aria-label={`Request ${trip.name} safari information via WhatsApp (opens in a new tab)`} aria-describedby="message-guidance">
                         <WhatsAppIcon />Request
                       </a>
                       <Link className="button" href={trip.path} aria-label={`More about ${trip.name} safaris`}>More <span aria-hidden="true">→</span></Link>

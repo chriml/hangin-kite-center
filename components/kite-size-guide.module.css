@@ -76,3 +76,11 @@
 @media (max-width: 359px) {
   .travelPeriod { grid-template-columns: minmax(0, 1fr); }
 }
+
+
+.windSummary { margin-block: 1.5rem; }
+.windSummary h3 { margin: 0; font-size: 1.25rem; }
+.windSummary p { font-size: .9rem; line-height: 1.7; }
+.windSummary table { min-width: 0; }
+.windSummary th, .windSummary td { padding: .65rem .5rem; font-size: .8rem; }
+.windLimit { padding-left: 1rem; border-left: 3px solid var(--coral); }

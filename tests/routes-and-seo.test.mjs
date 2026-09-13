@@ -100,6 +100,8 @@ test("sitemap covers the exact indexable surface and robots permits crawling", a
       ? "2026-09-13T00:00:00.000Z"
       : route === "/kite-size-guide/"
       ? "2026-09-08T00:00:00.000Z"
+      : route === "/terms/" || route === "/accessibility/"
+      ? "2026-09-04T00:00:00.000Z"
       : "2026-08-29T00:00:00.000Z";
     assert.equal(entry.lastModified, expectedDate, `${route} lastModified`);
     assert.equal(entry.changeFrequency, route === "/" ? "weekly" : "monthly", `${route} frequency`);

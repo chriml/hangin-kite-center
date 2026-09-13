@@ -9,7 +9,7 @@ Help the right visitors find accurate answers about Hangin, kitesurfing at Bulab
 
 ## Current boundary
 
-The site has nine explicit crawlable routes, unique metadata, self-canonicals, local social images, sitemap and robots output, breadcrumbs on supporting pages, semantic headings, and visible content-backed JSON-LD. The canonical origin is `https://www.hanginkitecenter.com`.
+The site has explicit crawlable routes declared in `publicRoutes`, unique metadata, self-canonicals, local social images, sitemap and robots output, breadcrumbs on supporting pages, semantic headings, and visible content-backed JSON-LD. The canonical origin is `https://www.hanginkitecenter.com`.
 
 Known limitations:
 

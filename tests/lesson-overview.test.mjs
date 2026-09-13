@@ -65,7 +65,8 @@ test("each course enquiry carries the selected course, dates and riding level in
     const url = new URL(href);
     assert.equal(url.pathname, "/639380101849");
     assert.equal(url.searchParams.get("text"), `Hi Hangin, I'd like to ask about ${courses[index]} in Boracay. My dates are [dates] and my riding level is [level].`);
-    assert.equal(attribute(link, "aria-label"), `Book ${courses[index]} via WhatsApp`);
+    assert.equal(attribute(link, "aria-label"), `Book ${courses[index]} via WhatsApp (opens in a new tab)`);
+    assert.equal(attribute(link, "aria-describedby"), "message-guidance");
     assert.equal(attribute(link, "target"), "_blank");
     assert.equal(attribute(link, "rel"), "noopener noreferrer");
   }

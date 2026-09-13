@@ -52,9 +52,10 @@ export function PageHero({
             {media}
           </figure>
         ) : (
-          <div className={styles.heroFigure} aria-hidden="true">
+          <figure className={`${styles.heroFigure} ${styles.illustratedFigure}`}>
             {media}
-          </div>
+            <figcaption className={styles.photoCredit}>Supporting illustration.</figcaption>
+          </figure>
         )}
       </div>
     </section>

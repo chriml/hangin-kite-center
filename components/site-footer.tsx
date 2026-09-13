@@ -64,6 +64,14 @@ export function SiteFooter() {
           <Link href="/#questions">FAQ</Link>
         </nav>
       </div>
+      <div className={`shell ${styles.footerNotes}`}>
+        <p id="message-guidance">
+          WhatsApp opens in a new tab with a draft message. You choose whether to
+          send the chat message to Hangin. Keep your first message brief.
+          Ask how to share health or identity information before
+          sending it.
+        </p>
+      </div>
       <div className={`shell ${styles.footerBase}`}>
         <span>© {new Date().getUTCFullYear()} {siteConfig.name}</span>
         <Link className={styles.footerLegal} href="/legal/">Legal information</Link>

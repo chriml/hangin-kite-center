@@ -9,7 +9,9 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
-    "verify": "npm run lint && npm run typecheck && npm run build && npm test"
+    "verify": "npm run lint && npm run typecheck && npm run build && npm test && npm run audit:privacy",
+    "audit:privacy": "node scripts/privacy-audit.mjs",
+    "audit:privacy:deployed": "node scripts/audit-deployed-privacy.mjs"
   },
   "dependencies": {
     "next": "16.3.3",
@@ -21,8 +23,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "acorn": "8.18.0",
+    "css-tree": "3.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
+    "parse5": "8.0.1",
+    "saxes": "6.0.0",
+    "srcset": "5.0.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

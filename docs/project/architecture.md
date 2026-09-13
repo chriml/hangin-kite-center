@@ -1,7 +1,7 @@
 # Current architecture
 
 Status: Current
-Last verified: 2026-09-04
+Last reconciled: 2026-09-13; integration verification is recorded in the [branch integration report](../operations/2026-09-13-branch-integration.md).
 
 ## System shape
 
@@ -25,11 +25,11 @@ visitor follows WhatsApp, email, telephone, or internal links
 
 - Next.js 16.3.3, React 19.2.8, React DOM 19.2.8, TypeScript 5.
 - `next.config.ts` sets `output: "export"`, `trailingSlash: true`, and `images.unoptimized: true`.
-- Pages and shared components are Server Components, apart from the local kite-size calculator in `components/kite-size-calculator.tsx`. It uses browser memory only; the surrounding page and contact path remain static.
+- Pages and shared components are Server Components, apart from the local kite-size calculator and the Boracay shared navigation. The calculator uses browser memory only; the navigation selects the current static child route. Core content and contact paths remain prerendered.
 - Native HTML handles the mobile menu and FAQ disclosure behavior.
 - Mobile-menu destinations use ordinary document links so the destination loads with its native disclosure closed. Desktop and other site links retain Next.js navigation. This avoids retaining an open menu in the shared layout and needs no additional client component.
 - Local responsive images and framework-emitted fonts are served from the static artifact.
-- The production artifact contains nineteen public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
+- The production artifact contains twenty-one public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
 
 Static export does not provide request-time cookies, headers, redirects, rewrites, middleware, Server Actions, ISR, authenticated preview, secret-bearing APIs, or webhooks. Host-level redirects and headers are separate deployment responsibilities. Dynamic services must live behind a hosted provider or a separately operated server boundary.
 
@@ -54,7 +54,7 @@ Static export does not provide request-time cookies, headers, redirects, rewrite
 
 ## Contact data flow
 
-Pages provide a typed `ContactContext`. `getPrimaryContactAction` resolves that context to a label, prefilled message, destination, and safe external-link attributes. `ContactCta` renders the result. The provider is currently WhatsApp, and email remains visible in the larger contact treatment.
+Pages provide a typed `ContactContext`. `getPrimaryContactAction` resolves that context to a label, new-tab accessible name, prefilled message, destination, and safe external-link attributes. `ContactCta` renders the result. The provider is currently WhatsApp, and email remains visible in the larger contact treatment.
 
 The lesson price comparison uses `getLessonContactAction(course)` to include the selected course and prompts for dates and riding level. Both contact helpers use the same destination builder and external-link attributes in `content/site.ts`. Course enquiries are ordinary exported links; visitors fill in and send the message in WhatsApp.
 
@@ -101,3 +101,9 @@ The desktop primary-menu Boracay link disables Next.js automatic page scrolling 
 ### Dedicated Boracay subpages, 2026-09-13
 
 The owner's latest clarification replaces the combined island guide and fragment-based submenu with four explicit static child routes: `places-to-be`, `things-to-do`, `planning-your-days` and `practical-questions`. Each page supplies its typed record to `BoracaySubpageContent`, which renders only that topic, its existing sources or questions, breadcrumb JSON-LD and contact section. The shared layout owns the unchanged hero and its kite-size quick link. It passes only menu labels, titles, slugs and paths to the small navigation client component; content stays server-rendered. `useSelectedLayoutSegment` identifies the current page for the menu and top breadcrumb. Hash subscriptions are removed. Next links use `scroll={false}` between Boracay pages, and Safari still opens its existing standalone route. All four routes are registered in the public route list, sitemap and shared mobile/footer navigation. No runtime service or new dependency is involved.
+
+## Review and host support
+
+`/terms/` provides website inquiry and complaint guidance; `/accessibility/` provides practical website and reporting guidance. `/legal/` remains the central asset-credit page. These routes do not establish unconfirmed booking policy, a complete privacy notice or an accessibility conformance claim. `public/_headers` supplies a Cloudflare-compatible static header policy alongside the existing `wrangler.toml`; other hosts must configure equivalent responses. This is a host artifact, not a Next runtime header API.
+
+`npm run audit:privacy` parses the fresh static export and compares framework assets with the matching build. The deployed audit compares an explicit origin against the local expected routes and indexable sitemap set, and checks response/redirect evidence. Parser dependencies are development-only. See [the audit documentation](../../scripts/README.md) for scope and limits.

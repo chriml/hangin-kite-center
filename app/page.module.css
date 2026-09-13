@@ -283,7 +283,7 @@
 
 .photoCredit {
   padding-top: 0.45rem;
-  color: color-mix(in srgb, var(--ocean) 74%, transparent);
+  color: var(--ocean);
   font-size: 0.68rem;
   line-height: 1.45;
 }
@@ -696,4 +696,16 @@
   .servicePath {
     transition: none;
   }
+}
+
+.serviceImage { position: relative; }
+.illustrationLabel {
+  position: absolute;
+  z-index: 1;
+  left: 1rem;
+  bottom: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--sun);
+  color: var(--ink);
+  font-size: 0.75rem;
 }

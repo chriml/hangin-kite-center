@@ -42,7 +42,7 @@ Unknown information must remain structurally unknown. Do not convert a missing p
 
 ### Stage 1: inventory and schema
 
-Inventory all nine routes, shared shell strings, metadata, contact variants, facts, and images. Assign stable IDs and owners. Write schemas and referential checks, then add an adapter that produces the current TypeScript shapes with no rendered change.
+Inventory all published routes from `publicRoutes`, shared shell strings, metadata, contact variants, facts, and images. Assign stable IDs and owners. Write schemas and referential checks, then add an adapter that produces the current TypeScript shapes with no rendered change.
 
 Validation should reject duplicate IDs/slugs, unknown route/media/fact references, invalid internal links, non-canonical contact values, incomplete proof provenance, generated media used as proof, unsupported content blocks, impossible publication states, and missing substantive review dates.
 

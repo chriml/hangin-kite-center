@@ -9,7 +9,7 @@ Publish one complete, trustworthy additional language without request-time routi
 
 ## Current boundary
 
-The current nine routes are English, unprefixed, and statically exported. Routes and most content are typed, but shell labels, homepage text, metadata, JSON-LD, image alternatives, and route names are not yet one locale-ready registry. There is no translation memory, glossary, locale reviewer, localized sitemap, or language switcher.
+The current published routes declared in `publicRoutes` are English, unprefixed, and statically exported. Routes and most content are typed, but shell labels, homepage text, metadata, JSON-LD, image alternatives, and route names are not yet one locale-ready registry. There is no translation memory, glossary, locale reviewer, localized sitemap, or language switcher.
 
 Static export cannot negotiate a locale per request. Every published locale and route must be known at build time.
 

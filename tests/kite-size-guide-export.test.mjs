@@ -8,6 +8,12 @@ test("kite guide exports useful content, labelled inputs and a no-JavaScript fal
   assert.match(text, /Boracay kite size guide/i);
   assert.match(text, /60 to 120 kg/);
   assert.match(text, /Airush kite size chart/);
+  assert.match(text, /10–13 knots/);
+  assert.match(text, /View Hangin.s wind guide by month/);
+  assert.match(text, /not measured wind statistics or a forecast/);
+  assert.match(text, /December and March.*broad estimates/);
+  assert.match(text, /occasionally 35 knots/);
+  assert.match(text, /No reliable range/);
   assert.match(html, /<noscript>/);
   for (const id of ["rider-weight", "weight-unit", "arrival-month", "departure-month", "rider-level"]) {
     assert.match(html, new RegExp(`for="${id}"`));

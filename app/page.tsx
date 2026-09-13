@@ -81,7 +81,7 @@ const questions = [
   {
     question: "Can I rent equipment?",
     answer:
-      "Yes. Full equipment rental is available. On WhatsApp, include your usual sizes so we can check current availability.",
+      "Hangin offers equipment rental. Send your dates, riding level and usual sizes on WhatsApp so we can check a setup for your trip.",
   },
   {
     question: "Can I store my own gear?",
@@ -91,7 +91,7 @@ const questions = [
   {
     question: "How do I arrange a session?",
     answer:
-      "Start on WhatsApp. We'll ask for the trip and riding details needed to work with the current conditions.",
+      "Send your dates and riding level on WhatsApp. Check the session, total cost and cancellation terms with Hangin before agreeing to a booking.",
   },
 ] as const;
 
@@ -162,6 +162,7 @@ export default function Home() {
           {services.map((service) => (
             <article className={styles.serviceBand} key={service.eyebrow}>
               <div className={styles.serviceImage}>
+                {service.image.kind === "generated" && <span className={styles.illustrationLabel}>Illustration</span>}
                 <ResponsiveImage
                   image={service.image}
                   className={styles.coverImage}

@@ -142,6 +142,26 @@
   object-fit: contain;
 }
 
+.illustratedFigure .heroImage {
+  height: auto;
+}
+
+.photoCredit {
+  padding-top: 0.5rem;
+  color: var(--ocean);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.photoCredit a {
+  text-underline-offset: 0.15em;
+}
+
+.about .photoCredit,
+.safaris .photoCredit {
+  color: var(--sand);
+}
+
 .sections {
   padding-block: clamp(4.5rem, 9vw, 8rem);
   background: var(--sun);
@@ -222,6 +242,39 @@
 .about .serviceSection:first-child {
   border-top: 0;
   background: color-mix(in srgb, var(--lagoon) 14%, var(--sun));
+}
+
+.safetySection {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  border-block: 1px solid var(--ocean);
+  background: var(--lagoon);
+  color: var(--ocean);
+}
+
+.safetyGrid {
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.safetyGrid h2 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+}
+
+.safetyCopy {
+  border-top: 1px solid currentColor;
+}
+
+.safetyCopy p {
+  max-width: 42rem;
+  margin: 0;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid currentColor;
+  line-height: 1.7;
 }
 
 .faqSection {
@@ -378,14 +431,6 @@
     gap: clamp(3rem, 8vw, 9rem);
   }
 
-  .serviceSection:nth-child(even) {
-    grid-template-columns: minmax(0, 1.12fr) minmax(17rem, 0.88fr);
-  }
-
-  .serviceSection:nth-child(even) h2 {
-    order: 2;
-  }
-
   .rentals .serviceSection:nth-child(2) {
     margin-inline: calc((100vw - var(--content)) / -2);
     padding-inline: max(1rem, calc((100vw - 1180px) / 2));
@@ -414,6 +459,7 @@
   }
 
   .faqGrid,
+  .safetyGrid,
   .contactGrid {
     grid-template-columns: minmax(17rem, 0.75fr) minmax(0, 1.25fr);
   }

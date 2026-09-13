@@ -2,8 +2,9 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ContactCta } from "@/components/contact-cta";
 import { JsonLd } from "@/components/json-ld";
+import { KiteWindMonths } from "@/components/kite-wind-months";
 import { KiteSizeCalculator } from "@/components/kite-size-calculator";
-import { kiteGuideSource, kiteSizeBands } from "@/content/kite-size-guide";
+import { hanginWindMonths, kiteGuideSource, kiteSizeBands } from "@/content/kite-size-guide";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import styles from "@/components/kite-size-guide.module.css";
 
@@ -42,18 +43,23 @@ export default function KiteSizeGuidePage() {
           <h2>What kite size should I bring to Boracay?</h2>
           <div>
             <p>Choose your kite size for your weight, board and the wind on the day. The calculator uses the <a href={kiteGuideSource.href}>{kiteGuideSource.title}</a> for twin-tip riding to suggest three packing options. Check the ranges against your exact kite model before packing for Bulabog Beach.</p>
-            <p>Travel dates show the Boracay season. They cannot tell you the wind on a particular day. Your level changes the riding advice; it does not add power to the calculation. Take a twin-tip, a compatible bar and a correctly fitted harness, and check the full setup with Hangin.</p>
+            <p>Your selected months determine the wind bands used for your packing options. Hangin supplies the rough seasonal ranges; December and March use broad estimates between the nearby months. These are not measured wind statistics or a forecast. Your level changes the riding advice; it does not add power to the calculation. Take a twin-tip, a compatible bar and a correctly fitted harness, and check the full setup with Hangin.</p>
             <p>If you are taking your first lessons, your instructor chooses the equipment. Check the <Link href="/kitesurfing-boracay/">Boracay spot guide</Link> for wind, tide and launch information.</p>
             <details>
               <summary>View the reference size chart</summary>
               <div className={styles.tableWrap}>
                 <table>
-                  <caption>Kite sizes in m² for three separate wind scenarios</caption>
-                  <thead><tr><th scope="col">Rider weight</th><th scope="col">14–17 knots</th><th scope="col">18–22 knots</th><th scope="col">23–28 knots</th></tr></thead>
-                  <tbody>{kiteSizeBands.map(band => <tr key={band.label}><th scope="row">{band.label}</th><td>{band.light}</td><td>{band.medium}</td><td>{band.strong}</td></tr>)}</tbody>
+                  <caption>Kite sizes in m² for four separate wind scenarios</caption>
+                  <thead><tr><th scope="col">Rider weight</th><th scope="col">10–13 knots</th><th scope="col">14–17 knots</th><th scope="col">18–22 knots</th><th scope="col">23–28 knots</th></tr></thead>
+                  <tbody>{kiteSizeBands.map(band => <tr key={band.label}><th scope="row">{band.label}</th><td>{band.veryLight}</td><td>{band.light}</td><td>{band.medium}</td><td>{band.strong}</td></tr>)}</tbody>
                 </table>
               </div>
-              <p className={styles.tableNote}>At 70, 80 or 90 kg, this guide uses the lighter weight band. Automatic suggestions stop at 120 kg; this is our tool&apos;s limit. Wind figures are reference scenarios, not safe operating limits. Source checked 8 September 2026.</p>
+              <p className={styles.tableNote}>At 70, 80 or 90 kg, this guide uses the lighter weight band. Automatic suggestions stop at 120 kg; this is our tool&apos;s limit. Wind figures are reference scenarios, not safe operating limits. Source checked 13 September 2026.</p>
+            </details>
+            <details>
+              <summary>View Hangin&apos;s wind guide by month</summary>
+              <KiteWindMonths months={hanginWindMonths} />
+              <p className={styles.tableNote}>Based on the Hangin team&apos;s seasonal account, recorded 13 September 2026. December and March are broad planning estimates between the nearby months. No daily probabilities or measured monthly averages are available.</p>
             </details>
           </div>
         </div>
@@ -68,11 +74,11 @@ export default function KiteSizeGuidePage() {
             </details>
             <details>
               <summary>What kite sizes should I pack for Boracay in December or January?</summary>
-              <p>December and January fall within the main Amihan season at Bulabog, roughly November to April. Your travel month gives seasonal context, but the wind on your riding days determines the size you use. Compare the suggested ranges, then check the forecast close to your trip. Read the <Link href="/kitesurfing-boracay/">Boracay wind and season guide</Link> for Amihan and Habagat conditions.</p>
+              <p>December and January fall within the main Amihan season at Bulabog, roughly November to April. The calculator uses those months to choose the relevant wind bands. January can bring 20–30-knot spells and occasionally 35 knots, beyond this chart’s 28-knot limit. The suggested sizes do not cover those stronger conditions. Compare the suggested ranges, then check the forecast close to your trip. Read the <Link href="/kitesurfing-boracay/">Boracay wind and season guide</Link> for Amihan and Habagat conditions.</p>
             </details>
             <details>
               <summary>How many kites should I bring to Boracay?</summary>
-              <p>One kite keeps luggage lighter, but gives you fewer size options when the wind changes. Two kites add a smaller and a larger size; three include a middle size too. Compare the three setups above with the gear you already ride, and check the wind ranges for each model with Hangin.</p>
+              <p>One kite keeps luggage lighter, but gives you fewer size options when the wind changes. Two kites add a smaller and a larger size. A third is listed only when another chart band fits your months. Compare the options above with the gear you already ride, and check the wind ranges for each model with Hangin.</p>
             </details>
             <details>
               <summary>Should I bring my own kite gear or rent in Boracay?</summary>

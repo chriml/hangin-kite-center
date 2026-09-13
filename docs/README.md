@@ -1,7 +1,7 @@
 # Hangin project documentation
 
 Status: Current documentation index
-Last verified: 2026-09-04
+Last reconciled: 2026-09-13
 
 This directory separates what the site does now from what it may do later. That distinction is required for both people and coding agents: a proposed feature must never be treated as an implemented fact.
 
@@ -55,3 +55,28 @@ When documents disagree, do not blend them. Record the conflict, identify the ne
 - Separate repository facts, recommendations, assumptions, and owner decisions.
 - Do not leave placeholders in an accepted document. Unresolved choices belong under a named decision gate with the action required to close it.
 - Review the index whenever a document is added, moved, accepted, or superseded.
+
+## Legal research and review evidence
+
+These are internal research, readiness and owner-intake records, not published terms or confirmation of legal compliance. Their status and evidence dates apply individually. The September 4–5 records describe their historical source revisions; the current branch reconciliation and verification are recorded in [Branch integration, 2026-09-13](operations/2026-09-13-branch-integration.md). Old route counts, photo inventories, owner-question status and test results must not replace newer confirmed project records.
+
+- [2026-09-04-water-activity-safety-waiver-minors](legal/2026-09-04-water-activity-safety-waiver-minors.md)
+- [accessibility-pwd-senior-rights](legal/accessibility-pwd-senior-rights.md)
+- [compliance-matrix](legal/compliance-matrix.md)
+- [eu-uk-privacy-assessment](legal/eu-uk-privacy-assessment.md)
+- [integration-corrections-sources](legal/integration-corrections-sources.md)
+- [lead-capture-whatsapp-marketing](legal/lead-capture-whatsapp-marketing.md)
+- [media-rights-audit](legal/media-rights-audit.md)
+- [merchant-identity-permits-trustmark](legal/merchant-identity-permits-trustmark.md)
+- [philippines-consumer-offer-audit-2026-09-04](legal/philippines-consumer-offer-audit-2026-09-04.md)
+- [privacy-launch-checklist](legal/privacy-launch-checklist.md)
+- [privacy-notice-draft](legal/privacy-notice-draft.md)
+- [privacy-notice-readiness](legal/privacy-notice-readiness.md)
+- [website-terms-consumer-contract-review](legal/website-terms-consumer-contract-review.md)
+- [cloudflare-privacy-security-runbook](operations/cloudflare-privacy-security-runbook.md)
+- [Privacy and tracking assessment](privacy-tracking-compliance.md)
+- [Integrated remediation and verification](operations/review-remediation-2026-09-04.md)
+- [Audit implementation and limits](../scripts/README.md)
+
+- [Offene Fragen und Klärungen](operations/offene-fragen-und-klaerungen.md)
+- [Thread follow-up and execution, 2026-09-05](operations/thread-followup-2026-09-05.md)

@@ -27,6 +27,8 @@ export function ContactCta({
       <a
         className="button button--coral button--whatsapp"
         href={action.href}
+        aria-label={action.accessibleLabel}
+        aria-describedby="message-guidance"
         target={action.target}
         rel={action.rel}
       >

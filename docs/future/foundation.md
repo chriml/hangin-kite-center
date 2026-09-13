@@ -14,7 +14,7 @@ At completion:
 
 - Agents and people can distinguish current behavior, accepted requirements, proposals, and historical decisions.
 - A clean CI run builds exactly one static artifact and tests that artifact before deployment.
-- The nine-route public contract, accessibility baseline, performance baseline, contact fallbacks, and media provenance are tested in a browser.
+- The public contract covering every route in `publicRoutes`, accessibility baseline, performance baseline, contact fallbacks, and media provenance are tested in a browser.
 - Production DNS, TLS, redirects, 404 behavior, headers, and cache rules are known and monitored.
 - Search performance and real enquiries can be reviewed without adding browser tracking.
 - Business facts, page ownership, media rights, and substantive review dates have named owners.
@@ -25,13 +25,13 @@ Phase 0 does not add a CMS UI, blog, new locale, booking calendar, payment form,
 
 ## Current evidence
 
-- The site is a Next.js 16.3.3 static export with nine public routes and no client components or runtime third-party scripts.
-- Lint and type checking passed on 2026-09-04.
-- A webpack production export succeeded and all 40 artifact tests passed.
-- Default Turbopack failed only because the restricted sandbox denied an internal worker port. Normal CI must test the default before choosing a permanent build mode.
+The [review-remediation report](../operations/review-remediation-2026-09-04.md) and September 5 follow-up supersede the original nine-route/40-test baseline for their dated revisions. Current integration evidence belongs to the [September 13 report](../operations/2026-09-13-branch-integration.md). Future acceptance below means the entire current route set and test suite.
+
+- The site is a Next.js 16.3.3 static export covering the public routes declared in `content/site.ts` with local calculator/navigation client components and no runtime third-party scripts.
+- The original pre-integration baseline used a webpack export after a recorded sandbox worker-port failure; keep that historical evidence separate from the later successful default build.
 - Tests consume `out/`; they can pass stale output when run without a build.
-- No repository CI, browser testing, host configuration, or monitoring is checked in.
-- Production hosting, DNS, Search Console, profile, privacy, and operational owners are not recorded.
+- No persistent CI/browser regression pipeline or monitoring is checked in. The static header artifact, consolidated local/deployment audit and Cloudflare runbook are present; actual production settings remain unverified.
+- Cloudflare Pages is selected with a checked-in static Wrangler configuration. The connected project and actual deployment remain unverified; DNS, Search Console, profile, privacy and operational owners are not recorded.
 
 ## Work package 1: context and decision integrity
 
@@ -65,7 +65,7 @@ Add a clean CI pipeline with these required steps:
 2. Use a pinned Node 24 LTS patch and `npm ci`.
 3. Run lint and type checking.
 4. Remove or isolate old generated output, run one production export, and fail if the expected artifact is absent.
-5. Run the 40 artifact tests only against that fresh export.
+5. Run the full current test suite and privacy audit only against that fresh export.
 6. Package `out/` once with the commit SHA, tool versions, file manifest, and SHA-256 digest.
 7. Reuse the same artifact for preview, staging, and production; never rebuild between environments.
 
@@ -77,7 +77,7 @@ Adopt Playwright against a static server for the exact exported files. Use Chrom
 
 Required browser checks:
 
-- All nine routes and the custom 404 load with no console or page error.
+- All routes in `publicRoutes` and the custom 404 load with no console or page error.
 - Header, footer, internal navigation, WhatsApp, email, mobile disclosure, FAQ states, and skip link work.
 - Core content and contact links work with JavaScript disabled.
 - Keyboard order, visible focus, accessible names, and expanded states are correct.
@@ -132,7 +132,7 @@ Do not add a browser event collector during Phase 0. Later analytics must answer
 ## Acceptance criteria
 
 - Root instructions and every documentation link resolve, and current versus proposed status is unambiguous.
-- A clean checkout runs install, lint, typecheck, build, and all 40 existing tests in order.
+- A clean checkout runs install, lint, typecheck, build, and the full current test suite and privacy audit in order.
 - The resulting artifact is uniquely identified by commit and digest and is reused across environments.
 - Browser tests cover all routes, contact fallbacks, native controls, keyboard operation, JavaScript-disabled behavior, overflow, and axe A/AA regressions.
 - Manual WCAG 2.2 AA review has no open release blocker.

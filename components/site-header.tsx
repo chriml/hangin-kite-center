@@ -29,6 +29,8 @@ export const routeLabels: Record<PublicRoute, string> = {
   "/about/": "About",
   "/contact/": "Contact",
   "/legal/": "Legal information",
+  "/terms/": "Website inquiries",
+  "/accessibility/": "Accessibility",
 };
 
 const desktopRoutes: PublicRoute[] = [

@@ -15,6 +15,7 @@ import {
 } from "./export-helpers.mjs";
 
 const contactMessages = {
+  complaint: "Hi Hangin, I'd like to raise a complaint about a service or item.",
   general:
     "Hi Hangin, I'm planning a Boracay trip. My dates are [dates], my riding level is [level], and I need help with [service].",
   lessons: "Hi Hangin, I'd like to arrange kitesurfing lessons in Boracay.",
@@ -37,6 +38,7 @@ test("every primary contact action keeps the current destination and page contex
     `Hi Hangin, I'd like to request information about the ${trip} kite safari. My dates are [dates] and my riding level is [level].`));
   const expectedMessages = new Set([
     contactMessages.general,
+    contactMessages.complaint,
     contactMessages.lessons,
     contactMessages.rental,
     contactMessages.storage,

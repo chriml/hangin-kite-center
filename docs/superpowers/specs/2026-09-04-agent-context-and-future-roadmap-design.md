@@ -90,7 +90,7 @@ Each brief uses the same structure: intended outcome, current boundary, recommen
 
 ### Preserve the static core
 
-The current App Router build exports nine public routes to `out/`, contains no `"use client"` components, and has no runtime third-party integration. Content, navigation, metadata, proof media, and direct contact should continue to work as static HTML. Runtime secrets, webhooks, live availability, customer data, and order state belong in a hosted provider or isolated service.
+At this specification’s September 4 snapshot, the App Router build exported eleven public routes after review remediation and contained no `"use client"` components or runtime third-party integration. The later calculator, Boracay navigation and route additions are recorded in [current architecture](../../project/architecture.md). Content, navigation, metadata, proof media, and direct contact should continue to work as static HTML. Runtime secrets, webhooks, live availability, customer data, and order state belong in a hosted provider or isolated service.
 
 Changing the whole site to a server runtime requires a separate ADR and evidence that a smaller boundary cannot meet the need.
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { getKiteGuide, riderLevels, type KiteGuideResult, type RiderLevel, type WeightUnit } from "@/content/kite-size-guide";
+import { KiteWindMonths } from "@/components/kite-wind-months";
 import styles from "./kite-size-guide.module.css";
 
 const subscribe = () => () => {};
@@ -83,14 +84,14 @@ export function KiteSizeCalculator() {
             </select>
             <p id="level-help" className={styles.help}>{riderLevels.find(item => item.value === level)?.detail ?? "Choose beginner if you still need an instructor."}</p>
           </div>
-          <button className="button button--dark" type="submit">Show my 3 setups <span aria-hidden="true">↗</span></button>
+          <button className="button button--dark" type="submit">Compare my setups <span aria-hidden="true">↗</span></button>
         </fieldset>
         <noscript><p className={styles.noScript}>Enable JavaScript to compare your setups, or use the size chart below and ask Hangin about your trip.</p></noscript>
       </form>
 
       <section className={styles.results} aria-labelledby="setups-heading">
         <h2 id="setups-heading" ref={resultHeading} tabIndex={-1}>
-          {result?.status === "ready" ? "Your three possible setups" : result?.status === "invalid" ? "Check your trip details" : result ? "Check your setup with us" : "Three ways to pack"}
+          {result?.status === "ready" ? "Your packing options" : result?.status === "invalid" ? "Check your trip details" : result ? "Check your setup with us" : "Three ways to pack"}
         </h2>
         {!result && <>
           <p>Fill in your trip details to see kite size ranges for these three packing options.</p>
@@ -107,18 +108,25 @@ export function KiteSizeCalculator() {
             <h3>{result.season.title}</h3>
             <p>{result.season.body}</p>
           </div>
+          <div className={styles.windSummary}>
+            <h3>Wind for your selected months</h3>
+            <p>Based on Hangin&apos;s rough seasonal experience. These ranges are planning guidance, not measured averages or a forecast.</p>
+            <KiteWindMonths months={result.wind.months} />
+            {result.wind.months.some(month => month.estimated) && <p>December and March use broad estimates between the nearby months.</p>}
+            {result.wind.maxKnots !== null && result.wind.maxKnots > 28 && <p className={styles.windLimit}>The selected months can exceed the chart&apos;s 28-knot limit{result.wind.occasionalKnots ? `, occasionally reaching ${result.wind.occasionalKnots} knots` : ""}. The suggested sizes do not cover those conditions. Check the forecast and exact equipment with Hangin; sit out conditions beyond your gear or ability.</p>}
+          </div>
           <p className={styles.levelNote}>{result.levelNote}</p>
           {result.status === "team-check" ? <p>{result.message}</p> : <>
-            <p className={styles.resultIntro}>Using the {result.weightBand} reference band. Choose one kite size from each range shown. These are planning estimates, not a forecast or rental stock list.</p>
+            <p className={styles.resultIntro}>Using the {result.weightBand} reference band and your selected months. Choose one kite size from each range shown. A third size is only listed when three chart bands overlap your trip range.</p>
             <ol className={styles.setupList}>
               {result.setups.map(setup => <li key={setup.title} className={styles.setup}>
                 <h3>{setup.title}</h3>
-                <ul className={styles.kiteSizes}>
+                {setup.kites.length > 0 && <ul className={styles.kiteSizes}>
                   {setup.kites.map(kite => <li key={kite.label}>
                     <p className={styles.size}>{kite.size}<span>m²</span></p>
                     <p className={styles.wind}>{kite.label}<br />{kite.wind} knots</p>
                   </li>)}
-                </ul>
+                </ul>}
                 <p>{setup.description}</p>
               </li>)}
             </ol>

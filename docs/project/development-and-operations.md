@@ -1,7 +1,7 @@
 # Development and operations
 
 Status: Current
-Last verified: 2026-09-04
+Last reconciled: 2026-09-13; integration verification is recorded in the [branch integration report](../operations/2026-09-13-branch-integration.md).
 
 ## Local workflow
 
@@ -15,9 +15,9 @@ npm run preview
 
 Focused checks are `npm run lint`, `npm run typecheck`, and `npm test`. The preview command serves `out/` on port 4173.
 
-`npm run verify` executes lint, type checking, a production build, and the Node test suite. Tests inspect the static export and therefore must follow a successful fresh build.
+`npm run verify` executes lint, type checking, a production build, the Node test suite, and the static privacy/resource audit. Tests inspect the static export and therefore must follow a successful fresh build.
 
-## Verified baseline
+## Historical baseline (before review remediation)
 
 On 2026-09-04:
 
@@ -40,9 +40,9 @@ The configuration is for static Pages hosting with no Functions, Worker entry po
 
 Cloudflare's [Pages Wrangler configuration reference](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) and [static Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) were consulted on 2026-09-13. For an existing Pages project with runtime bindings or other dashboard configuration, compare or download that configuration before adopting this file. No Cloudflare dashboard settings or production deployment were changed as part of this repository setup.
 
-The repository still contains no CI workflow or checked-in configuration for DNS, redirects, security headers, cache policy, artifact provenance, monitoring, or rollback.
+The repository also includes a Cloudflare-compatible [static header policy](../../public/_headers) and an internal [privacy/security runbook](../operations/cloudflare-privacy-security-runbook.md). Checked-in headers are not evidence that a production host applies them. There is still no CI workflow or checked-in DNS, redirect, cache, artifact-provenance, monitoring or rollback configuration.
 
-### Wrangler setup verification, 2026-09-13
+### Historical Wrangler setup verification, 2026-09-13
 
 - Base and HEAD: `c49ba0c95b1a1f36a538f07915b00fc541ea6845`, branch `codex/cloudflare-pages-config`; configuration changes remain uncommitted for owner review. Scope: `wrangler.toml`, `.gitignore`, and this document. Concurrent kite-size-guide edits are outside this setup.
 - `npm run verify` exited 0: lint, typecheck, fresh Turbopack static export, and all 59 tests passed before the concurrent guide edits. The export contained 236 files; the largest was 1,271,210 bytes.
@@ -65,3 +65,9 @@ The future provider-neutral delivery contract is in [`../future/deployment-opera
 ## Operational ownership not yet recorded
 
 Cloudflare Pages is the selected hosting provider. The exact connected project name and live deployment remain unverified. The repository does not identify the registrar, DNS owner, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
+
+## Review-remediation verification
+
+Use `npm run verify` for fresh local evidence. The deployed check is `npm run audit:privacy:deployed -- https://host`; it is read-only and requires a matching local export. It checks the response chain and route coverage, not real-browser execution or legal compliance. See [the audit documentation](../../scripts/README.md). Local HTTP fixture tests bind loopback ports and need a runner that allows this.
+
+The [September 4 remediation report](../operations/review-remediation-2026-09-04.md) and [September 5 follow-up](../operations/thread-followup-2026-09-05.md) retain their original branch-specific results. They do not verify the current twenty-one-route site. The [September 13 integration report](../operations/2026-09-13-branch-integration.md) records the branch sources, conflict decisions and new checks. Earlier paragraphs describing uncommitted work are historical task snapshots, not the current Git status.

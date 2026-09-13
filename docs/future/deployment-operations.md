@@ -9,7 +9,7 @@ Build, verify, release, observe, and roll back one immutable static artifact thr
 
 ## Current boundary
 
-The deployable output is `out/`. The repository contains no checked-in CI workflow, hosting configuration, redirect/header policy, preview setup, environment definition, synthetic monitoring, release record, or incident runbook. The README lists generic build/preview commands, but production host, DNS, TLS, and rollback behavior are not recorded.
+The deployable output is `out/`. The repository includes a Cloudflare-compatible `public/_headers` policy, a consolidated deployment privacy audit, an internal Cloudflare privacy/security runbook and a local review-remediation record. Applied production configuration, CI, redirects, preview setup, environment definitions, monitoring and an actual production release/rollback record remain unverified or absent. Cloudflare Pages has since been selected and `wrangler.toml` declares the static output directory. The exact connected project, production DNS, TLS and rollback behavior remain unverified; see [current operations](../project/development-and-operations.md).
 
 The application is a static export. Redirects, response headers, authentication for previews, logs, atomic publishing, and rollback are host responsibilities.
 
@@ -54,7 +54,7 @@ Provider selection requires an ADR. GitHub Pages, Cloudflare Pages, Netlify, Ver
 
 ### Pull-request preview
 
-Built from the reviewed revision, labelled with commit and expiry, noindexed through response headers and metadata, and access-controlled if content is sensitive. Preview never receives production secrets or can mutate production data.
+Built from the reviewed revision, labelled with commit and expiry, noindexed through preview-host response headers (`X-Robots-Tag: noindex`), and access-controlled if content is sensitive. The HTML stays identical to the production candidate: do not embed preview-only noindex metadata in an artifact that will be promoted unchanged. Verify that the production host omits preview-only indexing headers. Preview never receives production secrets or can mutate production data.
 
 ### Staging
 
