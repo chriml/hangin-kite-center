@@ -1,7 +1,15 @@
 # Current content and design system
 
 Status: Current
-Last verified: 2026-09-10
+Last verified: 2026-09-13
+
+## Website layout audit, 2026-09-13
+
+The compact native menu now remains active through 1023 pixels; the desktop links start at 1024 pixels, avoiding tablet collisions with the logo. Links entering the Boracay guide from other pages open at its shared hero and submenu. Switching topics inside the guide still preserves the hero and scroll position.
+
+The Shop's dark reading sections and About's opening color field extend to the viewport edges with the existing text gutters. The homepage service bands and Shop hero follow their DOM order at every width. The advanced lesson comparison has enough space for all three prices at 700 pixels, and lesson enquiry buttons use ink on coral for readable contrast. The static 404 now uses the site heading scale and centered reading gutters. Copy, photographs, business facts and contact destinations are unchanged by these layout fixes.
+
+Verification and the separation from pre-existing and concurrent edits are recorded in the [website audit report](../operations/2026-09-13-website-layout-audit.md).
 
 ## Voice
 
@@ -9,7 +17,7 @@ Hangin sounds like an experienced beach team member answering a guest: relaxed, 
 
 The full durable writing rules and banned vocabulary live in [`../../AGENTS.md`](../../AGENTS.md). Public strings include visible copy, metadata, alternative text, labels, contact-message templates, and structured-data text. Every change to them requires the `no-ai-slop` workflow and a rendered read-through.
 
-Strong existing lines should not be normalized into a repeated template. Examples include `Kitesurfing since 2002.` and `If the wind is up, we're out there.`
+Strong existing lines should not be normalized into a repeated template. Examples include `Kitesurfing since 2002.` and `If the wind is up, we're out.`
 
 The owner reinforced the loose, informal voice for kiters on 2026-09-08. The Boracay guide now covers the wind season, lagoon conditions, tides, reef, launch traffic, riding level, Habagat, packing and arrival with gear. It uses original copy synthesized from the [documented school sources](boracay-spot-guide-sources.md). Competitor prices, operating policies, forecasts and promotional claims are not Hangin facts. The homepage spot introduction follows the same voice and links to the full guide.
 
@@ -457,3 +465,15 @@ The integrated additions provide inquiry/complaint guidance on `/terms/`, websit
 ### GEO answer improvements, 2026-09-13
 
 The homepage now states the school, location and rider levels directly. Its season answer includes the owner-confirmed Habagat operation. Lessons adds practical cost, teaching-hour and Habagat questions; prices and hours come from the existing typed course records, and the overview repeats the approved beginner-course inclusions. Contact repeats the seasonal meeting-point check and links to the Boracay spot guide. Native FAQ disclosures, the approved hero, existing styling and direct WhatsApp links are preserved. See the [GEO implementation record](../operations/2026-09-13-geo-discovery.md) for verification and external launch gates.
+
+## Homepage and footer copy removal, 2026-09-13
+
+The following verification paragraphs are historical task snapshots. The owner subsequently authorized committing, merging and pushing these changes; see the [UI integration record](../operations/2026-09-13-website-layout-audit.md#integration-and-owner-approval-2026-09-13) for the combined verification.
+
+Safari safety background, 2026-09-13: the owner requested a different background for “Before a kite safari.” The safari-only safety section now uses the existing ocean background and sun text, separating it from the lagoon section above and sand FAQ below. The change is scoped to `.safaris .safetySection`; text, layout and other service pages retain their existing treatment. Desktop and 390-pixel browser review confirmed the colors and no horizontal overflow. Computed foreground/background contrast is 12.77:1. `npm run verify` exited 0 with lint, typecheck, a fresh export, all 138 tests passing and no static privacy findings (log `/tmp/hangin-safari-safety-color-verify.log`). `git diff --check` passed. Work remains uncommitted with unrelated changes preserved; no deployment or full accessibility audit was performed.
+
+Rental safety CTA, 2026-09-13: the owner requested a contact button in “Before renting gear” on `/rentals-storage/`. A compact coral “Ask Hangin on WhatsApp” button follows the guidance and opens the existing rental enquiry draft. The shared safety record supports an optional contact context, enabled only for this rental section. Existing button styling, new-tab accessible name and external-link attributes are reused. Desktop and 390-pixel screenshots confirmed spacing and visible keyboard focus; 390- and 320-pixel checks found no horizontal overflow and a 50-pixel button height. Copy review and independent scoped code review passed. Lint, typecheck and fresh production export passed; after updating the existing CTA test to distinguish this rental-only action from the general rental/storage actions, all 138 tests and the static privacy audit passed. Logs are `/tmp/hangin-rental-safety-cta-{verify,tests,privacy}.log`. The first build attempt overlapped another build and was retried after it finished. Base and HEAD remain `62169100da94eaeb42c0975842fa3b7db0ca6799`; work is uncommitted and unrelated changes are preserved. No deployment or full accessibility audit was performed.
+
+The owner shortened the homepage H1 to “If the wind is up, we’re out.” and removed the shared footer’s WhatsApp draft-message guidance paragraph. Its wrapper, unused styles and all `aria-describedby="message-guidance"` references are removed. WhatsApp links retain their explicit new-tab accessible labels, normal destinations and safe external-link attributes. Contact and safety guidance on the dedicated pages is unchanged. Earlier records quoting the longer headline or global footer guidance describe previous versions.
+
+Verification: `npm run verify` exited 0 with lint, typecheck, a fresh production export, all 138 tests passing and no static privacy-audit findings (log `/tmp/hangin-copy-removal-verify.log`). Desktop and 390-pixel mobile screenshots confirmed both removals; the mobile page had no horizontal overflow and no remaining reference to the removed paragraph. Independent scoped review and `git diff --check` passed. Base and HEAD are `62169100da94eaeb42c0975842fa3b7db0ca6799`; these edits remain uncommitted, with unrelated calculator work preserved. No deployment or full accessibility audit was performed.

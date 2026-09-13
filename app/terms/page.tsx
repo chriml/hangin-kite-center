@@ -70,7 +70,7 @@ export default function TermsPage() {
               <p>Tell us the service or item, the relevant dates, what happened and the outcome you are asking for. Ask how to share supporting documents before sending identity, health or payment details.</p>
               <div className={styles.complaintLinks}>
                 <a className="button button--coral" href={`mailto:${siteConfig.email}?subject=Complaint`}>Email a complaint</a>
-                <a className={styles.textLink} href={complaintContact.href} target={complaintContact.target} rel={complaintContact.rel} aria-label={complaintContact.accessibleLabel} aria-describedby="message-guidance">{complaintContact.label}</a>
+                <a className={styles.textLink} href={complaintContact.href} target={complaintContact.target} rel={complaintContact.rel} aria-label={complaintContact.accessibleLabel}>{complaintContact.label}</a>
               </div>
               <p>You can find consumer complaint guidance through the <a href="https://consumercare.dti.gov.ph/">DTI Consumer Care system</a>. This contact route does not limit other remedies available under law.</p>
             </div>

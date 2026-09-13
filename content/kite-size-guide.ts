@@ -105,17 +105,17 @@ const seasonNotes = {
 } as const;
 
 type Season = (typeof seasonNotes)[keyof typeof seasonNotes];
-export type KiteOption = { size: string; wind: string; label: string };
+export type KiteOption = { size: number; wind: string; label: string };
 export type KiteSetup = { title: string; description: string; kites: KiteOption[] };
 export type KiteGuideResult =
   | { status: "invalid"; message: string }
   | { status: "team-check"; message: string; season: Season; wind: TripWind; levelNote: string }
-  | { status: "ready"; weightKg: number; weightBand: string; season: Season; wind: TripWind; levelNote: string; setups: KiteSetup[] };
+  | { status: "ready"; weightKg: number; weightBand: string; planningWindKnots: number; season: Season; wind: TripWind; levelNote: string; setups: KiteSetup[] };
 
 const levelNotes: Record<RiderLevel, string> = {
-  beginner: "Still learning? Let your instructor choose your lesson equipment. These packing ranges are for twin-tip riding after lessons, and do not mean stronger wind is suitable for you. Speak to Hangin before buying or bringing a kite.",
-  intermediate: "These options assume you ride a twin-tip and can control your speed. Match the exact kite and board to the day's wind and gusts with the beach team.",
-  advanced: "These are general freeride ranges on a twin-tip. Foiling, unhooked freestyle and big-air setups need a separate discussion. Experience alone is no reason to take a larger kite.",
+  beginner: "Learning? Your instructor chooses your lesson equipment. Ask Hangin before buying or packing kites.",
+  intermediate: "For twin-tip riding. Check your kite, board and the day’s wind with the beach team.",
+  advanced: "For twin-tip freeride. Ask Hangin separately about foiling, unhooked freestyle or big air.",
 };
 
 function isMonth(value: number): boolean {
@@ -131,6 +131,39 @@ function tripSeason(arrivalMonth: number, departureMonth: number): Season {
     seasons.add(month === 4 || month === 9 ? "transition" : month >= 5 && month <= 8 ? "habagat" : "amihan");
   }
   return seasons.size === 1 ? seasonNotes[[...seasons][0]] : seasonNotes.mixed;
+}
+
+// Editorial packing choices, not measured wind statistics or model wind limits.
+function median(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+}
+
+type PackingReference = KiteOption & { min: number; max: number };
+
+function selectQuiver(references: PackingReference[], targets: number[]): KiteOption[] {
+  // At most four source references: evaluate every combination rather than
+  // greedily choosing a kite that prevents a useful second or third size.
+  let best: PackingReference[] = [];
+  let bestScore = Infinity;
+  for (let mask = 1; mask < 1 << references.length; mask++) {
+    const selected = references.filter((_, index) => mask & (1 << index));
+    if (selected.length !== targets.length) continue;
+    const spaced = selected.every((kite, index) => {
+      if (!index) return true;
+      const larger = selected[index - 1].size;
+      return larger - kite.size >= 2 && larger >= kite.size * 1.2;
+    });
+    if (!spaced) continue;
+    const score = selected.reduce((sum, kite, index) =>
+      sum + ((kite.min + kite.max) / 2 - targets[index]) ** 2, 0);
+    if (score < bestScore) {
+      best = selected;
+      bestScore = score;
+    }
+  }
+  return best.map(({ size, wind, label }) => ({ size, wind, label })).reverse();
 }
 
 export function getKiteGuide(input: KiteGuideInput): KiteGuideResult {
@@ -155,23 +188,35 @@ export function getKiteGuide(input: KiteGuideInput): KiteGuideResult {
 
   const band = kiteSizeBands.find(band => weightKg <= band.maxKg)!;
   const scenarios = windScenarios.filter(scenario => scenario.max >= wind.minKnots! && scenario.min <= wind.maxKnots!);
-  const midpoint = Math.round((wind.minKnots + wind.maxKnots) / 2);
-  const primary = scenarios.find(scenario => midpoint >= scenario.min && midpoint <= scenario.max) ?? scenarios[scenarios.length - 1];
-  const option = (scenario: typeof windScenarios[number]): KiteOption => ({
-    size: band[scenario.key], wind: `${scenario.min}–${scenario.max}`, label: scenario.label,
+  const planningWindKnots = median(wind.months.map(month => (month.minKnots! + month.maxKnots!) / 2));
+  const lowerWind = median(wind.months.map(month => month.minKnots!));
+  const upperWind = median(wind.months.map(month => month.maxKnots!));
+  const references: PackingReference[] = scenarios.map(scenario => {
+    const [small, large] = band[scenario.key].split("–").map(Number);
+    return {
+      // Use the midpoint; half-square-metre ties choose the smaller whole size.
+      size: Math.floor((small + large) / 2),
+      wind: `${scenario.min}–${scenario.max}`, label: scenario.label,
+      min: scenario.min, max: scenario.max,
+    };
   });
-  const outer = [scenarios[scenarios.length - 1], scenarios[0]];
-  const middle = scenarios.slice(1, -1).find(scenario => scenario === primary) ?? scenarios[1];
-  const three = scenarios.length >= 3 ? [outer[0], middle, outer[1]].map(option) : [];
+  // Half-knot gaps between chart bands use the nearer band, with ties going
+  // to the stronger-wind (smaller-kite) reference. Never round wind upward.
+  const distance = (kite: PackingReference) => Math.max(kite.min - planningWindKnots, planningWindKnots - kite.max, 0);
+  const primary = references.reduce((best, kite) => distance(kite) <= distance(best) ? kite : best);
+  const two = selectQuiver(references, [lowerWind, upperWind]);
+  const three = selectQuiver(references, [lowerWind, planningWindKnots, upperWind]);
 
   return {
-    status: "ready", weightKg, weightBand: band.label, season, wind, levelNote,
+    status: "ready", weightKg, weightBand: band.label, planningWindKnots, season, wind, levelNote,
     setups: [
-      { title: "One kite", description: "A reference near the middle of your months' combined wind range. It will not suit every day; check the forecast before choosing your one kite.", kites: [option(primary)] },
-      { title: "Two kites", description: "Compare the smaller and larger sizes for the chart bands that overlap your months. Ask Hangin to check the wind-range overlap for your exact models.", kites: outer.map(option) },
+      { title: "One kite", description: "Centered on your months’ middle wind reference.", kites: [{ size: primary.size, wind: primary.wind, label: primary.label }] },
+      { title: "Two kites", description: two.length
+        ? "A smaller and a larger kite for stronger and lighter days."
+        : "These months don’t support two well-spaced sizes. Check an extra size with Hangin.", kites: two },
       { title: "Three kites", description: three.length
-        ? "Add a middle size for more choice across your months' wind range. These options do not cover every possible wind strength."
-        : "Only two chart bands overlap your months' rough wind range. A third kite needs a check with Hangin; no extra size is suggested here.", kites: three },
+        ? "A middle size adds a closer match as the wind changes."
+        : "These months don’t support three well-spaced sizes. Check an extra size with Hangin.", kites: three },
     ],
   };
 }

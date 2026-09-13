@@ -281,7 +281,16 @@ test("the shop does not describe retail stock as a Service", async () => {
 test("rental page CTAs cover both services and each card has a matching enquiry", async () => {
   const html = await readRoute("/rentals-storage/");
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";
-  const pageContent = main.replace(/<article\b[^>]*>[\s\S]*?<\/article>/gi, "");
+  const safetySection = main.match(/<section\b[^>]*aria-labelledby=["']water-safety-title["'][^>]*>[\s\S]*?<\/section>/i)?.[0] ?? "";
+  assert.ok(safetySection, "missing rental safety section");
+  const safetyMessages = tags(safetySection, "a")
+    .map((tag) => attribute(tag, "href"))
+    .filter((href) => href?.startsWith("https://wa.me/"))
+    .map((href) => decodeURIComponent(href.split("?text=")[1] ?? ""));
+  assert.deepEqual(safetyMessages, ["Hi Hangin, I'd like to check kite rental availability for my Boracay trip."], "rental safety enquiry context");
+  const pageContent = main
+    .replace(safetySection, "")
+    .replace(/<article\b[^>]*>[\s\S]*?<\/article>/gi, "");
   const messages = tags(pageContent, "a")
     .map((tag) => attribute(tag, "href"))
     .filter((href) => href?.startsWith("https://wa.me/"))
@@ -363,7 +372,7 @@ test("homepage welcomes every guest and follows the approved calm funnel", async
     assert.match(html, new RegExp(`id=["']${id}["']`));
   }
   assert.match(text, /Bulabog Beach, Boracay/);
-  assert.match(text, /If the wind is up, we're out there\./);
+  assert.match(text, /If the wind is up, we're out\./);
   assert.doesNotMatch(text, /Welcome to|Out on the water in Boracay/);
   assert.match(text, /Kitesurfing since 2002\./);
   assert.match(text, /Your Boracay kite experience\./);

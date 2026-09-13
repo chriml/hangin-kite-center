@@ -32,7 +32,7 @@ export default function KiteSafarisPage() {
                       <p>Details coming soon.</p>
                     </div>
                     <div className={styles.tripActions}>
-                      <a className="button button--coral button--whatsapp" href={request.href} target={request.target} rel={request.rel} aria-label={`Request ${trip.name} safari information via WhatsApp (opens in a new tab)`} aria-describedby="message-guidance">
+                      <a className="button button--coral button--whatsapp" href={request.href} target={request.target} rel={request.rel} aria-label={`Request ${trip.name} safari information via WhatsApp (opens in a new tab)`}>
                         <WhatsAppIcon />Request
                       </a>
                       <Link className="button" href={trip.path} aria-label={`More about ${trip.name} safaris`}>More <span aria-hidden="true">→</span></Link>
@@ -53,7 +53,7 @@ export default function KiteSafarisPage() {
             <p>Read up on the beach, sort out your gear or work on your riding while you&apos;re in Boracay.</p>
           </div>
           <ul>
-            <li><Link href="/kitesurfing-boracay/">Read the Boracay spot guide <span aria-hidden="true">↗</span></Link></li>
+            <li><a href="/kitesurfing-boracay/">Read the Boracay spot guide <span aria-hidden="true">↗</span></a></li>
             <li><Link href="/rentals-storage/">Ask about rental and storage <span aria-hidden="true">↗</span></Link></li>
             <li><Link href="/kitesurfing-lessons/">Find a lesson for your level <span aria-hidden="true">↗</span></Link></li>
           </ul>

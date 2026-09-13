@@ -42,7 +42,7 @@ export function KiteSizeCalculator() {
     <div className={styles.calculator}>
       <form className={styles.form} onSubmit={calculate} onChange={() => setResult(null)} aria-labelledby="trip-heading">
         <h2 id="trip-heading">Your trip</h2>
-        <p className={styles.formIntro}>All fields are needed. Your details stay on this page.</p>
+        <p className={styles.formIntro}>Your details stay on this page.</p>
         <fieldset disabled={!ready} className={styles.fields}>
           <legend className={styles.srOnly}>Rider and travel details</legend>
           <div className={styles.weightFields}>
@@ -58,19 +58,18 @@ export function KiteSizeCalculator() {
               </select>
             </div>
           </div>
-          <p id="weight-help" className={styles.help}>For adults from 60 to 120 kg (about 132 to 265 lb).</p>
-          <p id="travel-help" className={styles.help}>Choose the first and last month of your trip. December to January works too.</p>
+          <p id="weight-help" className={styles.help}>Adults, 60–120 kg (132–265 lb).</p>
           <div className={styles.travelPeriod}>
             <div className={styles.field}>
               <label htmlFor="arrival-month">Arrival month</label>
-              <select id="arrival-month" required value={arrivalMonth} onChange={event => setArrivalMonth(event.target.value)} aria-describedby="travel-help">
+              <select id="arrival-month" required value={arrivalMonth} onChange={event => setArrivalMonth(event.target.value)}>
                 <option value="" disabled>Choose month</option>
                 {months.map((month, index) => <option key={month} value={String(index + 1).padStart(2, "0")}>{month}</option>)}
               </select>
             </div>
             <div className={styles.field}>
               <label htmlFor="departure-month">Departure month</label>
-              <select id="departure-month" required value={departureMonth} onChange={event => setDepartureMonth(event.target.value)} aria-describedby="travel-help">
+              <select id="departure-month" required value={departureMonth} onChange={event => setDepartureMonth(event.target.value)}>
                 <option value="" disabled>Choose month</option>
                 {months.map((month, index) => <option key={month} value={String(index + 1).padStart(2, "0")}>{month}</option>)}
               </select>
@@ -82,7 +81,7 @@ export function KiteSizeCalculator() {
               <option value="" disabled>Choose your level</option>
               {riderLevels.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
-            <p id="level-help" className={styles.help}>{riderLevels.find(item => item.value === level)?.detail ?? "Choose beginner if you still need an instructor."}</p>
+            <p id="level-help" className={styles.help}>{riderLevels.find(item => item.value === level)?.detail ?? "Still learning? Choose beginner."}</p>
           </div>
           <button className="button button--dark" type="submit">Compare my setups <span aria-hidden="true">↗</span></button>
         </fieldset>
@@ -94,44 +93,42 @@ export function KiteSizeCalculator() {
           {result?.status === "ready" ? "Your packing options" : result?.status === "invalid" ? "Check your trip details" : result ? "Check your setup with us" : "Three ways to pack"}
         </h2>
         {!result && <>
-          <p>Fill in your trip details to see kite size ranges for these three packing options.</p>
+          <p>Enter your trip details to compare kite sizes.</p>
           <ul className={styles.emptyList}>
             <li><span>One kite</span><p>Keep the bag light.</p></li>
             <li><span>Two kites</span><p>Bring a smaller and a larger size.</p></li>
             <li><span>Three kites</span><p>Add a middle size to the bag.</p></li>
           </ul>
-          <p className={styles.help}>For freeride kites with a twin-tip board. Check the exact kite, board and conditions with Hangin before packing.</p>
+          <p className={styles.help}>For twin-tip freeride. Check your setup with Hangin before packing.</p>
         </>}
         {result?.status === "invalid" && <p role="alert">{result.message}</p>}
         {result && result.status !== "invalid" && <>
-          <div className={styles.seasonNote}>
-            <h3>{result.season.title}</h3>
-            <p>{result.season.body}</p>
-          </div>
-          <div className={styles.windSummary}>
-            <h3>Wind for your selected months</h3>
-            <p>Based on Hangin&apos;s rough seasonal experience. These ranges are planning guidance, not measured averages or a forecast.</p>
-            <KiteWindMonths months={result.wind.months} />
-            {result.wind.months.some(month => month.estimated) && <p>December and March use broad estimates between the nearby months.</p>}
-            {result.wind.maxKnots !== null && result.wind.maxKnots > 28 && <p className={styles.windLimit}>The selected months can exceed the chart&apos;s 28-knot limit{result.wind.occasionalKnots ? `, occasionally reaching ${result.wind.occasionalKnots} knots` : ""}. The suggested sizes do not cover those conditions. Check the forecast and exact equipment with Hangin; sit out conditions beyond your gear or ability.</p>}
-          </div>
-          <p className={styles.levelNote}>{result.levelNote}</p>
           {result.status === "team-check" ? <p>{result.message}</p> : <>
-            <p className={styles.resultIntro}>Using the {result.weightBand} reference band and your selected months. Choose one kite size from each range shown. A third size is only listed when three chart bands overlap your trip range.</p>
             <ol className={styles.setupList}>
               {result.setups.map(setup => <li key={setup.title} className={styles.setup}>
                 <h3>{setup.title}</h3>
                 {setup.kites.length > 0 && <ul className={styles.kiteSizes}>
-                  {setup.kites.map(kite => <li key={kite.label}>
+                  {setup.kites.map(kite => <li key={kite.size}>
                     <p className={styles.size}>{kite.size}<span>m²</span></p>
-                    <p className={styles.wind}>{kite.label}<br />{kite.wind} knots</p>
                   </li>)}
                 </ul>}
                 <p>{setup.description}</p>
               </li>)}
             </ol>
-            <p className={styles.help}>The wind figures are chart references for separate conditions, not the operating limits of any specific kite. Stronger wind may be unsuitable for your level. Use the exact model&apos;s wind chart and the beach team&apos;s advice.</p>
           </>}
+          <p className={styles.levelNote}>{result.levelNote}</p>
+          {result.wind.maxKnots !== null && result.wind.maxKnots > 28 && <p className={styles.windLimit}>January can reach 30 knots, occasionally 35. These suggestions stop at the chart’s 28-knot limit. Check the forecast and sit out conditions beyond your gear or ability.</p>}
+          <details className={styles.explanation}>
+            <summary>{result.status === "ready" ? "How these sizes are chosen" : "Wind for your months"}</summary>
+            {result.status === "ready" && <>
+              <p>One kite uses a {result.planningWindKnots}-knot planning reference: the median of your months’ wind-range midpoints. Each month counts equally.</p>
+              <p>Two kites target the median lower and upper month references. Three add a middle choice. We compare combinations and keep at least 2 m² and 20% between sizes.</p>
+              <p>Sizes use the midpoint of each chart range, rounded to a whole size with half steps rounded down. Your weight band is {result.weightBand}. These are packing estimates; check the wind range for your exact kite and board.</p>
+            </>}
+            <p>{result.season.body}</p>
+            <KiteWindMonths months={result.wind.months} />
+            <p>Hangin’s seasonal estimates, not measured averages or a forecast. December and March are broad estimates.</p>
+          </details>
         </>}
       </section>
     </div>

@@ -223,6 +223,8 @@
 
 .shop .serviceSection:nth-child(2),
 .shop .serviceSection:nth-child(4) {
+  margin-inline: calc((100vw - var(--content)) / -2);
+  padding-inline: max(1rem, calc((100vw - 1180px) / 2));
   border-color: var(--sun);
   background: var(--ocean);
   color: var(--sun);
@@ -240,6 +242,8 @@
 }
 
 .about .serviceSection:first-child {
+  margin-inline: calc((100vw - var(--content)) / -2);
+  padding-inline: max(1rem, calc((100vw - 1180px) / 2));
   border-top: 0;
   background: color-mix(in srgb, var(--lagoon) 14%, var(--sun));
 }
@@ -251,9 +255,18 @@
   color: var(--ocean);
 }
 
+.safaris .safetySection {
+  background: var(--ocean);
+  color: var(--sun);
+}
+
 .safetyGrid {
   display: grid;
   gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.safetyActions {
+  margin-top: 1.5rem;
 }
 
 .safetyGrid h2 {
@@ -392,14 +405,6 @@
     grid-template-columns: minmax(20rem, 0.76fr) minmax(0, 1.24fr);
   }
 
-  .shop .heroCopy {
-    order: 2;
-  }
-
-  .shop .heroFigure {
-    order: 1;
-  }
-
   .heroCopy h1 {
     max-width: 10ch;
     font-size: clamp(4.5rem, 6.3vw, 5.6rem);
@@ -451,11 +456,6 @@
 
   .boracay .serviceSection:nth-child(2) {
     grid-template-columns: minmax(0, 0.86fr) minmax(17rem, 1.14fr);
-  }
-
-  .about .serviceSection:first-child {
-    margin-inline: calc((100vw - var(--content)) / -2);
-    padding-inline: max(1rem, calc((100vw - 1180px) / 2));
   }
 
   .faqGrid,

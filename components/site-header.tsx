@@ -68,8 +68,10 @@ export function SiteHeader() {
         <div className={`shell ${styles.headerBar}`}>
           <BrandLink />
           <nav className={styles.primaryNav} aria-label="Primary">
-            {desktopRoutes.map((route) => (
-              <Link key={route} href={route} scroll={route !== "/kitesurfing-boracay/"}>
+            {desktopRoutes.map((route) => route === "/kitesurfing-boracay/" ? (
+              <a key={route} href={route}>{routeLabels[route]}</a>
+            ) : (
+              <Link key={route} href={route}>
                 {routeLabels[route]}
               </Link>
             ))}
