@@ -4,7 +4,7 @@
     "review": "docs/project/architecture.md"
   },
   "components/kite-size-calculator.tsx": {
-    "sha256": "4cd83c0f1f06fbe74d64fd0b5f9d3f5cb1ed4a0d47382571d3fe3863a1707183",
-    "review": "docs/project/kite-size-guide.md"
+    "sha256": "93345763862d6214c6d8744fbff3c4a17cc4a67ca0e97accfe5f1ff28fb3e72c",
+    "review": "docs/project/kite-size-guide.md#fixed-sizes-and-shorter-results-2026-09-13"
   }
 }

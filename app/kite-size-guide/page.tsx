@@ -31,9 +31,9 @@ export default function KiteSizeGuidePage() {
             <div>
               <p className="eyebrow">Before you pack</p>
               <h1>Boracay kite size guide</h1>
-              <p className={styles.heroLead}>Use this kite size calculator to compare one-, two- and three-kite setups for your weight, travel months and riding level.</p>
+              <p className={styles.heroLead}>Compare kite sizes for your weight and months in Boracay.</p>
             </div>
-            <p className={styles.introNote}>One, two or three kites in the bag? Start with a size range, then check the forecast and your gear with the beach team.</p>
+            <p className={styles.introNote}>One, two or three kites. Check your packing choices with the beach team.</p>
           </div>
         </div>
       </section>
@@ -42,9 +42,9 @@ export default function KiteSizeGuidePage() {
         <div className={`shell ${styles.guideGrid}`}>
           <h2>What kite size should I bring to Boracay?</h2>
           <div>
-            <p>Choose your kite size for your weight, board and the wind on the day. The calculator uses the <a href={kiteGuideSource.href}>{kiteGuideSource.title}</a> for twin-tip riding to suggest three packing options. Check the ranges against your exact kite model before packing for Bulabog Beach.</p>
-            <p>Your selected months determine the wind bands used for your packing options. Hangin supplies the rough seasonal ranges; December and March use broad estimates between the nearby months. These are not measured wind statistics or a forecast. Your level changes the riding advice; it does not add power to the calculation. Take a twin-tip, a compatible bar and a correctly fitted harness, and check the full setup with Hangin.</p>
-            <p>If you are taking your first lessons, your instructor chooses the equipment. Check the <Link href="/kitesurfing-boracay/">Boracay spot guide</Link> for wind, tide and launch information.</p>
+            <p>The kite size calculator uses the <a href={kiteGuideSource.href}>{kiteGuideSource.title}</a> for twin-tip riding. It suggests whole sizes for your bag; check your exact kite model and the forecast before packing.</p>
+            <p>One kite is centered on the median of your months’ wind-range midpoints. Two and three kites use separate calculations with space between sizes. Hangin supplies seasonal estimates, not measured wind statistics or a forecast. December and March use broad estimates.</p>
+            <p>If you are taking your first lessons, your instructor chooses the equipment. Check the <a href="/kitesurfing-boracay/">Boracay spot guide</a> for wind, tide and launch information.</p>
             <details>
               <summary>View the reference size chart</summary>
               <div className={styles.tableWrap}>
@@ -70,15 +70,15 @@ export default function KiteSizeGuidePage() {
           <div className={styles.questions}>
             <details>
               <summary>What kite size do I need for my weight?</summary>
-              <p>Enter your weight in kilograms or pounds to see size ranges for lighter, medium and stronger wind scenarios. This calculator covers riders from 60 to 120 kg using a twin-tip board. Outside that range, ask Hangin to check your setup. For your first <Link href="/kitesurfing-lessons/">kitesurfing lessons</Link>, let your instructor choose the equipment.</p>
+              <p>Enter your weight to compare packing sizes. This guide covers adults from 60 to 120 kg on a twin-tip. Ask Hangin for other weights or boards. For your first <Link href="/kitesurfing-lessons/">kitesurfing lessons</Link>, let your instructor choose the equipment.</p>
             </details>
             <details>
               <summary>What kite sizes should I pack for Boracay in December or January?</summary>
-              <p>December and January fall within the main Amihan season at Bulabog, roughly November to April. The calculator uses those months to choose the relevant wind bands. January can bring 20–30-knot spells and occasionally 35 knots, beyond this chart’s 28-knot limit. The suggested sizes do not cover those stronger conditions. Compare the suggested ranges, then check the forecast close to your trip. Read the <Link href="/kitesurfing-boracay/">Boracay wind and season guide</Link> for Amihan and Habagat conditions.</p>
+              <p>Choose your months above. January can reach 30 knots, occasionally 35, beyond this chart’s 28-knot limit. Check the forecast before packing and read the <a href="/kitesurfing-boracay/">Boracay wind and season guide</a> for Amihan and Habagat conditions.</p>
             </details>
             <details>
               <summary>How many kites should I bring to Boracay?</summary>
-              <p>One kite keeps luggage lighter, but gives you fewer size options when the wind changes. Two kites add a smaller and a larger size. A third is listed only when another chart band fits your months. Compare the options above with the gear you already ride, and check the wind ranges for each model with Hangin.</p>
+              <p>One keeps the bag light. Two add more choice as the wind changes; three add a middle size. Extra kites appear only when the month ranges support useful spacing. Check each model’s wind range with Hangin.</p>
             </details>
             <details>
               <summary>Should I bring my own kite gear or rent in Boracay?</summary>

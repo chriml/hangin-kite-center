@@ -31,9 +31,9 @@ export function SpotGuide() {
             sessions to the other side of Boracay. Drop us a message before
             bringing your gear over.
           </p>
-          <Link className={styles.textLink} href="/kitesurfing-boracay/">
+          <a className={styles.textLink} href="/kitesurfing-boracay/">
             Read the Boracay spot guide
-          </Link>
+          </a>
           <Link className={styles.textLink} href="/kite-size-guide/">
             Compare kite sizes for your trip
           </Link>

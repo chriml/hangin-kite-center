@@ -15,13 +15,13 @@ test('complaint action opens a complaint draft instead of a trip inquiry', async
   assert.match(complaint, /mailto:hanginkitecenter@gmail.com\?subject=Complaint/);
 });
 
-test('all WhatsApp exits disclose the new tab and reference message guidance', async () => {
+test('all WhatsApp exits disclose the new tab without removed footer guidance', async () => {
   for (const route of publicRoutes) {
     const html = await readRoute(route);
-    assert.match(html, /id="message-guidance"/);
+    assert.doesNotMatch(html, /id="message-guidance"/);
     for (const link of tags(html, 'a').filter(a => attribute(a, 'href')?.startsWith('https://wa.me/'))) {
       assert.match(attribute(link, 'aria-label') ?? '', /opens in a new tab/i, route);
-      assert.equal(attribute(link, 'aria-describedby'), 'message-guidance');
+      assert.notEqual(attribute(link, 'aria-describedby'), 'message-guidance');
       assert.equal(attribute(link, 'target'), '_blank');
       assert.equal(attribute(link, 'rel'), 'noopener noreferrer');
     }

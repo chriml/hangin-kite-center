@@ -629,14 +629,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .serviceBand:nth-child(even) .serviceImage {
-    order: 2;
-  }
-
-  .serviceBand:nth-child(even) .serviceCopy {
-    order: 1;
-  }
-
   .serviceImage,
   .serviceImage img,
   .serviceCopy {

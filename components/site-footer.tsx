@@ -56,21 +56,15 @@ export function SiteFooter() {
           </ul>
         </div>
         <nav className={styles.footerNav} aria-label="Footer">
-          {navigationRoutes.filter((route) => route !== "/legal/").map((route) => (
+          {navigationRoutes.filter((route) => route !== "/legal/").map((route) => route.startsWith("/kitesurfing-boracay/") ? (
+            <a key={route} href={route}>{routeLabels[route]}</a>
+          ) : (
             <Link key={route} href={route}>
               {routeLabels[route]}
             </Link>
           ))}
           <Link href="/#questions">FAQ</Link>
         </nav>
-      </div>
-      <div className={`shell ${styles.footerNotes}`}>
-        <p id="message-guidance">
-          WhatsApp opens in a new tab with a draft message. You choose whether to
-          send the chat message to Hangin. Keep your first message brief.
-          Ask how to share health or identity information before
-          sending it.
-        </p>
       </div>
       <div className={`shell ${styles.footerBase}`}>
         <span>© {new Date().getUTCFullYear()} {siteConfig.name}</span>

@@ -23,7 +23,7 @@ export type ServicePageContent = {
       | { kind: "private"; packages: readonly { hours: number; price: number }[] };
     body: readonly string[];
   }[];
-  safety?: { heading: string; body: readonly string[] };
+  safety?: { heading: string; body: readonly string[]; contactContext?: ContactContext };
   faq: readonly { question: string; answer: string }[];
 };
 
@@ -218,6 +218,7 @@ export const waterPages = {
     ],
     safety: {
       heading: "Before renting gear",
+      contactContext: "rental",
       body: [
         "Ask Hangin about rider requirements, the equipment, its condition and where it can be used before renting. Stop using damaged equipment and contact Hangin.",
         "For a rider under 18, a parent or legal guardian should contact Hangin before arrangements are made. Ask for the participation and intake instructions before sharing health information. Keep health details out of the first WhatsApp message.",

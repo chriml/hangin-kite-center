@@ -14,7 +14,7 @@ import styles from "./service-page.module.css";
 function SectionContact({ contact }: { contact: NonNullable<ServicePageContent["sections"][number]["contact"]> }) {
   const action = getPrimaryContactAction(contact.context);
   return (
-    <a className={`${styles.sectionLink} ${styles.sectionContact}`} href={action.href} target={action.target} rel={action.rel} aria-label={`${contact.label} (opens in a new tab)`} aria-describedby="message-guidance">
+    <a className={`${styles.sectionLink} ${styles.sectionContact}`} href={action.href} target={action.target} rel={action.rel} aria-label={`${contact.label} (opens in a new tab)`}>
       <WhatsAppIcon />{contact.label}
     </a>
   );
@@ -195,6 +195,11 @@ export function ServicePage({ content, overview, children, sectionHeadingExtras,
               {content.safety.body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
+              {content.safety.contactContext && (
+                <div className={styles.safetyActions}>
+                  <ContactCta context={content.safety.contactContext} label="ask" compact />
+                </div>
+              )}
             </div>
           </div>
         </section>

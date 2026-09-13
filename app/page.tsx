@@ -119,7 +119,7 @@ export default function Home() {
             </a>
             <h1 id="hero-heading">
               <span>If the wind is up,</span>{" "}
-              <span>we&apos;re out there.</span>
+              <span>we&apos;re out.</span>
             </h1>
             <p className={styles.heroLead}>
               Kitesurfing since 2002.

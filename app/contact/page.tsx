@@ -107,7 +107,6 @@ export default function ContactPage() {
               className="button button--coral button--whatsapp"
               href={primaryContact.href}
               aria-label={`${primaryContact.channelLabel} ${primaryContact.displayDestination} (opens in a new tab)`}
-              aria-describedby="message-guidance"
               target={primaryContact.target}
               rel={primaryContact.rel}
             >

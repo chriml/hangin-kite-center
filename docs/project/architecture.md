@@ -27,7 +27,7 @@ visitor follows WhatsApp, email, telephone, or internal links
 - `next.config.ts` sets `output: "export"`, `trailingSlash: true`, and `images.unoptimized: true`.
 - Pages and shared components are Server Components, apart from the local kite-size calculator and the Boracay shared navigation. The calculator uses browser memory only; the navigation selects the current static child route. Core content and contact paths remain prerendered.
 - Native HTML handles the mobile menu and FAQ disclosure behavior.
-- Mobile-menu destinations use ordinary document links so the destination loads with its native disclosure closed. Desktop and other site links retain Next.js navigation. This avoids retaining an open menu in the shared layout and needs no additional client component.
+- Mobile-menu destinations use ordinary document links so the destination loads with its native disclosure closed. Links entering the Boracay guide from the header, footer, homepage, safari page and kite-size guide also use document navigation, which opens the destination at its shared hero. The Boracay submenu retains Next.js navigation with preserved scroll. Other site links retain Next.js navigation. No additional client component is needed.
 - Local responsive images and framework-emitted fonts are served from the static artifact.
 - The production artifact contains twenty-one public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
 

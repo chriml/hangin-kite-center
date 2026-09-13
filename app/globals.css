@@ -162,10 +162,26 @@ svg {
 .not-found {
   width: var(--content);
   min-height: 70vh;
+  margin-inline: auto;
+  padding-block: 4rem;
   display: grid;
   align-content: center;
   justify-items: start;
   gap: 1rem;
+}
+
+.not-found h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--ocean);
+  font-size: clamp(3.25rem, 7.3vw, 6rem);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.not-found > p {
+  margin: 0;
+  line-height: 1.7;
 }
 
 @media (prefers-reduced-motion: reduce) {
