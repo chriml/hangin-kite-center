@@ -96,9 +96,11 @@ export default function ContactPage() {
             <p className="eyebrow">Location</p>
             <h2>Find us on Bulabog Beach</h2>
             <p>{siteConfig.location}</p>
+            <p>During Habagat, we move sessions to the other side of Boracay. Confirm your lesson meeting point with us before heading to the beach.</p>
             <a className="button" href={siteConfig.mapsUrl} target="_blank" rel="noopener noreferrer">
               Open Google Maps
             </a>
+            <p><a href="/kitesurfing-boracay/">Read the Boracay spot guide</a></p>
           </article>
           <article className={styles.channel}>
             <p className="eyebrow">Primary contact</p>

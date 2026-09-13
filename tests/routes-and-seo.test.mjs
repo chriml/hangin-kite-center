@@ -80,7 +80,7 @@ function sitemapEntries(xml) {
       url: element("loc"),
       lastModified: element("lastmod"),
       changeFrequency: element("changefreq"),
-      priority: Number(element("priority")),
+      priority: element("priority"),
     };
   });
 }
@@ -94,27 +94,24 @@ test("sitemap covers the exact indexable surface and robots permits crawling", a
     entries.map((entry) => entry.url),
     indexableRoutes.map((route) => new URL(route, origin).toString()),
   );
-  for (const [index, entry] of entries.entries()) {
-    const route = indexableRoutes[index];
-    const expectedDate = route === "/kite-safaris/" || route === "/legal/" || route.startsWith("/kitesurfing-boracay/")
-      ? "2026-09-13T00:00:00.000Z"
-      : route === "/kite-size-guide/"
-      ? "2026-09-08T00:00:00.000Z"
-      : route === "/terms/" || route === "/accessibility/"
-      ? "2026-09-04T00:00:00.000Z"
-      : "2026-08-29T00:00:00.000Z";
-    assert.equal(entry.lastModified, expectedDate, `${route} lastModified`);
-    assert.equal(entry.changeFrequency, route === "/" ? "weekly" : "monthly", `${route} frequency`);
-    assert.equal(
-      entry.priority,
-      route === "/" ? 1 : ["/kitesurfing-lessons/", "/kitesurfing-boracay/"].includes(route) ? 0.9 : 0.7,
-      `${route} priority`,
-    );
+  for (const entry of entries) {
+    // Unknown modification dates are omitted instead of inventing freshness.
+    if (entry.lastModified) {
+      assert.match(entry.lastModified, /^\d{4}-\d{2}-\d{2}(?:T00:00:00\.000Z)?$/);
+      assert.ok(Date.parse(entry.lastModified) <= Date.now(), `${entry.url} future lastmod`);
+    }
+    assert.equal(entry.changeFrequency, undefined);
+    assert.equal(entry.priority, undefined);
+  }
+  for (const route of ["/", "/kitesurfing-lessons/", "/contact/"]) {
+    const entry = entries.find(entry => entry.url === new URL(route, origin).href);
+    assert.ok(Date.parse(entry.lastModified) >= Date.parse("2026-09-13"), `${route} must reflect the published September changes`);
   }
 
   assert.match(robots, /User-Agent: \*\s+Allow: \//i);
   assert.match(robots, /Sitemap: https:\/\/www\.hanginkitecenter\.com\/sitemap\.xml/i);
-  assert.match(robots, /Host: https:\/\/www\.hanginkitecenter\.com/i);
+  assert.doesNotMatch(robots, /^Host:/im);
+  assert.doesNotMatch(robots, /^Disallow:\s*\//im);
 });
 
 test("manifest metadata uses the approved identity, colors, and icons", async () => {

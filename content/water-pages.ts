@@ -136,6 +136,11 @@ export const waterPages = {
     },
     faq: [
       {
+        question: "How much are kitesurfing lessons at Hangin in Boracay?",
+        answer:
+          `The introductory course is ${lessonPrice(lessonCourses[0].price)} per person. The full course is ${lessonPrice(lessonCourses[4].price)} per person. These beginner course prices include lesson equipment, applicable taxes and mandatory fees. Private and group courses have the same price per person, with different teaching hours shown above.`,
+      },
+      {
         question: "Do I need kitesurfing experience?",
         answer:
           "No. Complete beginners start with the kite, its safety systems and control before moving into the lagoon.",
@@ -154,6 +159,16 @@ export const waterPages = {
         question: "What can I work on if I already ride?",
         answer:
           "Advanced private coaching can cover upwind riding, freeride, freestyle or strapless surfboard riding. Tell us your level and what you want to improve so your instructor can plan the session.",
+      },
+      {
+        question: "How many days should I allow for a full course?",
+        answer:
+          `The full course includes ${lessonCourses[4].privateHours} hours of private teaching or ${lessonCourses[4].groupHours} hours of group sessions. These are teaching hours, not a fixed number of days. Wind, water conditions and your progress affect the schedule. Send your Boracay dates before planning around lesson days; finishing the course hours does not guarantee independent riding.`,
+      },
+      {
+        question: "Can I take lessons during Habagat?",
+        answer:
+          "Hangin moves sessions to the other side of Boracay during Habagat, roughly June to October. The meeting point and whether a lesson can go ahead depend on the conditions. Contact us with your dates before heading to the beach. Amihan, roughly November to April, is the main kite season at Bulabog.",
       },
       {
         question: "When will my session go ahead?",

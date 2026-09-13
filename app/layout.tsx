@@ -56,6 +56,7 @@ const sitewideJsonLd = {
       email: siteConfig.email,
       telephone: `+${siteConfig.whatsappNumber}`,
       foundingDate: String(siteConfig.established),
+      hasMap: siteConfig.mapsUrl,
       address: {
         "@type": "PostalAddress",
         addressLocality: "Boracay",

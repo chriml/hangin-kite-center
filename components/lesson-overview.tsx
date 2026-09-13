@@ -31,7 +31,7 @@ export function LessonOverview() {
             </li>
           ))}
         </ul>
-        <p className={styles.note}>The price per person is the same for private and group courses. Group hours are the duration of the session.</p>
+        <p className={styles.note}>Beginner courses include lesson equipment, applicable taxes and mandatory fees. The price per person is the same for private and group courses. Groups have at most two students per instructor, sharing one kite; group hours are the duration of the session.</p>
         <div className={styles.advanced}>
           <div>
             <p className="eyebrow">Already riding?</p>

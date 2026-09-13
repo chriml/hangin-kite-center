@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-13",
+  "status": "not_run",
+  "completed_runs": 0,
+  "canonical_origin": "https://www.hanginkitecenter.com",
+  "baseline_date": null,
+  "protocol": {
+    "mode": "manual",
+    "fresh_chat_per_run": true,
+    "repetitions_per_query_per_product": 3,
+    "query_language": "en",
+    "location_context": null,
+    "search_must_be_active": true,
+    "personalization": "Record actual login and personalization state; do not store account identifiers.",
+    "products": [
+      "ChatGPT Search",
+      "Gemini app",
+      "Google AI Mode",
+      "Claude"
+    ],
+    "null_semantics": "Unknown or not run. Never interpret null as zero, false, no citation or no recommendation.",
+    "comparison": "Compare completed runs with matching product/model, language, location and search context. Keep unavailable runs outside denominators."
+  },
+  "queries": [
+    {
+      "id": "beginner_lessons",
+      "prompt": "Where can a complete beginner learn kitesurfing on Boracay?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "school_comparison",
+      "prompt": "Which kitesurfing schools on Bulabog Beach should I compare for beginner lessons?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "lesson_prices",
+      "prompt": "What do beginner kitesurfing lessons cost on Boracay?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "lesson_duration",
+      "prompt": "How many teaching hours do beginner kitesurfing courses on Boracay include?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "private_group",
+      "prompt": "Which Boracay kite schools offer private and small group lessons?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "amihan",
+      "prompt": "When is the main kitesurfing season at Bulabog Beach?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "habagat",
+      "prompt": "Where can I ask about kitesurfing lessons on Boracay during Habagat?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "rental_storage",
+      "prompt": "Where can an experienced rider ask about kite equipment rental and storage on Boracay?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "lesson_stay",
+      "prompt": "Which kite schools on Boracay also offer accommodation?",
+      "status": "not_run",
+      "runs": null
+    },
+    {
+      "id": "progression",
+      "prompt": "Where can I ask about advanced kitesurfing coaching on Boracay?",
+      "status": "not_run",
+      "runs": null
+    }
+  ],
+  "run_template": {
+    "status": "not_run",
+    "repeat": null,
+    "product": null,
+    "displayed_model": null,
+    "observed_at_utc": null,
+    "query_language": null,
+    "ui_language": null,
+    "requested_location": null,
+    "actual_location_context": null,
+    "search_active": null,
+    "fresh_chat": null,
+    "logged_in": null,
+    "personalization_state": null,
+    "recommended_schools": null,
+    "hangin_mentioned": null,
+    "hangin_recommended": null,
+    "citations": null,
+    "factual_errors": null,
+    "failure_reason": null,
+    "public_evidence_url": null,
+    "notes": null
+  },
+  "citation_template": {
+    "url": null,
+    "title": null,
+    "source_type": null,
+    "supports_claim": null
+  },
+  "citation_source_types": [
+    "hangin_owned",
+    "third_party"
+  ],
+  "factual_error_template": {
+    "claim_summary": null,
+    "confirmed_correction": null,
+    "source_record": null,
+    "source_verified_at": null
+  },
+  "allowed_run_statuses": [
+    "not_run",
+    "completed",
+    "unavailable",
+    "failed"
+  ],
+  "privacy": "Store public-answer observations only. No credentials, account identifiers, guest information, private chat transcripts or tracking identifiers.",
+  "results": {
+    "citation_rate": null,
+    "recommendation_rate": null,
+    "denominator": null,
+    "interpretation": "No observations collected; visibility and change are unknown."
+  }
+}

@@ -9,7 +9,7 @@ export const siteConfig = {
   location: "Bulabog Beach, Boracay, Philippines",
   established: 2002,
   mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Hangin+Kite+Center+Bulabog+Beach+Boracay",
+    "https://www.google.com/maps/search/?api=1&query=Hangin+Kitesurf+Center+%26+Resort&query_place_id=ChIJDZwPzD08pTMRCv8c2mLjjBw",
 } as const;
 
 export const sitePartners = [
@@ -39,7 +39,7 @@ export const reviewPlatforms = [
     logo: "/brand/reviews/google.svg",
     width: 74,
     height: 24,
-    href: "https://www.google.com/maps/search/?api=1&query=Hangin+Kitesurf+Center+%26+Resort&query_place_id=ChIJDZwPzD08pTMRCv8c2mLjjBw",
+    href: siteConfig.mapsUrl,
     checkedAt: "2026-09-06",
   },
   {

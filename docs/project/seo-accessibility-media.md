@@ -18,11 +18,15 @@ Every current public route exports with:
 
 Sitewide schema includes `WebSite`, `Organization`, and `SportsActivityLocation`. Service pages use `Service` and breadcrumbs. The current output also includes FAQ markup. Never add ratings, reviews, prices, offers, opening hours, or availability without a visible, current, owned source.
 
-Known future review items:
+GEO discovery update, 2026-09-13:
 
-- `app/sitemap.ts` uses 2026-09-13 for the Boracay spot page and its four child pages after the owner-requested page split. The kite-size guide retains 2026-09-08; other dates follow their existing page-specific rules. Future content records should own substantive modification dates.
-- Sitemap `priority` and `changeFrequency` do not drive Google crawling and can be removed when the sitemap is revised, according to [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) (accessed 2026-09-04).
-- `app/robots.ts` emits a `Host` line that is not defined by the [Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309) (accessed 2026-09-04). The future SEO brief recommends removing it with its brittle assertion.
+- `content/page-updates.ts` owns evidenced substantive modification dates. Sitemap generation omits unknown dates and retains the exact seventeen indexable routes. It no longer emits `priority` or `changeFrequency`, which Google ignores according to [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) (accessed 2026-09-13).
+- Robots retains wildcard access and the canonical sitemap URL; the unsupported `Host` line has been removed. This preserves search crawler access and the existing Google-Extended policy. CDN behavior still needs production verification.
+- The location schema's `hasMap` and visible map links share the documented Google Maps place ID in `siteConfig.mapsUrl`.
+- Lesson cost, teaching-hour and seasonal answers use the confirmed course records and owner guidance. Existing FAQ markup matches those visible answers; no special AI schema or AI-only content was added.
+- Platform distinctions, skill selection, current Google reporting, directory corrections and release evidence are recorded in the [GEO runbook](../operations/2026-09-13-geo-discovery.md). Website changes do not establish indexing or recommendations.
+
+Remaining review items:
 - Google retired FAQ rich results in May 2026 and removed the feature documentation in June ([official changelog](https://developers.google.com/search/updates#removing-faq-rich-result), accessed 2026-09-04). Keep useful visible questions. Existing truthful `FAQPage` markup is not a promise of a Google search feature; do not expand it for that purpose.
 - Several supporting pages are short and have few contextual links in their main content. Verified first-party details and useful cross-links are higher priority than new page count.
 - Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places ownership are not recorded in the repository.

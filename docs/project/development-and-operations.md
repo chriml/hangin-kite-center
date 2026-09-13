@@ -64,10 +64,15 @@ The future provider-neutral delivery contract is in [`../future/deployment-opera
 
 ## Operational ownership not yet recorded
 
-Cloudflare Pages is the selected hosting provider. The exact connected project name and live deployment remain unverified. The repository does not identify the registrar, DNS owner, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
+Cloudflare Pages is the selected hosting provider. The exact connected project name and live deployment remain unverified. The owner confirmed control of DNS/hosting for `www.hanginkitecenter.com` on 2026-09-13. The repository does not identify the registrar, account-level DNS configuration, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
 
 ## Review-remediation verification
 
 Use `npm run verify` for fresh local evidence. The deployed check is `npm run audit:privacy:deployed -- https://host`; it is read-only and requires a matching local export. It checks the response chain and route coverage, not real-browser execution or legal compliance. See [the audit documentation](../../scripts/README.md). Local HTTP fixture tests bind loopback ports and need a runner that allows this.
 
 The [September 4 remediation report](../operations/review-remediation-2026-09-04.md) and [September 5 follow-up](../operations/thread-followup-2026-09-05.md) retain their original branch-specific results. They do not verify the current twenty-one-route site. The [September 13 integration report](../operations/2026-09-13-branch-integration.md) records the branch sources, conflict decisions and new checks. Earlier paragraphs describing uncommitted work are historical task snapshots, not the current Git status.
+
+
+## GEO implementation, 2026-09-13
+
+The [GEO release runbook](../operations/2026-09-13-geo-discovery.md) records the isolated implementation, crawler and map changes, current platform controls, directory correction draft and pending external actions. The [manual query baseline](../operations/geo-query-baseline.json) contains neutral prompts with no fabricated results. The permanent domain was confirmed by the owner, but DNS resolution and live hosting remain unverified for release. No analytics, account changes, external messages or deployment were added.

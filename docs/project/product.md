@@ -31,7 +31,7 @@ The primary conversion is a WhatsApp conversation. Email is the visible fallback
 - Email: `hanginkitecenter@gmail.com`
 - WhatsApp display number: `+63 938 010 1849`
 - WhatsApp link number: `639380101849`
-- Canonical origin: `https://www.hanginkitecenter.com`
+- Canonical origin: `https://www.hanginkitecenter.com`. The owner reconfirmed this permanent address and control of its DNS/hosting on 2026-09-13; public DNS resolution remains a separate launch check.
 
 Runtime copies of these facts are centralized in `content/site.ts`. If the code and this document disagree, verify the business fact with the owner before changing either.
 

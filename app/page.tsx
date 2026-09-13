@@ -71,7 +71,7 @@ const questions = [
   {
     question: "When is the kite season?",
     answer:
-      "Boracay's Amihan season generally runs from roughly November to April. Wind changes, so ask on WhatsApp about current conditions before arranging time on the water.",
+      "Amihan, roughly November to April, is the main kite season at Bulabog Beach. During Habagat, roughly June to October, Hangin moves sessions to the other side of Boracay. Ask on WhatsApp about conditions and the meeting point for your dates.",
   },
   {
     question: "What should I bring?",
@@ -190,9 +190,10 @@ export default function Home() {
             <p className="eyebrow">The center</p>
             <h2>Kitesurfing since 2002.</h2>
             <p>
-              We take care of your Boracay kite trip, from lessons and gear to
-              a place to stay. Our goal is to give you the best experience on
-              and off the water.
+              Hangin Kite Center is a kitesurfing school on Bulabog Beach,
+              Boracay. We teach complete beginners, progressing riders and
+              advanced kiters with IKO and VDWS instructors. You can also ask
+              us about gear rental, storage and a stay near the kite beach.
             </p>
             <Link className={styles.textLink} href="/about/">
               About Hangin
