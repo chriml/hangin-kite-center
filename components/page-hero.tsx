@@ -1,7 +1,7 @@
 import { ContactCta } from "@/components/contact-cta";
 import { ResponsiveImage } from "@/components/responsive-image";
 import type { SiteImage } from "@/content/images";
-import type { ContactContext } from "@/content/site";
+import type { ContactContext, PublicRoute } from "@/content/site";
 import styles from "./service-page.module.css";
 
 export function PageHero({
@@ -10,19 +10,23 @@ export function PageHero({
   lead,
   image,
   context,
+  quickLink,
+  imageSizes = "(min-width: 1180px) 590px, (min-width: 860px) 50vw, calc(100vw - 2rem)",
 }: {
   eyebrow: string;
   title: string;
   lead: string;
   image: SiteImage;
   context: ContactContext;
+  quickLink?: { href: PublicRoute; label: string };
+  imageSizes?: string;
 }) {
   const media = (
     <ResponsiveImage
       image={image}
-      className={styles.heroImage}
+      className={`${styles.heroImage} ${image.kind === "provided" ? styles.providedImage : ""}`}
       alt={image.kind === "generated" ? "" : image.alt}
-      sizes="(min-width: 1180px) 590px, (min-width: 860px) 50vw, calc(100vw - 2rem)"
+      sizes={imageSizes}
       priority
     />
   );
@@ -34,32 +38,26 @@ export function PageHero({
           <p className="eyebrow">{eyebrow}</p>
           <h1>{title}</h1>
           <p className={styles.heroLead}>{lead}</p>
-          <ContactCta context={context} compact label="ask" />
+          {quickLink ? (
+            <div className={styles.heroActions}>
+              <ContactCta context={context} compact label="ask" />
+              <Link className={styles.heroQuickLink} href={quickLink.href}>
+                {quickLink.label} <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          ) : <ContactCta context={context} compact label="ask" />}
         </div>
-        {image.kind === "proof" ? (
+        {image.kind !== "generated" ? (
           <figure className={styles.heroFigure}>
             {media}
-            <figcaption className={styles.photoCredit}>
-              Boracay kitesurfing context. Photo by{" "}
-              <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-              <a href={image.licenseUrl}>{image.license}</a>.
-            </figcaption>
           </figure>
         ) : (
           <div className={styles.heroFigure} aria-hidden="true">
             {media}
           </div>
         )}
-        <svg
-          className={styles.kiteLines}
-          viewBox="0 0 700 90"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path d="M0 78 C 210 78, 330 12, 700 12" />
-          <path d="M0 88 C 230 88, 350 22, 700 22" />
-        </svg>
       </div>
     </section>
   );
 }
+import Link from "next/link";

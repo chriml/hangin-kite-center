@@ -16,20 +16,15 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  min-height: 3rem;
   color: var(--ocean);
-  font-family: var(--font-display), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  line-height: 1;
   text-decoration: none;
 }
 
 .mark {
   display: block;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 10rem;
+  height: auto;
 }
 
 .primaryNav {
@@ -50,12 +45,39 @@
 }
 
 .primaryNav a:hover {
-  color: var(--palm);
+  color: var(--ocean);
   text-decoration-color: var(--lagoon);
 }
 
 .headerContact {
   justify-self: end;
+}
+
+/* The homepage supplies the image behind its header without a client boundary. */
+.siteHeader:has(~ :global(main[data-cinematic-hero])) {
+  position: absolute;
+  inset: 0 0 auto;
+  border-bottom: 0;
+  background: transparent;
+  color: var(--sun);
+}
+
+.siteHeader:has(~ :global(main[data-cinematic-hero])) .headerBar {
+  width: 90%;
+  min-height: 6.5rem;
+}
+
+.siteHeader:has(~ :global(main[data-cinematic-hero])) .primaryNav a:hover {
+  color: var(--sand);
+}
+
+.siteHeader:has(~ :global(main[data-cinematic-hero])) .mobileMenu summary {
+  border-color: var(--sand);
+  color: var(--sun);
+}
+
+.siteHeader:has(~ :global(main[data-cinematic-hero])) .mobileMenu summary:hover {
+  background: var(--ocean);
 }
 
 .mobileMenu {
@@ -70,7 +92,7 @@
 
 .footerGrid {
   display: grid;
-  grid-template-columns: minmax(12rem, 0.85fr) minmax(22rem, 1.5fr) minmax(13rem, 0.85fr);
+  grid-template-columns: minmax(17rem, 1fr) minmax(22rem, 1.5fr);
   gap: clamp(2.5rem, 6vw, 6rem);
   padding-block: clamp(3.5rem, 7vw, 6rem);
 }
@@ -80,6 +102,14 @@
   margin: 0;
 }
 
+.footerChannels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.5rem;
+}
+
 .footerIdentity {
   display: grid;
   align-content: start;
@@ -87,14 +117,38 @@
   color: var(--sand);
 }
 
-.footerIdentity .footerWordmark {
-  color: var(--sun);
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(2.75rem, 5vw, 4.5rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 0.86;
-  text-transform: uppercase;
+.footerWordmark {
+  display: block;
+  width: min(100%, 19rem);
+  height: auto;
+}
+
+.footerPartners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerPartners a {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+}
+
+.footerPartners a:hover {
+  outline: 1px solid currentColor;
+  outline-offset: 0.25rem;
+}
+
+.footerPartners img {
+  display: block;
+  width: auto;
+  height: 1.5rem;
+  filter: brightness(0) invert(1);
 }
 
 .footerNav {
@@ -130,16 +184,47 @@
 }
 
 .footerContact {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   align-content: start;
-  gap: 0.85rem;
+  gap: 0.75rem;
   font-style: normal;
   font-weight: 700;
 }
 
 .footerContact a {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
   overflow-wrap: anywhere;
   text-underline-offset: 0.25rem;
+}
+
+.footerContactIcon {
+  width: 3rem;
+  justify-content: center;
+  border: 1px solid currentColor;
+}
+
+.footerSocials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footerSocials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid currentColor;
+}
+
+.footerSocials a:hover,
+.footerSocials a:hover svg {
+  color: var(--lagoon);
+  stroke: var(--lagoon);
 }
 
 .footerBase {
@@ -166,33 +251,17 @@
     font-size: 0.78rem;
   }
 
-  .footerGrid {
-    grid-template-columns: 0.75fr 1.25fr;
-  }
-
-  .footerContact {
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 1px solid rgb(255 253 246 / 0.28);
-    padding-top: 1.25rem;
-  }
 }
 
 @media (max-width: 780px) {
   .headerBar {
     min-height: 4.5rem;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 0.6rem;
-  }
-
-  .brand {
-    gap: 0.4rem;
-    font-size: 1.2rem;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 0.5rem;
   }
 
   .mark {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: clamp(6.75rem, 30vw, 9rem);
   }
 
   .primaryNav {
@@ -200,26 +269,45 @@
   }
 
   .headerContact {
-    grid-column: 3;
+    grid-column: 2;
   }
 
   .mobileMenu {
     position: relative;
-    grid-column: 4;
+    grid-column: 3;
     display: block;
   }
 
   .mobileMenu summary {
+    width: 3rem;
     min-height: 3rem;
-    display: list-item;
-    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid var(--ocean);
     border-radius: 0.25rem;
-    padding: 0.75rem 0.65rem 0.75rem 1.65rem;
+    padding: 0.5rem;
     color: var(--ocean);
     cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 800;
+    list-style: none;
+    touch-action: manipulation;
+  }
+
+  .mobileMenu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobileMenu summary:hover {
+    background: var(--sand);
+  }
+
+  .menuClose,
+  .mobileMenu[open] .menuBars {
+    display: none;
+  }
+
+  .mobileMenu[open] .menuClose {
+    display: block;
   }
 
   .mobileMenu[open] summary {
@@ -273,33 +361,20 @@
     border-left: 0;
   }
 
-  .footerContact {
-    grid-column: auto;
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 430px) {
-  .headerBar {
+  .siteHeader:has(~ :global(main[data-cinematic-hero])) .headerBar {
+    width: calc(100vw - 1.5rem);
+    min-height: 5rem;
+  }
+
+  .siteHeader .headerBar {
     width: calc(100vw - 1rem);
-  }
-
-  .brand {
-    font-size: 1.05rem;
-  }
-
-  .mark {
-    width: 2rem;
-    height: 2rem;
   }
 
   .headerContact :global(.button) {
     padding-inline: 0.7rem;
-    font-size: 0.75rem;
-  }
-
-  .mobileMenu summary {
-    padding: 0.65rem 0.5rem 0.65rem 1.4rem;
     font-size: 0.75rem;
   }
 
@@ -315,4 +390,12 @@
   .primaryNav a {
     transition: none;
   }
+}
+
+.footerLegal {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--sand);
+  text-underline-offset: 0.25em;
 }

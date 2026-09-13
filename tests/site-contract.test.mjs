@@ -23,19 +23,29 @@ const contactMessages = {
   "rental-storage":
     "Hi Hangin, I'd like to ask about kite rental or gear storage for my Boracay trip. My dates are [dates], my riding level is [level], and my usual sizes are [sizes].",
   storage: "Hi Hangin, I'd like to ask about kite storage on Bulabog Beach.",
-  safari: "Hi Hangin, I'd like to know about kite safari options during my trip.",
+  safari: "Hi Hangin, I'd like to ask about a kite safari from Boracay. My dates are [dates], our riding levels are [levels], our group size is [number], and we're bringing [gear]. What could work, what does it cost, and what's included?",
   stay: "Hi Hangin, I'd like to check accommodation availability near the kite beach.",
   shop: "Hi Hangin, I'd like to check what kite gear is currently in the shop.",
 };
 
 test("every primary contact action keeps the current destination and page context", async () => {
+  const courseMessages = new Set(
+    ["Introductory course", "Basic kite course", "Kite control course", "Board riding course", "Full course", "Advanced private coaching"]
+      .map((course) => `Hi Hangin, I'd like to ask about ${course} in Boracay. My dates are [dates] and my riding level is [level].`),
+  );
+  const safariMessages = new Set(["Batbatan", "Colon", "Others"].map(trip =>
+    `Hi Hangin, I'd like to request information about the ${trip} kite safari. My dates are [dates] and my riding level is [level].`));
   const expectedMessages = new Set([
     contactMessages.general,
     contactMessages.lessons,
+    contactMessages.rental,
+    contactMessages.storage,
     contactMessages["rental-storage"],
     contactMessages.safari,
     contactMessages.stay,
     contactMessages.shop,
+    ...courseMessages,
+    ...safariMessages,
   ]);
   const seenMessages = new Set();
 
@@ -53,6 +63,15 @@ test("every primary contact action keeps the current destination and page contex
       assert.equal(url.origin, "https://wa.me");
       assert.equal(url.pathname, "/639380101849");
       assert.ok(expectedMessages.has(message), `${route} unexpected contact context`);
+      if (safariMessages.has(message)) {
+        assert.equal(route, "/kite-safaris/", "trip requests belong on the safari listing");
+      }
+      if (courseMessages.has(message)) {
+        assert.equal(route, "/kitesurfing-lessons/", "course enquiries belong on the lessons page");
+      }
+      if (message === contactMessages.rental || message === contactMessages.storage) {
+        assert.equal(route, "/rentals-storage/", "specific rental/storage enquiries belong on their service page");
+      }
       seenMessages.add(message);
     }
   }

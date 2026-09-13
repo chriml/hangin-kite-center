@@ -1,0 +1,13 @@
+.page { background: var(--sun); color: var(--ocean); }
+.intro { padding-block: clamp(3rem, 6vw, 5rem); background: var(--sand); }
+.intro h1 { margin: 0 0 1.5rem; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1; }
+.intro p { max-width: 44rem; margin: 0; line-height: 1.7; }
+.sections { padding-block: 1rem 4rem; }
+.sections section { max-width: 50rem; padding-block: 2.5rem; border-bottom: 1px solid rgb(7 54 66 / 25%); }
+.sections h2 { margin: 0 0 1.25rem; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1; }
+.sections h3 { margin: 0 0 0.75rem; font-family: var(--font-body), sans-serif; font-size: 1rem; line-height: 1.5; }
+.sections p { margin: 0 0 1rem; line-height: 1.75; }
+.sections address { font-style: normal; line-height: 2; overflow-wrap: anywhere; }
+.sections a { text-underline-offset: 0.25em; }
+.credits { display: grid; gap: 2rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+.credits > li > a { display: inline-flex; align-items: center; min-height: 48px; }

@@ -1,4 +1,5 @@
 import { ServicePage } from "@/components/service-page";
+import { ProofStrip } from "@/components/proof-strip";
 import { waterPages } from "@/content/water-pages";
 import { buildMetadata } from "@/lib/seo";
 
@@ -11,5 +12,5 @@ export const metadata = buildMetadata({
 });
 
 export default function RentalsStoragePage() {
-  return <ServicePage content={content} />;
+  return <ServicePage content={content} overview={<ProofStrip labelAbove />} />;
 }

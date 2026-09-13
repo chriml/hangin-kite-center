@@ -1,5 +1,16 @@
 import { siteImages } from "@/content/images";
+import { siteConfig } from "@/content/site";
 import type { ServicePageContent } from "@/content/water-pages";
+
+export const aboutGearPartners = {
+  heading: "Our gear partners",
+  body: "Duotone and ION are our gear partners on Bulabog Beach. Ask us about equipment for lessons, rental or your own setup.",
+} as const;
+
+export const teachingOrganizations = [
+  { name: "IKO", href: "https://www.ikointl.com/", logo: "/brand/teaching/iko.svg", width: 2667, height: 800 },
+  { name: "VDWS", href: "https://www.vdws.de/en/", logo: "/brand/teaching/vdws.svg", width: 934, height: 375 },
+] as const;
 
 export const islandPages = {
   accommodation: {
@@ -53,7 +64,7 @@ export const islandPages = {
       "Check current kite gear, accessories and beach essentials at Hangin Kite Center on Bulabog Beach, Boracay.",
     eyebrow: "Hangin kite shop",
     lead: "For a spare part, replacement piece or something you left at home, ask what is on the rack today.",
-    image: siteImages.gearArt,
+    image: siteImages.shopBoards,
     context: "shop",
     contact: {
       heading: "Ask what is on the rack today.",
@@ -93,57 +104,94 @@ export const islandPages = {
     title: "Kitesurfing on Boracay",
     metaTitle: "Boracay Kitesurfing Spot Guide",
     description:
-      "Plan a Boracay kitesurfing trip with practical information about Bulabog Beach, Amihan season, the lagoon and lessons.",
+      "Coming to kite in Boracay? Get to know Bulabog Beach, the Amihan wind, tides, reef, launch spots and what to pack before your first session.",
     eyebrow: "Bulabog Beach guide",
-    lead: "Bulabog Beach is the wind-facing side of the island. Warm water, a shallow lagoon and the Amihan season make it the place Boracay riders come to kite.",
-    image: siteImages.bulabog,
+    lead: "Bulabog is our home spot on Boracay's east coast. Warm water, a reef-sheltered lagoon and northeast wind through Amihan. Check the tide before you rig; it changes the session here.",
+    image: siteImages.kiteBay,
     context: "general",
     contact: {
-      heading: "Check the conditions for your dates.",
-      body: "Send your Boracay dates, riding level and what you want to arrange. We'll reply with the current conditions and the Hangin services that fit your trip.",
+      heading: "Coming over for a kite?",
+      body: "Send us your dates, riding level and whether you're bringing gear. We can talk through the season, rental or storage, and where we're riding when you arrive.",
     },
     schema: "guide",
     sections: [
       {
-        heading: "The kite side of Boracay",
+        heading: "Amihan is the main season",
+        image: siteImages.boardPractice,
         body: [
-          "Bulabog Beach runs along Boracay's east side. The kite side of the island is where riders use the shallow lagoon during the Amihan season.",
+          "Aim for roughly November to April for Bulabog. That's Amihan, when the northeast wind blows towards the beach at an angle, usually side-onshore. The season can start early or finish late, and you still get days off the water.",
+          "Check the forecast as your trip gets closer, then check the beach on the day. A season chart won't tell you what to rig for your next session.",
         ],
       },
       {
-        heading: "When to come",
+        heading: "Flat patches, chop and reef",
         body: [
-          "The Amihan kite season is roughly November to April. Wind changes from day to day, and there is no wind guarantee. Check current conditions with Hangin before making plans around a session.",
+          "The reef shelters Bulabog's lagoon from the open-water swell. Inside, you'll find flatter patches and chop, depending on the wind and tide. Water depth changes across the bay, so don't expect it to be waist-deep everywhere.",
+          "Waves break on the outer reef. That's a different session from riding inside the lagoon, with reef hazards and less shelter. Get local advice before heading out there.",
         ],
       },
       {
-        heading: "Learning in the lagoon",
+        heading: "Keep an eye on the tide",
         body: [
-          "Complete beginners start on the beach with the wind, safety systems and kite control. Lessons move into Bulabog's warm shallow lagoon when the conditions allow.",
+          "At low tide, parts of the lagoon get too shallow to ride and the reef can be exposed. There are sea urchins too. Ask about the bottom and the way in before walking out; booties don't make the reef safe to walk on.",
+          "High tide brings more water but takes away beach space. Some stretches get tight for rigging, launching and landing. Check where there's room before laying out your lines, and leave space to come back in.",
         ],
       },
       {
-        heading: "White Beach and the rest of the island",
+        heading: "Share the lagoon",
         body: [
-          "Bulabog Beach is where the kite plans happen. White Beach is on the other side of Boracay, so plan time for both sides of the island.",
+          "Bulabog gets busy when the wind is on. You're sharing the water with lessons, other kiters and windsurfers. Give learners room, keep the launch clear and check your space downwind before a jump or a turn.",
+          "New to the spot? Come by before your first session and ask where to rig, launch and ride that day. If you can't hold your ground upwind yet, say so when arranging a lesson.",
+        ],
+      },
+      {
+        heading: "First waterstarts or your next trick",
+        image: siteImages.lessonPair,
+        link: { label: "Explore the lessons", href: "/kitesurfing-lessons/" },
+        body: [
+          "The shallow parts of the lagoon help with body dragging and waterstarts when there's enough water and space. If you're starting from scratch, lessons begin with the wind, safety systems and kite control before you get on a board.",
+          "Already riding? Tell us what you're working on, whether that's staying upwind, cleaner transitions or jumps. We'll match a lesson to your level and the conditions.",
+        ],
+      },
+      {
+        heading: "Habagat takes us to the other side",
+        body: [
+          "Around June to October, the southwest monsoon turns the wind towards White Beach. Habagat tends to bring more rain and less consistent wind than Amihan.",
+          "We move our sessions to the other side of Boracay during Habagat. Message us about where to meet and what's working for your level.",
+        ],
+      },
+      {
+        heading: "Packing the board bag",
+        image: siteImages.controlBar,
+        link: { label: "See rental and storage options", href: "/rentals-storage/" },
+        body: [
+          "Bring sun protection and a rash vest for long sessions. If you get cold easily, pack a thin layer for the water too. Ask us about footwear for the spot before you travel.",
+          "Kite sizes depend on your weight, board, riding style and the forecast. Send us those details and what you already ride. If you'd rather travel light, ask about rental; if you're bringing your own setup, ask about storage.",
+        ],
+      },
+      {
+        heading: "Getting here with your gear",
+        body: [
+          "Caticlan is the closer airport to Boracay. Kalibo means a longer road transfer before the boat across. Check your airline's current sports-baggage allowance for every leg before booking a flight with a board bag.",
+          "During Amihan, staying near Bulabog keeps you close to the kite beach. White Beach is on the west side of the island for food, a walk and sunset after your session. Check the actual location of your stay so you know how far you'll be carrying your gear.",
         ],
       },
     ],
     faq: [
       {
-        question: "When is the Boracay kite season?",
+        question: "Can I kite here during Habagat?",
         answer:
-          "The Amihan season is roughly November to April. These dates are a guide, so check current conditions with Hangin for your trip.",
+          "We move to the other side of Boracay during Habagat, roughly June to October. The wind is less consistent, so message us about your dates and where to meet.",
       },
       {
-        question: "Is Bulabog suitable for beginners?",
+        question: "Is low tide the best time to ride?",
         answer:
-          "Complete beginners start on the beach with kite safety systems and control. Teaching moves into Bulabog's shallow lagoon when the conditions allow.",
+          "It depends how low. Parts of the lagoon can be too shallow, while high tide can leave little beach for launching. Check the tide, water depth and launch space with the team before rigging.",
       },
       {
-        question: "Is the wind guaranteed?",
+        question: "What size kite should I bring?",
         answer:
-          "No. Wind changes, and visitors should check current conditions with the center before making plans around a session.",
+          "Send your dates, weight, board and usual kite sizes. We'll talk through what you're bringing against the forecast closer to your trip.",
       },
     ],
   },
@@ -154,29 +202,36 @@ export const islandPages = {
     description:
       "Hangin Kite Center has taught kitesurfing on Bulabog Beach, Boracay, since 2002 and offers lessons, gear, storage, stays and safaris.",
     eyebrow: "Hangin Kite Center",
-    lead: "Lessons follow the rider's level and the conditions on Bulabog that day. Gear, storage, accommodation and kite trips are arranged through Hangin.",
-    image: siteImages.riding,
+    lead: "Come down to Bulabog and meet the people behind Hangin. We've been teaching here since 2002, helping first-time kiters and experienced riders find their next step on the water.",
+    image: { ...siteImages.hanginCenter, caption: "Outside the center." },
     context: "general",
     contact: {
-      heading: "Tell us what you need before you arrive.",
-      body: "Find Hangin on Bulabog Beach, Boracay. Send your dates and riding level first if you want to arrange lessons, gear, storage, a stay or a kite safari.",
+      eyebrow: "Contact",
+      heading: "Tell us about your stay.",
+      body: "Let's make it unforgettable. Contact us with any needs, ideas or requests for your time on Boracay, whether you're coming to learn, ride or spend time by the beach. We'll do our best to accommodate you and help you work out the details.",
     },
     schema: "about",
     sections: [
       {
         heading: "Hangin began as a kite school",
         body: [
-          "Hangin began as a kite school on Bulabog Beach in 2002. Today, Hangin teaches beginners, progressing riders and advanced kiters.",
+          "Hangin began as a kite school on Bulabog Beach in 2002. Teaching is still at the heart of what we do, whether you're holding a kite for the first time, finding your feet on the board or working on a move you've been chasing for a while.",
+          "For us, a good session starts with listening. Tell us where you're at and what you'd like to learn. We work from there, with patient instruction and a plan that fits your level and the conditions. Some days that means taking the next step; on others, it means giving the basics more time.",
+          "Respect for the beach and the people sharing it matters just as much. Bulabog is a working kite spot, with learners, independent riders and windsurfers using the same lagoon. Looking at the tide, leaving room for others and knowing when to wait are all part of learning to ride here.",
+          `We're an ${siteConfig.centerDesignation}, with Duotone and ION as our gear partners. That connection is part of life at Hangin, from talking through lesson equipment to helping you ask the right questions about rental gear or your own setup. Tell us what you ride and what you need, and we'll discuss the options with you.`,
+          "You can come to us for the parts around the session too: somewhere to store your gear, a stay near the kite beach or a kite trip to ask about. Bring your questions, even if you're still figuring out what your Boracay days might look like. We'll help you make a plan.",
         ],
       },
       {
         heading: "How we teach",
+        id: "how-we-teach",
         body: [
           "Hangin teaches with IKO and VDWS instructors. Complete beginners start with wind, safety systems and kite control. Progressing and advanced riders can work on the next step when conditions allow.",
         ],
       },
       {
         heading: "Lessons, gear, storage, stays and trips",
+        contact: { label: "Message Hangin on WhatsApp", context: "general" },
         body: [
           "Hangin offers kitesurfing lessons from beginner through advanced, equipment rental, equipment storage, accommodation, a kite shop and kite safaris.",
         ],

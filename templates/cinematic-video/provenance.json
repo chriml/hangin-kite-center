@@ -1,0 +1,35 @@
+{
+  "saved_on": "2026-09-12",
+  "purpose": "Reusable local cinematic video hero; excluded from Next.js routes and static export.",
+  "source_video": {
+    "file": "../../images/man-handling-lines-beside-orange-kite-on-beach-quality-6of10.mp4",
+    "sha256": "87ea8398dc309164a8e9675f295edf91a369984f2ac121f2b4803b5cb54bc669",
+    "permission": "Owner supplied and authorized website use on 2026-09-12. Creator not identified.",
+    "derivative": "assets/shoreline-film.mp4",
+    "transforms": "Audio removed; timestamps multiplied by 1.35 for slower playback; 30fps H.264, CRF20, slow preset, yuv420p, faststart. 394x848 source dimensions retained.",
+    "poster": "assets/shoreline-poster.jpg, extracted at one second of the derivative."
+  },
+  "assets": {
+    "assets/shoreline-poster.jpg": "5ab2842f48b861eb7a94aa5ee80a8a2fbb303b8b14fbe3c3a8e654653829a6ad",
+    "assets/shoreline-film.mp4": "40b0192eea80a8c54e29688dc3729c6eeba50605639dd99bf42112ace21992c8",
+    "assets/brand/hangin-wordmark.svg": "29e124add29b985d735650d30921d6dacefddc105ee4aab3ae7805a0181af9cf",
+    "assets/brand/partners/duotone-mark.svg": "dc46239827ed60956b1d147372c22285f600f2d53e97cf7da2d68c0b75d838e6",
+    "assets/brand/reviews/tripadvisor.svg": "5c175a92cbf7659be04a6ed6c4549c97de1cc91b44d0c98c3d34afc527fd33e6",
+    "assets/brand/reviews/google.svg": "99bf4aa403643a6d41c028e5db29c79c17cbc815b3e10cd5c6b8f90567a03e52",
+    "assets/fonts/6ab0db14f70d8ed6-s.13hnt-xgp82zk.woff2": "ce093b341d9c10658ee1eaa85c5f8042ff3307bc6ccfc5f405616eb437f0009e",
+    "assets/fonts/d9b5d46d9a89ffe6-s.p.0xxdg0o7uh536.woff2": "e3e520cb7468f2efd60bc2ce96694567c3312f4ef414fffbe605e3ad146b24e6",
+    "assets/fonts/58c4895d0a0ef7cc-s.2vhvl9vrvk-va.woff2": "40af11327fe5308166c6cb5787808b042db6da889abf602f0a4876c49675d87e",
+    "assets/fonts/3dae58b0b46c3f93-s.24oj26lcm6-u8.woff2": "14480fbcd1bfa4ccfa6849f37004c1e985487034e9816c0157645cccdda53836",
+    "assets/fonts/d3fe2f289711ac3f-s.1l2zhvq5eocqf.woff2": "95a493061fe0a8d0d027c2892747134ba747141112d3be4d5022e70ab7d3a1a6",
+    "assets/fonts/e37557cf0085218d-s.2dbbbbabmw4n4.woff2": "960aaed3bedcba7e3f7aa0b0d619339e5d0de4161218a5a46679ea1010ad2bbe",
+    "assets/fonts/bfc7db5c00d21bc5-s.173xwsdme27n8.woff2": "bab757f8a0a1bc04055ee98cb5777f3254aab11f6d222366e1f40a36f390506a",
+    "assets/fonts/a342834df7752944-s.3hd2l7bm32o7k.woff2": "e8c0b39992f06b3dc9a9834494088014859f363bf6ca8792b6bb07e17c7965f3",
+    "assets/fonts/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2": "e310b55a7fd9677f5e3555e6c6c4d064fa1f1d24393f0ddbe217cea12a8c432f",
+    "assets/fonts/a978fc28c69736ab-s.2omtmoo94goav.woff2": "a2f92ada1d0eaf10dd83b11392ea389c039aa78f6e17418fc062c23f0ba78438",
+    "assets/fonts/9710cef2a2a6ac70-s.38t85nkp60tez.woff2": "50c25f3210bca008b36809e4f3f964fc4acab82e07a27d099b14c378ea58bf5b",
+    "assets/fonts/5a938ab334846ae8-s.0i8had3keju7i.woff2": "f54288496268d32e700bfb9db4797a5c40d904aed7372986306f503af8254954",
+    "assets/fonts/146a3e5eadafdf83-s.1oqo1buse5xew.woff2": "0c1655655b5a1fa18382367f471b943c8e009c5cf36a3898433babd92fc606e2",
+    "assets/fonts/303804218d80822e-s.p.3lj349bs9hfu1.woff2": "5bc49d41f32810a114765314392332ce2acae2276635eee265a50319a12c1b49",
+    "assets/fonts/89232e6535d3b87e-s.p.2oeto2j5aaelm.woff2": "89eec21b1a1d6fd579d3e3c518901c5a6e3579e0e7a4f8b2f17b1473117bc30d"
+  }
+}

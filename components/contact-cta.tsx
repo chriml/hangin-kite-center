@@ -1,3 +1,5 @@
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
+import { EmailIcon } from "@/components/email-icon";
 import {
   getPrimaryContactAction,
   siteConfig,
@@ -23,14 +25,19 @@ export function ContactCta({
       }
     >
       <a
-        className="button button--coral"
+        className="button button--coral button--whatsapp"
         href={action.href}
         target={action.target}
         rel={action.rel}
       >
-        {action.label}
+        <WhatsAppIcon />
+        <span>{action.label}</span>
       </a>
-      {!compact && <a href={`mailto:${siteConfig.email}`}>Email {siteConfig.email}</a>}
+      {!compact && (
+        <a className="email-action" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.email}`} title={`Email ${siteConfig.email}`}>
+          <EmailIcon />
+        </a>
+      )}
     </div>
   );
 }

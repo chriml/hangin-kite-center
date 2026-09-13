@@ -60,7 +60,9 @@ test("every local link resolves in the static export", async () => {
     for (const href of hrefs) {
       if (!href.startsWith("/") || href.startsWith("//") || href.startsWith("/#")) continue;
       const clean = href.split("#")[0].split("?")[0];
-      const target = clean === "/" ? path.join(outDir, "index.html") : path.join(outDir, clean.replace(/^\//, ""), "index.html");
+      const target = clean === "/" ? path.join(outDir, "index.html")
+        : path.extname(clean) ? path.join(outDir, clean.slice(1))
+        : path.join(outDir, clean.replace(/^\//, ""), "index.html");
       await access(target);
     }
   }
@@ -78,11 +80,23 @@ test("images have explicit dimensions and alt attributes", async () => {
   }
 });
 
-test("content images expose responsive source candidates", async () => {
+test("content images provide responsive raster candidates or scalable SVGs", async () => {
   for (const route of publicRoutes) {
     const html = await readRoute(route);
     const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";
     for (const image of tags(main, "img")) {
+      const src = attribute(image, "src");
+      if (src?.endsWith(".svg")) {
+        assert.ok(src.startsWith("/"), `${route} vector image is local`);
+        const svg = await readFile(path.join(outDir, src.slice(1)), "utf8");
+        const root = tags(svg, "svg")[0];
+        assert.ok(root, `${route} vector image has an SVG root`);
+        const viewBox = (attribute(root, "viewBox") ?? "").split(/[\s,]+/).map(Number);
+        assert.equal(viewBox.length, 4, `${route} vector image viewBox`);
+        assert.ok(viewBox.every(Number.isFinite) && viewBox[2] > 0 && viewBox[3] > 0,
+          `${route} vector image has scalable dimensions`);
+        continue;
+      }
       const srcset = attribute(image, "srcset");
       assert.ok(srcset, `${route} content image srcset`);
       assert.ok(attribute(image, "sizes"), `${route} content image sizes`);

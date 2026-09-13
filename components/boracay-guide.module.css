@@ -1,0 +1,138 @@
+.teaser {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background: var(--sand);
+}
+
+.teaserGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.teaser h2,
+.section h2 {
+  margin: 0;
+  max-width: 16ch;
+  color: var(--ocean);
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.teaser p:not(:global(.eyebrow)) {
+  max-width: 40rem;
+  margin-block: 1.5rem 2rem;
+  line-height: 1.75;
+}
+
+.teaserLinks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teaserLinks {
+  align-self: center;
+  border-top: 1px solid var(--ocean);
+}
+
+.teaserLinks a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--ocean);
+  text-decoration: none;
+}
+
+.teaserLinks span:first-child {
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.teaserLinks span:last-child {
+  font-size: 0.9rem;
+}
+
+.entryLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-weight: 800;
+  text-underline-offset: 0.2em;
+}
+
+.section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  scroll-margin-top: 6rem;
+}
+
+.section:nth-of-type(even) {
+  background: color-mix(in srgb, var(--lagoon) 10%, var(--sun));
+}
+
+.sectionIntro {
+  max-width: 44rem;
+  margin-block: 1.5rem 2.5rem;
+  line-height: 1.75;
+}
+
+.entry {
+  display: grid;
+  gap: 1rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--ocean);
+  scroll-margin-top: 6rem;
+}
+
+.entry h3 {
+  margin: 0;
+  max-width: 20ch;
+  color: var(--ocean);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.05;
+}
+
+.entry p {
+  max-width: 42rem;
+  margin: 0;
+  line-height: 1.75;
+}
+
+.entry p + p {
+  margin-top: 1rem;
+}
+
+.entry .location {
+  margin-bottom: 0.7rem;
+  color: var(--ocean);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.sources a {
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 860px) {
+  .teaserGrid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+  }
+
+  .entry {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 4rem;
+    padding-block: 2.5rem;
+  }
+}

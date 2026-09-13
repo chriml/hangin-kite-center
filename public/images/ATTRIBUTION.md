@@ -1,6 +1,8 @@
 # Image attribution
 
-The proof photographs below document Boracay and Bulabog Beach. They do not depict Hangin staff, facilities, or equipment. The generated files are decorative illustrations, not documentary photographs.
+The Wikimedia photographs below document Boracay and Bulabog Beach as context; they do not depict Hangin staff, facilities, or equipment. The owner-supplied selection is documented separately below. The generated files are decorative illustrations, not documentary photographs.
+
+The owner-approved Hangin logo, vector preparation and icon derivatives are documented in [the Hangin identity ledger](../brand/ATTRIBUTION.md). Logo paths and dimensions live in `brandImages` in `content/images.ts`.
 
 Responsive 900px derivatives inherit the source and license of their full-size files: `proof/boracay-kitesurf-school-900.webp`, `proof/bulabog-beach-aerial-900.webp`, `proof/boracay-kitesurfing-900.webp`, `generated/kite-gear-sunprint-900.webp`, `generated/kite-safari-sunprint-900.webp`, and `generated/island-stay-sunprint-900.webp`.
 
@@ -13,3 +15,46 @@ Responsive 900px derivatives inherit the source and license of their full-size f
 | `generated/kite-gear-sunprint.webp` | Decorative supporting illustration | OpenAI ImageGen | OpenAI ImageGen | OpenAI Terms of Use | 2026-08-29 | resized and WebP converted |
 | `generated/kite-safari-sunprint.webp` | Decorative supporting illustration | OpenAI ImageGen | OpenAI ImageGen | OpenAI Terms of Use | 2026-08-29 | resized and WebP converted |
 | `generated/island-stay-sunprint.webp` | Decorative supporting illustration | OpenAI ImageGen | OpenAI ImageGen | OpenAI Terms of Use | 2026-08-29 | resized and WebP converted |
+
+The former homepage hero omitted the optional CC0 credit at the owner’s request (2026-09-06); its provenance remains above. The homepage now uses an owner-supplied riding photo. BY-SA credits remain visible wherever those photographs are used. Partner logo provenance is recorded separately in [the partner logo ledger](../brand/partners/ATTRIBUTION.md).
+
+The lesson details use six owner-supplied photos of equipment, kite preparation and riding, with full-width 4:3 display crops. They illustrate the subject of each course without identifying participants or claiming a particular course outcome. Following the owner's later 2026-09-12 layout request, the control-bar, kite-preparation and airborne-jump desktop files were regenerated from their preserved originals at 1800×2700, WebP quality 84, auto-oriented with metadata removed and no file-level crop. Mobile variants are unchanged. Current dimensions and bytes are recorded in `docs/project/owner-media.json`.
+
+Owner-supplied photographs no longer display descriptive captions beneath them, as requested on 2026-09-12. Their alt text and this provenance record remain. As of 2026-09-13, the remaining Bulabog aerial on Things to do has been replaced with the owner-supplied kite-bay photograph, and the shared footer credit disclosure has been removed at the owner’s request. No BY-SA photographs remain rendered on public pages. Their archived files and provenance remain in this ledger; owner-supplied media does not require visible attribution.
+
+Board riding course replacement requested on 2026-09-12: `/images/owner/red-capped-kiteboarder-riding-past-palm-lined-beach.webp` and `/images/owner/red-capped-kiteboarder-riding-past-palm-lined-beach-900.webp` derive from owner photo 45, `red-capped-kiteboarder-riding-past-palm-lined-beach-quality-8of10.jpg`, under the permission below. Resized without a stored crop to 1800×1200 and 900×600; WebP quality 82/80, source metadata removed. The rider and board remain visible in the course's 4:3 display crop. Photographer and capture date remain unidentified. The homepage retains its existing orange-sleeved rider photo.
+
+## Owner-supplied photos and videos
+
+Supplied by the Hangin website owner in the local `images/` archive. On 2026-09-12 the owner explicitly requested: “now please use the appropriate videos and images on the website”. This authorizes the selected website derivatives; no Creative Commons or other public reuse license is asserted. Photographer and videographer names and capture dates were not supplied. Receipt/review and website permission are recorded on 2026-09-12. People are described by visible activity without inferred names, staff roles or certifications. Equipment photos do not establish current inventory.
+
+Original filenames, quality reviews and source SHA-256 hashes remain in `images/image-index.json` and `images/video-index.json`. The selected files, hashes, dimensions and transformations are also recorded in `docs/project/owner-media.json`. Originals remain unchanged outside the public export.
+
+Photo derivatives were auto-oriented, resized without a stored crop and converted to WebP with source metadata removed (Sharp; full quality 82, mobile quality 80). Responsive display crops are applied by the site. The center group photo retains the whole frame.
+
+| Website files | Source archive file | Source ID | Use |
+| --- | --- | --- | --- |
+| `/images/owner/smiling-red-helmet-kitesurfer-riding-shallow-water.webp` and `/images/owner/smiling-red-helmet-kitesurfer-riding-shallow-water-900.webp` | `smiling-red-helmet-kitesurfer-riding-shallow-water-quality-9of10.jpg` | Photo 91 | Kitesurfing in Boracay. |
+| `/images/owner/two-smiling-people-with-kite-control-bar-in-shallows.webp` and `/images/owner/two-smiling-people-with-kite-control-bar-in-shallows-900.webp` | `two-smiling-people-with-kite-control-bar-in-shallows-quality-9of10.jpg` | Photo 40 | A moment in the shallows with the kite control bar. |
+| `/images/owner/group-portrait-outside-hangin-kite-center.webp` and `/images/owner/group-portrait-outside-hangin-kite-center-900.webp` | `group-portrait-outside-hangin-kite-center-quality-8of10.jpg` | Photo 7 | Outside Hangin Kite Center. |
+| `/images/owner/kiteboards-with-footstraps-beside-shaded-beach-seating.webp` and `/images/owner/kiteboards-with-footstraps-beside-shaded-beach-seating-600.webp` | `kiteboards-with-footstraps-beside-shaded-beach-seating-quality-8of10.jpg` | Photo 82 | Kiteboards beside the beach. Ask us about current rental gear. |
+| `/images/owner/colorful-kiteboards-with-footstraps-leaning-against-wall.webp` and `/images/owner/colorful-kiteboards-with-footstraps-leaning-against-wall-600.webp` | `colorful-kiteboards-with-footstraps-leaning-against-wall-quality-8of10.jpg` | Photo 92 | Equipment at the beach. Ask the shop about current stock. |
+| `/images/owner/kite-control-bar-and-wrapped-lines-on-sand.webp` and `/images/owner/kite-control-bar-and-wrapped-lines-on-sand-600.webp` | `kite-control-bar-and-wrapped-lines-on-sand-quality-9of10.jpg` | Photo 5 | A kite control bar and its lines. |
+| `/images/owner/person-preparing-kite-lines-on-beach.webp` and `/images/owner/person-preparing-kite-lines-on-beach-600.webp` | `person-preparing-kite-lines-on-beach-quality-9of10.jpg` | Photo 1 | Preparing kite lines on the beach. |
+| `/images/owner/orange-sleeved-kiteboarder-carving-past-palm-lined-beach.webp` and `/images/owner/orange-sleeved-kiteboarder-carving-past-palm-lined-beach-900.webp` | `orange-sleeved-kiteboarder-carving-past-palm-lined-beach-quality-9of10.jpg` | Photo 37 | Riding off the palm-lined beach. |
+| `/images/owner/kiteboarder-tilting-board-during-high-airborne-jump.webp` and `/images/owner/kiteboarder-tilting-board-during-high-airborne-jump-600.webp` | `kiteboarder-tilting-board-during-high-airborne-jump-quality-9of10.jpg` | Photo 34 | An airborne kiteboarding trick. |
+
+The following silent, full-length MP4 derivatives use H.264/yuv420p at the original 394×848 resolution, CRF 28, maxrate 1000k, bufsize 2000k, slow preset and faststart. Source audio and source metadata were removed. Original audio remains in the archive and was not assessed for publication. Posters are real source frames converted to WebP at quality 82. Players use native controls, no autoplay or looping, `preload="none"`, and an adjacent visible description of the full short visual sequence.
+
+| Website video | Poster | Source archive file | Source ID / poster time |
+| --- | --- | --- | --- |
+| `/videos/kite-control-on-beach.mp4` | `/videos/kite-control-on-beach-poster.webp` | `two-people-handling-kite-control-bar-on-beach-quality-6of10.mp4` | Video 4 / 4 s |
+| `/videos/board-movements-on-beach.mp4` | `/videos/board-movements-on-beach-poster.webp` | `two-people-demonstrating-movements-beside-kiteboard-under-palms-quality-7of10.mp4` | Video 7 / 1 s |
+
+Homepage shop image replacement requested on 2026-09-12: `/images/owner/hangin-kite-center-storefront-beside-beach-access-road.webp` and `/images/owner/hangin-kite-center-storefront-beside-beach-access-road-900.webp` derive from photo 78, `hangin-kite-center-storefront-beside-beach-access-road-quality-7of10.jpg`, under the same owner permission above. Photographer and capture date remain unidentified. Resized to 1800×1013 and 900×507, WebP quality 82/80, source metadata removed. The homepage uses a responsive display crop; the shop page retains its board photograph.
+
+Homepage spot image replacement requested on 2026-09-12: `/images/owner/colorful-kites-above-bay-and-green-hillside.webp` and `/images/owner/colorful-kites-above-bay-and-green-hillside-900.webp` derive from photo 41, `colorful-kites-above-bay-and-green-hillside-quality-8of10.jpg`, under the owner permission above. Photographer and capture date remain unidentified. Resized to 1800×1200 and 900×600, WebP quality 82/80, source metadata removed. Its own descriptive caption replaces the former aerial photo credit; the aerial and its license remain on the guide pages.
+
+Kite control card replacement, 2026-09-13: `/images/owner/helmeted-woman-holding-control-bar-on-beach.webp` and `/images/owner/helmeted-woman-holding-control-bar-on-beach-900.webp` derive from owner photo 131, `helmeted-woman-holding-control-bar-on-beach-quality-7of10.jpg`, under the owner permission recorded above. Creator and capture date remain unidentified. Auto-oriented; 4:3 crop at left 0, top 450, width 3000, height 2250 to retain the hands, bar and faces; resized and converted to WebP at quality 82/80; source metadata removed. Original archive unchanged. Output dimensions: 1800×1350 and 900×675. No visible caption is required.
+
+Updated Kite control card, 2026-09-13: `/images/owner/orange-shirted-kiteboarder-carving-with-one-hand-raised.webp` and `/images/owner/orange-shirted-kiteboarder-carving-with-one-hand-raised-900.webp` derive from owner photo 29, `orange-shirted-kiteboarder-carving-with-one-hand-raised-quality-9of10.jpg`, under the existing owner permission. Creator and capture date remain unidentified. Auto-oriented; 4:3 crop at left 0, top 1020, width 1964, height 1473 retaining the rider, control bar and board; resized to WebP quality 82/80, source metadata removed. Original archive unchanged. Outputs: 1800×1350 and 900×675. No visible caption required. The prior photo 131 derivatives remain available but are no longer used in the course card.

@@ -11,9 +11,14 @@ This directory separates what the site does now from what it may do later. That 
 | --- | --- |
 | Any repository change | [`../AGENTS.md`](../AGENTS.md), then this index |
 | Product facts or public copy | [`project/product.md`](project/product.md), [`project/content-and-design.md`](project/content-and-design.md) |
+| Lesson prices and course descriptions | [`references/2026-09-08-hangin-course-price-sheet.md`](references/2026-09-08-hangin-course-price-sheet.md), then product and content documents above |
+| Kite size calculator | [`project/kite-size-guide.md`](project/kite-size-guide.md), then architecture and product documents |
+| Boracay spot guide | [`project/boracay-spot-guide-sources.md`](project/boracay-spot-guide-sources.md), then product and content documents above |
+| Boracay places and activities | [`project/boracay-island-guide-sources.md`](project/boracay-island-guide-sources.md), then product and content documents above |
 | Components, routes, content records, or Next.js | [`project/architecture.md`](project/architecture.md) |
 | SEO, accessibility, or images | [`project/seo-accessibility-media.md`](project/seo-accessibility-media.md) |
 | Tests, builds, deployment, or incidents | [`project/development-and-operations.md`](project/development-and-operations.md) |
+| Saved cinematic video hero | [`../templates/cinematic-video/README.md`](../templates/cinematic-video/README.md) |
 | New capability or roadmap work | [`future/README.md`](future/README.md) and the relevant topic brief |
 | Significant architectural choice | [`decisions/README.md`](decisions/README.md) and existing ADRs |
 

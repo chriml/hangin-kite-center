@@ -3,39 +3,39 @@ import { ResponsiveImage } from "@/components/responsive-image";
 import { siteImages } from "@/content/images";
 import styles from "@/app/page.module.css";
 
-const image = siteImages.bulabog;
+const image = siteImages.kiteBay;
 
 export function SpotGuide() {
   return (
     <section id="boracay" className={styles.spotSection}>
-      <div className={`shell ${styles.spotGrid}`}>
+      <div className={styles.spotGrid}>
         <figure className={`${styles.proofFigure} ${styles.spotFigure}`}>
           <ResponsiveImage
             image={image}
             className={styles.coverImage}
-            sizes="(min-width: 1180px) 680px, (min-width: 860px) 58vw, calc(100vw - 2rem)"
+            sizes="(min-width: 860px) 63vw, 100vw"
           />
-          <figcaption className={styles.photoCredit}>
-            Bulabog Beach context. Photo by{" "}
-            <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-            <a href={image.licenseUrl}>{image.license}</a>.
-          </figcaption>
         </figure>
         <div className={styles.spotCopy}>
-          <p className="eyebrow">The kite side</p>
+          <p className="eyebrow">The kite spot</p>
           <h2>The windward side of Boracay.</h2>
           <p>
-            Bulabog Beach faces the Amihan wind on Boracay&apos;s east side. Its
-            warm, shallow lagoon gives lessons and riders room to work when the
-            conditions line up.
+            Bulabog is our home spot on Boracay&apos;s east side. The reef
+            shelters the lagoon, with flat patches and chop depending on the
+            wind and tide. Check the depth and leave room to launch; it gets busy
+            out here.
           </p>
           <p>
-            Amihan generally runs from roughly November to April, but wind is
-            never a daily promise. Check current conditions before planning a
-            session.
+            Amihan is our main kite season, roughly November to April. When
+            Habagat brings southwest wind around June to October, we move our
+            sessions to the other side of Boracay. Drop us a message before
+            bringing your gear over.
           </p>
           <Link className={styles.textLink} href="/kitesurfing-boracay/">
             Read the Boracay spot guide
+          </Link>
+          <Link className={styles.textLink} href="/kite-size-guide/">
+            Compare kite sizes for your trip
           </Link>
         </div>
       </div>

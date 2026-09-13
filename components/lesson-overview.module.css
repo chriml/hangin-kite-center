@@ -1,0 +1,127 @@
+.overview {
+  padding-block: clamp(3rem, 7vw, 6rem);
+  background: var(--sand);
+  color: var(--ocean);
+  border-bottom: 1px solid var(--ocean);
+}
+
+.heading {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.heading h2 {
+  max-width: 18ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 6vw, 4.7rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.columns { display: none; }
+
+.courses {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 3px solid var(--ocean);
+}
+
+.courses li {
+  padding: 0.75rem 1rem 1.25rem;
+  border-bottom: 1px solid var(--ocean);
+}
+
+.courses a,
+.advanced a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 48px;
+  font-weight: 800;
+  text-decoration: none;
+  text-underline-offset: 0.25em;
+}
+
+.courses a:hover,
+.advanced a:hover { text-decoration: underline; }
+
+.overview a.enquiry {
+  width: fit-content;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--coral);
+  color: var(--ocean);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.enquiry svg { flex-shrink: 0; }
+.overview a:focus-visible { outline-color: currentColor; }
+.advanced a.enquiry:focus-visible { outline-color: var(--sand); }
+
+.courseIntro p {
+  max-width: 38ch;
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.courses dl,
+.advanced dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
+}
+
+.overview dt {
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.overview dd {
+  margin: 0;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.courses dl > div:last-child dd { font-weight: 800; }
+.fullCourse { background: var(--lagoon); }
+
+.note {
+  max-width: 48rem;
+  margin: 1rem 0 2rem;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.advanced {
+  padding: 1.5rem 1rem;
+  border-top: 4px solid var(--coral);
+  background: var(--ocean);
+  color: var(--sand);
+}
+
+.advanced :global(.eyebrow) { margin-bottom: 0.25rem; }
+.advanced dd { font-weight: 800; }
+
+@media (min-width: 700px) {
+  .columns,
+  .courses li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 1.5fr) 6.5rem; gap: 1.25rem; }
+  .columns { padding: 1rem; background: var(--ocean); color: var(--sand); font-size: 0.75rem; font-weight: 800; }
+  .columns > div { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 0.75rem; }
+  .overview a.enquiry { width: 100%; margin-top: 0; }
+  .courses li { align-items: center; padding-block: 0.5rem; }
+  .courses dl { margin: 0; grid-template-columns: 1fr 1fr 1.2fr; }
+  .courses dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .overview dd { font-size: 1rem; }
+  .advanced { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 1.5fr) 6.5rem; gap: 1.25rem; align-items: center; padding: 1.5rem 1rem; }
+  .advanced dl { margin: 0; grid-template-columns: 1fr 1fr 1.2fr; }
+}

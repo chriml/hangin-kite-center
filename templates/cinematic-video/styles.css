@@ -1,0 +1,274 @@
+
+*{
+  box-sizing:border-box}
+body{
+  margin:0;
+  background:#073642;
+  color:#FFFDF6;
+  font-family:var(--font-body),sans-serif}
+a{
+  color:inherit}
+button{
+  font:inherit}
+a:focus-visible,button:focus-visible{
+  outline:3px solid #F2E5C4;
+  outline-offset:5px}
+.cinema{
+  position:relative;
+  isolation:isolate;
+  min-height:760px;
+  height:100svh;
+  max-height:1100px;
+  overflow:hidden;
+  background:#073642}
+.cinema video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 28%;
+  z-index:-3}
+.shade{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:linear-gradient(180deg,rgba(3,20,24,.63),rgba(3,20,24,.04) 26%,rgba(3,20,24,.16) 42%,rgba(3,20,24,.88) 100%)}
+.shade:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(3,20,24,.27),transparent 72%)}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  padding:30px 5vw;
+  position:relative;
+  z-index:3}
+.brand{
+  display:flex;
+  align-items:center;
+  min-height:48px}
+.brand img{
+  width:165px;
+  height:auto}
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  font-size:13px;
+  font-weight:700}
+.navlinks a{
+  text-decoration:none;
+  display:flex;
+  min-height:48px;
+  align-items:center}
+.navlinks a:hover{
+  text-decoration:underline;
+  text-underline-offset:6px}
+.navcontact{
+  border:1px solid #f2e5c480;
+  padding:0 22px}
+.opening{
+  position:absolute;
+  left:5vw;
+  bottom:126px;
+  max-width:950px}
+.place{
+  font-size:11px;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+  margin:0 0 22px;
+  font-weight:800}
+.opening h1{
+  font-family:var(--font-display),sans-serif;
+  font-size:clamp(66px,8.5vw,140px);
+  line-height:.91;
+  letter-spacing:-.025em;
+  font-weight:800;
+  margin:0 0 25px;
+  color:#fffdf6;
+  text-transform:uppercase;
+  max-width:100%;
+  text-shadow:0 2px 22px #03141833}
+.opening h1 span{
+  display:block}
+.intro{
+  font-size:16px;
+  line-height:1.65;
+  max-width:440px;
+  margin:0 0 27px}
+.opening .button{
+  min-height:52px;
+  font-size:13px;
+  padding:16px 22px}
+.edge{
+  position:absolute;
+  bottom:26px;
+  left:5vw;
+  right:5vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  border-top:1px solid #fffdf647;
+  padding-top:15px}
+.designation{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase}
+.designation img{
+  height:28px;
+  width:25px;
+  filter:brightness(0) invert(1)}
+.edge a{
+  font-size:12px;
+  text-decoration:none;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  gap:14px}
+.play{
+  border:1px solid #fffdf67a;
+  background:#073642d9;
+  color:#fffdf6;
+  min-width:122px;
+  min-height:48px;
+  padding:12px 18px;
+  cursor:pointer;
+  font-size:12px}
+.play:hover{
+  background:#073642}
+.sr{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0}
+.after{
+  padding:35px 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:36px;
+  background:#073642}
+.after .heroReview{
+  padding:0;
+  margin:0}
+.after .reviewBadge{
+  min-width:0}
+.after .reviewBadges{
+  gap:36px}
+.after p{
+  max-width:360px;
+  font-size:14px;
+  line-height:1.7;
+  margin:0}
+.prototype{
+  background:#F2E5C4;
+  color:#073642;
+  padding:34px 5vw;
+  font-size:14px;
+  line-height:1.8}
+.prototype p{
+  max-width:880px;
+  margin:0}
+.prototype strong{
+  font-weight:800}
+
+@media(min-width:1600px){
+  .opening{
+  bottom:150px}
+}
+@media(max-width:859px){
+  .nav{
+  padding:23px 6vw}
+.navlinks{
+  gap:18px}
+.navlinks .secondary{
+  display:none}
+.opening{
+  left:6vw;
+  right:6vw;
+  bottom:130px}
+.cinema{
+  min-height:710px}
+.opening h1{
+  font-size:clamp(65px,10vw,88px)}
+.edge{
+  left:6vw;
+  right:6vw}
+.edge .explore{
+  display:none}
+.after{
+  padding:30px 6vw;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:24px}
+}
+
+@media(max-width:480px){
+  .cinema{
+  height:100svh;
+  min-height:740px;
+  max-height:940px}
+.cinema video{
+  object-position:50% 40%}
+.nav{
+  padding:18px 6vw;
+  gap:15px}
+.brand img{
+  width:122px}
+.navlinks{
+  font-size:11px}
+.navcontact{
+  padding:0 12px}
+.opening{
+  bottom:135px}
+.opening h1{
+  font-size:clamp(59px,15.8vw,75px);
+  line-height:.94;
+  letter-spacing:-.025em;
+  margin-bottom:22px}
+.opening h1 span{
+  display:inline}
+.place{
+  font-size:9px;
+  letter-spacing:.12em;
+  margin-bottom:18px}
+.intro{
+  font-size:14px;
+  max-width:310px;
+  margin-bottom:24px}
+.opening .button{
+  font-size:12px}
+.shade{
+  background:linear-gradient(180deg,rgba(3,20,24,.6),rgba(3,20,24,.04) 22%,rgba(3,20,24,.48) 42%,rgba(3,20,24,.96))}
+.edge{
+  bottom:22px;
+  gap:12px}
+.designation{
+  font-size:8px;
+  max-width:170px;
+  line-height:1.7;
+  gap:9px}
+.play{
+  min-width:105px;
+  padding:12px}
+.after .reviewBadges{
+  gap:26px}
+.prototype{
+  padding:26px 6vw}
+}
+
+

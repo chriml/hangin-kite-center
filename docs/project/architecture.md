@@ -25,10 +25,11 @@ visitor follows WhatsApp, email, telephone, or internal links
 
 - Next.js 16.3.3, React 19.2.8, React DOM 19.2.8, TypeScript 5.
 - `next.config.ts` sets `output: "export"`, `trailingSlash: true`, and `images.unoptimized: true`.
-- Pages and shared components are Server Components. The repository contains no `"use client"` boundary.
+- Pages and shared components are Server Components, apart from the local kite-size calculator in `components/kite-size-calculator.tsx`. It uses browser memory only; the surrounding page and contact path remain static.
 - Native HTML handles the mobile menu and FAQ disclosure behavior.
+- Mobile-menu destinations use ordinary document links so the destination loads with its native disclosure closed. Desktop and other site links retain Next.js navigation. This avoids retaining an open menu in the shared layout and needs no additional client component.
 - Local responsive images and framework-emitted fonts are served from the static artifact.
-- The production artifact contains nine public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
+- The production artifact contains nineteen public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
 
 Static export does not provide request-time cookies, headers, redirects, rewrites, middleware, Server Actions, ISR, authenticated preview, secret-bearing APIs, or webhooks. Host-level redirects and headers are separate deployment responsibilities. Dynamic services must live behind a hosted provider or a separately operated server boundary.
 
@@ -39,8 +40,10 @@ Static export does not provide request-time cookies, headers, redirects, rewrite
 | Business identity, routes, contact behavior | `content/site.ts` |
 | Shared service-page shape and water-service copy | `content/water-pages.ts` |
 | Island, accommodation, shop, and about copy | `content/island-pages.ts` |
+| Boracay places, activities and trip planning | `content/boracay-guide.ts`, `components/boracay-subpage.tsx`, `app/kitesurfing-boracay/*/page.tsx` |
 | Image files, dimensions, alt text, responsive candidates, provenance type | `content/images.ts` |
 | Image attribution ledger | `public/images/ATTRIBUTION.md` |
+| Public asset credits and bundled licenses | `app/legal/page.tsx`, `public/licenses/` |
 | Metadata and canonical construction | `lib/seo.ts` |
 | Global metadata and sitewide JSON-LD | `app/layout.tsx` |
 | Sitemap, robots, manifest | `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts` |
@@ -53,11 +56,15 @@ Static export does not provide request-time cookies, headers, redirects, rewrite
 
 Pages provide a typed `ContactContext`. `getPrimaryContactAction` resolves that context to a label, prefilled message, destination, and safe external-link attributes. `ContactCta` renders the result. The provider is currently WhatsApp, and email remains visible in the larger contact treatment.
 
+The lesson price comparison uses `getLessonContactAction(course)` to include the selected course and prompts for dates and riding level. Both contact helpers use the same destination builder and external-link attributes in `content/site.ts`. Course enquiries are ordinary exported links; visitors fill in and send the message in WhatsApp.
+
 This boundary can later resolve different hosted booking destinations by service. It must not create a checkout session, publish availability, or carry secrets in the static application.
 
 ## Content and SEO data flow
 
 Typed page records feed `ServicePage`, page heroes, FAQ markup, breadcrumbs, and route metadata. Sitewide identity feeds JSON-LD. Public routes feed navigation and sitemap generation, although several route labels and homepage strings remain embedded in components.
+
+The Boracay spot page inserts `BoracayPlaces` through the shared template's optional children slot. Its child guide uses the existing hero, contact and breadcrumb components with a dedicated static editorial layout. `Breadcrumbs` accepts an optional parent for the nested route; the child page uses the same parent record for visible and JSON-LD breadcrumbs. No client component or production dependency was added.
 
 The current model has useful types but is not yet a single validated registry. Routes, navigation, sitemap data, tests, attribution prose, homepage content, and some shell labels duplicate information. The future content-management brief proposes a schema-backed registry and compatibility adapter before any CMS is selected.
 
@@ -70,3 +77,27 @@ The current model has useful types but is not yet a single validated registry. R
 - Commerce: a separate offer, inventory, order, and payment boundary; the contact adapter stays an enquiry boundary.
 
 Each extension requires an accepted topic specification and, when it changes the static-host model, an ADR.
+
+## Local kite sizing
+
+The [kite size guide](kite-size-guide.md) adds a small client component for weight, dates and level. It uses a sourced local lookup, native form controls and React state. No rider input leaves the page or changes its URL. Static export, source guidance, reference chart and contact links remain intact.
+
+### Owner-supplied media
+
+`content/images.ts` supports licensed contextual proof, owner-provided photographs and generated decoration as separate variants. Owner permission and source hashes live in `public/images/ATTRIBUTION.md` and `docs/project/owner-media.json`. `content/videos.ts` and `components/lesson-videos.tsx` retain reusable local silent MP4 playback, but the owner removed that section from the Lessons route on 2026-09-12. The component is no longer imported by the page. Responsive photo derivatives live under `public/images/owner/`; videos and posters live under `public/videos/`. The source `images/` archive is not copied into the static export.
+
+### Safari detail routes
+
+`content/safari-trips.ts` owns the three named trip records. `app/kite-safaris/[slug]/page.tsx` exports only those slugs using `generateStaticParams`, awaited route params and `dynamicParams = false`. The pages remain static Server Components. `content/site.ts` registers all public routes and separately lists the pending safari routes; the pending pages are excluded from shared navigation and the indexable route list used by the sitemap. Cards link directly to them. `getSafariContactAction` uses the existing contact builder for trip-specific enquiries. The shared ServicePage omits its detail-section wrapper when the section record is empty; the safari page supplies its card list through the existing overview slot.
+
+
+### Boracay shared layout, 2026-09-13
+
+`app/kitesurfing-boracay/layout.tsx` owns the persistent hero, H1 and main landmark for the spot guide and Things to do. Its small `navigation.tsx` client component uses Next.js `useSelectedLayoutSegment` and `Link` to select the active subpage and preserve scroll on internal switches. Safari is a normal link out to its original route. No new routes or indexing behavior are introduced. The shared layout renders one route-aware breadcrumb above the hero, while page-specific breadcrumb JSON-LD remains in the child pages. `ServicePage` accepts an optional `embedded` flag so the spot body can reuse its content, FAQ and contact rendering without duplicating the shared hero or main landmark. All child content and current-page navigation are prerendered in the static export; the rest of the layout remains server-rendered.
+
+The desktop primary-menu Boracay link disables Next.js automatic page scrolling with `scroll={false}`. Because the Boracay hero lives in a shared layout, default navigation otherwise scrolls past it to the child page. Submenu links retain their existing scroll-preserving behavior; native mobile-menu document links remain unchanged.
+
+
+### Dedicated Boracay subpages, 2026-09-13
+
+The owner's latest clarification replaces the combined island guide and fragment-based submenu with four explicit static child routes: `places-to-be`, `things-to-do`, `planning-your-days` and `practical-questions`. Each page supplies its typed record to `BoracaySubpageContent`, which renders only that topic, its existing sources or questions, breadcrumb JSON-LD and contact section. The shared layout owns the unchanged hero and its kite-size quick link. It passes only menu labels, titles, slugs and paths to the small navigation client component; content stays server-rendered. `useSelectedLayoutSegment` identifies the current page for the menu and top breadcrumb. Hash subscriptions are removed. Next links use `scroll={false}` between Boracay pages, and Safari still opens its existing standalone route. All four routes are registered in the public route list, sitemap and shared mobile/footer navigation. No runtime service or new dependency is involved.

@@ -1,10 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ContactCta } from "@/components/contact-cta";
 import { ProofStrip } from "@/components/proof-strip";
 import { ResponsiveImage } from "@/components/responsive-image";
-import { ServicePath } from "@/components/service-path";
+import { ReviewBadges } from "@/components/review-badges";
 import { SpotGuide } from "@/components/spot-guide";
 import { siteImages } from "@/content/images";
+import { siteConfig } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
@@ -17,41 +19,22 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-const lessonPaths = [
-  {
-    href: "/kitesurfing-lessons/",
-    heading: "Your first kite lesson",
-    description:
-      "Complete beginners start with the kite, its safety systems and control before moving into the lagoon.",
-  },
-  {
-    href: "/kitesurfing-lessons/",
-    heading: "Board starts and first rides",
-    description:
-      "Work on body dragging, board starts and controlled first rides in a session matched to the conditions.",
-  },
-  {
-    href: "/kitesurfing-lessons/",
-    heading: "Progression sessions",
-    description:
-      "For riders already on the board, sessions can cover upwind riding, transitions or jumps, depending on level and conditions.",
-  },
-  {
-    href: "/rentals-storage/",
-    heading: "Full equipment rental",
-    description:
-      "Full equipment rental is available. Ask what setup fits your level and the current conditions.",
-  },
-] as const;
-
 const services = [
   {
+    eyebrow: "Kitesurfing lessons",
+    heading: "Learn to kitesurf",
+    copy: "Start from zero, work on your first rides, or sharpen a skill with a session matched to your level and the conditions.",
+    href: "/kitesurfing-lessons/",
+    link: "View lessons",
+    image: siteImages.lessonPair,
+  },
+  {
     eyebrow: "Rental & storage",
-    heading: "Ride without flying your gear.",
+    heading: "Rent gear or store your own.",
     copy: "Rent a setup for your session or keep your own equipment by the spot. Ask what is available during your stay.",
     href: "/rentals-storage/",
     link: "View rental and storage",
-    image: siteImages.gearArt,
+    image: siteImages.rentalBoards,
   },
   {
     eyebrow: "Accommodation",
@@ -67,7 +50,7 @@ const services = [
     copy: "The shop covers kite equipment and beach essentials. Message us if you need to know what is in stock today.",
     href: "/shop/",
     link: "Visit the shop page",
-    image: siteImages.gearArt,
+    image: siteImages.shopFront,
   },
   {
     eyebrow: "Kite safaris",
@@ -112,85 +95,68 @@ const questions = [
   },
 ] as const;
 
-function PhotoCredit({
-  image,
-  context,
-}: {
-  image: typeof siteImages.school | typeof siteImages.riding;
-  context: string;
-}) {
-  return (
-    <figcaption className={styles.photoCredit}>
-      {context}{" "}Photo by <a href={image.sourceUrl}>{image.credit}</a>, licensed{" "}
-      <a href={image.licenseUrl}>{image.license}</a>.
-    </figcaption>
-  );
-}
-
 export default function Home() {
-  const heroImage = siteImages.school;
-  const storyImage = siteImages.riding;
+  const heroImage = siteImages.boardRiding;
+  const storyImage = siteImages.hanginCenter;
 
   return (
-    <main id="main-content" tabIndex={-1} className={styles.home}>
-      <section id="start" className={styles.hero}>
-        <div className={`shell ${styles.heroGrid}`}>
+    <main id="main-content" tabIndex={-1} className={styles.home} data-cinematic-hero>
+      <section id="start" className={styles.hero} aria-labelledby="hero-heading">
+        <ResponsiveImage
+          image={heroImage}
+          className={styles.heroImage}
+          sizes="(max-aspect-ratio: 3/2) 150vh, 100vw"
+          priority
+        />
+        <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <p className="eyebrow">Bulabog Beach, Boracay</p>
-            <h1>Kitesurfing here since 2002.</h1>
+            <a className={styles.heroPlace} href={siteConfig.mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Bulabog Beach, Boracay on Google Maps">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" focusable="false">
+                <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              Bulabog Beach, Boracay
+            </a>
+            <h1 id="hero-heading">
+              <span>If the wind is up,</span>{" "}
+              <span>we&apos;re out there.</span>
+            </h1>
             <p className={styles.heroLead}>
-              Learn with IKO and VDWS instructors, rent a full setup, store your
-              own gear, or stay close to the kite beach. If the wind is up,
-              we&apos;re out there.
+              Kitesurfing since 2002.
+              <br />
+              Join us on Bulabog&apos;s warm lagoon.
             </p>
             <div className={styles.heroActions}>
-              <Link className="button button--dark" href="#lessons">
-                See the lessons
-              </Link>
               <ContactCta compact />
             </div>
+            <p className={styles.heroNote}>
+              Send your dates and riding level.
+              <br />
+              We&apos;ll take it from there.
+            </p>
           </div>
-          <figure className={`${styles.proofFigure} ${styles.heroFigure}`}>
-            <ResponsiveImage
-              image={heroImage}
-              className={styles.coverImage}
-              sizes="(min-width: 1180px) 570px, (min-width: 860px) 48vw, calc(100vw - 2rem)"
-              priority
+        </div>
+        <div className={styles.heroEdge}>
+          <p className={styles.heroTag}>
+            <Image
+              src="/brand/partners/duotone-mark.svg"
+              width={48}
+              height={55}
+              alt=""
+              className={styles.heroTagLogo}
+              loading="eager"
             />
-            <PhotoCredit image={heroImage} context="Boracay kitesurfing context." />
-          </figure>
-          <svg
-            className={styles.kiteLines}
-            viewBox="0 0 700 90"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path d="M0 78 C 210 78, 330 12, 700 12" />
-            <path d="M0 88 C 230 88, 350 22, 700 22" />
-          </svg>
+            <span>{siteConfig.centerDesignation}</span>
+          </p>
+          <ReviewBadges />
         </div>
       </section>
 
       <ProofStrip />
 
-      <section id="lessons" className={styles.lessonsSection}>
-        <div className={`shell ${styles.sectionHeading}`}>
-          <p className="eyebrow">Choose where to start</p>
-          <h2>Lessons and rental.</h2>
-        </div>
-        <div className={`shell ${styles.pathGrid}`}>
-          {lessonPaths.map((path) => (
-            <ServicePath key={path.heading} {...path} />
-          ))}
-        </div>
-      </section>
-
-      <SpotGuide />
-
       <section id="services" className={styles.servicesSection}>
         <div className={`shell ${styles.sectionHeading}`}>
-          <p className="eyebrow">Around the session</p>
-          <h2>Leave the board bag at home.</h2>
+          <h2>Your Boracay kite experience.</h2>
         </div>
         <div className={styles.serviceBands}>
           {services.map((service) => (
@@ -199,7 +165,6 @@ export default function Home() {
                 <ResponsiveImage
                   image={service.image}
                   className={styles.coverImage}
-                  alt=""
                   sizes="(min-width: 1180px) 590px, (min-width: 760px) 50vw, 100vw"
                 />
               </div>
@@ -216,14 +181,17 @@ export default function Home() {
         </div>
       </section>
 
+      <SpotGuide />
+
       <section id="story" className={styles.storySection}>
         <div className={`shell ${styles.storyGrid}`}>
           <div className={styles.storyCopy}>
             <p className="eyebrow">The center</p>
-            <h2>On Bulabog Beach since 2002.</h2>
+            <h2>Kitesurfing since 2002.</h2>
             <p>
-              Hangin has taught on Bulabog Beach since 2002. Today the center
-              covers lessons, rental, storage, stays, the shop and kite trips.
+              We take care of your Boracay kite trip, from lessons and gear to
+              a place to stay. Our goal is to give you the best experience on
+              and off the water.
             </p>
             <Link className={styles.textLink} href="/about/">
               About Hangin
@@ -235,7 +203,6 @@ export default function Home() {
               className={styles.coverImage}
               sizes="(min-width: 1180px) 650px, (min-width: 860px) 55vw, calc(100vw - 2rem)"
             />
-            <PhotoCredit image={storyImage} context="Boracay riding context." />
           </figure>
         </div>
       </section>
@@ -243,7 +210,7 @@ export default function Home() {
       <section id="questions" className={styles.questionsSection}>
         <div className={`shell ${styles.questionsGrid}`}>
           <div className={styles.questionsHeading}>
-            <p className="eyebrow">Practical questions</p>
+            <p className="eyebrow">FAQ</p>
             <h2>Before you hit the water.</h2>
           </div>
           <div className={styles.faqList}>
@@ -260,13 +227,13 @@ export default function Home() {
       <section id="contact" className={styles.contactSection}>
         <div className={`shell ${styles.contactGrid}`}>
           <div>
-            <p className="eyebrow">Plan the session</p>
-            <h2>Tell us when you&apos;re coming.</h2>
+            <p className="eyebrow">Talk to Hangin</p>
+            <h2>Ask us anything.</h2>
           </div>
           <div className={styles.contactCopy}>
             <p>
-              Send your dates, riding level and what you need. We&apos;ll tell you
-              what works with the current conditions.
+              Questions about lessons, gear, where to stay or life on Boracay?
+              Send us a message. We&apos;ll get back to you within one day.
             </p>
             <ContactCta />
           </div>

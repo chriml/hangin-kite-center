@@ -1,3 +1,4 @@
+import { BoracayPlaces } from "@/components/boracay-places";
 import { ServicePage } from "@/components/service-page";
 import { islandPages } from "@/content/island-pages";
 import { buildMetadata } from "@/lib/seo";
@@ -11,5 +12,9 @@ export const metadata = buildMetadata({
 });
 
 export default function KitesurfingBoracayPage() {
-  return <ServicePage content={content} />;
+  return (
+    <ServicePage content={content} embedded>
+      <BoracayPlaces />
+    </ServicePage>
+  );
 }

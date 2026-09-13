@@ -1,3 +1,4 @@
+import { LessonOverview } from "@/components/lesson-overview";
 import { ServicePage } from "@/components/service-page";
 import { waterPages } from "@/content/water-pages";
 import { buildMetadata } from "@/lib/seo";
@@ -11,5 +12,7 @@ export const metadata = buildMetadata({
 });
 
 export default function KitesurfingLessonsPage() {
-  return <ServicePage content={content} />;
+  return (
+    <ServicePage content={content} overview={<LessonOverview />} />
+  );
 }

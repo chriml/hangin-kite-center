@@ -1,20 +1,22 @@
+import Image from "next/image";
+import { sitePartners } from "@/content/site";
 import styles from "@/app/page.module.css";
 
-const facts = [
-  "On the beach since 2002",
-  "IKO & VDWS instruction",
-  "Lessons · rental · storage",
-  "Stay close to the spot",
-] as const;
-
-export function ProofStrip() {
+export function ProofStrip({ labelAbove = false }: { labelAbove?: boolean }) {
   return (
-    <aside className={styles.proofStrip} aria-label="Hangin at a glance">
-      <ul className={`shell ${styles.proofList}`}>
-        {facts.map((fact) => (
-          <li key={fact}>{fact}</li>
-        ))}
-      </ul>
+    <aside className={styles.proofStrip} aria-label="Our gear partners">
+      <div className={`shell ${styles.partnerStrip} ${labelAbove ? styles.partnerStripStacked : ""}`}>
+        <p>Our gear partners</p>
+        <ul className={styles.partnerList}>
+          {sitePartners.map((partner) => (
+            <li key={partner.name}>
+              <a href={partner.href} target="_blank" rel="noopener noreferrer">
+                <Image src={partner.logo} width={partner.width} height={partner.height} alt={partner.name} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </aside>
   );
 }

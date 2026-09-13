@@ -1,0 +1,141 @@
+.tripNotes {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  background: var(--lagoon);
+  color: var(--ocean);
+}
+
+.notesInner {
+  display: grid;
+  gap: 2rem 5rem;
+}
+
+.notesInner h2 {
+  margin: 0;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.notesInner p:not(:global(.eyebrow)) {
+  max-width: 36rem;
+  margin: 1.25rem 0 0;
+  line-height: 1.7;
+}
+
+.notesInner ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid currentColor;
+}
+
+.notesInner li {
+  border-bottom: 1px solid currentColor;
+}
+
+.notesInner a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding-block: 1rem;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+@media (min-width: 860px) {
+  .notesInner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+
+.trips {
+  padding-block: clamp(2rem, 5vw, 4rem);
+  background: var(--sun);
+}
+
+.tripList {
+  display: grid;
+  gap: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tripCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--ocean);
+  border-left: 5px solid var(--lagoon);
+  background: var(--sand);
+  color: var(--ocean);
+}
+
+.tripCopy h2 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.tripCopy p {
+  margin: 0.75rem 0 0;
+  line-height: 1.6;
+}
+
+.tripActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.tripActions a {
+  gap: 0.5rem;
+  min-width: 7rem;
+}
+
+.comingSoon {
+  min-height: 55svh;
+  padding-block: clamp(3rem, 9vw, 7rem);
+  background: var(--ocean);
+  color: var(--sand);
+}
+
+.comingSoon h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.comingSoon p {
+  margin: 1.5rem 0 2rem;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 599px) {
+  .tripCard {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .tripActions {
+    width: 100%;
+  }
+
+  .tripActions a {
+    flex: 1;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,140 @@
+.gearPartners {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background: var(--sand);
+  color: var(--ocean);
+}
+
+.team {
+  padding-block: 0 clamp(3.5rem, 7vw, 6rem);
+  background: var(--sun);
+  color: var(--ocean);
+}
+
+.teachingLogos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 25rem;
+  margin: 2rem 0 0;
+  padding: 1.5rem;
+  background: var(--ocean);
+  list-style: none;
+}
+
+.teachingLogos a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+}
+
+.teachingLogos img {
+  display: block;
+  width: 100%;
+  max-width: 8rem;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.team h2 {
+  margin: 0 0 2rem;
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  line-height: 1;
+}
+
+.teamGrid {
+  display: grid;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.portraitPlaceholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: color-mix(in srgb, var(--lagoon) 14%, var(--sun));
+}
+
+.portraitPlaceholder img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  opacity: 0.45;
+}
+
+.teamGrid h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.teamGrid p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (min-width: 700px) {
+  .teamGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.partnerGrid {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+}
+
+.partnerCopy h2 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2.75rem, 6vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.partnerCopy p {
+  max-width: 38rem;
+  margin: 1.5rem 0 0;
+  line-height: 1.75;
+}
+
+.partnerList {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 1.5rem 0;
+  border-block: 1px solid var(--ocean);
+  list-style: none;
+}
+
+.partnerList a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  padding: 0.5rem;
+}
+
+.partnerList a:hover {
+  background: color-mix(in srgb, var(--sun) 55%, transparent);
+}
+
+.partnerList img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 3.5rem;
+  height: auto;
+}
+
+@media (min-width: 860px) {
+  .partnerGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+}

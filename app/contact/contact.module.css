@@ -148,7 +148,7 @@
 }
 
 .location {
-  background: var(--palm);
+  background: var(--ocean);
   color: var(--sun);
 }
 
@@ -156,9 +156,9 @@
   color: var(--sand);
 }
 
-.location > p:last-child {
+.location > p:last-of-type {
   max-width: 24rem;
-  margin: 2rem 0 0;
+  margin: 2rem 0 1.25rem;
   line-height: 1.7;
 }
 

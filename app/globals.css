@@ -2,10 +2,9 @@
 
 :root {
   --ocean: #073642;
-  --lagoon: #1fb9c1;
+  --lagoon: #00a8c4;
   --sand: #f2e5c4;
   --sun: #fffdf6;
-  --palm: #315f4b;
   --coral: #f06449;
   --ink: #102a30;
   --line: color-mix(in srgb, var(--ocean) 22%, transparent);
@@ -110,6 +109,14 @@ svg {
   color: var(--sun);
 }
 
+.button--whatsapp {
+  gap: 0.5rem;
+}
+
+.button--whatsapp svg {
+  flex: 0 0 1.25rem;
+}
+
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
@@ -119,6 +126,24 @@ svg {
 
 .contact-actions--compact {
   gap: 0.5rem;
+}
+
+.email-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid currentColor;
+}
+
+.email-action:hover {
+  background: var(--sand);
+  color: var(--ocean);
+}
+
+.email-action:hover svg {
+  stroke: var(--ocean);
 }
 
 .skip-link {

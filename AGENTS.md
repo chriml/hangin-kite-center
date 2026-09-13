@@ -39,7 +39,7 @@ If an applicable skill is unavailable, follow the repository rules directly and 
 - Next.js 16.3.3 App Router, React 19.2.8, and TypeScript.
 - Explicit static export through `output: "export"`; the deployable artifact is `out/`.
 - Trailing-slash routes and local, unoptimized responsive image files.
-- Server Components by default. There are currently no client components or runtime third-party scripts.
+- Server Components by default. Keep client boundaries limited to local interactive tools; do not add runtime third-party scripts.
 - Typed local content and configuration under `content/`; no runtime CMS, database, form handler, booking service, payment service, or inventory system.
 - `content/site.ts` owns business identity, public routes, and the primary contact adapter.
 - `content/images.ts` and `public/images/ATTRIBUTION.md` own image records and provenance.
@@ -71,7 +71,7 @@ Do not use fake urgency such as `book now`, `limited spots`, or countdown langua
 
 The visual language is Boracay kite culture, not a generic resort, travel blog, manufacturer site, or SaaS template.
 
-- Use the approved ocean, lagoon, sand, sun, palm, coral, and ink palette; Barlow Condensed and Manrope; real Boracay proof photography; and the kite-line motif with restraint.
+- Use the approved dark-blue primary, Duotone-blue and sand secondary, and coral-red accent palette documented in `docs/project/content-and-design.md`; Barlow Condensed and Manrope; real Boracay proof photography; and the kite-line motif with restraint.
 - Avoid default card grids, excessive pills and rounded boxes, glass effects, purple gradients, floating blobs, tropical-leaf wallpaper, generic icon rows, and decorative motion without a job.
 - Preserve semantic DOM order. Do not use CSS reordering that changes the visual reading order.
 - Use native controls where they work. Keep visible focus, reduced-motion support, readable line lengths, honest image crops, and at least 48-pixel primary mobile targets.

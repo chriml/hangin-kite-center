@@ -18,6 +18,11 @@ const files = [
   "generated/island-stay-sunprint-900.webp",
 ];
 
+const ownerMedia = JSON.parse(await readFile("docs/project/owner-media.json", "utf8"));
+files.push(...ownerMedia.photos.flatMap(({ src, mobileSrc }) =>
+  [src, mobileSrc].map((file) => file.replace(/^\/images\//, ""))
+));
+
 test("all planned local media exists and is non-empty", async () => {
   for (const file of files) {
     const info = await stat(path.join("public/images", file));

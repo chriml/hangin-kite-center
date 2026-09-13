@@ -8,12 +8,25 @@ export const publicRoutes = [
   "/kitesurfing-lessons/",
   "/rentals-storage/",
   "/kite-safaris/",
+  "/kite-safaris/batbatan/",
+  "/kite-safaris/colon/",
+  "/kite-safaris/others/",
+  "/events/",
   "/accommodation/",
   "/shop/",
   "/kitesurfing-boracay/",
+  "/kitesurfing-boracay/places-to-be/",
+  "/kitesurfing-boracay/things-to-do/",
+  "/kitesurfing-boracay/planning-your-days/",
+  "/kitesurfing-boracay/practical-questions/",
+  "/kite-size-guide/",
   "/about/",
   "/contact/",
+  "/legal/",
 ];
+
+export const pendingSafariRoutes = ["/kite-safaris/batbatan/", "/kite-safaris/colon/", "/kite-safaris/others/"];
+export const indexableRoutes = publicRoutes.filter(route => !pendingSafariRoutes.includes(route) && route !== "/events/");
 
 export function routeFile(route) {
   if (route === "/") return path.join(outDir, "index.html");

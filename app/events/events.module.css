@@ -1,0 +1,19 @@
+.comingSoon {
+  min-height: 55svh;
+  padding-block: clamp(3rem, 9vw, 7rem);
+  background: var(--ocean);
+  color: var(--sand);
+}
+
+.comingSoon h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.comingSoon p {
+  margin: 1.5rem 0 2rem;
+  font-size: 1.25rem;
+}

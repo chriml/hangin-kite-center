@@ -1,3 +1,4 @@
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { getPrimaryContactAction, siteConfig } from "@/content/site";
@@ -81,17 +82,21 @@ export default function ContactPage() {
             <p className="eyebrow">Location</p>
             <h2>Find us on Bulabog Beach</h2>
             <p>{siteConfig.location}</p>
+            <a className="button" href={siteConfig.mapsUrl} target="_blank" rel="noopener noreferrer">
+              Open Google Maps
+            </a>
           </article>
           <article className={styles.channel}>
             <p className="eyebrow">Primary contact</p>
             <h2>{primaryContact.channelLabel}</h2>
             <a
-              className="button button--coral"
+              className="button button--coral button--whatsapp"
               href={primaryContact.href}
               target={primaryContact.target}
               rel={primaryContact.rel}
             >
-              {primaryContact.channelLabel} {primaryContact.displayDestination}
+              <WhatsAppIcon />
+              <span>{primaryContact.channelLabel} {primaryContact.displayDestination}</span>
             </a>
           </article>
           <article className={styles.channel}>
