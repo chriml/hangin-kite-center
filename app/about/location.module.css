@@ -1,0 +1,37 @@
+.section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: var(--ocean);
+  color: var(--sun);
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.grid h2 {
+  max-width: 14ch;
+  margin: 0;
+  color: var(--sand);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.95;
+}
+
+.grid > div > p {
+  max-width: 45ch;
+  line-height: 1.7;
+}
+
+@media (min-width: 860px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+.address {
+  margin-top: 1.5rem;
+  font-style: normal;
+  line-height: 1.7;
+}

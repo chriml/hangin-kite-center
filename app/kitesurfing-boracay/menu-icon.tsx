@@ -1,6 +1,11 @@
 // Tabler Icons, MIT. See public/licenses/tabler-icons.txt.
 // Source: tabler/tabler-icons@55f87a73f45cf1d9eaf16d7da705065483a9e4f9, icons/outline.
 const paths: Record<string, readonly string[]> = {
+  "forecast": [
+    "M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24",
+    "M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24",
+    "M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"
+  ],
   "spot": [
     "M8 16l2 -6l6 -2l-2 6l-6 2",
     "M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0",

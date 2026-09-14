@@ -18,6 +18,8 @@ Both commands print JSON evidence and exit nonzero for findings or incomplete co
 
 ## Limits
 
+Google Maps and Windguru now load automatically as static iframes under [ADR 0004](../docs/decisions/0004-automatic-maps-and-forecasts.md), superseding the earlier optional loading in ADRs 0002 and 0003. `reviewed-embeds.json` pins each complete source URL, allowed routes and exact iframe attributes. The audit records only those combinations as `reviewed-third-party-frame` and does not crawl provider internals. Unexpected URLs, parameters, routes, attributes, authored handlers, other embeds and non-frame external resources still fail. A pass therefore permits these initial third-party requests; it does not prove privacy after page load. Verify real iframe rendering separately in a browser.
+
 The accepted kite calculator is the only allowed form: it must remain on `/kite-size-guide/`, labelled by `trip-heading`, have no form ID for external control association, and contain no named submission fields or native submission attributes. Its reviewed client source prevents native submission, and the CSP keeps `form-action 'none'`. Other forms still fail the audit. Focused fixtures prove that adding an action, a field name, or a button submission override fails.
 
 This is static regression evidence. A pass does **not** prove tracking is absent, guarantee CSP compatibility, certify privacy compliance, or verify hosting policy.

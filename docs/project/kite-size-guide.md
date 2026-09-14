@@ -29,7 +29,7 @@ The following are implementation choices, not manufacturer rules:
 - January’s 30/35-knot conditions remain visible below the sizes but are never extrapolated beyond the source chart’s 28-knot limit. Trips including an off-season month still require a team check. No setup promises continuous wind coverage or suitability on a specific day.
 - Exact 70/80/90kg boundaries use the lighter band because the published bands overlap. Kilogram values normalize to 0.01kg for unit-conversion consistency.
 - Automatic output is limited to 60–120kg. The source has no under-60kg row and an open-ended over-90kg row. The upper cutoff is a conservative tool scope, explicitly disclosed. Outside that range, visitors receive the season/level notes and a team-check message instead of extrapolated sizes.
-- No forecast API, invented wind probabilities, size extrapolation, guarantees, availability, prices, Offers, Product schema, analytics or third-party browser scripts are introduced.
+- The calculator introduces no forecast API, invented wind probabilities, size extrapolation, guarantees, availability, prices, Offers, Product schema, analytics or third-party browser scripts. The separately optional Windguru section below is covered by ADR 0003.
 
 ## Review and validation
 
@@ -88,3 +88,11 @@ Independent review checked the median, subset ordering and score, chart limits, 
 Final verification: `npm run verify` in the isolated checkout `/tmp/hangin-kite-verify.OMzRyT` exited 0: lint, typecheck, fresh static export, all 138 tests and zero privacy-audit findings. Log: `/tmp/hangin-kite-isolated-final-verify.log`. The six implementation/test/audit files were byte-compared with the working copy after verification. The earlier shared run passed 138 tests; a later shared run encountered the concurrent homepage FAQ change. Isolation avoided changing that task’s files. The first isolated audit rejected the changed client-file hash; updating its reviewed record resolved that check without modifying the audit.
 
 Browser checks covered the live page and fresh exported page, the owner’s 76kg December–February example, April’s missing third option, June’s team-check result, input-change reset, keyboard submission and result focus, and keyboard expansion of the explanation. Layout checks at 320, 390, 890 and 1440 pixels found no horizontal overflow, with 50-pixel selects and explanations after sizes in DOM and visual order. Narrow panels show full month names. Public copy was read end to end and checked with no-ai-slop; existing contrast/focus colors and reduced-motion support are preserved, with no added motion or photography. No console errors were observed on the exported calculator. Static no-JavaScript content and form-gating checks passed; no separate JavaScript-disabled browser session, full network/storage instrumentation, screen-reader audit or production HTTP/deployment check was run for this local calculator change.
+
+## Optional Windguru forecast, 2026-09-13
+
+At the owner’s request, a shared forecast section appears after the chart/month explanations and before the packing FAQ. It shows Windguru’s Hangin/Bulabog GFS model only after activation, with knots, a direct provider link and a privacy notice. The forecast is independent of the calculator: entered weight, travel months, level and results stay local and do not alter or get passed to the provider. See [ADR 0003](../decisions/0003-optional-windguru-forecast.md) and the [verification record](../operations/2026-09-13-windguru.md).
+
+## Automatic forecast revision, 2026-09-13
+
+The owner’s later request to always load Windguru supersedes the optional activation above. The shared forecast is now a static eager iframe with no load/hide controls or introductory paragraph; its heading, provider link and table guidance remain. Calculator inputs and results still stay local and are not passed to the provider. See [ADR 0004](../decisions/0004-automatic-maps-and-forecasts.md).

@@ -1,5 +1,6 @@
 import { BoracayPlaces } from "@/components/boracay-places";
 import { ServicePage } from "@/components/service-page";
+import { WindForecast } from "@/components/wind-forecast";
 import { islandPages } from "@/content/island-pages";
 import { buildMetadata } from "@/lib/seo";
 
@@ -14,6 +15,7 @@ export const metadata = buildMetadata({
 export default function KitesurfingBoracayPage() {
   return (
     <ServicePage content={content} embedded>
+      <WindForecast />
       <BoracayPlaces />
     </ServicePage>
   );

@@ -17,7 +17,7 @@ Hangin sounds like an experienced beach team member answering a guest: relaxed, 
 
 The full durable writing rules and banned vocabulary live in [`../../AGENTS.md`](../../AGENTS.md). Public strings include visible copy, metadata, alternative text, labels, contact-message templates, and structured-data text. Every change to them requires the `no-ai-slop` workflow and a rendered read-through.
 
-Strong existing lines should not be normalized into a repeated template. Examples include `Kitesurfing since 2002.` and `If the wind is up, we're out.`
+Strong existing lines should not be normalized into a repeated template. Examples include `Kitesurfing since 2001.` and `If the wind is up, we're out.`
 
 The owner reinforced the loose, informal voice for kiters on 2026-09-08. The Boracay guide now covers the wind season, lagoon conditions, tides, reef, launch traffic, riding level, Habagat, packing and arrival with gear. It uses original copy synthesized from the [documented school sources](boracay-spot-guide-sources.md). Competitor prices, operating policies, forecasts and promotional claims are not Hangin facts. The homepage spot introduction follows the same voice and links to the full guide.
 
@@ -118,7 +118,9 @@ Following the owner's 2026-09-10 request, `/about/` includes a sand-colored gear
 
 The Contact page's “Find us on Bulabog Beach” panel includes an “Open Google Maps” link beneath the location. It uses the existing `siteConfig.mapsUrl` destination, opens in a new tab with safe external-link attributes, and reuses the shared 48-pixel button and focus styles. Added at the owner's request on 2026-09-12.
 
-Verification: `npm run verify` and `git diff --check` exited 0, with all 54 tests passing. Browser review at 320 and 1280 pixels confirmed the Maps destination, a 50-pixel rendered target, no horizontal overflow and visible keyboard focus. Independent review found no issues. Only the Contact page, its stylesheet and this document changed for this fix; existing work is preserved. The change is uncommitted on `codex/image-descriptions-quality-ranks`, with base and HEAD `0b5ec7d3f7917d36e1ac707dd79002ade1893bbc`. Implementation was authorized; no production deployment, live Maps destination revalidation or full accessibility audit was performed.
+Map embedding update, 2026-09-13: the owner requested an embedded map. Contact now pairs this location copy with an optional Google map, above the WhatsApp and email panels. The Boracay spot guide includes the same map and meeting-point guidance. Visitors select “Load Google Maps” after a short privacy explanation; “Hide Google Maps” removes the frame. Both maps use the existing ocean, sand and sun palette with stacked mobile layouts. See [ADR 0002](../decisions/0002-optional-google-maps.md) and [verification record](../operations/2026-09-13-google-maps.md).
+
+Historical verification for the September 12 directions-link change: `npm run verify` and `git diff --check` exited 0, with all 54 tests passing. Browser review at 320 and 1280 pixels confirmed the Maps destination, a 50-pixel rendered target, no horizontal overflow and visible keyboard focus. Independent review found no issues. Only the Contact page, its stylesheet and this document changed for this fix; existing work is preserved. The change is uncommitted on `codex/image-descriptions-quality-ranks`, with base and HEAD `0b5ec7d3f7917d36e1ac707dd79002ade1893bbc`. Implementation was authorized; no production deployment, live Maps destination revalidation or full accessibility audit was performed.
 
 The homepage combines the former service-choice cards and supporting service bands into one section immediately after the partner strip, before the Bulabog spot guide. It keeps the owner-preferred large image-and-text layout, without an eyebrow label. The heading is “Your Boracay kite experience.” following the owner's 2026-09-10 copy direction. Lessons come first, followed by rental/storage, accommodation, the shop and safaris, with one description and link per service.
 
@@ -477,3 +479,26 @@ Rental safety CTA, 2026-09-13: the owner requested a contact button in “Before
 The owner shortened the homepage H1 to “If the wind is up, we’re out.” and removed the shared footer’s WhatsApp draft-message guidance paragraph. Its wrapper, unused styles and all `aria-describedby="message-guidance"` references are removed. WhatsApp links retain their explicit new-tab accessible labels, normal destinations and safe external-link attributes. Contact and safety guidance on the dedicated pages is unchanged. Earlier records quoting the longer headline or global footer guidance describe previous versions.
 
 Verification: `npm run verify` exited 0 with lint, typecheck, a fresh production export, all 138 tests passing and no static privacy-audit findings (log `/tmp/hangin-copy-removal-verify.log`). Desktop and 390-pixel mobile screenshots confirmed both removals; the mobile page had no horizontal overflow and no remaining reference to the removed paragraph. Independent scoped review and `git diff --check` passed. Base and HEAD are `62169100da94eaeb42c0975842fa3b7db0ca6799`; these edits remain uncommitted, with unrelated calculator work preserved. No deployment or full accessibility audit was performed.
+
+## Optional forecast, 2026-09-13
+
+The Boracay spot guide and kite-size guide now include “Windguru forecast for Bulabog,” with a direct provider link, load/hide button and privacy explanation. The full-width forecast uses the existing ocean, sand and sun palette. Windguru retains its own table and attribution inside the frame. Wind and gusts are in knots; the text distinguishes the GFS forecast from live readings and directs visitors to check conditions before choosing equipment. The calculator remains based on Hangin seasonal estimates. [ADR 0003](../decisions/0003-optional-windguru-forecast.md) documents the implementation.
+
+## Browser feedback revision, 2026-09-13
+
+The owner superseded the optional embed layouts above: Maps and Windguru load automatically, without control/disclosure bands. Forecast is linked from the Boracay submenu; its introductory paragraph is removed and its heading, provider link and scrolling note remain. The Boracay location block shows the confirmed Hangin name and address beside the pinned map; its repeated Habagat paragraph and extra Maps button are removed. The lesson chapter “First waterstarts or your next trick” spans the full viewport with lagoon blue behind ocean text and the existing photograph. Content order and lesson copy remain unchanged. [ADR 0004](../decisions/0004-automatic-maps-and-forecasts.md) records the new behavior.
+
+## Location section moved to About, 2026-09-13
+
+The owner’s next browser comment moves the full “Find Hangin” address and pinned map section from the Boracay guide to About. A subsequent owner comment places it directly below the page hero, before the school story. The Contact map remains. Google’s reviewed route allowlist is now `/about/` and `/contact/`; Boracay retains Windguru only. Styling, confirmed address, automatic loading and provider restrictions are unchanged. This supersedes the earlier placement descriptions above; ADR 0004’s loading policy still applies.
+
+The Forecast submenu entry now includes the Tabler wind icon, matching the existing 18-pixel outlined icons. The SVG is decorative and hidden from assistive technology; the link retains its Forecast label and destination. Source: the existing pinned Tabler commit, `icons/outline/wind.svg`, checked 2026-09-13.
+
+
+## Founding year correction, 2026-09-14
+
+The owner corrected Hangin’s founding year to 2001. The homepage, About copy and metadata, shared footer and organization structured data now use 2001. Earlier dated records quoting 2002 are historical and superseded by this correction. Existing wording and presentation are otherwise preserved.
+
+Verification: `npm run verify` exited 0 with lint, typecheck, fresh static export, all 151 tests passing and no static privacy findings (`/tmp/hangin-since-2001-verify.log`). All 24 exported HTML files were checked for stale founding-year wording and correct organization `foundingDate`. Homepage and About were read in the browser and visually checked at desktop and 390-pixel widths; the About page had no horizontal overflow. Copy review followed no-ai-slop, and `git diff --check` passed. No styles, controls, routes or motion changed, so additional keyboard, reduced-motion and full accessibility checks were not repeated. Production HTTP checks were not run because this is a local correction with no deployment. Independent agent review could not run because the selected model was at capacity; a direct scoped diff review found no missed active references.
+
+Scope: `app/page.tsx`, `content/site.ts`, `content/island-pages.ts`, `tests/routes-and-seo.test.mjs`, `docs/project/product.md` and this record. The owner’s 2026-09-14 message is the source for the correction. Base and HEAD remain `a4c20d708c515d28c1b1574bd6ae0a20ba7db88f` on `codex/google-maps-embed`. Changes remain uncommitted for owner review with pre-existing changes preserved.

@@ -7,9 +7,12 @@ export const siteConfig = {
   whatsappDisplay: "+63 938 010 1849",
   whatsappNumber: "639380101849",
   location: "Bulabog Beach, Boracay, Philippines",
-  established: 2002,
+  established: 2001,
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Hangin+Kitesurf+Center+%26+Resort&query_place_id=ChIJDZwPzD08pTMRCv8c2mLjjBw",
+  // Google Maps > Share > Embed a map for the verified listing, 2026-09-13.
+  mapsEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7806.250405817269!2d121.92868050000001!3d11.965832399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a53c3dcc0f9c0d%3A0x1c8ce362da1cff0a!2sHangin%20Kitesurf%20Center%20%26%20Resort!5e0!3m2!1sen!2sde!4v1789322783997!5m2!1sen!2sde",
 } as const;
 
 export const sitePartners = [

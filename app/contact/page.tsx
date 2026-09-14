@@ -1,6 +1,7 @@
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
+import { LocationMap } from "@/components/location-map";
 import { getPrimaryContactAction, siteConfig } from "@/content/site";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import styles from "./contact.module.css";
@@ -93,6 +94,7 @@ export default function ContactPage() {
       <section className={styles.channels} aria-label="Contact options">
         <div className={`shell ${styles.channelGrid}`}>
           <article className={styles.location}>
+            <div>
             <p className="eyebrow">Location</p>
             <h2>Find us on Bulabog Beach</h2>
             <p>{siteConfig.location}</p>
@@ -101,6 +103,8 @@ export default function ContactPage() {
               Open Google Maps
             </a>
             <p><a href="/kitesurfing-boracay/">Read the Boracay spot guide</a></p>
+            </div>
+            <LocationMap embedUrl={siteConfig.mapsEmbedUrl} />
           </article>
           <article className={styles.channel}>
             <p className="eyebrow">Primary contact</p>

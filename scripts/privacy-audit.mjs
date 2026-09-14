@@ -10,11 +10,22 @@ import { parse as parseJs } from 'acorn';
 import { SaxesParser } from 'saxes';
 import ts from 'typescript';
 
+// Exact iframe sources and attributes accepted in ADR 0004. Changes need review.
+const reviewedEmbeds = JSON.parse(await readFile(new URL('./reviewed-embeds.json', import.meta.url), 'utf8'));
+
+function reviewedIframe(attrs, pageUrl) {
+  const route = new URL(pageUrl).pathname.replace(/\/index\.html$/, '/');
+  return reviewedEmbeds.some(frame => frame.src === attrs.src && frame.routes.includes(route)
+    && Object.entries(frame.attributes).every(([key, value]) => attrs[key] === value)
+    && Object.keys(attrs).every(key => key === 'src' || Object.hasOwn(frame.attributes, key)));
+}
+
 export const limitations = [
   'Static regression evidence only; this does not prove tracking is absent or establish legal compliance.',
   'Next bundles are classified by exact byte equality with the local .next/static build, not by runtime behavior. That build and its dependencies remain trusted inputs.',
   'Literal Next Flight bootstrap/data calls are classified by syntax; their serialized data and framework execution are not semantically audited.',
   'Browser network/storage observation, hosting/account settings, geographic variants and service-worker history require separate review.',
+  'Reviewed Google Maps and Windguru frames load automatically on their declared routes. Provider internals and their requests are outside this audit.',
 ];
 const cssKeyword = value => value ? cssTree.ident.decode(value).toLowerCase() : '';
 const result = () => ({findings: [], resources: [], framework: []});
@@ -101,7 +112,9 @@ export function auditHtml({html, url, frameworkAssets = new Map(), onResource}) 
     }
     if ('ping' in attrs) add(report, 'tracking-ping', 'Anchor ping is outside the no-tracking baseline', {url});
     if ('attributionsrc' in attrs) add(report, 'tracking-attribution', 'Attribution reporting requires review', {url});
-    if (['iframe', 'object', 'embed'].includes(name)) add(report, 'unsupported-active-content', `${name} requires an accepted integration`, {url});
+    const approvedFrame = name === 'iframe' && reviewedIframe(attrs, url);
+    if (approvedFrame) report.resources.push({url: reportUrl(attrs.src), kind: 'reviewed-third-party-frame', from: reportUrl(url)});
+    else if (['iframe', 'object', 'embed'].includes(name)) add(report, 'unsupported-active-content', `${name} requires an accepted integration`, {url});
     if (name === 'form') {
       // The accepted calculator has no native data submission. Its client source
       // is separately hash-reviewed; other forms still require integration review.
@@ -125,7 +138,7 @@ export function auditHtml({html, url, frameworkAssets = new Map(), onResource}) 
       } else if (nextFlight(body)) report.framework.push({url: reportUrl(url), classification: 'literal-next-flight'});
       else add(report, 'authored-script', 'Unclassified inline script', {url});
     } else {
-      if ('src' in attrs) resource(report, attrs.src, url, ['img', 'input', 'source'].includes(name) ? 'image' : 'resource', onResource);
+      if ('src' in attrs && !approvedFrame) resource(report, attrs.src, url, ['img', 'input', 'source'].includes(name) ? 'image' : 'resource', onResource);
       if ('poster' in attrs) resource(report, attrs.poster, url, 'image', onResource);
       if (name === 'object' && attrs.data) resource(report, attrs.data, url, 'object', onResource);
       if (['image', 'use', 'feImage'].includes(name) && (attrs.href || attrs['xlink:href'])) resource(report, attrs.href || attrs['xlink:href'], url, 'image', onResource);

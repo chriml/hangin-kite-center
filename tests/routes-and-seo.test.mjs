@@ -213,7 +213,7 @@ const islandRoutes = [
   ["/accommodation/", /Stay close to Boracay's kite beach/, /Wake up, check the water/],
   ["/shop/", /Kite gear and beach essentials in Boracay/, /Ask what is on the rack today/],
   ["/kitesurfing-boracay/", /Kitesurfing on Boracay/, /The reef shelters Bulabog's lagoon/],
-  ["/about/", /On the beach since 2002/, /Hangin began as a kite school/],
+  ["/about/", /On the beach since 2001/, /Hangin began as a kite school/],
   ["/contact/", /Tell us when you're coming/, /Your dates and riding level/],
 ];
 
@@ -374,7 +374,7 @@ test("homepage welcomes every guest and follows the approved calm funnel", async
   assert.match(text, /Bulabog Beach, Boracay/);
   assert.match(text, /If the wind is up, we're out\./);
   assert.doesNotMatch(text, /Welcome to|Out on the water in Boracay/);
-  assert.match(text, /Kitesurfing since 2002\./);
+  assert.match(text, /Kitesurfing since 2001\./);
   assert.match(text, /Your Boracay kite experience\./);
   assert.match(text, /Ask us anything\./);
   assert.match(text, /We'll get back to you within one day\./);

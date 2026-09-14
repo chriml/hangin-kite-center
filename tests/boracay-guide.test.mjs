@@ -22,7 +22,7 @@ test("Boracay subpages export a shared hero and one menu linking distinct pages"
     const nav = html.match(/<nav\b[^>]*aria-label="Explore Boracay"[^>]*>[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav, `${route} submenu`);
     const links = tags(nav, "a");
-    assert.deepEqual(links.map(link => attribute(link, "href")), [base, ...pages.map(page => page.route), "/kite-safaris/"]);
+    assert.deepEqual(links.map(link => attribute(link, "href")), [base, `${base}#windguru-heading`, ...pages.map(page => page.route), "/kite-safaris/"]);
     assert.equal(tags(nav, "ul").length, 1, `${route} has one flat menu`);
     assert.deepEqual(links.filter(link => attribute(link, "aria-current") === "page").map(link => attribute(link, "href")), [route]);
     assert.doesNotMatch(nav, /href="#|aria-current="location"/);

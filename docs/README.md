@@ -16,6 +16,9 @@ This directory separates what the site does now from what it may do later. That 
 | Boracay spot guide | [`project/boracay-spot-guide-sources.md`](project/boracay-spot-guide-sources.md), then product and content documents above |
 | Boracay places and activities | [`project/boracay-island-guide-sources.md`](project/boracay-island-guide-sources.md), then product and content documents above |
 | Components, routes, content records, or Next.js | [`project/architecture.md`](project/architecture.md) |
+| Automatic maps and forecasts | [`decisions/0004-automatic-maps-and-forecasts.md`](decisions/0004-automatic-maps-and-forecasts.md), [`operations/2026-09-13-embed-browser-feedback.md`](operations/2026-09-13-embed-browser-feedback.md) |
+| Earlier optional Windguru forecasts | [`decisions/0003-optional-windguru-forecast.md`](decisions/0003-optional-windguru-forecast.md), [`operations/2026-09-13-windguru.md`](operations/2026-09-13-windguru.md) |
+| Earlier optional Google location maps | [`decisions/0002-optional-google-maps.md`](decisions/0002-optional-google-maps.md), [`operations/2026-09-13-google-maps.md`](operations/2026-09-13-google-maps.md) |
 | GEO and AI-search discovery | [`operations/2026-09-13-geo-discovery.md`](operations/2026-09-13-geo-discovery.md), then current SEO contracts |
 | SEO, accessibility, or images | [`project/seo-accessibility-media.md`](project/seo-accessibility-media.md) |
 | Tests, builds, deployment, or incidents | [`project/development-and-operations.md`](project/development-and-operations.md) |

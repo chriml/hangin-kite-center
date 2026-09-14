@@ -145,6 +145,7 @@ export const islandPages = {
         ],
       },
       {
+        id: "learn-at-hangin",
         heading: "First waterstarts or your next trick",
         image: siteImages.lessonPair,
         link: { label: "Explore the lessons", href: "/kitesurfing-lessons/" },
@@ -197,12 +198,12 @@ export const islandPages = {
   },
   about: {
     path: "/about/",
-    title: "On the beach since 2002",
+    title: "On the beach since 2001",
     metaTitle: "About Hangin on Bulabog Beach",
     description:
-      "Hangin Kite Center has taught kitesurfing on Bulabog Beach, Boracay, since 2002 and offers lessons, gear, storage, stays and safaris.",
+      "Hangin Kite Center has taught kitesurfing on Bulabog Beach, Boracay, since 2001 and offers lessons, gear, storage, stays and safaris.",
     eyebrow: "Hangin Kite Center",
-    lead: "Come down to Bulabog and meet the people behind Hangin. We've been teaching here since 2002, helping first-time kiters and experienced riders find their next step on the water.",
+    lead: "Come down to Bulabog and meet the people behind Hangin. We've been teaching here since 2001, helping first-time kiters and experienced riders find their next step on the water.",
     image: { ...siteImages.hanginCenter, caption: "Outside the center." },
     context: "general",
     contact: {
@@ -215,7 +216,7 @@ export const islandPages = {
       {
         heading: "Hangin began as a kite school",
         body: [
-          "Hangin began as a kite school on Bulabog Beach in 2002. Teaching is still at the heart of what we do, whether you're holding a kite for the first time, finding your feet on the board or working on a move you've been chasing for a while.",
+          "Hangin began as a kite school on Bulabog Beach in 2001. Teaching is still at the heart of what we do, whether you're holding a kite for the first time, finding your feet on the board or working on a move you've been chasing for a while.",
           "For us, a good session starts with listening. Tell us where you're at and what you'd like to learn. We work from there, with patient instruction and a plan that fits your level and the conditions. Some days that means taking the next step; on others, it means giving the basics more time.",
           "Respect for the beach and the people sharing it matters just as much. Bulabog is a working kite spot, with learners, independent riders and windsurfers using the same lagoon. Looking at the tide, leaving room for others and knowing when to wait are all part of learning to ride here.",
           `We're an ${siteConfig.centerDesignation}, with Duotone and ION as our gear partners. That connection is part of life at Hangin, from talking through lesson equipment to helping you ask the right questions about rental gear or your own setup. Tell us what you ride and what you need, and we'll discuss the options with you.`,

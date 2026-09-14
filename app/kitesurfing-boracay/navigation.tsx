@@ -27,6 +27,7 @@ export function BoracayNavigation({ pages }: { pages: GuideLink[] }) {
     <nav className={styles.submenu} aria-label="Explore Boracay">
       <ul className="shell">
         <li><Link href="/kitesurfing-boracay/" scroll={false} aria-current={segment === null ? "page" : undefined}><MenuIcon name="spot" />Spot guide</Link></li>
+        <li><a href="/kitesurfing-boracay/#windguru-heading"><MenuIcon name="forecast" />Forecast</a></li>
         {pages.map(({ slug, path, label }) => (
           <li key={slug}>
             <Link href={path} scroll={false} aria-current={segment === slug ? "page" : undefined}><MenuIcon name={slug} />{label}</Link>

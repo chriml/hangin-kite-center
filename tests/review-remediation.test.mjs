@@ -109,9 +109,10 @@ function assertSecurityHeaders(source) {
   for (const name of ['default-src', 'base-uri', 'connect-src', 'font-src', 'manifest-src', 'media-src', 'worker-src']) {
     assert.deepEqual(csp.get(name), new Set(["'self'"]), name);
   }
-  for (const name of ['form-action', 'frame-ancestors', 'frame-src', 'object-src']) {
+  for (const name of ['form-action', 'frame-ancestors', 'object-src']) {
     assert.deepEqual(csp.get(name), new Set(["'none'"]), name);
   }
+  assert.deepEqual(csp.get('frame-src'), new Set(['https://www.google.com/maps/embed', 'https://www.windguru.cz/widget-fcst-iframe.php']));
   assert.deepEqual(csp.get('img-src'), new Set(["'self'", 'data:']));
   for (const name of ['script-src', 'style-src']) {
     assert.deepEqual(csp.get(name), new Set(["'self'", "'unsafe-inline'"]), name);
@@ -142,6 +143,9 @@ test('header contract rejects removed protections, partial route coverage and un
     ['/*', '/contact/*'],
     ["script-src 'self' 'unsafe-inline'", "script-src * 'unsafe-inline'"],
     ["connect-src 'self'", 'connect-src https:'],
+    ['frame-src https://www.google.com/maps/embed', 'frame-src https:'],
+    ['frame-src https://www.google.com/maps/embed', 'frame-src https://www.google.com'],
+    ['https://www.windguru.cz/widget-fcst-iframe.php', 'https://www.windguru.cz'],
     ["frame-ancestors 'none';", ''],
     ["form-action 'none'", "form-action 'self'"],
     ['microphone=()', 'microphone=*'],

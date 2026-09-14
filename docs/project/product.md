@@ -15,7 +15,7 @@ The primary conversion is a WhatsApp conversation. Email is the visible fallback
 
 - Business name: Hangin Kite Center
 - Location: Bulabog Beach, Boracay, Philippines
-- Established: 2002
+- Established: 2001, corrected by the owner on 2026-09-14. This supersedes earlier references to 2002.
 - Instruction: IKO and VDWS
 - Center designation: “Official Duotone Kite Center”, explicitly supplied by the owner on 2026-09-06 for the homepage hero tag; stored in `siteConfig.centerDesignation`. This does not assert the separate “Duotone Pro Center” designation.
 - Seasonal operation: Amihan is the main kite season at Bulabog, roughly November to April. The owner confirmed on 2026-09-06 that Hangin moves sessions to the other side of Boracay during Habagat. Habagat is the southwest monsoon, roughly June to October; timing is corroborated by [local operator Isla Kitesurfing](https://islakitesurfing.com/livewind/) (accessed 2026-09-06). No exact alternate meeting point or transfer service is asserted.

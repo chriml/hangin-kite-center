@@ -122,7 +122,7 @@ export default function Home() {
               <span>we&apos;re out.</span>
             </h1>
             <p className={styles.heroLead}>
-              Kitesurfing since 2002.
+              Kitesurfing since 2001.
               <br />
               Join us on Bulabog&apos;s warm lagoon.
             </p>
@@ -188,7 +188,7 @@ export default function Home() {
         <div className={`shell ${styles.storyGrid}`}>
           <div className={styles.storyCopy}>
             <p className="eyebrow">The center</p>
-            <h2>Kitesurfing since 2002.</h2>
+            <h2>Kitesurfing since 2001.</h2>
             <p>
               Hangin Kite Center is a kitesurfing school on Bulabog Beach,
               Boracay. We teach complete beginners, progressing riders and

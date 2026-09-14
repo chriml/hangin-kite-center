@@ -1,0 +1,32 @@
+[
+  {
+    "src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7806.250405817269!2d121.92868050000001!3d11.965832399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a53c3dcc0f9c0d%3A0x1c8ce362da1cff0a!2sHangin%20Kitesurf%20Center%20%26%20Resort!5e0!3m2!1sen!2sde!4v1789322783997!5m2!1sen!2sde",
+    "routes": [
+      "/contact/",
+      "/about/"
+    ],
+    "attributes": {
+      "title": "Hangin Kite Center on Bulabog Beach, Boracay, on Google Maps",
+      "width": "600",
+      "height": "450",
+      "loading": "eager",
+      "referrerpolicy": "no-referrer",
+      "allowfullscreen": ""
+    }
+  },
+  {
+    "src": "https://www.windguru.cz/widget-fcst-iframe.php?s=1280920&m=3&uid=wg_hangin&ai=0&wj=knots&tj=c&waj=m&tij=cm&odh=0&doh=24&fhours=72&hrsm=3&vt=forecasts&lng=en&p=WINDSPD,GUST,SMER,TMPE,APCP1s",
+    "routes": [
+      "/kitesurfing-boracay/",
+      "/kite-size-guide/"
+    ],
+    "attributes": {
+      "title": "Windguru GFS forecast for Hangin, Bulabog Beach, Boracay",
+      "width": "1100",
+      "height": "360",
+      "loading": "eager",
+      "referrerpolicy": "no-referrer",
+      "sandbox": "allow-scripts allow-same-origin"
+    }
+  }
+]

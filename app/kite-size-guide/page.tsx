@@ -4,6 +4,7 @@ import { ContactCta } from "@/components/contact-cta";
 import { JsonLd } from "@/components/json-ld";
 import { KiteWindMonths } from "@/components/kite-wind-months";
 import { KiteSizeCalculator } from "@/components/kite-size-calculator";
+import { WindForecast } from "@/components/wind-forecast";
 import { hanginWindMonths, kiteGuideSource, kiteSizeBands } from "@/content/kite-size-guide";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import styles from "@/components/kite-size-guide.module.css";
@@ -64,6 +65,7 @@ export default function KiteSizeGuidePage() {
           </div>
         </div>
       </section>
+      <WindForecast />
       <section className={styles.guide}>
         <div className={`shell ${styles.guideGrid}`}>
           <h2>Before you pack your kite gear.</h2>

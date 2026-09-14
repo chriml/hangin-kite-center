@@ -1,7 +1,7 @@
 {
   "app/kitesurfing-boracay/navigation.tsx": {
-    "sha256": "2d5c21c41a24bb89b755d3c69af654f181030492dfa2a9a735f1573568c4eb06",
-    "review": "docs/project/architecture.md"
+    "sha256": "b0a0e6a6cea85e99ca59e7bf008aa9f2b198da7bc0d7e2e0d7e49b416adc679d",
+    "review": "docs/decisions/0004-automatic-maps-and-forecasts.md"
   },
   "components/kite-size-calculator.tsx": {
     "sha256": "93345763862d6214c6d8744fbff3c4a17cc4a67ca0e97accfe5f1ff28fb3e72c",

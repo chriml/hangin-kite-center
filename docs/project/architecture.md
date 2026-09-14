@@ -25,7 +25,7 @@ visitor follows WhatsApp, email, telephone, or internal links
 
 - Next.js 16.3.3, React 19.2.8, React DOM 19.2.8, TypeScript 5.
 - `next.config.ts` sets `output: "export"`, `trailingSlash: true`, and `images.unoptimized: true`.
-- Pages and shared components are Server Components, apart from the local kite-size calculator and the Boracay shared navigation. The calculator uses browser memory only; the navigation selects the current static child route. Core content and contact paths remain prerendered.
+- Pages and shared components are Server Components, apart from the local kite-size calculator and Boracay shared navigation. The calculator uses browser memory only; the navigation selects the current static child route. Core content and contact paths remain prerendered.
 - Native HTML handles the mobile menu and FAQ disclosure behavior.
 - Mobile-menu destinations use ordinary document links so the destination loads with its native disclosure closed. Links entering the Boracay guide from the header, footer, homepage, safari page and kite-size guide also use document navigation, which opens the destination at its shared hero. The Boracay submenu retains Next.js navigation with preserved scroll. Other site links retain Next.js navigation. No additional client component is needed.
 - Local responsive images and framework-emitted fonts are served from the static artifact.
@@ -104,6 +104,20 @@ The owner's latest clarification replaces the combined island guide and fragment
 
 ## Review and host support
 
+Contact and the Boracay spot guide share `components/location-map.tsx`. It loads Google's verified listing only after visitor activation, removes the iframe on Hide, and persists no choice. `content/site.ts` owns both the existing directions URL and Google's copied embed URL. [ADR 0002](../decisions/0002-optional-google-maps.md) records the privacy boundary, narrow host CSP exception, source provenance and verification requirements. Static output has no iframe or automatic Google connection; its hash-reviewed client component adds the frame at runtime.
+
 `/terms/` provides website inquiry and complaint guidance; `/accessibility/` provides practical website and reporting guidance. `/legal/` remains the central asset-credit page. These routes do not establish unconfirmed booking policy, a complete privacy notice or an accessibility conformance claim. `public/_headers` supplies a Cloudflare-compatible static header policy alongside the existing `wrangler.toml`; other hosts must configure equivalent responses. This is a host artifact, not a Next runtime header API.
 
 `npm run audit:privacy` parses the fresh static export and compares framework assets with the matching build. The deployed audit compares an explicit origin against the local expected routes and indexable sitemap set, and checks response/redirect evidence. Parser dependencies are development-only. See [the audit documentation](../../scripts/README.md) for scope and limits.
+
+## Earlier optional Windguru forecasts, 2026-09-13
+
+The Boracay spot guide and kite-size guide use the server-rendered `WindForecast` section and optional `WindguruEmbed` client boundary. `content/forecast.ts` owns the official Hangin spot and GFS widget URLs. No frame loads initially; activating it opens Windguru in a sandboxed cross-origin iframe, with no parent vendor script, API, storage or calculator-data transfer. Static provider/contact links remain available. [ADR 0003](../decisions/0003-optional-windguru-forecast.md) records sources, privacy boundaries and the narrow additional CSP frame source.
+
+## Automatic embed revision, 2026-09-13
+
+The owner’s browser comments supersede the earlier optional loading described above. Both map and forecast now render as eager static iframes with no load/hide controls, disclosure bands or embed client boundaries. `LocationMap` and `WindForecast` are Server Components. `scripts/reviewed-embeds.json` pins complete sources, attributes and permitted routes; the privacy audit records these expected third-party frames without auditing their internals. All other external resources remain rejected. The shared Forecast navigation link is an ordinary fragment link to the existing Boracay page. See [ADR 0004](../decisions/0004-automatic-maps-and-forecasts.md).
+
+## Location section moved to About, 2026-09-13
+
+The owner’s next browser comment moves the full “Find Hangin” address and pinned map section from the Boracay guide to About. A subsequent owner comment places it directly below the page hero, before the school story. The Contact map remains. Google’s reviewed route allowlist is now `/about/` and `/contact/`; Boracay retains Windguru only. Styling, confirmed address, automatic loading and provider restrictions are unchanged. This supersedes the earlier placement descriptions above; ADR 0004’s loading policy still applies.

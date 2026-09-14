@@ -1111,3 +1111,12 @@
     object-position: center;
   }
 }
+
+/* The lesson chapter stands apart without changing its reading order. */
+.boracayHero .serviceSection:has(> :global(#learn-at-hangin)) {
+  width: 100%;
+  padding-inline: max(1rem, calc((100% - 1180px) / 2));
+  background: var(--lagoon);
+  color: var(--ocean);
+  border-top: 0;
+}

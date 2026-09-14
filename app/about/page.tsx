@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { LocationMap } from "@/components/location-map";
+import locationStyles from "./location.module.css";
 import { ServicePage } from "@/components/service-page";
 import { aboutGearPartners, islandPages, teachingOrganizations } from "@/content/island-pages";
-import { sitePartners } from "@/content/site";
+import { siteConfig, sitePartners } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
 import styles from "./about.module.css";
 
@@ -15,7 +17,18 @@ export const metadata = buildMetadata({
 
 export default function AboutPage() {
   return (
-    <ServicePage content={content} sectionHeadingExtras={{
+    <ServicePage content={content} overview={
+      <section className={locationStyles.section} aria-labelledby="find-hangin-heading">
+        <div className={`shell ${locationStyles.grid}`}>
+          <div>
+            <p className="eyebrow">Find Hangin</p>
+            <h2 id="find-hangin-heading">Find us on Bulabog Beach</h2>
+            <address className={locationStyles.address}>{siteConfig.name}<br />{siteConfig.location}</address>
+          </div>
+          <LocationMap embedUrl={siteConfig.mapsEmbedUrl} />
+        </div>
+      </section>
+    } sectionHeadingExtras={{
       "how-we-teach": (
         <ul className={styles.teachingLogos} aria-label="Instructor organizations">
           {teachingOrganizations.map((organization) => (

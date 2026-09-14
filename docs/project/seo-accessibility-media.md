@@ -33,6 +33,8 @@ Remaining review items:
 
 ## Accessibility baseline
 
+Optional Google Maps, 2026-09-13: Contact and the Boracay spot guide contain a keyboard-operable load/hide button, a labelled map iframe after activation, and permanent static directions/contact links. The initial HTML has no iframe or Google resource hint. ADR 0002 initially permitted only the Google embed endpoint for frames; ADR 0003 adds the specific Windguru widget endpoint. The map privacy explanation links to Google's policy; this integration changes the post-activation third-party boundary and is documented in [ADR 0002](../decisions/0002-optional-google-maps.md). Google controls information inside the frame; no new coordinates, ratings or hours are added to Hangin's structured data.
+
 The current static HTML includes English language metadata, a skip link, semantic landmarks, native navigation and FAQ disclosures, visible focus rules, reduced-motion handling, intrinsic image dimensions, and useful or empty alt text according to image role. Primary mobile controls are generally designed around 48-pixel targets.
 
 Automated artifact tests cannot verify computed layout, accessible names in a browser, focus visibility, keyboard order, zoom, screen readers, forced colors, real target sizes, or runtime errors. No Playwright, axe, Lighthouse, or visual-regression suite exists yet.
@@ -97,3 +99,15 @@ Boracay topic pages, 2026-09-13: Places to be, Things to do, Planning your days 
 Inquiry/complaint and accessibility guidance are restored from the review branch as `/terms/` and `/accessibility/`, with their own metadata and sitemap entries. The twenty-one public routes include four existing noindex holding pages; the indexable sitemap therefore contains seventeen routes. Current owner photographs, centralized asset credits, pending-page indexing and Boracay subpages are preserved.
 
 The September 4 media/accessibility audits describe their source revision. Their old stock-photo inventory and on-page caption assumptions are superseded by the current owner-media ledger and `/legal/` credits. Older test counts and browser results remain dated evidence; see the [branch integration report](../operations/2026-09-13-branch-integration.md) for checks of the merged site. No production HTTP behavior or legal conclusions were revalidated merely by merging these records.
+
+## Optional forecast boundary, 2026-09-13
+
+The Boracay and kite-size guides have a labelled Windguru iframe only after activation, a persistent keyboard-operable toggle and static provider/contact links. The frame is sandboxed, receives no referrer and has native scrolling at narrow widths. Provider attribution remains in the widget. Windguru hides its update timestamp in this view; the note directs visitors to the full forecast for update time. No forecast values enter metadata, structured data or static Hangin claims. No initial third-party connection or parent vendor script is introduced. See [ADR 0003](../decisions/0003-optional-windguru-forecast.md) and the [verification record](../operations/2026-09-13-windguru.md).
+
+## Automatic embed revision, 2026-09-13
+
+The owner’s subsequent comments supersede the optional loading described above. Both providers now load automatically in labelled eager static iframes. No embed client script, load/hide control or disclosure band remains. The exact host frame sources, no-referrer policy and Windguru sandbox remain in force. The audit explicitly inventories approved external frames and does not describe the site as making no initial third-party requests. Forecast navigation targets a focusable H2; static contacts remain. See [ADR 0004](../decisions/0004-automatic-maps-and-forecasts.md).
+
+## Location section moved to About, 2026-09-13
+
+The owner’s next browser comment moves the full “Find Hangin” address and pinned map section from the Boracay guide to About. A subsequent owner comment places it directly below the page hero, before the school story. The Contact map remains. Google’s reviewed route allowlist is now `/about/` and `/contact/`; Boracay retains Windguru only. Styling, confirmed address, automatic loading and provider restrictions are unchanged. This supersedes the earlier placement descriptions above; ADR 0004’s loading policy still applies.
