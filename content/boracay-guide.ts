@@ -188,7 +188,7 @@ export const boracaySubpages = {
     lead: "Before you head out, check where to go and who to contact for the activities you have in mind.",
     sectionId: "questions",
     entries: [],
-    sources: [],
+    sources: [guideSources.whiteBeach, guideSources.beaches],
     questions: boracayQuestions,
   },
 } as const satisfies Record<string, BoracaySubpage>;

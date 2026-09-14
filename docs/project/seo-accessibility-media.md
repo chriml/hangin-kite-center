@@ -111,3 +111,11 @@ The owner’s subsequent comments supersede the optional loading described above
 ## Location section moved to About, 2026-09-13
 
 The owner’s next browser comment moves the full “Find Hangin” address and pinned map section from the Boracay guide to About. A subsequent owner comment places it directly below the page hero, before the school story. The Contact map remains. Google’s reviewed route allowlist is now `/about/` and `/contact/`; Boracay retains Windguru only. Styling, confirmed address, automatic loading and provider restrictions are unchanged. This supersedes the earlier placement descriptions above; ADR 0004’s loading policy still applies.
+
+## Focused investigation, 2026-09-13
+
+Terms and Accessibility now emit the same Home/current-page `BreadcrumbList` pattern as their visible breadcrumbs. All twenty supporting routes are covered by a visible/structured breadcrumb regression check. The seventeen indexable URLs and four noindex holding pages are unchanged.
+
+The practical Boracay questions now expose the existing official tourism sources through the shared Further reading treatment. The About contact paragraph asks for trip dates, riding level and service needs and repeats the owner-confirmed one-day reply commitment. No new business fact, crawler file or schema type was introduced by the GEO content pass.
+
+Five large hero images now have 1200-pixel WebP candidates between their existing mobile and full-size files. Existing originals, desktop files, display crops and alt text are preserved. This addresses measured excess image selection on high-density phones. Performance figures remain local lab evidence, not field Core Web Vitals. See the [combined investigation](../operations/2026-09-13-multi-investigator-review.md) and linked domain reports.

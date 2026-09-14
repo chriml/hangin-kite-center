@@ -13,13 +13,17 @@ export function ResponsiveImage({
   alt?: string;
   priority?: boolean;
 }) {
+  const srcSet = image.mediumSrc
+    ? `${image.mobileSrc} ${image.mobileWidth}w, ${image.mediumSrc} ${image.mediumWidth}w, ${image.src} ${image.width}w`
+    : `${image.mobileSrc} ${image.mobileWidth}w, ${image.src} ${image.width}w`;
+
   return (
     // The static export supplies its own real srcset because Next's optimizer is disabled.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       className={className}
       src={image.src}
-      srcSet={`${image.mobileSrc} ${image.mobileWidth}w, ${image.src} ${image.width}w`}
+      srcSet={srcSet}
       sizes={sizes}
       width={image.width}
       height={image.height}

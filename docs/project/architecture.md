@@ -121,3 +121,7 @@ The owner’s browser comments supersede the earlier optional loading described 
 ## Location section moved to About, 2026-09-13
 
 The owner’s next browser comment moves the full “Find Hangin” address and pinned map section from the Boracay guide to About. A subsequent owner comment places it directly below the page hero, before the school story. The Contact map remains. Google’s reviewed route allowlist is now `/about/` and `/contact/`; Boracay retains Windguru only. Styling, confirmed address, automatic loading and provider restrictions are unchanged. This supersedes the earlier placement descriptions above; ADR 0004’s loading policy still applies.
+
+### Responsive image candidates, 2026-09-13
+
+`ResponsiveImage` supports an optional intermediate local image alongside the existing mobile and full-size candidates. Five large hero images now include a 1200-pixel WebP for high-density phones, preserving eager/high-priority hero loading and native lazy loading elsewhere. The files are build-time derivatives, not a runtime optimizer. `content/images.ts`, the attribution ledger and owner-media records retain dimensions and provenance. The [multi-investigator review](../operations/2026-09-13-multi-investigator-review.md) records measurement and verification.

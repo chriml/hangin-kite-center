@@ -19,12 +19,15 @@ This directory separates what the site does now from what it may do later. That 
 | Automatic maps and forecasts | [`decisions/0004-automatic-maps-and-forecasts.md`](decisions/0004-automatic-maps-and-forecasts.md), [`operations/2026-09-13-embed-browser-feedback.md`](operations/2026-09-13-embed-browser-feedback.md) |
 | Earlier optional Windguru forecasts | [`decisions/0003-optional-windguru-forecast.md`](decisions/0003-optional-windguru-forecast.md), [`operations/2026-09-13-windguru.md`](operations/2026-09-13-windguru.md) |
 | Earlier optional Google location maps | [`decisions/0002-optional-google-maps.md`](decisions/0002-optional-google-maps.md), [`operations/2026-09-13-google-maps.md`](operations/2026-09-13-google-maps.md) |
+| Performance, SEO, GEO, or privacy investigation | [`operations/2026-09-13-multi-investigator-review.md`](operations/2026-09-13-multi-investigator-review.md), then the linked domain report |
 | GEO and AI-search discovery | [`operations/2026-09-13-geo-discovery.md`](operations/2026-09-13-geo-discovery.md), then current SEO contracts |
 | SEO, accessibility, or images | [`project/seo-accessibility-media.md`](project/seo-accessibility-media.md) |
 | Tests, builds, deployment, or incidents | [`project/development-and-operations.md`](project/development-and-operations.md) |
 | Saved cinematic video hero | [`../templates/cinematic-video/README.md`](../templates/cinematic-video/README.md) |
 | New capability or roadmap work | [`future/README.md`](future/README.md) and the relevant topic brief |
 | Significant architectural choice | [`decisions/README.md`](decisions/README.md) and existing ADRs |
+
+Latest integration: [Main integration, 2026-09-14](operations/2026-09-14-main-integration.md).
 
 ## Document types and status
 

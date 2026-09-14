@@ -27,7 +27,18 @@ type SiteImageBase = {
   mobileWidth: number;
   mobileHeight: number;
   alt: string;
-};
+} & (
+  | {
+      mediumSrc: string;
+      mediumWidth: number;
+      mediumHeight: number;
+    }
+  | {
+      mediumSrc?: never;
+      mediumWidth?: never;
+      mediumHeight?: never;
+    }
+);
 
 export type SiteImage = SiteImageBase & (
   | {
@@ -59,6 +70,9 @@ export const siteImages = {
     mobileSrc: "/images/owner/colorful-kites-above-bay-and-green-hillside-900.webp",
     mobileWidth: 900,
     mobileHeight: 600,
+    mediumSrc: "/images/owner/colorful-kites-above-bay-and-green-hillside-1200.webp",
+    mediumWidth: 1200,
+    mediumHeight: 800,
     alt: "Colorful kites and riders across the bay beside a green hillside in Boracay",
     kind: "provided",
     sourceFile: "colorful-kites-above-bay-and-green-hillside-quality-8of10.jpg",
@@ -121,6 +135,9 @@ export const siteImages = {
     mobileSrc: "/images/owner/two-smiling-people-with-kite-control-bar-in-shallows-900.webp",
     mobileWidth: 900,
     mobileHeight: 600,
+    mediumSrc: "/images/owner/two-smiling-people-with-kite-control-bar-in-shallows-1200.webp",
+    mediumWidth: 1200,
+    mediumHeight: 800,
     alt: "Two smiling people holding a kite control bar in the shallows",
     kind: "provided",
     sourceFile: "two-smiling-people-with-kite-control-bar-in-shallows-quality-9of10.jpg",
@@ -133,6 +150,9 @@ export const siteImages = {
     mobileSrc: "/images/owner/group-portrait-outside-hangin-kite-center-900.webp",
     mobileWidth: 900,
     mobileHeight: 437,
+    mediumSrc: "/images/owner/group-portrait-outside-hangin-kite-center-1200.webp",
+    mediumWidth: 1200,
+    mediumHeight: 582,
     alt: "Seven people outside Hangin Kite Center beneath the shop sign",
     kind: "provided",
     sourceFile: "group-portrait-outside-hangin-kite-center-quality-8of10.jpg",
@@ -283,6 +303,9 @@ export const siteImages = {
     mobileSrc: "/images/generated/kite-safari-sunprint-900.webp",
     mobileWidth: 900,
     mobileHeight: 601,
+    mediumSrc: "/images/generated/kite-safari-sunprint-1200.webp",
+    mediumWidth: 1200,
+    mediumHeight: 800,
     alt: "",
     kind: "generated",
   },
@@ -293,6 +316,9 @@ export const siteImages = {
     mobileSrc: "/images/generated/island-stay-sunprint-900.webp",
     mobileWidth: 900,
     mobileHeight: 601,
+    mediumSrc: "/images/generated/island-stay-sunprint-1200.webp",
+    mediumWidth: 1200,
+    mediumHeight: 800,
     alt: "",
     kind: "generated",
   },
