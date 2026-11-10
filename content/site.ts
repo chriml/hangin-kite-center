@@ -32,6 +32,11 @@ export const socialLinks: ReadonlyArray<{
     label: "Hangin on Facebook",
     href: "https://www.facebook.com/HanginKiteCenterAndResort/",
   },
+  {
+    platform: "instagram",
+    label: "Hangin on Instagram",
+    href: "https://www.instagram.com/hanginkitecenter/",
+  },
 ];
 
 export const reviewPlatforms = [
