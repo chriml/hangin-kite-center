@@ -31,7 +31,7 @@ visitor follows WhatsApp, email, telephone, or internal links
 - Local responsive images and framework-emitted fonts are served from the static artifact.
 - The production artifact contains twenty-one public routes, a custom 404, robots, sitemap, manifest, icons, and social imagery.
 
-Static export does not provide request-time cookies, headers, redirects, rewrites, middleware, Server Actions, ISR, authenticated preview, secret-bearing APIs, or webhooks. Host-level redirects and headers are separate deployment responsibilities. Dynamic services must live behind a hosted provider or a separately operated server boundary.
+Static export does not provide request-time cookies, headers, redirects, rewrites, middleware, Server Actions, ISR, authenticated preview, secret-bearing APIs, or webhooks. Host-level redirects and headers are separate deployment responsibilities. The one host-side exception is the Cloudflare Pages middleware for Markdown content negotiation ([ADR 0005](../decisions/0005-markdown-content-negotiation.md)), which only chooses between exported HTML and its build-time Markdown twin. Dynamic services must live behind a hosted provider or a separately operated server boundary.
 
 ## Primary modules
 

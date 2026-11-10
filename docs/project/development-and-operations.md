@@ -36,7 +36,7 @@ The deployable artifact is `out/`. The owner connected Cloudflare Pages to GitHu
 
 For the Git integration, keep the build command set to `npm run build` and the root directory at the repository root in the Cloudflare dashboard. Wrangler's `pages_build_output_dir = "./out"` selects the artifact to upload; it does not run the build. The deployed revision must also contain `output: "export"` in `next.config.ts`, which makes Next.js create that directory. Files under `public/`, including optimized images, are included in the export. The original `images/` archive is outside the public export.
 
-The configuration is for static Pages hosting with no Functions, Worker entry point, runtime bindings, or Node.js compatibility flag. No Wrangler dependency or deployment script is required for the connected Git build. Local Wrangler state is ignored through `.gitignore`.
+The configuration is for static Pages hosting with one Pages Function, `functions/_middleware.js`, which serves Markdown to clients that request `text/markdown` ([ADR 0005](../decisions/0005-markdown-content-negotiation.md)). There is no Worker entry point, runtime binding, or Node.js compatibility flag. `npm run build` also writes `out/<route>/index.md` through `scripts/build-markdown.mjs`. No Wrangler dependency or deployment script is required for the connected Git build. Local Wrangler state is ignored through `.gitignore`.
 
 Cloudflare's [Pages Wrangler configuration reference](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) and [static Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) were consulted on 2026-09-13. For an existing Pages project with runtime bindings or other dashboard configuration, compare or download that configuration before adopting this file. No Cloudflare dashboard settings or production deployment were changed as part of this repository setup.
 
@@ -90,3 +90,8 @@ The local and deployed privacy audits now reject unreviewed browser reporting an
 ## Live homepage discovery headers, 2026-11-10
 
 The owner requested and authorized a Cloudflare response-header Transform Rule for homepage agent discovery. On GET and HEAD to `/`, the rule appends `Link: </sitemap.xml>; rel="describedby"; type="application/xml"` and preserves existing image preload links. It applies to the apex and www hostnames; no origin deployment is required. The requested IsItAgentReady scan returned `checks.discoverability.linkHeaders.status = "pass"`. Configuration IDs, exact expression, HTTP checks, sources, rollback, and documentation review state are in the [Link header operation record](../operations/2026-11-10-link-response-headers.md). This live check does not establish other deployment or canonical-host requirements.
+
+
+## Markdown content negotiation, 2026-11-10
+
+Implemented under [ADR 0005](../decisions/0005-markdown-content-negotiation.md). Local verification: lint, typecheck, fresh build and all Node tests passed, and the privacy audit reported no findings. A temporary `npx wrangler@4 pages dev out` run confirmed Markdown for `Accept: text/markdown`, HTML with `Vary: Accept` for browsers, preserved security headers, `X-Robots-Tag: noindex` on `/events/`, the 308 trailing-slash redirect, HTML 404 fallback and 304 handling. Production behavior is unverified until an authorized deployment.

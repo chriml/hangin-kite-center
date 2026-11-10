@@ -25,6 +25,7 @@ This directory separates what the site does now from what it may do later. That 
 | Tests, builds, deployment, or incidents | [`project/development-and-operations.md`](project/development-and-operations.md) |
 | Saved cinematic video hero | [`../templates/cinematic-video/README.md`](../templates/cinematic-video/README.md) |
 | New capability or roadmap work | [`future/README.md`](future/README.md) and the relevant topic brief |
+| Markdown content negotiation | [`decisions/0005-markdown-content-negotiation.md`](decisions/0005-markdown-content-negotiation.md) |
 | Significant architectural choice | [`decisions/README.md`](decisions/README.md) and existing ADRs |
 
 Latest live header change: [Homepage Link response headers, 2026-11-10](operations/2026-11-10-link-response-headers.md).

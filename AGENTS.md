@@ -45,7 +45,9 @@ If an applicable skill is unavailable, follow the repository rules directly and 
 - `content/images.ts` and `public/images/ATTRIBUTION.md` own image records and provenance.
 - `lib/seo.ts`, metadata routes, and JSON-LD components own crawl and structured-data behavior.
 
-Do not add request-time APIs, cookies, headers, redirects, middleware, Server Actions, ISR, secret-bearing integrations, or webhooks while preserving static export. Those require a separate server or hosting capability and an accepted architecture decision. Do not put secrets or personal data in browser code, static output, URLs, analytics, logs, fixtures, or documentation.
+The only host-side code is `functions/_middleware.js`, a Cloudflare Pages middleware that serves the build-time Markdown twins (`out/<route>/index.md`) for `Accept: text/markdown` under ADR 0005. Keep it free of storage, secrets, and external calls.
+
+Do not add other request-time APIs, cookies, headers, redirects, middleware, Server Actions, ISR, secret-bearing integrations, or webhooks while preserving static export. Those require a separate server or hosting capability and an accepted architecture decision. Do not put secrets or personal data in browser code, static output, URLs, analytics, logs, fixtures, or documentation.
 
 Prefer simple, common, maintained libraries when a library is justified. Do not recreate validation, internationalization, payment, security, or browser-testing primitives. New production dependencies need a concrete use case, an ownership and maintenance check, and focused tests.
 

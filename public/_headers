@@ -7,3 +7,18 @@
   X-Frame-Options: DENY
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Content-Signal: ai-train=no, search=yes, ai-input=yes
+/index.md
+  Link: <https://hanginkitecenter.com/>; rel="canonical"
+/*/index.md
+  Link: <https://hanginkitecenter.com/:splat/>; rel="canonical"
+/events/index.md
+  X-Robots-Tag: noindex
+/kite-safaris/batbatan/index.md
+  X-Robots-Tag: noindex
+/kite-safaris/colon/index.md
+  X-Robots-Tag: noindex
+/kite-safaris/others/index.md
+  X-Robots-Tag: noindex

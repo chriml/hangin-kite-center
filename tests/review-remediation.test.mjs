@@ -77,7 +77,29 @@ test('structured data across every route contains no unconfirmed commercial fiel
   inspect({ '@type': 'WebPage', description: 'Review the details with Hangin.' });
 });
 
+// Reviewed rules for the Markdown twins served by functions/_middleware.js (ADR 0005).
+const markdownHeaderRules = `/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Content-Signal: ai-train=no, search=yes, ai-input=yes
+/index.md
+  Link: <https://hanginkitecenter.com/>; rel="canonical"
+/*/index.md
+  Link: <https://hanginkitecenter.com/:splat/>; rel="canonical"
+/events/index.md
+  X-Robots-Tag: noindex
+/kite-safaris/batbatan/index.md
+  X-Robots-Tag: noindex
+/kite-safaris/colon/index.md
+  X-Robots-Tag: noindex
+/kite-safaris/others/index.md
+  X-Robots-Tag: noindex`;
+
 function assertSecurityHeaders(source) {
+  const markdownStart = source.indexOf('\n/*.md\n');
+  if (markdownStart !== -1) {
+    assert.equal(source.slice(markdownStart + 1).trimEnd(), markdownHeaderRules, 'Unreviewed Markdown header rules');
+    source = source.slice(0, markdownStart + 1);
+  }
   const lines = source.trimEnd().split(/\r?\n/).filter(line => line.trim());
   assert.equal(lines.shift(), '/*', 'Headers must cover every exported path');
   const headers = new Headers();
