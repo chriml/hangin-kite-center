@@ -3,7 +3,7 @@ import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { auditHtml } from '../scripts/privacy-audit.mjs';
 const frames = JSON.parse(await readFile(new URL('../scripts/reviewed-embeds.json', import.meta.url)));
-const origin = 'https://www.hanginkitecenter.com';
+const origin = 'https://hanginkitecenter.com';
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
 const html = (frame, extras = {}) => `<iframe ${Object.entries({src:frame.src, ...frame.attributes, ...extras}).filter(([,value])=>value!==undefined).map(([key,value])=>`${key}="${escape(value)}"`).join(' ')}></iframe>`;
 

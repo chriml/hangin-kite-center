@@ -9,7 +9,7 @@ Every current public route exports with:
 
 - One H1 and a logical heading structure.
 - A unique title and description.
-- A self-referencing canonical at the `www` origin.
+- A self-referencing canonical at `https://hanginkitecenter.com`.
 - Open Graph and Twitter metadata with local social imagery.
 - `index, follow` metadata, except the three unfinished safari detail pages and Events coming-soon page, which use `noindex, follow` and are excluded from the sitemap.
 - Internal navigation and visible breadcrumbs on supporting pages.
@@ -17,6 +17,8 @@ Every current public route exports with:
 - JSON-LD built from visible, confirmed information.
 
 Sitewide schema includes `WebSite`, `Organization`, and `SportsActivityLocation`. Service pages use `Service` and breadcrumbs. The current output also includes FAQ markup. Never add ratings, reviews, prices, offers, opening hours, or availability without a visible, current, owned source.
+
+Canonical host correction, 2026-11-10: `content/site.ts` uses the HTTPS apex origin, matching the existing production redirect from `www`. Canonicals, social URLs and images, JSON-LD identifiers and URLs, sitemap entries and the robots sitemap reference share that origin. Live checks confirmed the prior mismatch; deployment of this correction remains pending. See the [verification record](../operations/2026-11-10-canonical-host.md). This replaces the earlier `www` canonical-host expectation without changing hosting rules or route paths.
 
 GEO discovery update, 2026-09-13:
 

@@ -84,7 +84,7 @@ test("every primary contact action keeps the current destination and page contex
 test("homepage exports the canonical business identity", async () => {
   const html = await readRoute("/");
   assert.equal(title(html), "Kitesurfing in Boracay | Hangin Kite Center");
-  assert.equal(linkHref(html, "canonical"), "https://www.hanginkitecenter.com/");
+  assert.equal(linkHref(html, "canonical"), "https://hanginkitecenter.com/");
   assert.match(metaContent(html, "name", "description") ?? "", /Bulabog Beach/i);
 });
 
@@ -121,6 +121,11 @@ test("homepage JSON-LD contains only confirmed business types", async () => {
   const organization = graph.find((item) => item["@type"] === "Organization");
   const location = graph.find((item) => item["@type"] === "SportsActivityLocation");
   assert.ok(website && organization && location);
+  assert.equal(website["@id"], "https://hanginkitecenter.com/#website");
+  assert.equal(location["@id"], "https://hanginkitecenter.com/#kite-center");
+  for (const entity of [website, organization, location]) {
+    assert.equal(entity.url, "https://hanginkitecenter.com/");
+  }
   assert.equal(location.telephone, "+639380101849");
   assert.equal(organization["@id"], location["@id"]);
   assert.deepEqual(website.publisher, { "@id": location["@id"] });
@@ -128,7 +133,7 @@ test("homepage JSON-LD contains only confirmed business types", async () => {
 
 test("declared local social images resolve in the static export", async () => {
   const html = await readRoute("/");
-  const origin = "https://www.hanginkitecenter.com";
+  const origin = "https://hanginkitecenter.com";
   const localImagePaths = tags(html, "meta")
     .filter((tag) => {
       const property = attribute(tag, "property");

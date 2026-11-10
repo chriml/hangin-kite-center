@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Hangin Kite Center",
   shortName: "Hangin",
   centerDesignation: "Official Duotone Kite Center",
-  origin: "https://www.hanginkitecenter.com",
+  origin: "https://hanginkitecenter.com",
   email: "hanginkitecenter@gmail.com",
   whatsappDisplay: "+63 938 010 1849",
   whatsappNumber: "639380101849",

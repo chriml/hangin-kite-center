@@ -17,7 +17,7 @@ import {
   visibleText,
 } from "./export-helpers.mjs";
 
-const origin = "https://www.hanginkitecenter.com";
+const origin = "https://hanginkitecenter.com";
 
 function assertSharedSocialImage(content, message) {
   assert.ok(content, `${message} missing`);
@@ -50,6 +50,8 @@ test("every public route has unique complete metadata and shared social images",
     seenDescriptions.add(description);
 
     assert.equal(linkHref(html, "canonical"), new URL(route, origin).toString());
+    assert.equal(metaContent(html, "property", "og:url"), new URL(route, origin).toString());
+    assert.doesNotMatch(JSON.stringify(jsonLdBlocks(html)), /https:\/\/www\.hanginkitecenter\.com/);
     assert.equal(metaContent(html, "name", "robots"), pendingSafariRoutes.includes(route) || route === "/events/" ? "noindex, follow" : "index, follow");
     assertSharedSocialImage(
       metaContent(html, "property", "og:image"),
@@ -144,7 +146,7 @@ test("sitemap covers the exact indexable surface and robots permits crawling", a
     robots,
     /^User-Agent: \*\r?\nAllow: \/\r?\nContent-Signal: ai-train=no, search=yes, ai-input=yes\r?$/im,
   );
-  assert.match(robots, /Sitemap: https:\/\/www\.hanginkitecenter\.com\/sitemap\.xml/i);
+  assert.match(robots, /Sitemap: https:\/\/hanginkitecenter\.com\/sitemap\.xml/i);
   assert.doesNotMatch(robots, /^Host:/im);
   assert.doesNotMatch(robots, /^Disallow:\s*\//im);
 });

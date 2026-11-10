@@ -53,8 +53,8 @@ The repository also includes a Cloudflare-compatible [static header policy](../.
 Before launch, the host must independently verify:
 
 - HTTPS and certificate renewal.
-- `www.hanginkitecenter.com` as the canonical origin.
-- HTTP, apex, provider-domain, non-trailing-slash, and `index.html` normalization.
+- `https://hanginkitecenter.com` as the canonical origin, matching the existing `www` to apex redirect verified on 2026-11-10. The source correction and pending release are recorded in the [canonical-host verification record](../operations/2026-11-10-canonical-host.md).
+- HTTP, `www`, provider-domain, non-trailing-slash, and `index.html` normalization.
 - A real 404 response using the exported custom page.
 - Suitable cache behavior for hashed framework assets, HTML, metadata, and unversioned public images.
 - Security and privacy headers.

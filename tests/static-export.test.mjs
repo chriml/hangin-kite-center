@@ -26,7 +26,7 @@ test("the exported 404 is useful and not indexable", async () => {
   assert.doesNotMatch(html, /name="robots" content="index, follow"/i);
   assert.doesNotMatch(
     html,
-    /<link rel="canonical" href="https:\/\/www\.hanginkitecenter\.com\/"/i,
+    /<link rel="canonical" href="https:\/\/hanginkitecenter\.com\/"/i,
   );
   assert.doesNotMatch(html, /Kitesurfing in Boracay \| Hangin Kite Center/i);
 });

@@ -34,13 +34,13 @@ test("each safari exports a coming-soon page with matching breadcrumbs and no in
     const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0] ?? "";
     assert.equal(tags(main, "h1").length, 1);
     assert.match(visibleText(main), new RegExp(`${name}.*Coming soon`));
-    assert.equal(linkHref(html, "canonical"), `https://www.hanginkitecenter.com${route}`);
+    assert.equal(linkHref(html, "canonical"), `https://hanginkitecenter.com${route}`);
     assert.equal(metaContent(html, "name", "robots"), "noindex, follow");
     const crumbs = jsonLdBlocks(html).find(block => block["@type"] === "BreadcrumbList");
     assert.deepEqual(crumbs.itemListElement.map(item => item.item), [
-      "https://www.hanginkitecenter.com/",
-      "https://www.hanginkitecenter.com/kite-safaris/",
-      `https://www.hanginkitecenter.com${route}`,
+      "https://hanginkitecenter.com/",
+      "https://hanginkitecenter.com/kite-safaris/",
+      `https://hanginkitecenter.com${route}`,
     ]);
     assert.doesNotMatch(JSON.stringify(jsonLdBlocks(html)), /"(?:Offer|price|availability|TouristTrip)"/);
     assert.ok(tags(main, "a").some(a => attribute(a, "href") === "/kite-safaris/"));

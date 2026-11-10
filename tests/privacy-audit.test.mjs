@@ -5,7 +5,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { auditHtml, auditCss, auditExport, readSiteContract, digest } from '../scripts/privacy-audit.mjs';
 
-const origin = 'https://www.hanginkitecenter.com';
+const origin = 'https://hanginkitecenter.com';
 const cases = [
   ['inline cookie writer', '<script>document.cookie="visitor=123"</script>', 'authored-script'],
   ['inline analytics', '<script>fbq("track", "PageView")</script>', 'authored-script'],
@@ -180,7 +180,7 @@ test('discovers same-origin SVG filter and legacy background resources', () => {
 });
 test('never returns URL credentials, query values or fragments in HTML/CSS evidence', () => {
   const secrets = ['private-user', 'private-password', 'private-token', 'private-fragment'];
-  const url = 'https://private-user:private-password@www.hanginkitecenter.com/page?token=private-token#private-fragment';
+  const url = 'https://private-user:private-password@hanginkitecenter.com/page?token=private-token#private-fragment';
   const html = `<script>document.cookie=1</script><script>self.__next_f.push([1,"data"])</script><img src="${url}"><img src="https://private-user:private-password@collector.example/p?token=private-token#private-fragment"><style>@import "${url}";</style>`;
   for (const result of [auditHtml({html, url}), auditCss({css:`a{background:url("${url}")}`,url})]) {
     const serialized = JSON.stringify(result);
