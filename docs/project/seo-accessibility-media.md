@@ -34,6 +34,10 @@ Remaining review items:
 - Several supporting pages are short and have few contextual links in their main content. Verified first-party details and useful cross-links are higher priority than new page count.
 - Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places ownership are not recorded in the repository.
 
+## Canonical origin update, 2026-11-10
+
+The owner selected `https://hanginkitecenter.com` as the primary address. `content/site.ts` owns the apex origin consumed by canonical tags, social metadata, structured-data identifiers, sitemap entries and the robots sitemap URL. The seventeen indexable routes and four noindex holding pages are unchanged. See the [implementation and release evidence](../operations/2026-11-10-apex-canonical-origin.md). The subsequently authorized [Cloudflare `www` redirect](../operations/2026-11-10-www-redirect.md) is live and verified. Application deployment is still pending, so the live metadata and sitemap have not yet adopted the apex source correction.
+
 ## Accessibility baseline
 
 Optional Google Maps, 2026-09-13: Contact and the Boracay spot guide contain a keyboard-operable load/hide button, a labelled map iframe after activation, and permanent static directions/contact links. The initial HTML has no iframe or Google resource hint. ADR 0002 initially permitted only the Google embed endpoint for frames; ADR 0003 adds the specific Windguru widget endpoint. The map privacy explanation links to Google's policy; this integration changes the post-activation third-party boundary and is documented in [ADR 0002](../decisions/0002-optional-google-maps.md). Google controls information inside the frame; no new coordinates, ratings or hours are added to Hangin's structured data.

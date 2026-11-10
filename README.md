@@ -22,7 +22,7 @@ npm run build
 - Record proof-photo attribution and generated-image provenance in `public/images/ATTRIBUTION.md`.
 - `primaryContactConfig` and `getPrimaryContactAction` in `content/site.ts` form the contact and future booking boundary. Change the provider, destination, labels and link behavior there; `ContactCta` and the contact page consume the updated action without page-level changes.
 
-Before launch, confirm the `www.hanginkitecenter.com` DNS records point to the production static host and that HTTPS resolves on the `www` hostname.
+The canonical origin is `https://hanginkitecenter.com`, selected by the owner on 2026-11-10. Before release, verify apex HTTPS, matching canonical and sitemap URLs, and a permanent `www` redirect that preserves paths and query strings. DNS and host changes require separate production authorization.
 
 ## Future development
 

@@ -62,9 +62,13 @@ Before launch, the host must independently verify:
 
 The future provider-neutral delivery contract is in [`../future/deployment-operations.md`](../future/deployment-operations.md).
 
+## Apex canonical origin, 2026-11-10
+
+The owner selected `https://hanginkitecenter.com` as the primary address, superseding the earlier `www` origin. The source configuration and saved cinematic template now use the apex. The [implementation report](../operations/2026-11-10-apex-canonical-origin.md) records export verification and live observations. The owner subsequently authorized `www` setup on the same date. Cloudflare now serves a verified 301 from HTTP and HTTPS `www` URLs to the corresponding HTTPS apex path and query string, with valid TLS. The [host configuration report](../operations/2026-11-10-www-redirect.md) records resources, checks and rollback. Application deployment remains pending; the live canonical tags and sitemap still use the previous `www` origin.
+
 ## Operational ownership not yet recorded
 
-Cloudflare Pages is the selected hosting provider. The exact connected project name and live deployment remain unverified. The owner confirmed control of DNS/hosting for `www.hanginkitecenter.com` on 2026-09-13. The repository does not identify the registrar, account-level DNS configuration, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
+Cloudflare Pages is the selected hosting provider. The exact connected project name, deployed revision and account-level settings remain unverified. The owner confirmed control of DNS/hosting for `www.hanginkitecenter.com` on 2026-09-13. The repository does not identify the registrar, account-level DNS configuration, deploy approver, incident contact, recovery objectives, artifact retention, analytics owner, Search Console owner, privacy contact, or maintenance window. Future specs name these as decision gates instead of inventing them.
 
 ## Review-remediation verification
 
