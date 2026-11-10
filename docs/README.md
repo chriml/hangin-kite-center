@@ -27,6 +27,8 @@ This directory separates what the site does now from what it may do later. That 
 | New capability or roadmap work | [`future/README.md`](future/README.md) and the relevant topic brief |
 | Significant architectural choice | [`decisions/README.md`](decisions/README.md) and existing ADRs |
 
+Latest live header change: [Homepage Link response headers, 2026-11-10](operations/2026-11-10-link-response-headers.md).
+
 Latest integration: [Main integration, 2026-09-14](operations/2026-09-14-main-integration.md).
 
 ## Document types and status

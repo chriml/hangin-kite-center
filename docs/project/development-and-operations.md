@@ -81,3 +81,8 @@ The [GEO release runbook](../operations/2026-09-13-geo-discovery.md) records the
 ## Browser-reporting audit coverage, 2026-09-13
 
 The local and deployed privacy audits now reject unreviewed browser reporting and attribution declarations. They inspect Reporting-Endpoints, Report-To, NEL, Attribution Reporting registration headers, and CSP reporting directives, including comma-combined policies. Local coverage includes the exported Cloudflare `_headers` file; deployed coverage includes redirects and final responses. Reports omit header values and retain sanitized locations. The checked-in header policy itself is unchanged. See [audit tooling](../../scripts/README.md) and the [combined investigation](../operations/2026-09-13-multi-investigator-review.md) for tests and deployment limits.
+
+
+## Live homepage discovery headers, 2026-11-10
+
+The owner requested and authorized a Cloudflare response-header Transform Rule for homepage agent discovery. On GET and HEAD to `/`, the rule appends `Link: </sitemap.xml>; rel="describedby"; type="application/xml"` and preserves existing image preload links. It applies to the apex and www hostnames; no origin deployment is required. The requested IsItAgentReady scan returned `checks.discoverability.linkHeaders.status = "pass"`. Configuration IDs, exact expression, HTTP checks, sources, rollback, and documentation review state are in the [Link header operation record](../operations/2026-11-10-link-response-headers.md). This live check does not establish other deployment or canonical-host requirements.
