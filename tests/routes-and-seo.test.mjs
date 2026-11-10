@@ -140,6 +140,10 @@ test("sitemap covers the exact indexable surface and robots permits crawling", a
   }
 
   assert.match(robots, /User-Agent: \*\s+Allow: \//i);
+  assert.match(
+    robots,
+    /^User-Agent: \*\r?\nAllow: \/\r?\nContent-Signal: ai-train=no, search=yes, ai-input=yes\r?$/im,
+  );
   assert.match(robots, /Sitemap: https:\/\/www\.hanginkitecenter\.com\/sitemap\.xml/i);
   assert.doesNotMatch(robots, /^Host:/im);
   assert.doesNotMatch(robots, /^Disallow:\s*\//im);
