@@ -18,8 +18,8 @@ A US web search on 2026-11-11 for each term returned no `hanginkitecenter.com` r
 | Item | Before | After |
 | --- | --- | --- |
 | Homepage title | Kitesurfing in Boracay \| Hangin Kite Center | Kite School in Boracay \| Hangin Kite Center |
-| Homepage description | Service list | IKO and VDWS kite school and Official Duotone Kite Center on Bulabog Beach, since 2001, plus the service list |
-| Homepage story copy | "a kitesurfing school" | "a kite school and an Official Duotone Kite Center" |
+| Homepage description | Service list | Kite school and Official Duotone Kite Center on Bulabog Beach since 2001, with IKO and VDWS instructors and the service list. The instructor marks stay tied to instructors, not school membership |
+| Homepage story copy | "a kitesurfing school" | "a kite school"; the Duotone designation stays in the hero tag |
 | `SportsActivityLocation` | no `description` | `description` matching the visible story line |
 | Shop description | "Check current kite gear" | "Ask about Duotone and ION kite gear" (partners confirmed; no stock claim) |
 
