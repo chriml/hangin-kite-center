@@ -21,6 +21,7 @@ This directory separates what the site does now from what it may do later. That 
 | Earlier optional Google location maps | [`decisions/0002-optional-google-maps.md`](decisions/0002-optional-google-maps.md), [`operations/2026-09-13-google-maps.md`](operations/2026-09-13-google-maps.md) |
 | Performance, SEO, GEO, or privacy investigation | [`operations/2026-09-13-multi-investigator-review.md`](operations/2026-09-13-multi-investigator-review.md), then the linked domain report |
 | GEO and AI-search discovery | [`operations/2026-09-13-geo-discovery.md`](operations/2026-09-13-geo-discovery.md), then current SEO contracts |
+| SEO and GEO priorities, measurement, or the SEO & GEO Agent | [`project/seo-geo-strategy.md`](project/seo-geo-strategy.md), then [`project/seo-geo-findings.md`](project/seo-geo-findings.md) |
 | SEO, accessibility, or images | [`project/seo-accessibility-media.md`](project/seo-accessibility-media.md) |
 | Tests, builds, deployment, or incidents | [`project/development-and-operations.md`](project/development-and-operations.md) |
 | Saved cinematic video hero | [`../templates/cinematic-video/README.md`](../templates/cinematic-video/README.md) |
