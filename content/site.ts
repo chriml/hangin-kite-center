@@ -7,6 +7,8 @@ export const siteConfig = {
   whatsappDisplay: "+63 938 010 1849",
   whatsappNumber: "639380101849",
   location: "Bulabog Beach, Boracay, Philippines",
+  // Owner-confirmed approximate hours, 2026-11-11. Too approximate for openingHours schema.
+  openingHoursNote: "Open from sunrise until around midnight.",
   established: 2001,
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Hangin+Kitesurf+Center+%26+Resort&query_place_id=ChIJDZwPzD08pTMRCv8c2mLjjBw",
@@ -62,8 +64,14 @@ export const reviewPlatforms = [
   },
 ] as const;
 
-export const pendingSafariRoutes = [
+export const safariDetailRoutes = [
   "/kite-safaris/batbatan/",
+  "/kite-safaris/colon/",
+  "/kite-safaris/others/",
+] as const;
+
+// Safari detail pages still showing a holding message.
+export const pendingSafariRoutes = [
   "/kite-safaris/colon/",
   "/kite-safaris/others/",
 ] as const;
@@ -73,7 +81,7 @@ export const publicRoutes = [
   "/kitesurfing-lessons/",
   "/rentals-storage/",
   "/kite-safaris/",
-  ...pendingSafariRoutes,
+  ...safariDetailRoutes,
   "/events/",
   "/accommodation/",
   "/shop/",
@@ -90,8 +98,8 @@ export const publicRoutes = [
   "/accessibility/",
 ] as const;
 
-// Coming-soon trip pages are reached through the safari cards.
-export const navigationRoutes = publicRoutes.filter(route => !pendingSafariRoutes.some(pending => pending === route));
+// Trip detail pages are reached through the safari cards.
+export const navigationRoutes = publicRoutes.filter(route => !safariDetailRoutes.some(detail => detail === route));
 export const noindexRoutes = [...pendingSafariRoutes, "/events/"] as const;
 export const indexableRoutes = publicRoutes.filter(route => !noindexRoutes.some(noindex => noindex === route));
 
@@ -176,7 +184,7 @@ export function getLessonContactAction(course: string): PrimaryContactAction {
 
 export function getSafariContactAction(trip: string): PrimaryContactAction {
   return buildContactAction(
-    `Hi Hangin, I'd like to request information about the ${trip} kite safari. My dates are [dates] and my riding level is [level].`,
+    `Hi Hangin, I'd like to request information about the ${trip} kite safari. My dates are [dates] and my riding level is [level].${trip === "Batbatan" ? " Our group size is [number]. Please let me know the trip options, cost and what is included." : ""}`,
     "ask",
   );
 }

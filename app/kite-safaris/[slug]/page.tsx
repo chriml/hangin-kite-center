@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getSafariContactAction, noindexRoutes } from "@/content/site";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
-import { safariTrips } from "@/content/safari-trips";
+import { batbatanSafari, safariTrips } from "@/content/safari-trips";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import sharedStyles from "@/components/service-page.module.css";
 import styles from "../safaris.module.css";
@@ -26,15 +28,16 @@ export async function generateMetadata({ params }: Props) {
   return {
     ...buildMetadata({
       title: `${trip.name} Kite Safari`,
-      description: `${trip.name} kite safari details are coming soon. Return to Hangin's kite safari page to request information from the team on WhatsApp.`,
+      description: trip.slug === "batbatan" ? batbatanSafari.description : `${trip.name} kite safari details are coming soon. Return to Hangin's kite safari page to request information from the team on WhatsApp.`,
       path: trip.path,
     }),
-    robots: { index: false, follow: true },
+    robots: { index: !noindexRoutes.some(route => route === trip.path), follow: true },
   };
 }
 
 export default async function SafariTripPage({ params }: Props) {
   const trip = findTrip((await params).slug);
+  const request = getSafariContactAction(trip.name);
   return (
     <main id="main-content" tabIndex={-1}>
       <JsonLd data={{
@@ -51,8 +54,22 @@ export default async function SafariTripPage({ params }: Props) {
       </div>
       <section className={styles.comingSoon}>
         <div className="shell">
-          <h1>{trip.name}</h1>
-          <p>Coming soon…</p>
+          <h1>{trip.slug === "batbatan" ? "Batbatan kite safari" : trip.name}</h1>
+          {trip.slug === "batbatan" ? (
+            <div className={styles.tripDetails}>
+              <h2>Safari dates</h2>
+              <ul className={styles.dates}>
+                {batbatanSafari.dates.map(date => <li key={date}>{date}</li>)}
+              </ul>
+              <p>{batbatanSafari.recurrence}</p>
+              <p>{batbatanSafari.otherDates}</p>
+              <p>{batbatanSafari.privateTrip}</p>
+              <p>Message Hangin with your preferred date, group size and riding levels to ask about cost and what is included.</p>
+              <a className="button button--coral button--whatsapp" href={request.href} target={request.target} rel={request.rel} aria-label="Ask about the Batbatan kite safari on WhatsApp (opens in a new tab)">
+                <WhatsAppIcon />Ask about Batbatan
+              </a>
+            </div>
+          ) : <p>Coming soon…</p>}
           <Link className="button" href="/kite-safaris/">Back to kite safaris</Link>
         </div>
       </section>

@@ -125,3 +125,8 @@ The owner’s next browser comment moves the full “Find Hangin” address and 
 ### Responsive image candidates, 2026-09-13
 
 `ResponsiveImage` supports an optional intermediate local image alongside the existing mobile and full-size candidates. Five large hero images now include a 1200-pixel WebP for high-density phones, preserving eager/high-priority hero loading and native lazy loading elsewhere. The files are build-time derivatives, not a runtime optimizer. `content/images.ts`, the attribution ledger and owner-media records retain dimensions and provenance. The [multi-investigator review](../operations/2026-09-13-multi-investigator-review.md) records measurement and verification.
+
+
+### Batbatan detail content, 2026-11-10
+
+`batbatanSafari` in `content/safari-trips.ts` holds the owner-supplied month/day dates and group options shared by the safari listing and Batbatan detail page. The existing dynamic route renders Batbatan details and a contact action; the other two trips retain their holding messages. The Batbatan contact message adds group size, options, cost and inclusions through the existing `getSafariContactAction` adapter. Static export and the existing noindex/navigation policy remain in place pending a confirmed schedule year and indexing review.

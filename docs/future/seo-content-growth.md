@@ -18,8 +18,24 @@ Known limitations:
 - Robots output includes a non-standard `Host` directive.
 - General FAQ rich results are no longer a realistic growth feature; visible questions may still help visitors.
 - Several supporting pages are short and contain few contextual links in their main content.
-- Ownership of Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places is not recorded.
+- Ownership of Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places was confirmed on 2026-11-11 (the repository owner). Verification and sitemap submission are still pending.
 - Exact address, coordinates, opening hours, prices, reviews, staff profiles, and other local/offer facts are unconfirmed and must not be invented for schema or listings.
+
+## Customer question coverage, 2026-11-11
+
+The owner supplied the most common visitor questions. Use them as the primary source for Stage 3 and for any later guide.
+
+| Question | Current answer | Gap |
+| --- | --- | --- |
+| When is the season? | Amihan, roughly November to April, on the homepage, lessons and Boracay pages | Covered; keep one clear answer and link to it |
+| Is there wind? / When is there usually wind? | Amihan wind context and the Windguru forecast on the Boracay and kite-size guides | Typical time of day and how many riding days per month are not confirmed; ask the team before publishing |
+| What do things cost? | Lesson prices on Lessons | Rental, storage, accommodation, shop and safari prices are unconfirmed; pages direct visitors to WhatsApp |
+| What can I do on Boracay? | Boracay guide and its four topic pages | Covered; add links from Accommodation and About |
+| Are any trips available? | Kite safaris listing; Batbatan dates repeat every year | Colon and Others still show holding messages |
+| Are there any events? | Events is a noindex holding page | Needs real event details from the owner before it can be indexed |
+| Where can I stay? | Accommodation page | Room details and prices are unconfirmed |
+
+Do not answer a gap with an estimate. Record the owner's answer in `product.md` first.
 
 ## Strategy
 

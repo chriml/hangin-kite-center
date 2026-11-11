@@ -87,8 +87,6 @@ const markdownHeaderRules = `/*.md
   Link: <https://hanginkitecenter.com/:splat/>; rel="canonical"
 /events/index.md
   X-Robots-Tag: noindex
-/kite-safaris/batbatan/index.md
-  X-Robots-Tag: noindex
 /kite-safaris/colon/index.md
   X-Robots-Tag: noindex
 /kite-safaris/others/index.md

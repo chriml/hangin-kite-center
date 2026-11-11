@@ -139,3 +139,34 @@
     min-width: 0;
   }
 }
+
+.tripDetails {
+  max-width: 42rem;
+  margin-block: 2.5rem;
+}
+
+.tripDetails h2 {
+  font-size: 2rem;
+}
+
+.tripDetails p {
+  margin-block: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2rem;
+  margin: 1rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.dates li {
+  padding-block: 0.75rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 1.25rem;
+  font-weight: 700;
+}

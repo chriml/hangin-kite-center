@@ -58,6 +58,7 @@ export default function ContactPage() {
               what makes sense for the current conditions.
             </p>
             <p className={styles.locationLine}>{siteConfig.location}</p>
+            <p>{siteConfig.openingHoursNote}</p>
           </div>
         </div>
       </section>

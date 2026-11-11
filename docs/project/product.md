@@ -27,6 +27,8 @@ The primary conversion is a WhatsApp conversation. Email is the visible fallback
   - Accommodation
   - Kite shop
   - Kite safaris
+- Opening hours: from sunrise until around midnight, confirmed by the owner on 2026-11-11 as the current hours. Shown on Contact as `siteConfig.openingHoursNote`. The times are approximate, so no `openingHours` structured data is emitted.
+- Location details: the owner confirmed on 2026-11-11 that the current public address and location details are correct.
 - Response time: replies within one day, explicitly confirmed by the owner for homepage contact copy on 2026-09-06. The owner maintains this commitment.
 - Email: `hanginkitecenter@gmail.com`
 - WhatsApp display number: `+63 938 010 1849`
@@ -62,7 +64,7 @@ The [policy reconciliation source](../references/2026-09-08-hangin-course-price-
 
 ## Unconfirmed information
 
-The repository does not confirm rental, storage, shop or accommodation prices, advanced-course equipment inclusions, opening or special hours, live availability, instructor names, exact credentials by person, room specifications, current equipment stock, shipping, pickup, exact street address, geographic coordinates, live aggregate ratings beyond the documented snapshots below, awards, customer reviews, official Duotone Pro Center designation, or other partnerships. Lesson prices and teaching hours are confirmed above; earlier owner policy decisions and unresolved dependencies are distinguished in the linked source record.
+The repository does not confirm rental, storage, shop or accommodation prices, advanced-course equipment inclusions, exact or special opening times, live availability, instructor names, exact credentials by person, room specifications, current equipment stock, shipping, pickup, exact street address, geographic coordinates, live aggregate ratings beyond the documented snapshots below, awards, customer reviews, official Duotone Pro Center designation, or other partnerships. Lesson prices and teaching hours are confirmed above; earlier owner policy decisions and unresolved dependencies are distinguished in the linked source record.
 
 Do not turn an unconfirmed item into public copy, metadata, structured data, a booking rule, or a commerce offer. A future topic brief may define the field and workflow, but the business owner must provide and maintain its value.
 
@@ -140,3 +142,16 @@ The owner explicitly confirmed permission for Hangin to display both IKO and VDW
 ### Safari trip cards and pending details
 
 The owner subsequently supplied the exact labels **Batbatan**, **Colon** and **Others**, and requested a horizontal card for each. “Colon” is retained as written; no alternate place name or geography is inferred. Each Request action opens a trip-specific WhatsApp enquiry; More opens `/kite-safaris/batbatan/`, `/kite-safaris/colon/` or `/kite-safaris/others/`. Those pages show the selected name and “Coming soon…” as explicitly requested, with breadcrumbs and a link back. The trip names do not establish live departures, prices, duration, transport or equipment inclusions.
+
+
+### Batbatan dates and group enquiries, 2026-11-10
+
+The owner supplied Batbatan safari dates of December 4, January 4, February 4 and March 4. On 2026-11-11 the owner confirmed that these dates repeat every year; the pages say so and the Batbatan page is now indexable. Other dates are upon request with a minimum of 7 kiters; smaller groups can ask about a private trip. These details replace the Batbatan holding message on the listing and `/kite-safaris/batbatan/`. Colon and Others remain placeholders. The Batbatan WhatsApp enquiry asks for dates, riding level and group size, plus options, cost and inclusions. Dates are enquiry information, not live availability or confirmed bookings. The owner maintains the schedule through repository updates.
+
+## Search and listing accounts
+
+The repository owner confirmed on 2026-11-11 that they own the Google (Search Console and Business Profile) and Bing (Webmaster Tools and Places) accounts for Hangin. They are also the access-recovery contact. Account credentials and personal contact details stay out of this repository.
+
+## Most common customer questions
+
+The owner listed these on 2026-11-11 as the questions visitors ask most: when the season is, whether there is wind, what things cost, when the wind usually blows, what to do on Boracay, which trips are available, whether there are events, and where to stay. The mapping to pages and the remaining gaps are in [`../future/seo-content-growth.md`](../future/seo-content-growth.md#customer-question-coverage-2026-11-11).

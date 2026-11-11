@@ -32,7 +32,7 @@ GEO discovery update, 2026-09-13:
 Remaining review items:
 - Google retired FAQ rich results in May 2026 and removed the feature documentation in June ([official changelog](https://developers.google.com/search/updates#removing-faq-rich-result), accessed 2026-09-04). Keep useful visible questions. Existing truthful `FAQPage` markup is not a promise of a Google search feature; do not expand it for that purpose.
 - Several supporting pages are short and have few contextual links in their main content. Verified first-party details and useful cross-links are higher priority than new page count.
-- Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places ownership are not recorded in the repository.
+- The repository owner owns Search Console, Bing Webmaster Tools, Google Business Profile, and Bing Places (confirmed 2026-11-11). Domain verification and sitemap submission are pending.
 
 ## Canonical origin update, 2026-11-10
 
@@ -126,3 +126,14 @@ Terms and Accessibility now emit the same Home/current-page `BreadcrumbList` pat
 The practical Boracay questions now expose the existing official tourism sources through the shared Further reading treatment. The About contact paragraph asks for trip dates, riding level and service needs and repeats the owner-confirmed one-day reply commitment. No new business fact, crawler file or schema type was introduced by the GEO content pass.
 
 Five large hero images now have 1200-pixel WebP candidates between their existing mobile and full-size files. Existing originals, desktop files, display crops and alt text are preserved. This addresses measured excess image selection on high-density phones. Performance figures remain local lab evidence, not field Core Web Vitals. See the [combined investigation](../operations/2026-09-13-multi-investigator-review.md) and linked domain reports.
+
+
+### Batbatan enquiry content, 2026-11-10
+
+Batbatan now has owner-supplied month/day dates, group options and a direct enquiry link in place of its holding message. Its description reflects those details. The existing `noindex, follow` and sitemap exclusion are retained pending confirmation of the schedule year and a separate indexing review. Colon and Others still show their holding messages. No Event, Offer, price or availability data was added.
+
+### Batbatan indexing and opening hours, 2026-11-11
+
+The owner confirmed that the Batbatan dates repeat every year. `/kite-safaris/batbatan/` now uses `index, follow`, appears in the sitemap with a 2026-11-11 modification date, and its Markdown twin no longer sends `X-Robots-Tag: noindex`. The sitemap therefore lists eighteen routes. `safariDetailRoutes` lists all three trip pages (kept out of navigation); `pendingSafariRoutes` now lists only Colon and Others, which together with Events stay noindex. No Event, Offer, price or availability data was added.
+
+Contact shows "Open from sunrise until around midnight." Because the times are approximate, no `openingHours` structured data was added.
