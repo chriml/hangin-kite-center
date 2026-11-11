@@ -28,7 +28,7 @@ test("the exported 404 is useful and not indexable", async () => {
     html,
     /<link rel="canonical" href="https:\/\/hanginkitecenter\.com\/"/i,
   );
-  assert.doesNotMatch(html, /Kitesurfing in Boracay \| Hangin Kite Center/i);
+  assert.doesNotMatch(html, /Kite School in Boracay \| Hangin Kite Center/i);
 });
 
 test("homepage content is present in exported HTML", async () => {
