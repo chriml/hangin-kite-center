@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { safariTrips } from "@/content/safari-trips";
+import { batbatanSafari, safariTrips } from "@/content/safari-trips";
 import { getSafariContactAction } from "@/content/site";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { ServicePage } from "@/components/service-page";
@@ -29,7 +29,12 @@ export default function KiteSafarisPage() {
                   <article className={styles.tripCard} data-safari-trip={trip.slug}>
                     <div className={styles.tripCopy}>
                       <h2>{trip.name}</h2>
-                      <p>Details coming soon.</p>
+                      {trip.slug === "batbatan" ? (
+                        <>
+                          <p>{batbatanSafari.dates.join(" · ")}<br />{batbatanSafari.recurrence}</p>
+                          <p>{batbatanSafari.otherDates}<br />{batbatanSafari.privateTrip}</p>
+                        </>
+                      ) : <p>Details coming soon.</p>}
                     </div>
                     <div className={styles.tripActions}>
                       <a className="button button--coral button--whatsapp" href={request.href} target={request.target} rel={request.rel} aria-label={`Request ${trip.name} safari information via WhatsApp (opens in a new tab)`}>

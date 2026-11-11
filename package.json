@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/build-markdown.mjs",
+    "build": "next build",
+    "postbuild": "node scripts/build-markdown.mjs",
     "preview": "python3 -m http.server 4173 -d out",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",

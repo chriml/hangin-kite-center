@@ -31,11 +31,15 @@ This directory separates what the site does now from what it may do later. That 
 
 Latest live header change: [Homepage Link response headers, 2026-11-10](operations/2026-11-10-link-response-headers.md).
 
+Latest Markdown investigation: [Build command and release gate, 2026-11-10](operations/2026-11-10-markdown-build-command.md).
+
 Latest host setup: [WWW redirect, 2026-11-10](operations/2026-11-10-www-redirect.md).
 
 Latest canonical-origin change: [Apex origin, 2026-11-10](operations/2026-11-10-apex-canonical-origin.md).
 
 Latest integration: [Main integration, 2026-09-14](operations/2026-09-14-main-integration.md).
+
+Latest safari content: [Batbatan dates and enquiries, 2026-11-10](operations/2026-11-10-batbatan-safari.md).
 
 ## Document types and status
 

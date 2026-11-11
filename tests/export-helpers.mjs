@@ -28,7 +28,7 @@ export const publicRoutes = [
   "/accessibility/",
 ];
 
-export const pendingSafariRoutes = ["/kite-safaris/batbatan/", "/kite-safaris/colon/", "/kite-safaris/others/"];
+export const pendingSafariRoutes = ["/kite-safaris/colon/", "/kite-safaris/others/"];
 export const indexableRoutes = publicRoutes.filter(route => !pendingSafariRoutes.includes(route) && route !== "/events/");
 
 export function routeFile(route) {

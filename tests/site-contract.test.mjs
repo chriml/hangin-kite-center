@@ -35,7 +35,7 @@ test("every primary contact action keeps the current destination and page contex
       .map((course) => `Hi Hangin, I'd like to ask about ${course} in Boracay. My dates are [dates] and my riding level is [level].`),
   );
   const safariMessages = new Set(["Batbatan", "Colon", "Others"].map(trip =>
-    `Hi Hangin, I'd like to request information about the ${trip} kite safari. My dates are [dates] and my riding level is [level].`));
+    `Hi Hangin, I'd like to request information about the ${trip} kite safari. My dates are [dates] and my riding level is [level].${trip === "Batbatan" ? " Our group size is [number]. Please let me know the trip options, cost and what is included." : ""}`));
   const expectedMessages = new Set([
     contactMessages.general,
     contactMessages.complaint,
@@ -66,7 +66,7 @@ test("every primary contact action keeps the current destination and page contex
       assert.equal(url.pathname, "/639380101849");
       assert.ok(expectedMessages.has(message), `${route} unexpected contact context`);
       if (safariMessages.has(message)) {
-        assert.equal(route, "/kite-safaris/", "trip requests belong on the safari listing");
+        assert.ok(route === "/kite-safaris/" || (route === "/kite-safaris/batbatan/" && message.includes("Batbatan")), "trip requests belong on the listing or matching Batbatan page");
       }
       if (courseMessages.has(message)) {
         assert.equal(route, "/kitesurfing-lessons/", "course enquiries belong on the lessons page");
