@@ -11,10 +11,10 @@ import { buildMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
 const homepageDescription =
-  "Kitesurfing lessons, equipment rental, storage, accommodation, shop and kite safaris with Hangin Kite Center on Bulabog Beach, Boracay.";
+  "Kite school and Official Duotone Kite Center on Bulabog Beach, Boracay, since 2001. Lessons with IKO and VDWS instructors, rental, storage, stays and kite safaris.";
 
 export const metadata = buildMetadata({
-  title: "Kitesurfing in Boracay | Hangin Kite Center",
+  title: "Kite School in Boracay | Hangin Kite Center",
   description: homepageDescription,
   path: "/",
 });
@@ -190,8 +190,8 @@ export default function Home() {
             <p className="eyebrow">The center</p>
             <h2>Kitesurfing since 2001.</h2>
             <p>
-              Hangin Kite Center is a kitesurfing school on Bulabog Beach,
-              Boracay. We teach complete beginners, progressing riders and
+              Hangin Kite Center is a kite school on Bulabog Beach, Boracay.
+              We teach complete beginners, progressing riders and
               advanced kiters with IKO and VDWS instructors. You can also ask
               us about gear rental, storage and a stay near the kite beach.
             </p>

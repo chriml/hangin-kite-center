@@ -83,7 +83,7 @@ test("every primary contact action keeps the current destination and page contex
 
 test("homepage exports the canonical business identity", async () => {
   const html = await readRoute("/");
-  assert.equal(title(html), "Kitesurfing in Boracay | Hangin Kite Center");
+  assert.equal(title(html), "Kite School in Boracay | Hangin Kite Center");
   assert.equal(linkHref(html, "canonical"), "https://hanginkitecenter.com/");
   assert.match(metaContent(html, "name", "description") ?? "", /Bulabog Beach/i);
 });

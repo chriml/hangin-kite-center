@@ -61,7 +61,7 @@ export const islandPages = {
     title: "Kite gear and beach essentials in Boracay",
     metaTitle: "Kite Shop in Boracay",
     description:
-      "Check current kite gear, accessories and beach essentials at Hangin Kite Center on Bulabog Beach, Boracay.",
+      "Ask about Duotone and ION kite gear, accessories and beach essentials at Hangin Kite Center on Bulabog Beach, Boracay.",
     eyebrow: "Hangin kite shop",
     lead: "For a spare part, replacement piece or something you left at home, ask what is on the rack today.",
     image: siteImages.shopBoards,

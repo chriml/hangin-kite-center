@@ -5,6 +5,38 @@ Owner: SEO & GEO Agent, under the [SEO and GEO strategy](seo-geo-strategy.md)
 
 Dated observations, open items and release results for `https://hanginkitecenter.com`. Add new entries at the top. Do not rewrite an earlier entry; when an item changes, add a dated line that supersedes it. Statuses are `done`, `open` and `unverifiable`.
 
+## 2026-11-11: target terms "kite school boracay", "kite center boracay", "duotone boracay"
+
+The owner asked for Hangin to rank first for these three terms. Rankings cannot be promised; this entry records the baseline, the on-page change and the off-site actions.
+
+### Baseline
+
+A US web search on 2026-11-11 for each term returned no `hanginkitecenter.com` result in the top results. Hangin appeared only through third-party pages (IKO listing, Kayak, Agoda, Greenyard). Those pages carry stale facts: IKO says "since 2002" and two locations (White Beach and Bulabog); Kayak shows an older phone number. "duotone boracay" returned gear guides and unrelated pages, with no Boracay center listed. This is a single unpersonalized check, not a Search Console baseline.
+
+### On-page change (branch `seo/kite-school-duotone-terms`)
+
+| Item | Before | After |
+| --- | --- | --- |
+| Homepage title | Kitesurfing in Boracay \| Hangin Kite Center | Kite School in Boracay \| Hangin Kite Center |
+| Homepage description | Service list | Kite school and Official Duotone Kite Center on Bulabog Beach since 2001, with IKO and VDWS instructors and the service list. The instructor marks stay tied to instructors, not school membership |
+| Homepage story copy | "a kitesurfing school" | "a kite school"; the Duotone designation stays in the hero tag |
+| `SportsActivityLocation` | no `description` | `description` matching the visible story line |
+| Shop description | "Check current kite gear" | "Ask about Duotone and ION kite gear" (partners confirmed; no stock claim) |
+
+All claims are owner-confirmed in `product.md`. The H1 slogan is unchanged. No Duotone landing page was added: it would duplicate the homepage and About page.
+
+### Open off-site actions (owner)
+
+| Action | Why |
+| --- | --- |
+| Verify the apex in Search Console and Bing, submit the sitemap, request indexing of `/` | The site does not yet show for these terms; nothing else matters until it is indexed |
+| Google Business Profile: primary category "Kitesurfing school", website `https://hanginkitecenter.com/` | Local pack results lead "kite school boracay" searches |
+| Ask Duotone to list Hangin in its center finder with a link to the site | The strongest available signal for "duotone boracay" |
+| Ask IKO and VDWS to correct the listing (2001, Bulabog Beach, current phone, website link) | Entity consistency and authoritative backlinks |
+| Correct Kayak, Agoda, Tripadvisor website and phone fields | Same |
+
+Recheck the three terms after a full 28-day window in Search Console, Amihan season.
+
 ## 2026-11-11: live baseline after the apex release
 
 Observed 2026-11-11 with plain HTTPS requests against production. Repository `main` at `b169836`. No account, analytics or AI-platform data was used.
