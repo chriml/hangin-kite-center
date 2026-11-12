@@ -16,7 +16,7 @@ export function buildMetadata({
 }): Metadata {
   const url = absoluteUrl(path);
   const socialImageUrl = absoluteUrl("/opengraph-image.jpg");
-  const socialImageAlt = "Kitesurfers riding over turquoise water in Boracay.";
+  const socialImageAlt = "The Hangin team outside Hangin Kite Center on Boracay.";
 
   return {
     title,

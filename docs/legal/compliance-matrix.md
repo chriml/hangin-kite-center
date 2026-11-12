@@ -88,7 +88,7 @@ An attempted lookup of `https://www.hanginkitecenter.com/` from the audit enviro
 
 | Asset family | Recorded source/licence | Current use and risk |
 | --- | --- | --- |
-| `public/images/proof/boracay-kitesurf-school.webp`, its `-900.webp` derivative and `app/opengraph-image.jpg` | Wikimedia Commons, Kstranger, CC0 1.0. | Used as Boracay kitesurfing proof, not business proof. Preserve the source/licence snapshot and original. |
+| `public/images/proof/boracay-kitesurf-school.webp` and its `-900.webp` derivative | Wikimedia Commons, Kstranger, CC0 1.0. | Used as Boracay kitesurfing proof, not business proof. Preserve the source/licence snapshot and original. |
 | `public/images/proof/bulabog-beach-aerial.webp` and its `-900.webp` derivative | Wikimedia Commons, Patrickroque01, CC BY-SA 4.0. | Attribution and licence link appear in public credits. Preserve attribution, indicate modification, and apply share-alike requirements to the derivative. |
 | `public/images/proof/boracay-kitesurfing.webp` and its `-900.webp` derivative | Wikimedia Commons, Anastasia Zhebyuk, CC BY-SA 3.0. | Attribution and licence link appear in public credits. Preserve attribution, indicate modification, and apply share-alike requirements to the derivative. |
 | `public/images/generated/kite-gear-sunprint.webp`, `kite-safari-sunprint.webp`, `island-stay-sunprint.webp` and their `-900.webp` derivatives | OpenAI ImageGen, recorded as decorative. | Keep prompt/output/account provenance and applicable terms. Never present it as proof of actual people, property, gear, inventory, or a safari. |
