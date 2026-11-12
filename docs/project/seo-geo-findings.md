@@ -40,6 +40,9 @@ Profile "Hangin Kitesurf Center & Resort", verified, managed from Hangin's busin
 | Opening date | January 2002 | January 2001 (year confirmed 2026-09-14; the month is the existing profile value) |
 | Description | Said "since 2002", "the only kite center approved by IKO in the region", "oldest kitesurfing structure" and "2019 Duotone kites" | Says 2001, Official Duotone Kite Center, IKO and VDWS certified instructors, Duotone and ION as gear partners, the services and the owner's existing language line. Unconfirmed claims removed at the owner's request |
 | Primary category | Surf school | Unchanged. The category list has no kitesurfing or kiteboarding school; the closest results were Kite shop, Windsurfing Shop and Water sports equipment rental service. Additional categories stay Kite shop and Surf shop |
+| Services | Two visible services ("Advanced private lessons / coaching" 1h and 2h at PHP 3,200 and 6,400) after a Google-applied update; older "day 1 / day 2 / 3 days" courses hidden | Twelve services under Kite shop: advanced coaching 1, 2 and 4 hours at PHP 4,400, 8,500 and 16,000; Introductory course PHP 6,000; Basic kite, Kite control and Board riding courses PHP 12,000 each; Full course PHP 36,000 (all per person, with private and group hours from the 2026-09-08 price sheet); Equipment rental, Equipment storage, Kite safaris (Batbatan dates, other dates for 7 or more kiters) and Accommodation with no price. Old day-based courses left switched off. Pending review, up to one day |
+
+Business Profile prices now repeat the website's lesson prices. When the course sheet changes, update `content/water-pages.ts` and the Business Profile services together.
 
 The description's language line ("English, German, French and Russian") comes from the owner's existing profile text and is not recorded in `product.md`.
 
