@@ -5,6 +5,53 @@ Owner: SEO & GEO Agent, under the [SEO and GEO strategy](seo-geo-strategy.md)
 
 Dated observations, open items and release results for `https://hanginkitecenter.com`. Add new entries at the top. Do not rewrite an earlier entry; when an item changes, add a dated line that supersedes it. Statuses are `done`, `open` and `unverifiable`.
 
+## 2026-11-12: release of PR #4 and account setup
+
+Done by the agent in the owner's signed-in browser session, at the owner's request. No credentials or personal account details are recorded here.
+
+### Release
+
+| Item | Status | Evidence |
+| --- | --- | --- |
+| PR #4 (kite school and Duotone terms) | done | Squash-merged to `main` as `6477e65`; Cloudflare Pages deployed it. Live `/` returns the title `Kite School in Boracay \| Hangin Kite Center` and the new description |
+
+### Search Console and Bing
+
+This supersedes the "Search Console and Bing verification, sitemap submission" row of 2026-11-11.
+
+| Item | Status | Evidence |
+| --- | --- | --- |
+| Search Console property | done | Domain property `sc-domain:hanginkitecenter.com` already existed and is verified through the existing `google-site-verification` DNS TXT record |
+| Search Console sitemap | done | `https://hanginkitecenter.com/sitemap.xml` submitted 2026-11-12, read the same day, status "Erfolgreich" (success), 18 pages discovered |
+| Old `www` sitemap | open | `https://www.hanginkitecenter.com/sitemap.xml` (submitted 2023-03-30, last read 2025-03-22, 0 pages) is still listed. Owner may remove it |
+| Homepage indexing | done | URL inspection of `https://hanginkitecenter.com/` reported "URL is on Google"; indexing re-requested on 2026-11-12 so the new title is crawled |
+| Bing site | done | `hanginkitecenter.com` already existed in Bing Webmaster Tools with no sitemap |
+| Bing sitemap | done | `https://hanginkitecenter.com/sitemap.xml` submitted 2026-11-12; Bing confirmed it was accepted for processing. URL count pending Bing's crawl |
+| Search baseline | open | First 28-day export due after 2026-12-10, Amihan season |
+
+### Google Business Profile
+
+Profile "Hangin Kitesurf Center & Resort", verified, managed from Hangin's business Google account. Edits saved on 2026-11-12; Google showed most of them as pending review (usually up to 10 minutes).
+
+| Field | Before | After |
+| --- | --- | --- |
+| Website | `https://www.hanginkitecenter.com/` | `https://hanginkitecenter.com/` |
+| Phone | none | +63 938 010 1849 (the confirmed WhatsApp number) |
+| Opening date | January 2002 | January 2001 (year confirmed 2026-09-14; the month is the existing profile value) |
+| Description | Said "since 2002", "the only kite center approved by IKO in the region", "oldest kitesurfing structure" and "2019 Duotone kites" | Says 2001, Official Duotone Kite Center, IKO and VDWS certified instructors, Duotone and ION as gear partners, the services and the owner's existing language line. Unconfirmed claims removed at the owner's request |
+| Primary category | Surf school | Unchanged. The category list has no kitesurfing or kiteboarding school; the closest results were Kite shop, Windsurfing Shop and Water sports equipment rental service. Additional categories stay Kite shop and Surf shop |
+
+The description's language line ("English, German, French and Russian") comes from the owner's existing profile text and is not recorded in `product.md`.
+
+### Still open
+
+| Action | Owner |
+| --- | --- |
+| Ask Duotone for a center-finder listing linking to the site | Owner |
+| Ask IKO, VDWS, Kayak, Agoda and Tripadvisor to correct year, location, phone and website | Owner |
+| Optional: add "Water sports equipment rental service" as an additional Business Profile category | Owner decision |
+| Recheck the three target terms after the first 28-day Search Console window | SEO & GEO Agent |
+
 ## 2026-11-11: target terms "kite school boracay", "kite center boracay", "duotone boracay"
 
 The owner asked for Hangin to rank first for these three terms. Rankings cannot be promised; this entry records the baseline, the on-page change and the off-site actions.
