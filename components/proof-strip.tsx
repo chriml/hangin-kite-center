@@ -4,9 +4,9 @@ import styles from "@/app/page.module.css";
 
 export function ProofStrip({ labelAbove = false }: { labelAbove?: boolean }) {
   return (
-    <aside className={styles.proofStrip} aria-label="Our gear partners">
+    <aside className={styles.proofStrip} aria-label="Official distributor in the Philippines">
       <div className={`shell ${styles.partnerStrip} ${labelAbove ? styles.partnerStripStacked : ""}`}>
-        <p>Our gear partners</p>
+        <p>Official distributor in the Philippines</p>
         <ul className={styles.partnerList}>
           {sitePartners.map((partner) => (
             <li key={partner.name}>

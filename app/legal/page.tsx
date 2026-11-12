@@ -67,7 +67,7 @@ export default function LegalPage() {
         <section aria-labelledby="brand-marks">
           <h2 id="brand-marks">Brand marks</h2>
           <p>The <a href="https://www.ikointl.com/">IKO</a> and <a href="https://www.vdws.de/en/">VDWS</a> logos identify the instructor organizations mentioned on the About page. The website owner confirmed permission to display both marks. Ownership remains with the respective organizations.</p>
-          <p>{sitePartners.map((partner, index) => <span key={partner.name}>{index > 0 && " and "}<a href={partner.href}>{partner.name}</a></span>)} marks identify Hangin&apos;s gear partners. The marks belong to their respective brands and Boards &amp; More.</p>
+          <p>{sitePartners.map((partner, index) => <span key={partner.name}>{index > 0 && " and "}<a href={partner.href}>{partner.name}</a></span>)} marks identify the brands Hangin distributes in the Philippines. The marks belong to their respective brands and Boards &amp; More.</p>
           <p><a href="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg">Google</a> and <a href="https://tripadvisor.mediaroom.com/logo-guidelines">Tripadvisor</a> logos identify links to their review platforms. They belong to Google LLC and Tripadvisor LLC and do not imply endorsement of Hangin.</p>
           <p>Logo proportions are preserved. Monochrome versions are shown in white on dark backgrounds. These brand marks are not covered by the image or software licenses listed here.</p>
         </section>

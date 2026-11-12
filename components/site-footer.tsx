@@ -40,7 +40,7 @@ export function SiteFooter() {
             </nav>
           </div>
           <ContactCta compact />
-          <ul className={styles.footerPartners} aria-label="Our gear partners">
+          <ul className={styles.footerPartners} aria-label="Official distributor in the Philippines">
             {sitePartners.map((partner) => (
               <li key={partner.name}>
                 <a href={partner.href} target="_blank" rel="noopener noreferrer">

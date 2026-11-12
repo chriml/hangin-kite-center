@@ -55,7 +55,7 @@ const sitewideJsonLd = {
       url: absoluteUrl("/"),
       email: siteConfig.email,
       telephone: `+${siteConfig.whatsappNumber}`,
-      description: `Kite school and ${siteConfig.centerDesignation} on Bulabog Beach, Boracay.`,
+      description: `Kite school and ${siteConfig.centerDesignation} on Bulabog Beach, Boracay, and the ${siteConfig.distributorDesignation}.`,
       foundingDate: String(siteConfig.established),
       hasMap: siteConfig.mapsUrl,
       address: {

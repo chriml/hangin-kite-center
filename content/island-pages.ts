@@ -3,8 +3,8 @@ import { siteConfig } from "@/content/site";
 import type { ServicePageContent } from "@/content/water-pages";
 
 export const aboutGearPartners = {
-  heading: "Our gear partners",
-  body: "Duotone and ION are our gear partners on Bulabog Beach. Ask us about equipment for lessons, rental or your own setup.",
+  heading: "Duotone and ION distributor",
+  body: `Hangin is the ${siteConfig.distributorDesignation}. Ask us about equipment for lessons, rental or your own setup.`,
 } as const;
 
 export const teachingOrganizations = [
@@ -61,7 +61,7 @@ export const islandPages = {
     title: "Kite gear and beach essentials in Boracay",
     metaTitle: "Kite Shop in Boracay",
     description:
-      "Ask about Duotone and ION kite gear, accessories and beach essentials at Hangin Kite Center on Bulabog Beach, Boracay.",
+      "Hangin is the official Duotone and ION distributor for the Philippines. Ask about kite gear, accessories and beach essentials at our Bulabog Beach shop.",
     eyebrow: "Hangin kite shop",
     lead: "For a spare part, replacement piece or something you left at home, ask what is on the rack today.",
     image: siteImages.shopBoards,
@@ -75,7 +75,7 @@ export const islandPages = {
       {
         heading: "Gear for the current season",
         body: [
-          "Hangin has a kite shop on Bulabog Beach. Ask about the kite gear, accessories and beach essentials currently in stock.",
+          `Hangin has a kite shop on Bulabog Beach and is the ${siteConfig.distributorDesignation}. Ask about the kite gear, accessories and beach essentials currently in stock.`,
         ],
       },
       {
@@ -219,7 +219,7 @@ export const islandPages = {
           "Hangin began as a kite school on Bulabog Beach in 2001. Teaching is still at the heart of what we do, whether you're holding a kite for the first time, finding your feet on the board or working on a move you've been chasing for a while.",
           "For us, a good session starts with listening. Tell us where you're at and what you'd like to learn. We work from there, with patient instruction and a plan that fits your level and the conditions. Some days that means taking the next step; on others, it means giving the basics more time.",
           "Respect for the beach and the people sharing it matters just as much. Bulabog is a working kite spot, with learners, independent riders and windsurfers using the same lagoon. Looking at the tide, leaving room for others and knowing when to wait are all part of learning to ride here.",
-          `We're an ${siteConfig.centerDesignation}, with Duotone and ION as our gear partners. That connection is part of life at Hangin, from talking through lesson equipment to helping you ask the right questions about rental gear or your own setup. Tell us what you ride and what you need, and we'll discuss the options with you.`,
+          `We're an ${siteConfig.centerDesignation} and the ${siteConfig.distributorDesignation}. That connection is part of life at Hangin, from talking through lesson equipment to helping you ask the right questions about rental gear or your own setup. Tell us what you ride and what you need, and we'll discuss the options with you.`,
           "You can come to us for the parts around the session too: somewhere to store your gear, a stay near the kite beach or a kite trip to ask about. Bring your questions, even if you're still figuring out what your Boracay days might look like. We'll help you make a plan.",
         ],
       },

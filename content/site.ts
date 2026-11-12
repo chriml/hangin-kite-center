@@ -2,6 +2,8 @@ export const siteConfig = {
   name: "Hangin Kite Center",
   shortName: "Hangin",
   centerDesignation: "Official Duotone Kite Center",
+  // Owner-confirmed 2026-11-12: official Duotone and ION distributor for the Philippines.
+  distributorDesignation: "official Duotone and ION distributor for the Philippines",
   origin: "https://hanginkitecenter.com",
   email: "hanginkitecenter@gmail.com",
   whatsappDisplay: "+63 938 010 1849",
