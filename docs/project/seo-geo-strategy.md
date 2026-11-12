@@ -40,6 +40,8 @@ Report each layer separately and never infer one from another:
 
 ## Priorities
 
+Weighting (owner, 2026-11-12): about 70% GEO, 30% SEO. Above all, AI agents must be able to read and understand every page easily.
+
 Work through these in order unless the owner changes it. Record status in the [findings](seo-geo-findings.md).
 
 1. **Measurement access.** The owner confirmed on 2026-11-11 that they own Search Console, Bing Webmaster Tools, Google Business Profile and Bing Places (recorded on `feat/batbatan-safari-dates`). Next the owner verifies `https://hanginkitecenter.com` in Search Console and Bing, submits `https://hanginkitecenter.com/sitemap.xml` and reviews the inherited Google generative AI setting. The owner acts in those accounts; the agent prepares steps and reads exports.
